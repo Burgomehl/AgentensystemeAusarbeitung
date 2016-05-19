@@ -1,1 +1,1 @@
-http://172.22.11.28:7778/acc
+http://Sklave.fritz.box:7778/acc
