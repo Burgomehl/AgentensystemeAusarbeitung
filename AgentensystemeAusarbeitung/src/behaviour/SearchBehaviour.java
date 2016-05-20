@@ -2,12 +2,11 @@ package behaviour;
 
 import jade.core.behaviours.CyclicBehaviour;
 
-public class SearchBehaviour extends CyclicBehaviour{
+public class SearchBehaviour extends CyclicBehaviour implements IBehaviour{
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Search Behaviouer");
 	}
 
 

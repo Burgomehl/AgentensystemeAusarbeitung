@@ -1,13 +1,15 @@
 package behaviour;
 
 import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
 
-public class MessageBehaviour extends CyclicBehaviour{
+public class MessageBehaviour extends CyclicBehaviour implements IBehaviour{
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Message Behaviour");
+		ACLMessage msg = bloc
+		block();
 	}
 
 }
