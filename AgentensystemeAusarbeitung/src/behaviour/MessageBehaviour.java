@@ -8,7 +8,6 @@ public class MessageBehaviour extends CyclicBehaviour implements IBehaviour{
 	@Override
 	public void action() {
 		System.out.println("Message Behaviour");
-		ACLMessage msg = bloc
 		block();
 	}
 
