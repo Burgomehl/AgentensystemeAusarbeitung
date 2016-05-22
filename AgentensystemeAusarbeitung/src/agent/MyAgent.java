@@ -24,6 +24,7 @@ public class MyAgent extends Agent implements IAgent {
 		// }
 		// }
 		addBehaviour(new CyclicBehaviour(this) {
+			Message m ;
 			@Override
 			public void action() {
 				System.out.println("Message Behaviour");
@@ -32,9 +33,9 @@ public class MyAgent extends Agent implements IAgent {
 				if (msg != null) {
 					msg.getContent();
 					msg.getSender();
-					
 					Gson gson = new Gson();
-					Message m = gson.fromJson(msg.getContent(), Message.class);
+					m = gson.fromJson(msg.getContent(), Message.class);
+					
 				} else {
 					block();
 				}
@@ -45,7 +46,7 @@ public class MyAgent extends Agent implements IAgent {
 	public MyAgent() {
 		behaviours = new ArrayList<>();
 		behaviours.add(new SearchBehaviour());
-		behaviours.add(new MessageBehaviour());
+		behaviours.add(new MessageBehaviour(this));
 	}
 
 	public void runAgent() {
