@@ -10,6 +10,7 @@ import behaviour.MessageBehaviour;
 import behaviour.SearchBehaviour;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 
 public class MyAgent extends Agent implements IAgent {
@@ -23,6 +24,13 @@ public class MyAgent extends Agent implements IAgent {
 		// addBehaviour((Behaviour)iBehaviour);
 		// }
 		// }
+		addBehaviour(new OneShotBehaviour() {
+			@Override
+			public void action() {
+				Gson gson = new Gson();
+				System.out.println(gson.toJson(new LoginMessage()));
+			}
+		});
 		addBehaviour(new CyclicBehaviour(this) {
 			Message m ;
 			@Override

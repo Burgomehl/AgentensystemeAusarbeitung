@@ -1,1 +1,1 @@
-http://Sklave.fritz.box:7778/acc
+http://Master.fritz.box:7778/acc
