@@ -9,11 +9,11 @@ import com.google.gson.Gson;
 import behaviour.IBehaviour;
 import behaviour.MessageBehaviour;
 import behaviour.SearchBehaviour;
+import data.Map;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
-import jade.core.behaviours.TickerBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -23,6 +23,7 @@ import jade.lang.acl.ACLMessage;
 public class MyAgent extends Agent implements IAgent {
 	List<IBehaviour> behaviours;
 	private String worldName = "";
+	private Map handler;
 
 	@Override
 	protected void setup() {
@@ -141,7 +142,7 @@ public class MyAgent extends Agent implements IAgent {
 	}
 
 	private void sendMessage(String Message) {
-		ACLMessage msg = new ACLMessage(ACLMessage.PROPOSE);
+		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 		msg.setSender(getAID());
 		msg.addReceiver(new AID(worldName, AID.ISLOCALNAME));
 
