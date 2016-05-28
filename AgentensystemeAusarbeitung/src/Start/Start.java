@@ -20,12 +20,12 @@ public class Start {
 			
 			l.info("Test1 und der Logger geht");
 			Runtime runtime = Runtime.instance();
-			Profile profile = new ProfileImpl("localhost",-1,"antWorld2016",false);
-			AgentContainer container = runtime.createMainContainer(profile);
+			Profile profile = new ProfileImpl("localhost",-1,null,false);
+			AgentContainer container = runtime.createAgentContainer(profile);
 			AgentController agent1 = container.createNewAgent("adam", MyAgent.class.getName(), args);
 			agent1.start();
-			AgentController agent2 = container.createNewAgent("eva", MyAgent.class.getName(), args);
-			agent2.start();
+//			AgentController agent2 = container.createNewAgent("eva", MyAgent.class.getName(), args);
+//			agent2.start();
 //			AgentController rma = container.createNewAgent("rma", "jade.tools.rma.rma", args);
 //			rma.start();
 		} catch (Exception e) {
