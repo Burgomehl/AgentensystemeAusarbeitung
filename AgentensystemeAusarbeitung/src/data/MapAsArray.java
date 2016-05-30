@@ -12,38 +12,11 @@ package data;
  */
 public class MapAsArray implements IMap {
 
-	@SuppressWarnings("unused")
-	private class Cord {
-		int x;
-		int y;
-
-		public Cord(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
-
-		public int getX() {
-			return x;
-		}
-
-		public void setX(int x) {
-			this.x = x;
-		}
-
-		public int getY() {
-			return y;
-		}
-
-		public void setY(int y) {
-			this.y = y;
-		}
-	}
-
 	private Field[][] map;
 	private Cord currentLocation;
 
 	public MapAsArray(Field f) {
-		map = new Field[10][10];
+		map = new Field[11][11];
 		Cord mid = getMid();
 		currentLocation = mid;
 		map[mid.getX()][mid.getY()] = f;
@@ -69,7 +42,7 @@ public class MapAsArray implements IMap {
 				resizeMap(10);
 
 			}
-			if (map[currentLocation.getX()][currentLocation.getY()] != null) {
+			if (map[currentLocation.getX()][currentLocation.getY()] == null) {
 				map[currentLocation.getX()][currentLocation.getY()] = field;
 			}else{
 				System.out.println("There is already a Field");
@@ -98,7 +71,7 @@ public class MapAsArray implements IMap {
 	}
 
 	private boolean isInRange(Cord c) {
-		return !(c.getX() <= map.length && c.getY() <= map[0].length && c.getX() >= 0 && c.getY() >= 0);
+		return !(c.getX() < map.length && c.getY() < map[0].length && c.getX() >= 0 && c.getY() >= 0);
 	}
 
 }

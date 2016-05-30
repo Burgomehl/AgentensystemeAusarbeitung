@@ -3,6 +3,7 @@ package data;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.function.Predicate;
 
 import jade.util.leap.HashSet;
 
@@ -12,6 +13,7 @@ import jade.util.leap.HashSet;
  * @author Benjamin Byl
  *
  */
+@Deprecated
 public class Map {
 	private Field rootField;
 	private int fieldSize;
@@ -23,9 +25,9 @@ public class Map {
 	}
 
 	public Field addField() {
-		Field field = new Field(null, Direction.EAST, 0, 0, 0, 0, 0, false, false);
-		fields.put(field.getRow()+""+field.getCol(), field);
-		linkFields(field,null);
+//		Field field = new Field(null, Direction.EAST, 0, 0, 0, 0, 0, false, false);
+//		fields.put(field.getRow()+""+field.getCol(), field);
+//		linkFields(field,null);
 		++fieldSize;
 		return null;
 	}
@@ -41,24 +43,24 @@ public class Map {
 		return field.getStenchItensity() == 0;
 	}
 
-	public void analyseStench(Field field, IFunctionForLambda<Field> test) {
-		if (field.getStenchItensity() == 3) {
-			field.setNorth(setFieldAsTrap(field.getNorth(), field, Direction.NORTH));
-			field.setSouth(setFieldAsTrap(field.getSouth(), field, Direction.SOUTH));
-			field.setEast(setFieldAsTrap(field.getNorth(), field, Direction.EAST));
-			field.setWest(setFieldAsTrap(field.getNorth(), field, Direction.WEST));
-		} else if (field.getStenchItensity() == 2) {
+//	public void analyseStench(Field field, IFunctionForLambda<Field> test) {
+//		if (field.getStenchItensity() == 3) {
+//			field.setNorth(setFieldAsTrap(field.getNorth(), field, Direction.NORTH));
+//			field.setSouth(setFieldAsTrap(field.getSouth(), field, Direction.SOUTH));
+//			field.setEast(setFieldAsTrap(field.getNorth(), field, Direction.EAST));
+//			field.setWest(setFieldAsTrap(field.getNorth(), field, Direction.WEST));
+//		} else if (field.getStenchItensity() == 2) {
+//
+//		}
+//	}
 
-		}
-	}
-
-	private Field setFieldAsTrap(Field fieldToTrap, Field theCurrentField, Direction dir) {
-		if (fieldToTrap == null) {
-			return new Field(theCurrentField, dir, 0, 0, 1, theCurrentField.getRow() + 1, theCurrentField.getCol(),
-					false, true);
-		}
-		return fieldToTrap;
-	}
+//	private Field setFieldAsTrap(Field fieldToTrap, Field theCurrentField, Direction dir) {
+//		if (fieldToTrap == null) {
+//			return new Field(theCurrentField, dir, 0, 0, 1, theCurrentField.getRow() + 1, theCurrentField.getCol(),
+//					false, true);
+//		}
+//		return fieldToTrap;
+//	}
 
 	/**
 	 * @return List of food on the map ordered by distance to the base
@@ -79,7 +81,7 @@ public class Map {
 	 * @param currentField
 	 * @return List of food on the map ordered by distance to the given location
 	 */
-	private Queue<Field> findSomethingOrderedByDistance(Field currentField, IBool func) {
+	private Queue<Field> findSomethingOrderedByDistance(Field currentField, Predicate<Field> func) {
 		Queue<Field> fieldWithSomething = new LinkedList<>();
 		HashSet allreadyVisited = new HashSet();
 		Queue<Field> toVisit = new LinkedList<>();
@@ -91,7 +93,7 @@ public class Map {
 			addTestedFieldToToVisit(toVisit, rootField.getEast());
 			addTestedFieldToToVisit(toVisit, rootField.getSouth());
 			addTestedFieldToToVisit(toVisit, rootField.getWest());
-			 if (func.function(field)) {
+			 if (func.test(field)) {
 				 fieldWithSomething.add(field);
 			 }
 		}

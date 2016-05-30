@@ -23,8 +23,6 @@ public class Field {
 	
 	/**
 	 * 
-	 * @param lastField
-	 * @param navi The direction the agent moved. You should use {@Direction} 
 	 * @param food
 	 * @param smellItensity
 	 * @param stenchItensity
@@ -33,7 +31,7 @@ public class Field {
 	 * @param rock
 	 * @param trap
 	 */
-	public Field(Field lastField,Direction navi,int food, int smellItensity, int stenchItensity, long row, long col, boolean rock, boolean trap) {
+	public Field(int food, int smellItensity, int stenchItensity, long row, long col, boolean rock, boolean trap) {
 		this.food = food;
 		this.smellItensity = smellItensity;
 		this.stenchItensity = stenchItensity;
@@ -41,20 +39,6 @@ public class Field {
 		this.col = col;
 		this.rock = rock;
 		this.trap = trap;
-		switch(navi){
-		case NORTH:
-			this.south = lastField;
-			break;
-		case EAST:
-			this.west = lastField;
-			break;
-		case SOUTH:
-			this.north = lastField;
-			break;
-		case WEST:
-			this.east = lastField;
-			break;	
-		}
 	}
 	
 	public int getFood() {

@@ -10,6 +10,7 @@ import behaviour.IBehaviour;
 import behaviour.MessageBehaviour;
 import behaviour.SearchBehaviour;
 import data.Map;
+import data.MapAsArray;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -23,7 +24,7 @@ import jade.lang.acl.ACLMessage;
 public class MyAgent extends Agent implements IAgent {
 	List<IBehaviour> behaviours;
 	private String worldName = "";
-	private Map handler;
+	private MapAsArray handler;
 
 	@Override
 	protected void setup() {
@@ -104,7 +105,6 @@ public class MyAgent extends Agent implements IAgent {
 		addBehaviour(new OneShotBehaviour() {
 			@Override
 			public void action() {
-
 				Gson gson = new Gson();
 				sendMessage(gson.toJson(new LoginMessage("ANT_ACTION_DOWN")));
 			}
@@ -132,7 +132,6 @@ public class MyAgent extends Agent implements IAgent {
 	@Override
 	protected void takeDown() {
 		try {
-			// deregister
 			DFAgentDescription dfd = new DFAgentDescription();
 			dfd.setName(getAID());
 			DFService.deregister(this, dfd);
@@ -142,12 +141,12 @@ public class MyAgent extends Agent implements IAgent {
 	}
 
 	private void sendMessage(String Message) {
-		ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.setSender(getAID());
 		msg.addReceiver(new AID(worldName, AID.ISLOCALNAME));
 
 		msg.setContent(Message);
-		System.out.println(Message);
+		System.out.println("schicke: "+Message);
 		send(msg);
 	}
 
