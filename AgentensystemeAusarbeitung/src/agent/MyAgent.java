@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import behaviour.IBehaviour;
 import behaviour.MessageBehaviour;
 import behaviour.SearchBehaviour;
+import data.IMap;
 import data.Map;
 import data.MapAsArray;
 import jade.core.AID;
@@ -24,11 +25,11 @@ import jade.lang.acl.ACLMessage;
 public class MyAgent extends Agent implements IAgent {
 	List<IBehaviour> behaviours;
 	private String worldName = "";
-	private MapAsArray handler;
+	private IMap handler = new MapAsArray();
 
 	@Override
 	protected void setup() {
-
+		/*Register the agent at the service antWorld2016, later maybe on some other services*/
 		DFAgentDescription dfd = new DFAgentDescription();
 		dfd.setName(this.getAID());
 		// parse and create service description
@@ -43,16 +44,9 @@ public class MyAgent extends Agent implements IAgent {
 			DFService.register(this, dfd);
 			System.out.println("reg");
 		} catch (FIPAException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-		System.out.println("hello world! my name is " + getLocalName());
-		// for (IBehaviour iBehaviour : behaviours) {
-		// if (iBehaviour instanceof Behaviour) {
-		// addBehaviour((Behaviour)iBehaviour);
-		// }
-		// }
+		/*Just one little OneShotBehaviour*/
 		addBehaviour(new OneShotBehaviour() {
 
 			@Override
@@ -60,9 +54,8 @@ public class MyAgent extends Agent implements IAgent {
 				System.out.println("Startet");
 			}
 		});
-
+		/*Searches for agents and services within antworld2016 => saves the found antWorld agent into worldName*/
 		addBehaviour(new OneShotBehaviour(this) {
-
 			@Override
 			public void action() {
 				ServiceDescription filter = new ServiceDescription();
@@ -80,19 +73,19 @@ public class MyAgent extends Agent implements IAgent {
 						if (localName.contains("antWorld")) {
 							worldName = localName;
 						}
-						Iterator it = search[i].getAllServices();
+						Iterator<ServiceDescription> it = search[i].getAllServices();
 						while (it.hasNext()) {
-							ServiceDescription sd = (ServiceDescription) it.next();
+							ServiceDescription sd =  it.next();
 							System.out.println(" - " + sd.getName());
 						}
 						System.out.println();
 					}
 				} catch (FIPAException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		});
+		/*Send logindata to the world, but still fails on it*/
 		addBehaviour(new OneShotBehaviour() {
 			@Override
 			public void action() {
@@ -101,7 +94,7 @@ public class MyAgent extends Agent implements IAgent {
 				sendMessage(gson.toJson(new LoginMessage("ANT_ACTION_LOGIN")));
 			}
 		});
-		
+		/*Send movementdata to the world, but still fails on it*/
 		addBehaviour(new OneShotBehaviour() {
 			@Override
 			public void action() {
@@ -109,6 +102,7 @@ public class MyAgent extends Agent implements IAgent {
 				sendMessage(gson.toJson(new LoginMessage("ANT_ACTION_DOWN")));
 			}
 		});
+		/*Is waiting for messages that arrive at the agent, he will just print the answer*/
 		addBehaviour(new CyclicBehaviour() {
 			Message m;
 
@@ -129,6 +123,9 @@ public class MyAgent extends Agent implements IAgent {
 		});
 	}
 
+	/**
+	 * derigister the service 
+	 */
 	@Override
 	protected void takeDown() {
 		try {
@@ -139,7 +136,10 @@ public class MyAgent extends Agent implements IAgent {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * send a message to antWorld2016 
+	 * @param Message
+	 */
 	private void sendMessage(String Message) {
 		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
 		msg.setSender(getAID());
@@ -155,7 +155,9 @@ public class MyAgent extends Agent implements IAgent {
 		behaviours.add(new SearchBehaviour());
 		behaviours.add(new MessageBehaviour(this));
 	}
-
+	/**
+	 * dont know for what is this class
+	 */
 	public void runAgent() {
 
 	}

@@ -21,6 +21,12 @@ public class MapAsArray implements IMap {
 		currentLocation = mid;
 		map[mid.getX()][mid.getY()] = f;
 	}
+	
+	public MapAsArray(){
+		map = new Field[11][11];
+		Cord mid = getMid();
+		currentLocation = mid;
+	}
 
 	public void addNewField(Field field, Direction dir) {
 		if (dir != null) {
