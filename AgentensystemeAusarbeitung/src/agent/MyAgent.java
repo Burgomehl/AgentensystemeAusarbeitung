@@ -9,9 +9,11 @@ import com.google.gson.Gson;
 import behaviour.IBehaviour;
 import behaviour.MessageBehaviour;
 import behaviour.SearchBehaviour;
+import behaviour.WaitForMessageBehaviour;
 import data.IMap;
 import data.Map;
 import data.MapAsArray;
+import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -46,6 +48,14 @@ public class MyAgent extends Agent implements IAgent {
 		} catch (FIPAException e1) {
 			e1.printStackTrace();
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 		/*Just one little OneShotBehaviour*/
 		addBehaviour(new OneShotBehaviour() {
 
@@ -91,9 +101,10 @@ public class MyAgent extends Agent implements IAgent {
 			public void action() {
 
 				Gson gson = new Gson();
-				sendMessage(gson.toJson(new LoginMessage("ANT_ACTION_LOGIN")));
+				sendMessage(gson.toJson(new LoginMessage(AntWorldConsts.ANT_ACTION_LOGIN)));
 			}
 		});
+
 		/*Send movementdata to the world, but still fails on it*/
 		addBehaviour(new OneShotBehaviour() {
 			@Override
@@ -103,24 +114,7 @@ public class MyAgent extends Agent implements IAgent {
 			}
 		});
 		/*Is waiting for messages that arrive at the agent, he will just print the answer*/
-		addBehaviour(new CyclicBehaviour() {
-			Message m;
-
-			@Override
-			public void action() {
-				System.out.println("Message Behaviour");
-				ACLMessage msg = blockingReceive();
-				if (msg != null) {
-					msg.getContent();
-					msg.getSender();
-					Gson gson = new Gson();
-					m = gson.fromJson(msg.getContent(), Message.class);
-					System.out.println("ausgabe"+msg.getContent());
-				} else {
-					// block();
-				}
-			}
-		});
+		addBehaviour(new WaitForMessageBehaviour(this));
 	}
 
 	/**
@@ -155,11 +149,6 @@ public class MyAgent extends Agent implements IAgent {
 		behaviours.add(new SearchBehaviour());
 		behaviours.add(new MessageBehaviour(this));
 	}
-	/**
-	 * dont know for what is this class
-	 */
-	public void runAgent() {
 
-	}
 
 }
