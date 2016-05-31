@@ -17,14 +17,14 @@ public class WaitForMessageBehaviour extends CyclicBehaviour implements IBehavio
 	}
 	@Override
 	public void action() {
-		System.out.println("Message Behaviour");
+		MyAgent.log.info("Message Behaviour");
 		ACLMessage msg = agent.blockingReceive();
 		if (msg != null) {
 			msg.getContent();
 			msg.getSender();
 			Gson gson = new Gson();
 			m = gson.fromJson(msg.getContent(), Message.class);
-			System.out.println("ausgabe"+msg.getContent());
+			MyAgent.log.info("ausgabe"+msg.getContent());
 		} else {
 			// block();
 		}

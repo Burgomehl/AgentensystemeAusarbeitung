@@ -7,4 +7,5 @@ package data;
  */
 public interface IMap {
 	public Field[][] getMap();
+	public void addNewField(Field field, Direction dir);
 }

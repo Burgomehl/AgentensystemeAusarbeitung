@@ -54,6 +54,7 @@ public class MapAsArray implements IMap {
 				System.out.println("There is already a Field");
 			}
 		}
+		print(map);
 	}
 	
 	public Field[][] getMap(){
@@ -78,6 +79,20 @@ public class MapAsArray implements IMap {
 
 	private boolean isInRange(Cord c) {
 		return !(c.getX() < map.length && c.getY() < map[0].length && c.getX() >= 0 && c.getY() >= 0);
+	}
+	
+	public static void print(Field[][] map){
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[i].length; j++) {
+				if(map[i][j]== null){
+					System.out.print("-");
+				}else{
+					System.out.print("O");
+				}
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 }

@@ -1,4 +1,8 @@
-package data;
+package tests;
+
+import data.Direction;
+import data.Field;
+import data.MapAsArray;
 
 public class TestMap {
 	public static void main(String[] args){
