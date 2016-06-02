@@ -16,8 +16,19 @@ public class AgentWindow extends JFrame {
 	private final String title = "AgentWindow to see information";
 	private final List<MyAgent> listAgents = new ArrayList<MyAgent>();
 
-	public AgentWindow() {
+	private static AgentWindow window = null;
+
+	private AgentWindow() {
 		setTitle(title);
+		initComponents();
+	}
+
+	public static AgentWindow getInstance() {
+		if (window == null) {
+			window = new AgentWindow();
+		}
+
+		return window;
 	}
 
 	private void initComponents() {
@@ -59,5 +70,9 @@ public class AgentWindow extends JFrame {
 
 	public boolean removeAgent(MyAgent agent2Delete) {
 		return listAgents.remove(agent2Delete);
+	}
+
+	public List<MyAgent> getAgentList() {
+		return this.listAgents;
 	}
 }

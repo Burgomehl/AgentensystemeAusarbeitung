@@ -2,6 +2,8 @@ package informationWindow;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -11,6 +13,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import agent.MyAgent;
+
 import data.Field;
 import data.IMap;
 
@@ -18,16 +22,28 @@ public class MapWindow extends JFrame {
 
 	private final String title = "Map of AntWorld";
 
+	private static MapWindow mapWindow = null;
+
+	private AgentWindow agentWindow = AgentWindow.getInstance();
+
 	private IMap map;
 	// private Field[][] field;
 
-	public MapWindow() {
+	private MapWindow() {
 		initComponent();
 	}
 
-	public MapWindow(IMap map) {
-		setMap(map);
-		initComponent();
+	// public MapWindow(IMap map) {
+	// setMap(map);
+	// initComponent();
+	// }
+
+	public static MapWindow getInstance() {
+		if (mapWindow == null) {
+			mapWindow = new MapWindow();
+		}
+
+		return mapWindow;
 	}
 
 	protected void initComponent() {
@@ -52,6 +68,14 @@ public class MapWindow extends JFrame {
 	public void setMap(IMap map) {
 		this.map = map;
 		// this.field = map.getMap();
+	}
+
+	public void addAgent(MyAgent newAgent) {
+		agentWindow.addAgent(newAgent);
+	}
+
+	public boolean removeAgent(MyAgent agent2Delete) {
+		return agentWindow.removeAgent(agent2Delete);
 	}
 
 	class Screen extends JComponent {
@@ -101,6 +125,13 @@ public class MapWindow extends JFrame {
 		private JMenu getFileMenu() {
 			JMenu menu = new JMenu("File");
 			JMenuItem show = new JMenuItem("Show agentwindow");
+			show.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// agentWindow = AgentWindow.getInstance();
+					agentWindow.setVisible(true);
+				}
+			});
 
 			menu.add(show);
 			menu.addSeparator();
@@ -110,9 +141,15 @@ public class MapWindow extends JFrame {
 
 		private JMenu getAgentMenu() {
 			JMenu menu = new JMenu("Agent");
-			JMenuItem itemOne = new JMenuItem("Show only agent one");
 
-			menu.add(itemOne);
+			for (int i = 0; i < agentWindow.getAgentList().size(); ++i) {
+				JMenuItem item = new JMenuItem("Show only agent " + i);
+				menu.add(item);
+			}
+
+			// JMenuItem itemOne = new JMenuItem("Show only agent one");
+			//
+			// menu.add(itemOne);
 			return menu;
 		}
 	}
