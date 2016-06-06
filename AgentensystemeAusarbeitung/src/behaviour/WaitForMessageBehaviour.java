@@ -2,7 +2,6 @@ package behaviour;
 
 import com.google.gson.Gson;
 
-import agent.IAgent;
 import agent.Message;
 import agent.MyAgent;
 import jade.core.behaviours.CyclicBehaviour;
