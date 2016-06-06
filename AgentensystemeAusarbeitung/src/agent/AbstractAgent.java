@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import behaviour.IBehaviour;
-import data.IMap;
+import data.Cord;
 import data.MapAsArray;
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.Agent;
@@ -19,19 +19,23 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 public class AbstractAgent extends Agent{
 	protected List<IBehaviour> behaviours;
 	protected String worldName = "";
-	protected IMap handler = new MapAsArray();
+	protected MapAsArray map = new MapAsArray();
 	protected String inToReplyTo = "";
 	protected int state;
+	protected Cord currentLocation;
 	public static final Logger log = LoggerFactory.getLogger(MyAgent.class);
 	
 	@Override
 	protected void setup() {
 		state = 0;
-		login();
+		currentLocation = map.getCurrentLocation();
+		loginAtAntWorld();
+		loginAtToppic();
+		logic(null);
 		addBehaviours();
 	}
 	
-	protected void login(){
+	protected void loginAtAntWorld(){
 		addBehaviour(new OneShotBehaviour(this) {
 			@Override
 			public void action() {
@@ -58,7 +62,11 @@ public class AbstractAgent extends Agent{
 		});
 	}
 	
-	protected void loginOnToppic(){
+	protected void logic(Message msg) {
+		
+	}
+	
+	protected void loginAtToppic(){
 		
 	}
 	

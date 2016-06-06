@@ -11,21 +11,21 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import data.Field;
-import data.IMap;
+import data.Cell;
+import data.MapAsArray;
 
 public class MapWindow extends JFrame {
 
 	private final String title = "Map of AntWorld";
 
-	private IMap map;
+	private MapAsArray map;
 	// private Field[][] field;
 
 	public MapWindow() {
 		initComponent();
 	}
 
-	public MapWindow(IMap map) {
+	public MapWindow(MapAsArray map) {
 		setMap(map);
 		initComponent();
 	}
@@ -49,7 +49,7 @@ public class MapWindow extends JFrame {
 		setVisible(true);
 	}
 
-	public void setMap(IMap map) {
+	public void setMap(MapAsArray map) {
 		this.map = map;
 		// this.field = map.getMap();
 	}
@@ -57,7 +57,7 @@ public class MapWindow extends JFrame {
 	class Screen extends JComponent {
 
 		private MapWindow mWindow;
-		private Field[][] field;
+		private Cell[][] field;
 
 		Screen() {
 
