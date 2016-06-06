@@ -83,6 +83,10 @@ public class MyAgent extends AbstractAgent {
 				login = true;
 			}
 		} else {
+			if(msg.state.equals("DEAD")){
+				doSuspend(); //Tötet der sich dann selber ? 
+				//FIXME: BBYL
+			}
 			if (msg.cell.getStench() == 0) {
 				List<Cord> possibleNeighbours = new ArrayList<>();
 				List<Cord> neighbours = map.getNeighbours(currentLocation);
@@ -114,8 +118,18 @@ public class MyAgent extends AbstractAgent {
 				}
 				lastCord = currentLocation;
 				currentLocation = toGoCord;
-				for (int i = 0; i < 10000000;i++) {
-					
+				messages.add(gson.toJson(new InformMessage(action)));
+			}else{
+				Cord toGoCord = lastCord;
+				String action = AntWorldConsts.ANT_ACTION_UP;
+				if (currentLocation.getX() < toGoCord.getX()) {
+					action = AntWorldConsts.ANT_ACTION_RIGHT;
+				} else if (currentLocation.getX() > toGoCord.getX()) {
+					action = AntWorldConsts.ANT_ACTION_LEFT;
+				} else if (currentLocation.getY() < toGoCord.getY()) {
+					action = AntWorldConsts.ANT_ACTION_DOWN;
+				} else if (currentLocation.getY() > toGoCord.getY()) {
+					action = AntWorldConsts.ANT_ACTION_UP;
 				}
 				messages.add(gson.toJson(new InformMessage(action)));
 			}

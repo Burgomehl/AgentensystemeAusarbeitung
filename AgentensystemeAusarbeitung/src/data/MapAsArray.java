@@ -62,22 +62,22 @@ public class MapAsArray {
 		if(isInRange(test)){
 			resizeMap(10,test);
 		}
-		list.add((map[test.getX() - 1][test.getY()] == null) ? test : null);
+		list.add((map[test.getX()][test.getY()] == null) ? test : null);
 		test = new Cord(cord.getX(), cord.getY()-1);
 		if(isInRange(test)){
 			resizeMap(10,test);
 		}
-		list.add((map[test.getX()][test.getY() - 1] == null) ? test : null);
+		list.add((map[test.getX()][test.getY()] == null) ? test : null);
 		test = new Cord(cord.getX(), cord.getY()+1);
 		if(isInRange(test)){
 			resizeMap(10,test);
 		}
-		list.add((map[test.getX()][test.getY() + 1] == null) ? test : null);
+		list.add((map[test.getX()][test.getY()] == null) ? test : null);
 		test = new Cord(cord.getX()+1, cord.getY());
 		if(isInRange(test)){
 			resizeMap(10, test);
 		}
-		list.add((map[test.getX() + 1][test.getY()] == null) ? test : null);
+		list.add((map[test.getX()][test.getY()] == null) ? test : null);
 		return list;
 	}
 
@@ -85,10 +85,10 @@ public class MapAsArray {
 		int index = 0;
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j < 1; ++j) {
-				if(isInRange(cord)){
-					resizeMap(10, cord);
-				}
 				Cord cordT = new Cord(cord.getX()+i, cord.getY()+j);
+				if(isInRange(cordT)){
+					resizeMap(10, cordT);
+				}
 				index += (map[cordT.getX()][cordT.getY()] != null) ? 1 : 0;
 			}
 		}
