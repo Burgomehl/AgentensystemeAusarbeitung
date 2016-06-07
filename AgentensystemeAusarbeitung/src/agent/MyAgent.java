@@ -21,6 +21,9 @@ public class MyAgent extends GuiAgent {
 	private boolean login = false;
 	private Cord lastCord;
 
+	/**
+	 * no meaningful call only to see if the method will be called
+	 */
 	@Override
 	public void setup() {
 		super.setup();
