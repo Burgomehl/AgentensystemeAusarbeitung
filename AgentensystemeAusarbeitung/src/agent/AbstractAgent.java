@@ -36,7 +36,7 @@ public abstract class AbstractAgent extends Agent{
 		loginAtToppic();
 		logic(null);
 		addBehaviours();
-		registerOnMap();
+//		registerOnMap();
 	}
 	
 	protected void loginAtAntWorld(){

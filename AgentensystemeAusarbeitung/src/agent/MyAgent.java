@@ -7,8 +7,6 @@ import java.util.Queue;
 
 import com.google.gson.Gson;
 
-import behaviour.MessageBehaviour;
-import behaviour.SearchBehaviour;
 import data.Cell;
 import data.Cord;
 import de.aim.antworld.agent.AntWorldConsts;
@@ -16,7 +14,7 @@ import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
-public class MyAgent extends GuiAgent {
+public class MyAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
 	private Cord lastCord;
@@ -170,15 +168,16 @@ public class MyAgent extends GuiAgent {
 	}
 
 	public MyAgent() {
-		// super();
-		behaviours = new ArrayList<>();
-		behaviours.add(new SearchBehaviour());
-		behaviours.add(new MessageBehaviour(this));
 	}
 
 	@Override
 	public void registerOnMap() {
-		super.registerOnMap();
+	}
+
+	@Override
+	protected void loginAtToppic() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
