@@ -1,5 +1,6 @@
 package Start;
 
+import agent.GuiAgent;
 import agent.MyAgent;
 
 import jade.core.Profile;
@@ -16,6 +17,8 @@ public class Start {
 			Runtime runtime = Runtime.instance();
 			Profile profile = new ProfileImpl("localhost", -1, null, false);
 			AgentContainer container = runtime.createAgentContainer(profile);
+			AgentController guiAgent = container.createNewAgent("UI", GuiAgent.class.getName(), args);
+			guiAgent.start();
 			AgentController agent1 = container.createNewAgent("adam", MyAgent.class.getName(), args);
 			agent1.start();
 		} catch (Exception e) {

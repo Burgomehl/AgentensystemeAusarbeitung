@@ -13,7 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import agent.MyAgent;
+import agent.AbstractAgent;
 
 import data.Cell;
 import data.MapAsArray;
@@ -58,9 +58,10 @@ public class MapWindow extends JFrame {
 		setJMenuBar(new Toolbar());
 		pack();
 
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosed(WindowEvent e) {
+			public void windowClosing(WindowEvent e) {
 				setState(ICONIFIED);
 			}
 		});
@@ -76,11 +77,12 @@ public class MapWindow extends JFrame {
 		// this.field = map.getMap();
 	}
 
-	public void addAgent(MyAgent newAgent) {
+	public void addAgent(AbstractAgent newAgent) {
+		System.out.println("addAgent " + newAgent.getLocalName());
 		agentWindow.addAgent(newAgent);
 	}
 
-	public boolean removeAgent(MyAgent agent2Delete) {
+	public boolean removeAgent(AbstractAgent agent2Delete) {
 		return agentWindow.removeAgent(agent2Delete);
 	}
 
@@ -123,6 +125,8 @@ public class MapWindow extends JFrame {
 
 	class Toolbar extends JMenuBar {
 
+		JMenu agentMenu = new JMenu("Agents");
+
 		Toolbar() {
 			add(getFileMenu());
 			add(getAgentMenu());
@@ -143,6 +147,12 @@ public class MapWindow extends JFrame {
 			menu.addSeparator();
 
 			return menu;
+		}
+
+		public void refreshAgentMenu(AbstractAgent agent) {
+			JMenuItem item = new JMenuItem("Agent " + agent.getLocalName());
+
+			agentMenu.add(item);
 		}
 
 		private JMenu getAgentMenu() {

@@ -7,20 +7,32 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
-import agent.MyAgent;
+import agent.AbstractAgent;
 
 public class AgentWindow extends JFrame {
 
 	private final String title = "AgentWindow to see information";
-	private final List<MyAgent> listAgents = new ArrayList<MyAgent>();
+
+	/**
+	 * maybe we don't need this list
+	 */
+	private final List<AbstractAgent> listAgents = new ArrayList<AbstractAgent>();
+
+	/**
+	 * tree, model and root-node to display the agents
+	 */
+	private JTree tree;
+	private DefaultTreeModel treeModel;
+	private DefaultMutableTreeNode root;
 
 	private static AgentWindow window = null;
 
 	private AgentWindow() {
 		setTitle(title);
 		initComponents();
+		setSize(300, 600);
 	}
 
 	public static AgentWindow getInstance() {
@@ -32,8 +44,10 @@ public class AgentWindow extends JFrame {
 	}
 
 	private void initComponents() {
-		TreeNode root = getTree();
-		JTree tree = new JTree(root);
+		root = getTree();
+		treeModel = new DefaultTreeModel(root);
+		tree = new JTree(treeModel);
+		// treeModel = (DefaultTreeModel) tree.getModel();
 
 		this.add(new JScrollPane(tree));
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -45,34 +59,67 @@ public class AgentWindow extends JFrame {
 		setVisible(true);
 	}
 
-	private TreeNode getTree() {
+	/**
+	 * Deprecated because it's only one line
+	 * 
+	 * @return the DefaultMutableTreeNode root
+	 */
+	@Deprecated
+	private DefaultMutableTreeNode getTree() {
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Agents");
 
-		for (int i = 0; i < listAgents.size(); ++i) {
-			DefaultMutableTreeNode agent = new DefaultMutableTreeNode(listAgents.get(i).getLocalName());
-
-			DefaultMutableTreeNode state = new DefaultMutableTreeNode(listAgents.get(i).getState());
-			// DefaultMutableTreeNode color
-			// DefaultMutableTreeNode currentFood
-			// DefaultMutableTreeNode totalFood?
-			// DefaultMutableTreeNode nextAction
-			// DefaultMutableTreeNode cell
-			agent.add(state);
-			root.add(agent);
-		}
+		// for (int i = 0; i < 10; ++i) {
+		// DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Agent0" +
+		// i);
+		// root.add(agent);
+		// }
+		// System.out.println(listAgents.size());
+		// for (int i = 0; i < listAgents.size(); ++i) {
+		// DefaultMutableTreeNode agent = new
+		// DefaultMutableTreeNode(listAgents.get(i).getLocalName());
+		//
+		// DefaultMutableTreeNode state = new
+		// DefaultMutableTreeNode(listAgents.get(i).getState());
+		// // DefaultMutableTreeNode color
+		// // DefaultMutableTreeNode currentFood
+		// // DefaultMutableTreeNode totalFood?
+		// // DefaultMutableTreeNode nextAction
+		// // DefaultMutableTreeNode cell
+		// agent.add(state);
+		// root.add(agent);
+		// }
 
 		return root;
 	}
 
-	public void addAgent(MyAgent newAgent) {
+	public void addAgent(AbstractAgent newAgent) {
 		listAgents.add(newAgent);
+
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(newAgent.getLocalName());
+		DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Name: " + newAgent.getLocalName());
+		DefaultMutableTreeNode state = new DefaultMutableTreeNode("State: " + newAgent.getState());
+		DefaultMutableTreeNode aState = new DefaultMutableTreeNode("AgentState: " + newAgent.getAgentState().getName());
+
+		node.add(agent);
+		node.add(state);
+		node.add(aState);
+
+		treeModel.insertNodeInto(node, root, root.getChildCount());
+		tree.treeDidChange();
 	}
 
-	public boolean removeAgent(MyAgent agent2Delete) {
+	/**
+	 * logic has to be updated
+	 * 
+	 * @param agent2Delete
+	 *            the node which will be deleted
+	 * @return if removing was success
+	 */
+	public boolean removeAgent(AbstractAgent agent2Delete) {
 		return listAgents.remove(agent2Delete);
 	}
 
-	public List<MyAgent> getAgentList() {
+	public List<AbstractAgent> getAgentList() {
 		return this.listAgents;
 	}
 }
