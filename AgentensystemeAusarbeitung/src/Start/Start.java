@@ -1,8 +1,7 @@
 package Start;
 
-
-
 import agent.MyAgent;
+
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
@@ -15,7 +14,7 @@ public class Start {
 		try {
 			MyAgent.log.info("Starte Clienten nun");
 			Runtime runtime = Runtime.instance();
-			Profile profile = new ProfileImpl("localhost",-1,null,false);
+			Profile profile = new ProfileImpl("localhost", -1, null, false);
 			AgentContainer container = runtime.createAgentContainer(profile);
 			AgentController agent1 = container.createNewAgent("adam", MyAgent.class.getName(), args);
 			agent1.start();

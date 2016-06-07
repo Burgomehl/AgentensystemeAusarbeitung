@@ -1,5 +1,7 @@
 package agent;
 
+import data.Cell;
+
 public class Message {
 	public String name;
 	public String state;
@@ -7,6 +9,7 @@ public class Message {
 	public String currentFood;
 	public String totalFood;
 	public String action;
+	public Cell cell;
 	
 	
 	

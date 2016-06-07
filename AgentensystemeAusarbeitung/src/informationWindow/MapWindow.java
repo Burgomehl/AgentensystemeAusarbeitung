@@ -15,8 +15,8 @@ import javax.swing.JMenuItem;
 
 import agent.MyAgent;
 
-import data.Field;
-import data.IMap;
+import data.Cell;
+import data.MapAsArray;
 
 public class MapWindow extends JFrame {
 
@@ -26,7 +26,8 @@ public class MapWindow extends JFrame {
 
 	private AgentWindow agentWindow = AgentWindow.getInstance();
 
-	private IMap map;
+	// private IMap map;
+	private MapAsArray map;
 	// private Field[][] field;
 
 	private MapWindow() {
@@ -44,6 +45,11 @@ public class MapWindow extends JFrame {
 		}
 
 		return mapWindow;
+	}
+
+	public MapWindow(MapAsArray map) {
+		setMap(map);
+		initComponent();
 	}
 
 	protected void initComponent() {
@@ -65,7 +71,7 @@ public class MapWindow extends JFrame {
 		setVisible(true);
 	}
 
-	public void setMap(IMap map) {
+	public void setMap(MapAsArray map) {
 		this.map = map;
 		// this.field = map.getMap();
 	}
@@ -81,7 +87,7 @@ public class MapWindow extends JFrame {
 	class Screen extends JComponent {
 
 		private MapWindow mWindow;
-		private Field[][] field;
+		private Cell[][] field;
 
 		Screen() {
 

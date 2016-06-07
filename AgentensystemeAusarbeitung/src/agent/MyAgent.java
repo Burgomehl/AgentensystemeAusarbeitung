@@ -1,100 +1,40 @@
 package agent;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Queue;
 
 import com.google.gson.Gson;
 
-import Start.Start;
-import behaviour.IBehaviour;
 import behaviour.MessageBehaviour;
 import behaviour.SearchBehaviour;
-import behaviour.WaitForMessageBehaviour;
-import data.Direction;
-import data.Field;
-import data.IMap;
-import data.Map;
-import data.MapAsArray;
+import data.Cell;
+import data.Cord;
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
-import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.OneShotBehaviour;
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.SearchConstraints;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
 
-public class MyAgent extends Agent implements IAgent {
-	List<IBehaviour> behaviours;
-	private String worldName = "";
-	private IMap handler = new MapAsArray();
-	private String inToReplyTo = "";
-	private int state;
-	public static final Logger log = LoggerFactory.getLogger(MyAgent.class);
+public class MyAgent extends AbstractAgent {
+	private Queue<String> messages = new LinkedList<>();
+	private boolean login = false;
+	private Cord lastCord;
 
 	@Override
-	protected void setup() {
-		state = 0;
-
-		/*
-		 * Searches for agents and services within antworld2016 => saves the
-		 * found antWorld agent into worldName
-		 */
-		addBehaviour(new OneShotBehaviour(this) {
-			@Override
-			public void action() {
-				ServiceDescription filter = new ServiceDescription();
-				filter.setName(AntWorldConsts.SEVICE_NAME);
-				DFAgentDescription dfd = new DFAgentDescription();
-				dfd.addServices(filter);
-
-				DFAgentDescription[] search;
-				try {
-					search = DFService.search(myAgent, dfd);
-					for (int i = 0; i < search.length; i++) {
-						String localName = search[i].getName().getLocalName();
-						log.info(localName + ":");
-						if (localName.contains("antWorld")) {
-							worldName = localName;
-						}
-					}
-				} catch (FIPAException e) {
-					e.printStackTrace();
-				}
-			}
-
-		});
-
+	protected void addBehaviours() {
 		/* Send logindata to the world, but still fails on it */
 		addBehaviour(new CyclicBehaviour() {
 
 			@Override
 			public void action() {
-				Gson gson = new Gson();
-				switch (state) {
-				case (0):
-					sendMessage(gson.toJson(new LoginMessage(AntWorldConsts.ANT_ACTION_LOGIN)));
-					state = 9998;
-					break;
-				case (1):
-					sendMessage(gson.toJson(new LoginMessage(AntWorldConsts.ANT_ACTION_DOWN)));
-					state = 9999;
-					break;
-				case (2):
-					sendMessage(gson.toJson(new LoginMessage(AntWorldConsts.ANT_ACTION_LEFT)));
-					state = 9999;
-					break;
-				default:
-					block();
-					break;
+				while (!messages.isEmpty()) {
+					String message = messages.remove();
+					sendMessage(message);
 				}
+				// if (messages.isEmpty()) {
+				// block();
+				// }
 			}
 		});
 
@@ -112,17 +52,18 @@ public class MyAgent extends Agent implements IAgent {
 					msg.getSender();
 					inToReplyTo = msg.getReplyWith();
 					log.info(inToReplyTo);
-					if (state == 9998) {
-						state = 1;
-					}
 					if (msg.getPerformative() == ACLMessage.INFORM) {
 						Gson gson = new Gson();
 						Message m = gson.fromJson(msg.getContent(), Message.class);
-						handler.addNewField(new Field(Integer.valueOf(m.currentFood), 0, 0, 0, 0, false, false),
-								Direction.SOUTH);
+						currentLocation = map.addNewField(m.cell, currentLocation);
 						MyAgent.log.info("ausgabe" + msg.getContent());
-					}else if(msg.getPerformative() == ACLMessage.REFUSE){
-						state = 2;
+						logic(m);
+					} else if (msg.getPerformative() == ACLMessage.REFUSE) {
+						map.addNewField(new Cell(0, 0, 0, 0, 0, true, false, "FREE"), currentLocation);
+						currentLocation = lastCord;
+						Gson gson = new Gson();
+						Message m = gson.fromJson(msg.getContent(), Message.class);
+						logic(m);
 					}
 				} else {
 					block();
@@ -133,19 +74,67 @@ public class MyAgent extends Agent implements IAgent {
 
 	}
 
-	/**
-	 * derigister the service
-	 */
 	@Override
-	protected void takeDown() {
-		// try {
-		// DFAgentDescription dfd = new DFAgentDescription();
-		// dfd.setName(getAID());
-		// DFService.deregister(this, dfd);
-		// log.info("Client wird jetzt aus geschaltet");
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
+	protected void logic(Message msg) {
+		Gson gson = new Gson();
+		if (msg == null) {
+			if (!login) {
+				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN)));
+				login = true;
+			}
+		} else {
+			if(msg.state.equals("DEAD")){
+				doSuspend(); //Tötet der sich dann selber ? 
+				//FIXME: BBYL
+			}
+			if (msg.cell.getStench() == 0) {
+				List<Cord> possibleNeighbours = new ArrayList<>();
+				List<Cord> neighbours = map.getNeighbours(currentLocation);
+				int currentHighestIndex = 0;
+				Cord toGoCord = lastCord;
+				for (Cord cord : neighbours) {
+					if (cord != null) {
+						if (map.getCurrentField(cord) == null) {
+							possibleNeighbours.add(cord);
+						}
+					}
+				}
+				for (Cord cord : possibleNeighbours) {
+					int fieldIndex = map.getFieldIndex(cord);
+					if (fieldIndex >= currentHighestIndex) {
+						currentHighestIndex = fieldIndex;
+						toGoCord = cord;
+					}
+				}
+				String action = AntWorldConsts.ANT_ACTION_UP;
+				if (currentLocation.getX() < toGoCord.getX()) {
+					action = AntWorldConsts.ANT_ACTION_RIGHT;
+				} else if (currentLocation.getX() > toGoCord.getX()) {
+					action = AntWorldConsts.ANT_ACTION_LEFT;
+				} else if (currentLocation.getY() < toGoCord.getY()) {
+					action = AntWorldConsts.ANT_ACTION_DOWN;
+				} else if (currentLocation.getY() > toGoCord.getY()) {
+					action = AntWorldConsts.ANT_ACTION_UP;
+				}
+				lastCord = currentLocation;
+				currentLocation = toGoCord;
+				messages.add(gson.toJson(new InformMessage(action)));
+			}else{
+				Cord toGoCord = lastCord;
+				String action = AntWorldConsts.ANT_ACTION_UP;
+				if (currentLocation.getX() < toGoCord.getX()) {
+					action = AntWorldConsts.ANT_ACTION_RIGHT;
+				} else if (currentLocation.getX() > toGoCord.getX()) {
+					action = AntWorldConsts.ANT_ACTION_LEFT;
+				} else if (currentLocation.getY() < toGoCord.getY()) {
+					action = AntWorldConsts.ANT_ACTION_DOWN;
+				} else if (currentLocation.getY() > toGoCord.getY()) {
+					action = AntWorldConsts.ANT_ACTION_UP;
+				}
+				messages.add(gson.toJson(new InformMessage(action)));
+			}
+		}
+
 	}
 
 	/**
