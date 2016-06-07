@@ -17,11 +17,13 @@ public class GuiAgent extends AbstractAgent {
 
 	@Override
 	public void registerOnMap() {
-		System.out.println("registerOnMap");
 		mapWindow.addAgent(this);
 	}
 
-	public void doKill() {
+	@Override
+	public void doDelete() {
+		super.doDelete();
 		mapWindow.dispose();
+		System.exit(0);
 	}
 }

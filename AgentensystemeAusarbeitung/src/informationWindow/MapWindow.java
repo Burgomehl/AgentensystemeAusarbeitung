@@ -24,6 +24,8 @@ public class MapWindow extends JFrame {
 
 	private static MapWindow mapWindow = null;
 
+	private Toolbar toolbar = new Toolbar();
+
 	private AgentWindow agentWindow = AgentWindow.getInstance();
 
 	// private IMap map;
@@ -33,11 +35,6 @@ public class MapWindow extends JFrame {
 	private MapWindow() {
 		initComponent();
 	}
-
-	// public MapWindow(IMap map) {
-	// setMap(map);
-	// initComponent();
-	// }
 
 	public static MapWindow getInstance() {
 		if (mapWindow == null) {
@@ -55,7 +52,7 @@ public class MapWindow extends JFrame {
 	protected void initComponent() {
 		setTitle(title);
 		add(new Screen());
-		setJMenuBar(new Toolbar());
+		setJMenuBar(toolbar);
 		pack();
 
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -78,7 +75,7 @@ public class MapWindow extends JFrame {
 	}
 
 	public void addAgent(AbstractAgent newAgent) {
-		System.out.println("addAgent " + newAgent.getLocalName());
+		toolbar.refreshAgentMenu(newAgent);
 		agentWindow.addAgent(newAgent);
 	}
 
@@ -129,7 +126,7 @@ public class MapWindow extends JFrame {
 
 		Toolbar() {
 			add(getFileMenu());
-			add(getAgentMenu());
+			add(agentMenu);
 		}
 
 		private JMenu getFileMenu() {
@@ -155,13 +152,20 @@ public class MapWindow extends JFrame {
 			agentMenu.add(item);
 		}
 
+		/**
+		 * Deprecated because it's only one line
+		 * 
+		 * @return the JMenu for agents
+		 */
+		@SuppressWarnings("unused")
+		@Deprecated
 		private JMenu getAgentMenu() {
 			JMenu menu = new JMenu("Agent");
 
-			for (int i = 0; i < agentWindow.getAgentList().size(); ++i) {
-				JMenuItem item = new JMenuItem("Show only agent " + i);
-				menu.add(item);
-			}
+			// for (int i = 0; i < agentWindow.getAgentList().size(); ++i) {
+			// JMenuItem item = new JMenuItem("Show only agent " + i);
+			// menu.add(item);
+			// }
 
 			// JMenuItem itemOne = new JMenuItem("Show only agent one");
 			//

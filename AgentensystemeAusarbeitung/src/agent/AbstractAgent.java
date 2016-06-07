@@ -34,7 +34,6 @@ public abstract class AbstractAgent extends Agent {
 		loginAtToppic();
 		logic(null);
 		addBehaviours();
-		System.out.println("setup " + getLocalName());
 		registerOnMap();
 	}
 

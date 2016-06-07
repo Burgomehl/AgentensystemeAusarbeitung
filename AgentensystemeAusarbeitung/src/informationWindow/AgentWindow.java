@@ -47,7 +47,6 @@ public class AgentWindow extends JFrame {
 		root = getTree();
 		treeModel = new DefaultTreeModel(root);
 		tree = new JTree(treeModel);
-		// treeModel = (DefaultTreeModel) tree.getModel();
 
 		this.add(new JScrollPane(tree));
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -73,7 +72,6 @@ public class AgentWindow extends JFrame {
 		// i);
 		// root.add(agent);
 		// }
-		// System.out.println(listAgents.size());
 		// for (int i = 0; i < listAgents.size(); ++i) {
 		// DefaultMutableTreeNode agent = new
 		// DefaultMutableTreeNode(listAgents.get(i).getLocalName());
