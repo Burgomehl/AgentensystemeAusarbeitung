@@ -2,8 +2,9 @@ package agent;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import behaviour.IBehaviour;
 import data.Cord;
@@ -23,10 +24,11 @@ public class AbstractAgent extends Agent{
 	protected String inToReplyTo = "";
 	protected int state;
 	protected Cord currentLocation;
-	public static final Logger log = LoggerFactory.getLogger(MyAgent.class);
+	public static final Logger log = Logger.getLogger(Agent.class);
 	
 	@Override
 	protected void setup() {
+		PropertyConfigurator.configure("log4j.properties");
 		state = 0;
 		currentLocation = map.getCurrentLocation();
 		loginAtAntWorld();

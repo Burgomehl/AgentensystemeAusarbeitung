@@ -3,6 +3,9 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 /**
  * Ich denke das wird die Bevorzugte variante die Karte dazustellen Unten Links
  * ist (0,0) Es wird immer von der Mitte aus begonnen die Karte zu befüllen Wenn
@@ -14,11 +17,13 @@ import java.util.List;
  *
  */
 public class MapAsArray {
+	private static final Logger log = Logger.getLogger(MapAsArray.class);
 
 	private Cell[][] map;
 	private Cord currentLocation;
 
 	public MapAsArray(Cell f) {
+		PropertyConfigurator.configure("log4j.properties");
 		map = new Cell[11][11];
 		Cord mid = getMid();
 		currentLocation = mid;
@@ -32,6 +37,7 @@ public class MapAsArray {
 	}
 
 	public Cord addNewField(Cell field, Cord cord) {
+		log.info("Add new field on: "+cord);
 		if (isInRange(cord)) {
 			resizeMap(10,cord);
 
@@ -57,41 +63,50 @@ public class MapAsArray {
 	}
 
 	public List<Cord> getNeighbours(Cord cord) {
+		log.info("GetNeighbours on: "+cord+" saved currentLocation: "+ currentLocation);
 		List<Cord> list = new ArrayList<>();
 		Cord test = new Cord(cord.getX()-1, cord.getY());
 		if(isInRange(test)){
-			resizeMap(10,test);
+			resizeMap(10, cord);
+			return getNeighbours(cord);
 		}
 		list.add((map[test.getX()][test.getY()] == null) ? test : null);
 		test = new Cord(cord.getX(), cord.getY()-1);
 		if(isInRange(test)){
-			resizeMap(10,test);
+			resizeMap(10, cord);
+			return getNeighbours(cord);
 		}
 		list.add((map[test.getX()][test.getY()] == null) ? test : null);
 		test = new Cord(cord.getX(), cord.getY()+1);
 		if(isInRange(test)){
-			resizeMap(10,test);
+			resizeMap(10, cord);
+			return getNeighbours(cord);
 		}
 		list.add((map[test.getX()][test.getY()] == null) ? test : null);
 		test = new Cord(cord.getX()+1, cord.getY());
 		if(isInRange(test)){
-			resizeMap(10, test);
+			resizeMap(10, cord);
+			return getNeighbours(cord);
 		}
 		list.add((map[test.getX()][test.getY()] == null) ? test : null);
+		log.info("Current Location after analysis of neighbours: "+currentLocation);
 		return list;
 	}
 
-	public int getFieldIndex(Cord cord) {
+	public int getFieldIndex(Cord cord) throws Exception {
+		log.info("analsysis the fieldindex: "+cord+" currentLocation: "+currentLocation);
 		int index = 0;
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j < 1; ++j) {
 				Cord cordT = new Cord(cord.getX()+i, cord.getY()+j);
 				if(isInRange(cordT)){
-					resizeMap(10, cordT);
+					resizeMap(10, cord);
+					throw new Exception("you have to reanalysis the index");
 				}
 				index += (map[cordT.getX()][cordT.getY()] != null) ? 1 : 0;
 			}
 		}
+		log.info("currentLocation after analysis of fieldindex: "+currentLocation);
 		return index;
 	}
 
@@ -100,6 +115,7 @@ public class MapAsArray {
 	}
 
 	private void resizeMap(int resize, Cord cord) {
+		log.info("resize Map with cord: "+cord+" currentLocation: "+currentLocation);
 		Cell[][] newMap = new Cell[map.length + resize][map.length + resize];
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
@@ -109,6 +125,8 @@ public class MapAsArray {
 		map = newMap;
 		cord.setX(cord.getX() + resize / 2);
 		cord.setY(cord.getY() + resize / 2);
+		log.info("resized cord: "+cord+" currentLocation: "+currentLocation);
+		
 	}
 
 	private Cord getMid() {
@@ -120,23 +138,25 @@ public class MapAsArray {
 	}
 
 	public void print(Cell[][] map) {
-		for (int i = 0; i < map.length; i++) {
-			for (int j = 0; j < map[i].length; j++) {
-				if (map[i][j] == null) {
-					System.out.print("-");
-				}else if(map[i][j].getStench()>0){
-					System.out.print("S");
-				}else if(map[i][j].isRock()){
-					System.out.print("R");
+		StringBuilder b = new StringBuilder();
+		for (int i = 0 ; i < map.length; i++) {
+			for (int j = 0 ; j < map[i].length ; j++) {
+				Cell cell = map[j][i];
+				if (cell == null) {
+					b.append("-");
+				}else if(cell.getStench()>0){
+					b.append("S");
+				}else if(cell.isRock()){
+					b.append("R");
 				}else if(i==getMid().getX() && j == getMid().getY() || j==getMid().getX() && i == getMid().getY()){
-					System.out.print("H");
+					b.append("H");
 				}else{
-					System.out.print("O");
+					b.append("O");
 				}
 			}
-			System.out.println();
+			b.append("\n\r");
 		}
-		System.out.println();
+		log.info(b);
 	}
 
 }
