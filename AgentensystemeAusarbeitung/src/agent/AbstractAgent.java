@@ -17,13 +17,14 @@ import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 
-public class AbstractAgent extends Agent{
+public abstract class AbstractAgent extends Agent{
 	protected List<IBehaviour> behaviours;
 	protected String worldName = "";
 	protected MapAsArray map = new MapAsArray();
 	protected String inToReplyTo = "";
 	protected int state;
 	protected Cord currentLocation;
+	protected boolean releaseLock = true;
 	public static final Logger log = Logger.getLogger(Agent.class);
 	
 	@Override
@@ -35,6 +36,7 @@ public class AbstractAgent extends Agent{
 		loginAtToppic();
 		logic(null);
 		addBehaviours();
+		registerOnMap();
 	}
 	
 	protected void loginAtAntWorld(){
@@ -64,16 +66,12 @@ public class AbstractAgent extends Agent{
 		});
 	}
 	
-	protected void logic(Message msg) {
-		
-	}
+	protected abstract void logic(Message msg);
 	
-	protected void loginAtToppic(){
-		
-	}
+	protected abstract void loginAtToppic();
 	
-	protected void addBehaviours(){
-		
-	}
+	protected abstract void addBehaviours();
+	
+	public abstract void registerOnMap();
 
 }

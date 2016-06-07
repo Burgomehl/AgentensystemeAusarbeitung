@@ -16,7 +16,7 @@ import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
-public class MyAgent extends AbstractAgent {
+public class MyAgent extends GuiAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
 	private Cord lastCord;
@@ -90,9 +90,9 @@ public class MyAgent extends AbstractAgent {
 				login = true;
 			}
 		} else {
-			if(msg.state.equals("DEAD")){
-				doSuspend(); //Tötet der sich dann selber ? 
-				//FIXME: BBYL
+			if (msg.state.equals("DEAD")) {
+				doSuspend(); // Tötet der sich dann selber ?
+				// FIXME: BBYL
 			}
 			if (msg.cell.getStench() == 0) {
 				List<Cord> possibleNeighbours = new ArrayList<>();
@@ -111,7 +111,7 @@ public class MyAgent extends AbstractAgent {
 				lastCord = currentLocation;
 				currentLocation = toGoCord;
 				messages.add(gson.toJson(new InformMessage(action)));
-			}else{
+			} else {
 				Cord toGoCord = lastCord;
 				String action = nextStep(toGoCord);
 				currentLocation = lastCord;
@@ -170,9 +170,15 @@ public class MyAgent extends AbstractAgent {
 	}
 
 	public MyAgent() {
+		// super();
 		behaviours = new ArrayList<>();
 		behaviours.add(new SearchBehaviour());
 		behaviours.add(new MessageBehaviour(this));
+	}
+
+	@Override
+	public void registerOnMap() {
+		super.registerOnMap();
 	}
 
 }
