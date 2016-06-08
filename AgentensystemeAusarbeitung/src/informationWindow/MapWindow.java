@@ -2,6 +2,8 @@ package informationWindow;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -21,6 +23,16 @@ import data.MapAsArray;
 public class MapWindow extends JFrame {
 
 	private final String title = "Map of AntWorld";
+	private final String pathToResources = "AgentensystemeAusarbeitung/res/";
+	private final int scaledHeight = 20;
+	private final int scaledWidth = 20;
+	private Image stone = Toolkit.getDefaultToolkit().getImage(pathToResources + "obstacle.gif")
+			.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
+	private Image grass = Toolkit.getDefaultToolkit().getImage(pathToResources + "ground.gif")
+			.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
+	private Image best_food = Toolkit.getDefaultToolkit().getImage(pathToResources + "food.gif")
+			.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
+	private Image trap = Toolkit.getDefaultToolkit().getImage(pathToResources + "pit.gif");
 
 	private static MapWindow mapWindow = null;
 
@@ -62,7 +74,7 @@ public class MapWindow extends JFrame {
 				setState(ICONIFIED);
 			}
 		});
-		start();
+		// start();
 	}
 
 	public void start() {

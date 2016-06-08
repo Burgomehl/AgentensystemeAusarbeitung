@@ -16,7 +16,7 @@ import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
-public class MyAgent extends GuiAgent {
+public class MyAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
 	private Cord lastCord;

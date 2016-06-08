@@ -9,6 +9,7 @@ import behaviour.IBehaviour;
 import data.Cord;
 import data.MapAsArray;
 import de.aim.antworld.agent.AntWorldConsts;
+import informationWindow.MapWindow;
 import jade.core.Agent;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.DFService;
@@ -24,6 +25,7 @@ public abstract class AbstractAgent extends Agent {
 	protected int state;
 	protected Cord currentLocation;
 	protected boolean releaseLock = true;
+	protected final MapWindow mapWindow = MapWindow.getInstance();
 	public static final Logger log = LoggerFactory.getLogger(MyAgent.class);
 
 	@Override
@@ -76,5 +78,7 @@ public abstract class AbstractAgent extends Agent {
 
 	}
 
-	public abstract void registerOnMap();
+	protected void registerOnMap() {
+		mapWindow.addAgent(this);
+	}
 }

@@ -1,12 +1,11 @@
 package agent;
 
-import informationWindow.MapWindow;
-
 public class GuiAgent extends AbstractAgent {
 
-	private final MapWindow mapWindow = MapWindow.getInstance();
+	// private final MapWindow mapWindow = MapWindow.getInstance();
 
 	public GuiAgent() {
+		mapWindow.start();
 		// registerOnMap();
 	}
 
@@ -17,7 +16,8 @@ public class GuiAgent extends AbstractAgent {
 
 	@Override
 	public void registerOnMap() {
-		mapWindow.addAgent(this);
+		// mapWindow.addAgent(this);
+		super.registerOnMap();
 	}
 
 	@Override
