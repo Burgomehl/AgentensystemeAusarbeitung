@@ -2,8 +2,8 @@ package agent;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import behaviour.IBehaviour;
 import data.Cord;
@@ -26,17 +26,19 @@ public abstract class AbstractAgent extends Agent {
 	protected Cord currentLocation;
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
-	public static final Logger log = LoggerFactory.getLogger(MyAgent.class);
+
+	public static final Logger log = Logger.getLogger(Agent.class);
 
 	@Override
 	protected void setup() {
+		PropertyConfigurator.configure("log4j.properties");
 		state = 0;
 		currentLocation = map.getCurrentLocation();
 		loginAtAntWorld();
 		loginAtToppic();
 		logic(null);
 		addBehaviours();
-		registerOnMap();
+		// registerOnMap();
 	}
 
 	protected void loginAtAntWorld() {
@@ -66,19 +68,14 @@ public abstract class AbstractAgent extends Agent {
 		});
 	}
 
-	protected void logic(Message msg) {
-
-	}
-
-	protected void loginAtToppic() {
-
-	}
-
-	protected void addBehaviours() {
-
-	}
-
 	protected void registerOnMap() {
 		mapWindow.addAgent(this);
 	}
+
+	protected abstract void logic(Message msg);
+
+	protected abstract void loginAtToppic();
+
+	protected abstract void addBehaviours();
+
 }

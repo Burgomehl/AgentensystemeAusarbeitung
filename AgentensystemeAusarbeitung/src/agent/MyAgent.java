@@ -7,8 +7,6 @@ import java.util.Queue;
 
 import com.google.gson.Gson;
 
-import behaviour.MessageBehaviour;
-import behaviour.SearchBehaviour;
 import data.Cell;
 import data.Cord;
 import de.aim.antworld.agent.AntWorldConsts;
@@ -47,6 +45,9 @@ public class MyAgent extends AbstractAgent {
 			public void action() {
 				MyAgent.log.info("Message Behaviour");
 				ACLMessage msg = myAgent.receive();
+				for (int i = 0; i < 10000000; i++) {
+					
+				}
 				if (msg != null) {
 					msg.getContent();
 					msg.getSender();
@@ -79,6 +80,10 @@ public class MyAgent extends AbstractAgent {
 		Gson gson = new Gson();
 		if (msg == null) {
 			if (!login) {
+				log.debug("Test");
+				log.error("Test");
+				log.info("Test");
+				log.warn("test");
 				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN)));
 				login = true;
 			}
@@ -90,7 +95,7 @@ public class MyAgent extends AbstractAgent {
 			if (msg.cell.getStench() == 0) {
 				List<Cord> possibleNeighbours = new ArrayList<>();
 				List<Cord> neighbours = map.getNeighbours(currentLocation);
-				int currentHighestIndex = 0;
+				
 				Cord toGoCord = lastCord;
 				for (Cord cord : neighbours) {
 					if (cord != null) {
@@ -99,42 +104,51 @@ public class MyAgent extends AbstractAgent {
 						}
 					}
 				}
-				for (Cord cord : possibleNeighbours) {
-					int fieldIndex = map.getFieldIndex(cord);
-					if (fieldIndex >= currentHighestIndex) {
-						currentHighestIndex = fieldIndex;
-						toGoCord = cord;
-					}
-				}
-				String action = AntWorldConsts.ANT_ACTION_UP;
-				if (currentLocation.getX() < toGoCord.getX()) {
-					action = AntWorldConsts.ANT_ACTION_RIGHT;
-				} else if (currentLocation.getX() > toGoCord.getX()) {
-					action = AntWorldConsts.ANT_ACTION_LEFT;
-				} else if (currentLocation.getY() < toGoCord.getY()) {
-					action = AntWorldConsts.ANT_ACTION_DOWN;
-				} else if (currentLocation.getY() > toGoCord.getY()) {
-					action = AntWorldConsts.ANT_ACTION_UP;
-				}
+				toGoCord = getNextField(possibleNeighbours, toGoCord);
+				String action = nextStep(toGoCord);
 				lastCord = currentLocation;
 				currentLocation = toGoCord;
 				messages.add(gson.toJson(new InformMessage(action)));
 			} else {
 				Cord toGoCord = lastCord;
-				String action = AntWorldConsts.ANT_ACTION_UP;
-				if (currentLocation.getX() < toGoCord.getX()) {
-					action = AntWorldConsts.ANT_ACTION_RIGHT;
-				} else if (currentLocation.getX() > toGoCord.getX()) {
-					action = AntWorldConsts.ANT_ACTION_LEFT;
-				} else if (currentLocation.getY() < toGoCord.getY()) {
-					action = AntWorldConsts.ANT_ACTION_DOWN;
-				} else if (currentLocation.getY() > toGoCord.getY()) {
-					action = AntWorldConsts.ANT_ACTION_UP;
-				}
+				String action = nextStep(toGoCord);
+				currentLocation = lastCord;
 				messages.add(gson.toJson(new InformMessage(action)));
 			}
 		}
 
+	}
+
+	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
+		int currentHighestIndex = 0;
+		for (Cord cord : possibleNeighbours) {
+			int fieldIndex;
+			try {
+				fieldIndex = map.getFieldIndex(cord);
+			} catch (Exception e) {
+				log.error("getIndex did something validate the result");
+				return getNextField(possibleNeighbours, toGoCord);
+			}
+			if (fieldIndex >= currentHighestIndex) {
+				currentHighestIndex = fieldIndex;
+				toGoCord = cord;
+			}
+		}
+		return toGoCord;
+	}
+
+	private String nextStep(Cord toGoCord) {
+		String action = AntWorldConsts.ANT_ACTION_UP;
+		if (currentLocation.getX() < toGoCord.getX()) {
+			action = AntWorldConsts.ANT_ACTION_RIGHT;
+		} else if (currentLocation.getX() > toGoCord.getX()) {
+			action = AntWorldConsts.ANT_ACTION_LEFT;
+		} else if (currentLocation.getY() < toGoCord.getY()) {
+			action = AntWorldConsts.ANT_ACTION_DOWN;
+		} else if (currentLocation.getY() > toGoCord.getY()) {
+			action = AntWorldConsts.ANT_ACTION_UP;
+		}
+		return action;
 	}
 
 	/**
@@ -154,15 +168,16 @@ public class MyAgent extends AbstractAgent {
 	}
 
 	public MyAgent() {
-		// super();
-		behaviours = new ArrayList<>();
-		behaviours.add(new SearchBehaviour());
-		behaviours.add(new MessageBehaviour(this));
 	}
 
 	@Override
 	public void registerOnMap() {
-		super.registerOnMap();
+	}
+
+	@Override
+	protected void loginAtToppic() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

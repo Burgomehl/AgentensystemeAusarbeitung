@@ -24,4 +24,9 @@ public class Cord {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	@Override
+	public String toString() {
+		return "{Cord:[X:"+getX()+"],[Y:"+getY()+"]}";
+	}
 }

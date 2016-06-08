@@ -1,0 +1,5710 @@
+Test
+Test
+Test
+test
+antWorlde64976a0-a57a-45e9-ac64-0225cb675102:
+schicke: {"type":"ANT_ACTION_LOGIN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10000
+Add new field on: {Cord:[X:5],[Y:5]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----H-----
+-----------
+-----------
+-----------
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LOGIN",
+  "cell" : {
+    "row" : 12,
+    "col" : 0,
+    "type" : "START",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : ""
+}
+GetNeighbours on: {Cord:[X:5],[Y:5]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:4],[Y:5]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:5],[Y:4]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:5],[Y:6]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:5]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10001
+Add new field on: {Cord:[X:6],[Y:5]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----------
+-----------
+-----------
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 12,
+    "col" : 1,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 6,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10000"
+}
+GetNeighbours on: {Cord:[X:6],[Y:5]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:4]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:6]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:7],[Y:5]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10002
+Add new field on: {Cord:[X:6],[Y:6]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+------O----
+-----------
+-----------
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 13,
+    "col" : 1,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10001"
+}
+GetNeighbours on: {Cord:[X:6],[Y:6]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:5],[Y:6]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:7]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:7],[Y:6]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10003
+Add new field on: {Cord:[X:5],[Y:6]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----------
+-----------
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 13,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10002"
+}
+GetNeighbours on: {Cord:[X:5],[Y:6]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:4],[Y:6]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:5],[Y:7]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10004
+Add new field on: {Cord:[X:5],[Y:7]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----O-----
+-----------
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 14,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10003"
+}
+GetNeighbours on: {Cord:[X:5],[Y:7]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:4],[Y:7]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:5],[Y:8]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:7]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10005
+Add new field on: {Cord:[X:6],[Y:7]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----OO----
+-----------
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 14,
+    "col" : 1,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10004"
+}
+GetNeighbours on: {Cord:[X:6],[Y:7]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:8]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:7],[Y:7]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10006
+Add new field on: {Cord:[X:7],[Y:7]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----OOO---
+-----------
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 14,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10005"
+}
+GetNeighbours on: {Cord:[X:7],[Y:7]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:7],[Y:6]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:7],[Y:8]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:8],[Y:7]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10007
+Add new field on: {Cord:[X:7],[Y:8]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----OOO---
+-------O---
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 15,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 2,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10006"
+}
+GetNeighbours on: {Cord:[X:7],[Y:8]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:8]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:7],[Y:9]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:8],[Y:8]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10008
+Add new field on: {Cord:[X:6],[Y:8]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----OOO---
+------OO---
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 15,
+    "col" : 1,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10007"
+}
+GetNeighbours on: {Cord:[X:6],[Y:8]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:5],[Y:8]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:6],[Y:9]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10009
+Add new field on: {Cord:[X:5],[Y:8]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----OOO---
+-----OOO---
+-----------
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 15,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10008"
+}
+GetNeighbours on: {Cord:[X:5],[Y:8]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:4],[Y:8]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:5],[Y:9]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10010
+Add new field on: {Cord:[X:5],[Y:9]}
+-----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----OO----
+-----OOO---
+-----OOO---
+-----O-----
+-----------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 16,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10009"
+}
+GetNeighbours on: {Cord:[X:5],[Y:9]} saved currentLocation: {Cord:[X:5],[Y:5]}
+resize Map with cord: {Cord:[X:5],[Y:9]} currentLocation: {Cord:[X:5],[Y:5]}
+resized cord: {Cord:[X:10],[Y:14]} currentLocation: {Cord:[X:5],[Y:5]}
+GetNeighbours on: {Cord:[X:10],[Y:14]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:9],[Y:14]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:10],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:11],[Y:14]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10011
+Add new field on: {Cord:[X:11],[Y:14]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OO---------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 16,
+    "col" : 1,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10010"
+}
+GetNeighbours on: {Cord:[X:11],[Y:14]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:11],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:12],[Y:14]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10012
+Add new field on: {Cord:[X:12],[Y:14]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOO--------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 16,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10011"
+}
+GetNeighbours on: {Cord:[X:12],[Y:14]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:12],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:13],[Y:14]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10013
+Add new field on: {Cord:[X:13],[Y:14]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 16,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 3,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10012"
+}
+GetNeighbours on: {Cord:[X:13],[Y:14]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:13],[Y:13]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:13],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:14],[Y:14]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10014
+Add new field on: {Cord:[X:13],[Y:15]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+-------------O-------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 17,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 1,
+    "smell" : 1,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10013"
+}
+GetNeighbours on: {Cord:[X:13],[Y:15]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:12],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:13],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:14],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10015
+Add new field on: {Cord:[X:12],[Y:15]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+------------OO-------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 17,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 1,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10014"
+}
+GetNeighbours on: {Cord:[X:12],[Y:15]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:11],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:12],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10016
+Add new field on: {Cord:[X:11],[Y:15]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+-----------OOO-------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 17,
+    "col" : 1,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10015"
+}
+GetNeighbours on: {Cord:[X:11],[Y:15]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:10],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:11],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10017
+Add new field on: {Cord:[X:10],[Y:15]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 17,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 2,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10016"
+}
+GetNeighbours on: {Cord:[X:10],[Y:15]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:9],[Y:15]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:10],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10018
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+----------O----------
+---------------------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 18,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 2,
+    "smell" : 2,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10017"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:9],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:10],[Y:17]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:11],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10019
+Add new field on: {Cord:[X:11],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+----------OR---------
+---------------------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:9],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:10],[Y:17]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10020
+Add new field on: {Cord:[X:10],[Y:17]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+----------OR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+analsysis the fieldindex: {Cord:[X:9],[Y:16]} currentLocation: {Cord:[X:5],[Y:5]}
+currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10021
+Add new field on: {Cord:[X:9],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10022
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 17,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 2,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10021"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10023
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 16,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10022"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10024
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 15,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10023"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10025
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 14,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10024"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10026
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 13,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10025"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10027
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 12,
+    "col" : 0,
+    "type" : "START",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10026"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10028
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 11,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 6,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10027"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10029
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 10,
+    "col" : 0,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 10,
+    "stench" : 0,
+    "ants" : [ "adam" ]
+  },
+  "replyId" : "MSG10028"
+}
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10030
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10031
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10032
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10033
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10034
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10035
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10036
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10037
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10038
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10039
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10040
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10041
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10042
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10043
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10044
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10045
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10046
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10047
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10048
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10049
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10050
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10051
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10052
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10053
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10054
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10055
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10056
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10057
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10058
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10059
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10060
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10061
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10062
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10063
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10064
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10065
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10066
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10067
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10068
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10069
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10070
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10071
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10072
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10073
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10074
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10075
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10076
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10077
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10078
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10079
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10080
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10081
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10082
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10083
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10084
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10085
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10086
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10087
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10088
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10089
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10090
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10091
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10092
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10093
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10094
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10095
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10096
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10097
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10098
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10099
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10100
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10101
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10102
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10103
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10104
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10105
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10106
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10107
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10108
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10109
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10110
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10111
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10112
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10113
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10114
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10115
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10116
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10117
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10118
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10119
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10120
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10121
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10122
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10123
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10124
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10125
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10126
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10127
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10128
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10129
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10130
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10131
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10132
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10133
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10134
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10135
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10136
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10137
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10138
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10139
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10140
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10141
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10142
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10143
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10144
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10145
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10146
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10147
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10148
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10149
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10150
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10151
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10152
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10153
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10154
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10155
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10156
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10157
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10158
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10159
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10160
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10161
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10162
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10163
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10164
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10165
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10166
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10167
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10168
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10169
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10170
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10171
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10172
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10173
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10174
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10175
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10176
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10177
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10178
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
+Message Behaviour
+MSG10179
+Add new field on: {Cord:[X:10],[Y:16]}
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+----------HO---------
+----------OO---------
+----------OOO--------
+----------OOO--------
+----------OOOO-------
+----------OOOO-------
+---------ROR---------
+----------R----------
+---------------------
+---------------------
+---------------------
+
+GetNeighbours on: {Cord:[X:10],[Y:16]} saved currentLocation: {Cord:[X:5],[Y:5]}
+Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]}
+schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+Message Behaviour
