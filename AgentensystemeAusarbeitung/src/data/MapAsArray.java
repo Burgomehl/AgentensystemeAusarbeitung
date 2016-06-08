@@ -93,17 +93,15 @@ public class MapAsArray {
 		return list;
 	}
 
-	public int getFieldIndex(Cord cord) throws Exception {
+	public int getFieldIndex(Cord cord) {
 		log.info("analsysis the fieldindex: "+cord+" currentLocation: "+currentLocation);
 		int index = 0;
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j < 1; ++j) {
 				Cord cordT = new Cord(cord.getX()+i, cord.getY()+j);
-				if(isInRange(cordT)){
-					resizeMap(10, cord);
-					throw new Exception("you have to reanalysis the index");
+				if(!isInRange(cordT)){
+					index += (map[cordT.getX()][cordT.getY()] != null) ? 1 : 0;
 				}
-				index += (map[cordT.getX()][cordT.getY()] != null) ? 1 : 0;
 			}
 		}
 		log.info("currentLocation after analysis of fieldindex: "+currentLocation);
@@ -150,6 +148,13 @@ public class MapAsArray {
 					b.append("R");
 				}else if(i==getMid().getX() && j == getMid().getY() || j==getMid().getX() && i == getMid().getY()){
 					b.append("H");
+				}else if(cell.getFood()>0){
+					b.append("F");
+				}else if(cell.isTrap()){
+					b.append("T");
+				}else if(currentLocation.getX()==i && currentLocation.getY()==j || //
+						currentLocation.getX()==j && currentLocation.getY()==i){
+					b.append("X");
 				}else{
 					b.append("O");
 				}

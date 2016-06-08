@@ -1,6 +1,9 @@
 package agent;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -26,6 +29,7 @@ public abstract class AbstractAgent extends Agent {
 	protected Cord currentLocation;
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
+	protected Deque<Cord> lastCords;
 
 	public static final Logger log = Logger.getLogger(Agent.class);
 
@@ -33,6 +37,7 @@ public abstract class AbstractAgent extends Agent {
 	protected void setup() {
 		PropertyConfigurator.configure("log4j.properties");
 		state = 0;
+		lastCords = new LinkedList<>();
 		currentLocation = map.getCurrentLocation();
 		loginAtAntWorld();
 		loginAtToppic();
