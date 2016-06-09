@@ -51,7 +51,7 @@ public class AgentWindow extends JFrame {
 		this.add(new JScrollPane(tree));
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-		start();
+		// start();
 	}
 
 	public void start() {
@@ -97,10 +97,15 @@ public class AgentWindow extends JFrame {
 		DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Name: " + newAgent.getLocalName());
 		DefaultMutableTreeNode state = new DefaultMutableTreeNode("State: " + newAgent.getState());
 		DefaultMutableTreeNode aState = new DefaultMutableTreeNode("AgentState: " + newAgent.getAgentState().getName());
+		DefaultMutableTreeNode locName = new DefaultMutableTreeNode(
+				"PositionName: " + newAgent.getLocation().getName());
+		DefaultMutableTreeNode location = new DefaultMutableTreeNode("Postion: " + newAgent.getLocation().getAddress());
 
 		node.add(agent);
 		node.add(state);
 		node.add(aState);
+		node.add(locName);
+		node.add(location);
 
 		treeModel.insertNodeInto(node, root, root.getChildCount());
 		tree.treeDidChange();

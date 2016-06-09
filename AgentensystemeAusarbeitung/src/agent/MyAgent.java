@@ -46,7 +46,7 @@ public class MyAgent extends AbstractAgent {
 				MyAgent.log.info("Message Behaviour");
 				ACLMessage msg = myAgent.receive();
 				for (int i = 0; i < 10000000; i++) {
-					
+
 				}
 				if (msg != null) {
 					msg.getContent();
@@ -95,7 +95,7 @@ public class MyAgent extends AbstractAgent {
 			if (msg.cell.getStench() == 0) {
 				List<Cord> possibleNeighbours = new ArrayList<>();
 				List<Cord> neighbours = map.getNeighbours(currentLocation);
-				
+
 				Cord toGoCord = lastCord;
 				for (Cord cord : neighbours) {
 					if (cord != null) {
@@ -172,12 +172,13 @@ public class MyAgent extends AbstractAgent {
 
 	@Override
 	public void registerOnMap() {
+		super.registerOnMap();
 	}
 
 	@Override
 	protected void loginAtToppic() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

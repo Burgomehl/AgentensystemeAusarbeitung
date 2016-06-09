@@ -11,6 +11,7 @@ import data.MapAsArray;
 import de.aim.antworld.agent.AntWorldConsts;
 import informationWindow.MapWindow;
 import jade.core.Agent;
+import jade.core.Location;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
@@ -24,6 +25,7 @@ public abstract class AbstractAgent extends Agent {
 	protected String inToReplyTo = "";
 	protected int state;
 	protected Cord currentLocation;
+	protected Location loc;
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
 
@@ -34,11 +36,12 @@ public abstract class AbstractAgent extends Agent {
 		PropertyConfigurator.configure("log4j.properties");
 		state = 0;
 		currentLocation = map.getCurrentLocation();
+		loc = here();
 		loginAtAntWorld();
 		loginAtToppic();
 		logic(null);
 		addBehaviours();
-		// registerOnMap();
+		registerOnMap();
 	}
 
 	protected void loginAtAntWorld() {
@@ -70,6 +73,10 @@ public abstract class AbstractAgent extends Agent {
 
 	protected void registerOnMap() {
 		mapWindow.addAgent(this);
+	}
+
+	public Location getLocation() {
+		return loc;
 	}
 
 	protected abstract void logic(Message msg);
