@@ -17,22 +17,16 @@ import jade.lang.acl.ACLMessage;
 public class MyAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
-	private Cord lastCord;
 
 	@Override
 	protected void addBehaviours() {
-		/* Send logindata to the world, but still fails on it */
 		addBehaviour(new CyclicBehaviour() {
-
 			@Override
 			public void action() {
 				while (!messages.isEmpty()) {
 					String message = messages.remove();
 					sendMessage(message);
 				}
-				// if (messages.isEmpty()) {
-				// block();
-				// }
 			}
 		});
 
@@ -45,9 +39,6 @@ public class MyAgent extends AbstractAgent {
 			public void action() {
 				MyAgent.log.info("Message Behaviour");
 				ACLMessage msg = myAgent.receive();
-				for (int i = 0; i < 10000000; i++) {
-
-				}
 				if (msg != null) {
 					msg.getContent();
 					msg.getSender();
@@ -56,7 +47,6 @@ public class MyAgent extends AbstractAgent {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					if (msg.getPerformative() == ACLMessage.INFORM) {
@@ -69,7 +59,7 @@ public class MyAgent extends AbstractAgent {
 					} else if (msg.getPerformative() == ACLMessage.REFUSE) {
 						log.info("got refuse message");
 						map.addNewField(new Cell(0, 0, 0, 0, 0, true, false, "FREE"), currentLocation);
-						currentLocation = lastCords.remove();
+						currentLocation = getTotalPosition(lastCords.remove());
 						Gson gson = new Gson();
 						Message m = gson.fromJson(msg.getContent(), Message.class);
 						logic(m);
@@ -77,8 +67,8 @@ public class MyAgent extends AbstractAgent {
 				} else {
 					block();
 				}
-
 			}
+
 		});
 
 	}
@@ -89,20 +79,19 @@ public class MyAgent extends AbstractAgent {
 		if (msg == null) {
 			if (!login) {
 				log.debug("Login at antworld");
-				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN)));
+				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN, agentColor)));
 				login = true;
 			}
 		} else {
 			if (msg.state.equals("DEAD")) {
 				log.info("agent is dead");
-				doSuspend(); // Tötet der sich dann selber ?
+				doSuspend();
 				// FIXME: BBYL
 			}
 			if (msg.cell.getStench() == 0) {
 				log.info("no stench go on");
 				List<Cord> possibleNeighbours = new ArrayList<>();
 				List<Cord> neighbours = map.getNeighbours(currentLocation);
-
 				Cord toGoCord = null;
 				for (Cord cord : neighbours) {
 					if (cord != null) {
@@ -114,25 +103,35 @@ public class MyAgent extends AbstractAgent {
 				if (!possibleNeighbours.isEmpty()) {
 					log.info("neighbours found");
 					toGoCord = getNextField(possibleNeighbours, toGoCord);
-					lastCords.addFirst(currentLocation);
+					lastCords.addFirst(getRelativePosition(currentLocation));
 				} else {
 					log.info("no neighbours found");
-					toGoCord = lastCords.remove();
+					toGoCord = getTotalPosition(lastCords.remove());
 				}
 				String action = nextStep(toGoCord);
-				// lastCord = currentLocation;
 				currentLocation = toGoCord;
-				messages.add(gson.toJson(new InformMessage(action)));
+				messages.add(gson.toJson(new InformMessage(action, agentColor)));
 			} else {
-				Cord toGoCord = lastCords.remove();
+				Cord toGoCord = getTotalPosition(lastCords.remove());
 				String action = nextStep(toGoCord);
 				log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
 						+ currentLocation);
 				currentLocation = toGoCord;
-				messages.add(gson.toJson(new InformMessage(action)));
+				messages.add(gson.toJson(new InformMessage(action, agentColor)));
 			}
 		}
+	}
 
+	private Cord getRelativePosition(Cord cord) {
+		Cord newCord = new Cord(cord.getX() - map.getMid().getX() , cord.getY() - map.getMid().getY());
+		log.info("converting total : "+cord+" to cord "+newCord);
+		return newCord;
+	}
+
+	private Cord getTotalPosition(Cord cord) {
+		Cord newCord = new Cord(map.getMid().getX() + cord.getX(), map.getMid().getY() + cord.getY());
+		log.info("converting relativ : "+cord+" to total "+newCord);
+		return newCord;
 	}
 
 	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
@@ -188,7 +187,6 @@ public class MyAgent extends AbstractAgent {
 
 	@Override
 	protected void loginAtToppic() {
-		// TODO Auto-generated method stub
 
 	}
 

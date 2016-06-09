@@ -20,20 +20,17 @@ public class MapAsArray {
 	private static final Logger log = Logger.getLogger(MapAsArray.class);
 
 	private Cell[][] map;
-	private Cord currentLocation;
 
 	public MapAsArray(Cell f) {
 		PropertyConfigurator.configure("log4j.properties");
 		map = new Cell[11][11];
 		Cord mid = getMid();
-		currentLocation = mid;
 		map[mid.getX()][mid.getY()] = f;
 	}
 
 	public MapAsArray() {
 		map = new Cell[11][11];
 		Cord mid = getMid();
-		currentLocation = mid;
 	}
 
 	public Cord addNewField(Cell field, Cord cord) {
@@ -52,7 +49,7 @@ public class MapAsArray {
 	}
 
 	public Cord getCurrentLocation() {
-		return currentLocation;
+		return getMid();
 	}
 	
 	public Cell getCurrentField(Cord cord){
@@ -63,7 +60,7 @@ public class MapAsArray {
 	}
 
 	public List<Cord> getNeighbours(Cord cord) {
-		log.info("GetNeighbours on: "+cord+" saved currentLocation: "+ currentLocation);
+		log.info("GetNeighbours on: "+cord);
 		List<Cord> list = new ArrayList<>();
 		Cord test = new Cord(cord.getX()-1, cord.getY());
 		if(isInRange(test)){
@@ -89,12 +86,12 @@ public class MapAsArray {
 			return getNeighbours(cord);
 		}
 		list.add((map[test.getX()][test.getY()] == null) ? test : null);
-		log.info("Current Location after analysis of neighbours: "+currentLocation);
+		log.info("Current Location after analysis of neighbours: "+cord);
 		return list;
 	}
 
 	public int getFieldIndex(Cord cord) {
-		log.info("analsysis the fieldindex: "+cord+" currentLocation: "+currentLocation);
+		log.info("analsysis the fieldindex: "+cord);
 		int index = 0;
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j < 1; ++j) {
@@ -104,7 +101,7 @@ public class MapAsArray {
 				}
 			}
 		}
-		log.info("currentLocation after analysis of fieldindex: "+currentLocation);
+		log.info("currentLocation after analysis of fieldindex: "+cord);
 		return index;
 	}
 
@@ -113,7 +110,7 @@ public class MapAsArray {
 	}
 
 	private void resizeMap(int resize, Cord cord) {
-		log.info("resize Map with cord: "+cord+" currentLocation: "+currentLocation);
+		log.info("resize Map with cord: "+cord);
 		Cell[][] newMap = new Cell[map.length + resize][map.length + resize];
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
@@ -123,11 +120,11 @@ public class MapAsArray {
 		map = newMap;
 		cord.setX(cord.getX() + resize / 2);
 		cord.setY(cord.getY() + resize / 2);
-		log.info("resized cord: "+cord+" currentLocation: "+currentLocation);
+		log.info("resized cord: "+cord);
 		
 	}
 
-	private Cord getMid() {
+	public Cord getMid() {
 		return new Cord((int) (map.length / 2), (int) (map[0].length / 2));
 	}
 
@@ -152,9 +149,6 @@ public class MapAsArray {
 					b.append("F");
 				}else if(cell.isTrap()){
 					b.append("T");
-				}else if(currentLocation.getX()==i && currentLocation.getY()==j || //
-						currentLocation.getX()==j && currentLocation.getY()==i){
-					b.append("X");
 				}else{
 					b.append("O");
 				}

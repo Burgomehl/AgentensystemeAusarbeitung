@@ -13,8 +13,11 @@ import data.Cord;
 import data.MapAsArray;
 import de.aim.antworld.agent.AntWorldConsts;
 import informationWindow.MapWindow;
+import jade.core.AID;
 import jade.core.Agent;
+import jade.core.ServiceException;
 import jade.core.behaviours.OneShotBehaviour;
+import jade.core.messaging.TopicManagementHelper;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -30,6 +33,7 @@ public abstract class AbstractAgent extends Agent {
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
 	protected Deque<Cord> lastCords;
+	public final static String agentColor = AntWorldConsts.ANT_COLOR_RED;
 
 	public static final Logger log = Logger.getLogger(Agent.class);
 
@@ -79,7 +83,16 @@ public abstract class AbstractAgent extends Agent {
 
 	protected abstract void logic(Message msg);
 
-	protected abstract void loginAtToppic();
+	protected void loginAtToppic(){
+		try {
+			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(TopicManagementHelper.SERVICE_NAME);
+			AID topicAID = topicManagementHelper.createTopic("AdamsTopic");
+			topicManagementHelper.register(topicAID);
+			
+		} catch (ServiceException e) {
+			log.error("Error", e);
+		}
+	}
 
 	protected abstract void addBehaviours();
 
