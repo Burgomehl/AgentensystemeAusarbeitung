@@ -1,5 +1,7 @@
 package agent;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,9 +12,12 @@ import data.Cord;
 import data.MapAsArray;
 import de.aim.antworld.agent.AntWorldConsts;
 import informationWindow.MapWindow;
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.Location;
+import jade.core.ServiceException;
 import jade.core.behaviours.OneShotBehaviour;
+import jade.core.messaging.TopicManagementHelper;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -28,6 +33,8 @@ public abstract class AbstractAgent extends Agent {
 	protected Location loc;
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
+	protected Deque<Cord> lastCords;
+	public final static String agentColor = AntWorldConsts.ANT_COLOR_RED;
 
 	public static final Logger log = Logger.getLogger(Agent.class);
 
@@ -35,6 +42,7 @@ public abstract class AbstractAgent extends Agent {
 	protected void setup() {
 		PropertyConfigurator.configure("log4j.properties");
 		state = 0;
+		lastCords = new LinkedList<>();
 		currentLocation = map.getCurrentLocation();
 		loc = here();
 		loginAtAntWorld();
@@ -81,7 +89,17 @@ public abstract class AbstractAgent extends Agent {
 
 	protected abstract void logic(Message msg);
 
-	protected abstract void loginAtToppic();
+	protected void loginAtToppic() {
+		try {
+			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(
+					TopicManagementHelper.SERVICE_NAME);
+			AID topicAID = topicManagementHelper.createTopic("AdamsTopic");
+			topicManagementHelper.register(topicAID);
+
+		} catch (ServiceException e) {
+			log.error("Error", e);
+		}
+	}
 
 	protected abstract void addBehaviours();
 

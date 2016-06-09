@@ -17,22 +17,16 @@ import jade.lang.acl.ACLMessage;
 public class MyAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
-	private Cord lastCord;
 
 	@Override
 	protected void addBehaviours() {
-		/* Send logindata to the world, but still fails on it */
 		addBehaviour(new CyclicBehaviour() {
-
 			@Override
 			public void action() {
 				while (!messages.isEmpty()) {
 					String message = messages.remove();
 					sendMessage(message);
 				}
-				// if (messages.isEmpty()) {
-				// block();
-				// }
 			}
 		});
 
@@ -53,15 +47,22 @@ public class MyAgent extends AbstractAgent {
 					msg.getSender();
 					inToReplyTo = msg.getReplyWith();
 					log.info(inToReplyTo);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					if (msg.getPerformative() == ACLMessage.INFORM) {
+						log.info("got informmessage");
 						Gson gson = new Gson();
 						Message m = gson.fromJson(msg.getContent(), Message.class);
 						currentLocation = map.addNewField(m.cell, currentLocation);
-						MyAgent.log.info("ausgabe" + msg.getContent());
+						log.info("ausgabe" + msg.getContent());
 						logic(m);
 					} else if (msg.getPerformative() == ACLMessage.REFUSE) {
+						log.info("got refuse message");
 						map.addNewField(new Cell(0, 0, 0, 0, 0, true, false, "FREE"), currentLocation);
-						currentLocation = lastCord;
+						currentLocation = getTotalPosition(lastCords.remove());
 						Gson gson = new Gson();
 						Message m = gson.fromJson(msg.getContent(), Message.class);
 						logic(m);
@@ -69,8 +70,8 @@ public class MyAgent extends AbstractAgent {
 				} else {
 					block();
 				}
-
 			}
+
 		});
 
 	}
@@ -80,23 +81,22 @@ public class MyAgent extends AbstractAgent {
 		Gson gson = new Gson();
 		if (msg == null) {
 			if (!login) {
-				log.debug("Test");
-				log.error("Test");
-				log.info("Test");
-				log.warn("test");
-				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN)));
+				log.debug("Login at antworld");
+				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN, agentColor)));
 				login = true;
 			}
 		} else {
 			if (msg.state.equals("DEAD")) {
-				doSuspend(); // Tötet der sich dann selber ?
+				log.info("agent is dead");
+				doSuspend();
 				// FIXME: BBYL
 			}
 			if (msg.cell.getStench() == 0) {
+				log.info("no stench go on");
 				List<Cord> possibleNeighbours = new ArrayList<>();
 				List<Cord> neighbours = map.getNeighbours(currentLocation);
 
-				Cord toGoCord = lastCord;
+				Cord toGoCord = null;
 				for (Cord cord : neighbours) {
 					if (cord != null) {
 						if (map.getCurrentField(cord) == null) {
@@ -104,40 +104,55 @@ public class MyAgent extends AbstractAgent {
 						}
 					}
 				}
-				toGoCord = getNextField(possibleNeighbours, toGoCord);
+				if (!possibleNeighbours.isEmpty()) {
+					log.info("neighbours found");
+					toGoCord = getNextField(possibleNeighbours, toGoCord);
+					lastCords.addFirst(getRelativePosition(currentLocation));
+				} else {
+					log.info("no neighbours found");
+					toGoCord = getTotalPosition(lastCords.remove());
+				}
 				String action = nextStep(toGoCord);
-				lastCord = currentLocation;
 				currentLocation = toGoCord;
-				messages.add(gson.toJson(new InformMessage(action)));
+				messages.add(gson.toJson(new InformMessage(action, agentColor)));
 			} else {
-				Cord toGoCord = lastCord;
+				Cord toGoCord = getTotalPosition(lastCords.remove());
 				String action = nextStep(toGoCord);
-				currentLocation = lastCord;
-				messages.add(gson.toJson(new InformMessage(action)));
+				log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
+						+ currentLocation);
+				currentLocation = toGoCord;
+				messages.add(gson.toJson(new InformMessage(action, agentColor)));
 			}
 		}
+	}
 
+	private Cord getRelativePosition(Cord cord) {
+		Cord newCord = new Cord(cord.getX() - map.getMid().getX(), cord.getY() - map.getMid().getY());
+		log.info("converting total : " + cord + " to cord " + newCord);
+		return newCord;
+	}
+
+	private Cord getTotalPosition(Cord cord) {
+		Cord newCord = new Cord(map.getMid().getX() + cord.getX(), map.getMid().getY() + cord.getY());
+		log.info("converting relativ : " + cord + " to total " + newCord);
+		return newCord;
 	}
 
 	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
 		int currentHighestIndex = 0;
 		for (Cord cord : possibleNeighbours) {
-			int fieldIndex;
-			try {
-				fieldIndex = map.getFieldIndex(cord);
-			} catch (Exception e) {
-				log.error("getIndex did something validate the result");
-				return getNextField(possibleNeighbours, toGoCord);
-			}
+			int fieldIndex = map.getFieldIndex(cord);
 			if (fieldIndex >= currentHighestIndex) {
 				currentHighestIndex = fieldIndex;
 				toGoCord = cord;
 			}
 		}
+		log.info("getNextField: " + toGoCord);
 		return toGoCord;
 	}
 
 	private String nextStep(Cord toGoCord) {
+		log.info("next step to : " + toGoCord);
 		String action = AntWorldConsts.ANT_ACTION_UP;
 		if (currentLocation.getX() < toGoCord.getX()) {
 			action = AntWorldConsts.ANT_ACTION_RIGHT;
