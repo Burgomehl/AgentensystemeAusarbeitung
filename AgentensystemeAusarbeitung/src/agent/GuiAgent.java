@@ -34,12 +34,6 @@ public class GuiAgent extends AbstractAgent {
 	}
 
 	@Override
-	protected void loginAtToppic() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	protected void addBehaviours() {
 		// TODO Auto-generated method stub
 		

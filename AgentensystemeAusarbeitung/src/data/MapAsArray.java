@@ -16,6 +16,7 @@ import org.apache.log4j.PropertyConfigurator;
  * @author Benjamin Byl
  *
  */
+@Deprecated
 public class MapAsArray {
 	private static final Logger log = Logger.getLogger(MapAsArray.class);
 
@@ -30,7 +31,6 @@ public class MapAsArray {
 
 	public MapAsArray() {
 		map = new Cell[11][11];
-		Cord mid = getMid();
 	}
 
 	public Cord addNewField(Cell field, Cord cord) {

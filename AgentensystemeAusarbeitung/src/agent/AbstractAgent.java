@@ -11,6 +11,7 @@ import org.apache.log4j.PropertyConfigurator;
 import behaviour.IBehaviour;
 import data.Cord;
 import data.MapAsArray;
+import data.MapAsArrayReloaded;
 import de.aim.antworld.agent.AntWorldConsts;
 import informationWindow.MapWindow;
 import jade.core.AID;
@@ -26,13 +27,14 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 public abstract class AbstractAgent extends Agent {
 	protected List<IBehaviour> behaviours;
 	protected String worldName = "";
-	protected MapAsArray map = new MapAsArray();
+	protected MapAsArrayReloaded map = new MapAsArrayReloaded();
 	protected String inToReplyTo = "";
 	protected int state;
 	protected Cord currentLocation;
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
 	protected Deque<Cord> lastCords;
+	AID topicAID = null;
 	public final static String agentColor = AntWorldConsts.ANT_COLOR_RED;
 
 	public static final Logger log = Logger.getLogger(Agent.class);
@@ -86,7 +88,7 @@ public abstract class AbstractAgent extends Agent {
 	protected void loginAtToppic(){
 		try {
 			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(TopicManagementHelper.SERVICE_NAME);
-			AID topicAID = topicManagementHelper.createTopic("AdamsTopic");
+			topicAID = topicManagementHelper.createTopic("AdamsTopic");
 			topicManagementHelper.register(topicAID);
 			
 		} catch (ServiceException e) {
