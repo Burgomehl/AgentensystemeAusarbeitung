@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 /**
- * Ich denke das wird die Bevorzugte variante die Karte darzustellen Unten Links
+ * Ich denke das wird die Bevorzugte variante die Karte dazustellen Unten Links
  * ist (0,0) Es wird immer von der Mitte aus begonnen die Karte zu befüllen Wenn
  * da nichts ist steht im Array Null Zu nutzen ist {@IMap} als Speicherort für
  * die Map, falls sich da was ändert. Dich sollte für die GUI nur getMap()
@@ -16,92 +16,91 @@ import org.apache.log4j.PropertyConfigurator;
  * @author Benjamin Byl
  *
  */
-@Deprecated
-public class MapAsArray {
-	private static final Logger log = Logger.getLogger(MapAsArray.class);
+public class MapAsArrayReloaded {
+	private static final Logger log = Logger.getLogger(MapAsArrayReloaded.class);
 
 	private Cell[][] map;
 
-	public MapAsArray(Cell f) {
+	public MapAsArrayReloaded(Cell f) {
 		PropertyConfigurator.configure("log4j.properties");
 		map = new Cell[11][11];
 		Cord mid = getMid();
 		map[mid.getX()][mid.getY()] = f;
 	}
 
-	public MapAsArray() {
+	public MapAsArrayReloaded() {
 		map = new Cell[11][11];
 	}
 
-	public Cord addNewField(Cell field, Cord cord) {
-		log.info("Add new field on: " + cord);
-		if (isInRange(cord)) {
-			resizeMap(10, cord);
+	private Cord getRelativePosition(Cord cord) {
+		Cord newCord = new Cord(cord.getX() - getMid().getX(), cord.getY() - getMid().getY());
+		log.info("converting total : " + cord + " to cord " + newCord);
+		return newCord;
+	}
 
+	private Cord getTotalPosition(Cord cord) {
+		Cord newCord = new Cord(getMid().getX() + cord.getX(), getMid().getY() + cord.getY());
+		log.info("converting relativ : " + cord + " to total " + newCord);
+		return newCord;
+	}
+
+	public Cord addNewField(Cell field, Cord cord) {
+		Cord cordNew = getTotalPosition(cord);
+		log.info("Add new field on: " + cordNew);
+		if (isInRange(cordNew)) {
+			resizeMap(10, cordNew);
 		}
-		if (map[cord.getX()][cord.getY()] == null) {
-			map[cord.getX()][cord.getY()] = field;
+		if (map[cordNew.getX()][cordNew.getY()] == null) {
+			map[cordNew.getX()][cordNew.getY()] = field;
 		} else {
 			System.out.println("There is already a Field");
 		}
 		print(map);
-		return cord;
-	}
-
-	public Cord getCurrentLocation() {
-		return getMid();
+		return getRelativePosition(cordNew);
 	}
 
 	public Cell getCurrentField(Cord cord) {
-		if (isInRange(cord)) {
-			resizeMap(10, cord);
+		Cord cordNew = getTotalPosition(cord);
+		if (isInRange(cordNew)) {
+			resizeMap(10, cordNew);
 		}
-		return map[cord.getX()][cord.getY()];
+		return map[cordNew.getX()][cordNew.getY()];
 	}
 
 	public List<Cord> getNeighbours(Cord cord) {
-		log.info("GetNeighbours on: " + cord);
+		Cord cordNew = getTotalPosition(cord);
+		log.info("GetNeighbours on: " + cordNew);
 		List<Cord> list = new ArrayList<>();
-		Cord test = new Cord(cord.getX() - 1, cord.getY());
-		if (isInRange(test)) {
-			resizeMap(10, cord);
-			return getNeighbours(cord);
-		}
-		list.add((map[test.getX()][test.getY()] == null) ? test : null);
-		test = new Cord(cord.getX(), cord.getY() - 1);
-		if (isInRange(test)) {
-			resizeMap(10, cord);
-			return getNeighbours(cord);
-		}
-		list.add((map[test.getX()][test.getY()] == null) ? test : null);
-		test = new Cord(cord.getX(), cord.getY() + 1);
-		if (isInRange(test)) {
-			resizeMap(10, cord);
-			return getNeighbours(cord);
-		}
-		list.add((map[test.getX()][test.getY()] == null) ? test : null);
-		test = new Cord(cord.getX() + 1, cord.getY());
-		if (isInRange(test)) {
-			resizeMap(10, cord);
-			return getNeighbours(cord);
-		}
-		list.add((map[test.getX()][test.getY()] == null) ? test : null);
-		log.info("Current Location after analysis of neighbours: " + cord);
+		testCord(cordNew, list, -1, 0);
+		testCord(cordNew, list, 0, -1);
+		testCord(cordNew, list, 0, 1);
+		testCord(cordNew, list, 1, 0);
+		log.info("Current Location after analysis of neighbours: " + cordNew + " listsize: " + list.size());
 		return list;
 	}
 
+	private void testCord(Cord cordNew, List<Cord> list, int x, int y) {
+		Cord possibleCordinates = new Cord(cordNew.getX() + x, cordNew.getY() + y);
+		if (isInRange(possibleCordinates)) {
+			resizeMap(10, cordNew);
+		}
+		list.add((map[possibleCordinates.getX()][possibleCordinates.getY()] == null)
+				? getRelativePosition(possibleCordinates) : null);
+	}
+
 	public int getFieldIndex(Cord cord) {
-		log.info("analsysis the fieldindex: " + cord);
+		Cord cordNew = getTotalPosition(cord);
+		log.info("analsysis the fieldindex: " + cordNew);
 		int index = 0;
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j < 1; ++j) {
-				Cord cordT = new Cord(cord.getX() + i, cord.getY() + j);
+				Cord cordT = new Cord(cordNew.getX() + i, cordNew.getY() + j);
 				if (!isInRange(cordT)) {
 					index += (map[cordT.getX()][cordT.getY()] != null) ? 1 : 0;
 				}
 			}
 		}
-		log.info("currentLocation after analysis of fieldindex: " + cord);
+		log.info("currentLocation after analysis of fieldindex: " + cordNew);
 		return index;
 	}
 
@@ -157,6 +156,10 @@ public class MapAsArray {
 			b.append("\n\r");
 		}
 		log.info(b);
+	}
+
+	public Cord getCurrentLocation() {
+		return getRelativePosition(getMid());
 	}
 
 }

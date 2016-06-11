@@ -21,6 +21,8 @@ public class Start {
 			guiAgent.start();
 			AgentController agent1 = container.createNewAgent("adam", MyAgent.class.getName(), args);
 			agent1.start();
+			AgentController agent2 = container.createNewAgent("eva", MyAgent.class.getName(), args);
+			agent2.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

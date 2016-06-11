@@ -25,7 +25,7 @@ public class MyAgent extends AbstractAgent {
 			public void action() {
 				while (!messages.isEmpty()) {
 					String message = messages.remove();
-					sendMessage(message);
+					sendMessage(message, ACLMessage.REQUEST, new AID(worldName, AID.ISLOCALNAME));
 				}
 			}
 		});
@@ -43,29 +43,41 @@ public class MyAgent extends AbstractAgent {
 
 				}
 				if (msg != null) {
-					msg.getContent();
-					msg.getSender();
+					String content = msg.getContent();
+					AID sender = msg.getSender();
+					log.info("Sender of Message was: " + sender);
 					inToReplyTo = msg.getReplyWith();
 					log.info(inToReplyTo);
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(500);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					if (msg.getPerformative() == ACLMessage.INFORM) {
-						log.info("got informmessage");
-						Gson gson = new Gson();
-						Message m = gson.fromJson(msg.getContent(), Message.class);
-						currentLocation = map.addNewField(m.cell, currentLocation);
-						log.info("ausgabe" + msg.getContent());
-						logic(m);
-					} else if (msg.getPerformative() == ACLMessage.REFUSE) {
-						log.info("got refuse message");
-						map.addNewField(new Cell(0, 0, 0, 0, 0, true, false, "FREE"), currentLocation);
-						currentLocation = getTotalPosition(lastCords.remove());
-						Gson gson = new Gson();
-						Message m = gson.fromJson(msg.getContent(), Message.class);
-						logic(m);
+					if (msg.getSender().equals(topicAID)) {
+						log.info("topic send message to me");
+					} else {
+						log.info("normal message");
+						if (msg.getPerformative() == ACLMessage.INFORM) {
+							log.info("got informmessage");
+							Gson gson = new Gson();
+							Message m = gson.fromJson(content, Message.class);
+							currentLocation = map.addNewField(m.cell, currentLocation);
+							sendMessage(content, ACLMessage.PROPAGATE, topicAID);
+							log.info("ausgabe" + content);
+							logic(m);
+						} else if (msg.getPerformative() == ACLMessage.REFUSE) {
+							log.info("got refuse message");
+							Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
+							map.addNewField(field, currentLocation);
+							Message newMessage = new Message();
+							newMessage.cell = field;
+							Gson gson = new Gson();
+							String con = gson.toJson(newMessage);
+							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+							currentLocation = lastCords.remove();
+							Message m = gson.fromJson(content, Message.class);
+							logic(m);
+						}
 					}
 				} else {
 					block();
@@ -76,6 +88,11 @@ public class MyAgent extends AbstractAgent {
 
 	}
 
+	/**
+	 * Beim Setup vllt eine Methode aufrufen, welche über die args entscheidet,
+	 * welche Logic angeworfen wird Logic als eigene Klasse und Interface und
+	 * das dann die Methode da eine Logic einsetzt -> Lambda?!?
+	 */
 	@Override
 	protected void logic(Message msg) {
 		Gson gson = new Gson();
@@ -107,16 +124,16 @@ public class MyAgent extends AbstractAgent {
 				if (!possibleNeighbours.isEmpty()) {
 					log.info("neighbours found");
 					toGoCord = getNextField(possibleNeighbours, toGoCord);
-					lastCords.addFirst(getRelativePosition(currentLocation));
+					lastCords.addFirst(currentLocation);
 				} else {
 					log.info("no neighbours found");
-					toGoCord = getTotalPosition(lastCords.remove());
+					toGoCord = lastCords.remove();
 				}
 				String action = nextStep(toGoCord);
 				currentLocation = toGoCord;
 				messages.add(gson.toJson(new InformMessage(action, agentColor)));
 			} else {
-				Cord toGoCord = getTotalPosition(lastCords.remove());
+				Cord toGoCord = lastCords.remove();
 				String action = nextStep(toGoCord);
 				log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
 						+ currentLocation);
@@ -137,6 +154,22 @@ public class MyAgent extends AbstractAgent {
 		log.info("converting relativ : " + cord + " to total " + newCord);
 		return newCord;
 	}
+	// private Cord getRelativePosition(Cord cord) {
+	// Cord newCord = new Cord(cord.getX() - map.getMid().getX() , cord.getY() -
+	// map.getMid().getY());
+	// log.info("converting total : "+cord+" to cord "+newCord);
+	// return newCord;
+	// }
+	//
+	// private Cord getTotalPosition(Cord cord) {
+	// Cord newCord = new Cord(map.getMid().getX() + cord.getX(),
+	// map.getMid().getY() + cord.getY());
+	// log.info("converting relativ : "+cord+" to total "+newCord);
+	// return newCord;
+	// }
+	// >>>>>>>branch'master'
+	//
+	// of https:// github.com/Burgomehl/AgentensystemeAusarbeitung.git
 
 	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
 		int currentHighestIndex = 0;
@@ -171,10 +204,10 @@ public class MyAgent extends AbstractAgent {
 	 * 
 	 * @param Message
 	 */
-	private void sendMessage(String Message) {
-		ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+	private void sendMessage(String Message, int messageType, AID aidToSendTo) {
+		ACLMessage msg = new ACLMessage(messageType);
 		msg.setSender(getAID());
-		msg.addReceiver(new AID(worldName, AID.ISLOCALNAME));
+		msg.addReceiver(aidToSendTo);
 		msg.setInReplyTo(inToReplyTo);
 		msg.setContent(Message);
 		msg.setLanguage("JSON");
@@ -193,7 +226,6 @@ public class MyAgent extends AbstractAgent {
 	@Override
 	protected void loginAtToppic() {
 		// TODO Auto-generated method stub
-
 	}
 
 }
