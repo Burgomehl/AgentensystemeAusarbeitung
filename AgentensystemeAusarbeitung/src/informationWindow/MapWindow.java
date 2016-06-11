@@ -109,11 +109,12 @@ public class MapWindow extends JFrame {
 		private Image antBlue = Toolkit.getDefaultToolkit().createImage(pathToResources + "antblue.png");
 		private Image antYellow = Toolkit.getDefaultToolkit().createImage(pathToResources + "antyellow.png");
 
-		private int[][] currentLocation = new int[][] { { 0 }, { 0 } };
+		// private int[][] currentLocation = new int[][] { { 0 }, { 0 } };
 
 		private MapWindow mWindow;
 		private Cell[][] field;
 		private Image[][] mapAsImage;
+		// private int[][] positionArray;
 
 		Screen() {
 			//
@@ -140,18 +141,38 @@ public class MapWindow extends JFrame {
 					m.addImage(mapAsImage[i][j], i * (j + 1));
 				}
 			}
+			mapAsImage[1][1] = antRed;
 			try {
 				m.waitForAll();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			// positionArray = new int[3][3];
 			repaint();
 		}
 
-		private void drawMapTile(int x, int y) {
-			currentLocation[0][0] = x;
-			currentLocation[0][1] = y;
+		private void drawMapTile(String found, int x, int y) {
+			// currentLocation[0][0] = x;
+			// currentLocation[0][1] = y;
+			if (found.equalsIgnoreCase("grass"))
+				mapAsImage[getMid()[0] + x][getMid()[1] + y] = grass;
+			else if (found.equalsIgnoreCase("stone"))
+				mapAsImage[getMid()[0] + x][getMid()[1] + y] = stone;
+			else if (found.equalsIgnoreCase("stench"))
+				mapAsImage[getMid()[0] + x][getMid()[1] + y] = trap;
+			else if (found.equalsIgnoreCase("food"))
+				mapAsImage[getMid()[0] + x][getMid()[1] + y] = best_food;
 
+			repaint();
+			// for (int i = 0; i < positionArray.length; ++i) {
+			// for (int j = 0; j < positionArray[i].length; ++i) {
+			// // if(positionArray[i][j])
+			// }
+			// }
+		}
+
+		private int[] getMid() {
+			return new int[] { (mapAsImage.length / 2), (mapAsImage[0].length) };
 		}
 
 		@Override
@@ -164,7 +185,8 @@ public class MapWindow extends JFrame {
 			if (mapAsImage != null) {
 				for (int i = 0; i < mapAsImage.length; ++i) {
 					for (int j = 0; j < mapAsImage[i].length; ++j) {
-						g.drawImage(fogOfWar, scaledWidth * i, scaledHeight * j, scaledWidth, scaledHeight, this);
+						g.drawImage(mapAsImage[i][j], scaledWidth * i, scaledHeight * j, scaledWidth, scaledHeight,
+								this);
 					}
 				}
 			} else {

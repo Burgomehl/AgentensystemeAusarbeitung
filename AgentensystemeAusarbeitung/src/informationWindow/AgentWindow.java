@@ -95,14 +95,14 @@ public class AgentWindow extends JFrame {
 
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(newAgent.getLocalName());
 		DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Name: " + newAgent.getLocalName());
-		DefaultMutableTreeNode state = new DefaultMutableTreeNode("State: " + newAgent.getState());
-		DefaultMutableTreeNode aState = new DefaultMutableTreeNode("AgentState: " + newAgent.getAgentState().getName());
+		DefaultMutableTreeNode color = new DefaultMutableTreeNode("Color: " + newAgent.agentColor);
+		DefaultMutableTreeNode aState = new DefaultMutableTreeNode("State: " + newAgent.getAgentState().getName());
 		DefaultMutableTreeNode locName = new DefaultMutableTreeNode(
 				"PositionName: " + newAgent.getLocation().getName());
 		DefaultMutableTreeNode location = new DefaultMutableTreeNode("Postion: " + newAgent.getLocation().getAddress());
 
 		node.add(agent);
-		node.add(state);
+		node.add(color);
 		node.add(aState);
 		node.add(locName);
 		node.add(location);
