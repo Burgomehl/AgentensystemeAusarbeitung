@@ -260,35 +260,7 @@ public class MyAgent extends AbstractAgent {
 			possibleCord = lastCords.remove();
 		return possibleCord;
 	}
-
-	private Cord getRelativePosition(Cord cord) {
-		Cord newCord = new Cord(cord.getX() - map.getMid().getX(), cord.getY() - map.getMid().getY());
-		log.info("converting total : " + cord + " to cord " + newCord);
-		return newCord;
-	}
-
-	private Cord getTotalPosition(Cord cord) {
-		Cord newCord = new Cord(map.getMid().getX() + cord.getX(), map.getMid().getY() + cord.getY());
-		log.info("converting relativ : " + cord + " to total " + newCord);
-		return newCord;
-	}
-	// private Cord getRelativePosition(Cord cord) {
-	// Cord newCord = new Cord(cord.getX() - map.getMid().getX() , cord.getY() -
-	// map.getMid().getY());
-	// log.info("converting total : "+cord+" to cord "+newCord);
-	// return newCord;
-	// }
-	//
-	// private Cord getTotalPosition(Cord cord) {
-	// Cord newCord = new Cord(map.getMid().getX() + cord.getX(),
-	// map.getMid().getY() + cord.getY());
-	// log.info("converting relativ : "+cord+" to total "+newCord);
-	// return newCord;
-	// }
-	// >>>>>>>branch'master'
-	//
-	// of https:// github.com/Burgomehl/AgentensystemeAusarbeitung.git
-
+	
 	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
 		int currentHighestIndex = 0;
 		for (Cord cord : possibleNeighbours) {
