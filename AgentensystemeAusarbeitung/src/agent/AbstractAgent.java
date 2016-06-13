@@ -92,7 +92,7 @@ public abstract class AbstractAgent extends Agent {
 			topicManagementHelper.register(topicAID);
 			
 		} catch (ServiceException e) {
-			log.error("Error", e);
+			log.error("Error at topiccreation: ", e);
 		}
 	}
 

@@ -50,6 +50,7 @@ public class MyAgent extends AbstractAgent {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					log.info(msg.getSender()+" "+msg.getPerformative());
 					if (msg.getSender().equals(topicAID)) {
 						log.info("topic send message to me");
 					} else {
@@ -59,7 +60,7 @@ public class MyAgent extends AbstractAgent {
 							Gson gson = new Gson();
 							Message m = gson.fromJson(content, Message.class);
 							currentLocation = map.addNewField(m.cell, currentLocation);
-							sendMessage(content, ACLMessage.PROPAGATE, topicAID);
+							sendMessage(content, ACLMessage.INFORM, topicAID);
 							log.info("ausgabe" + content);
 							logic(m);
 						} else if (msg.getPerformative() == ACLMessage.REFUSE) {
@@ -70,7 +71,7 @@ public class MyAgent extends AbstractAgent {
 							newMessage.cell = field;
 							Gson gson = new Gson();
 							String con = gson.toJson(newMessage);
-							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+							sendMessage(con, ACLMessage.INFORM, topicAID);
 							currentLocation = lastCords.remove();
 							Message m = gson.fromJson(content, Message.class);
 							logic(m);

@@ -1,6 +1,6 @@
-2016-06-09 23:25:16,612 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
-2016-06-09 23:25:16,612 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
-2016-06-09 23:25:16,617 ERROR [adam] jade.core.Agent: Error
+2016-06-13 18:30:17,385 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
+2016-06-13 18:30:17,385 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
+2016-06-13 18:30:17,388 ERROR [eva] jade.core.Agent: Error at topiccreation: 
 jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManagement> is not active on this node
 	at jade.core.AgentContainerImpl.getHelper(AgentContainerImpl.java:945)
 	at jade.core.Agent.getHelper(Agent.java:2191)
@@ -9,7 +9,7 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
 	at jade.core.Agent$ActiveLifeCycle.init(Agent.java:1542)
 	at jade.core.Agent.run(Agent.java:1488)
 	at java.lang.Thread.run(Thread.java:745)
-2016-06-09 23:25:16,617 ERROR [eva] jade.core.Agent: Error
+2016-06-13 18:30:17,388 ERROR [adam] jade.core.Agent: Error at topiccreation: 
 jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManagement> is not active on this node
 	at jade.core.AgentContainerImpl.getHelper(AgentContainerImpl.java:945)
 	at jade.core.Agent.getHelper(Agent.java:2191)
@@ -18,25 +18,26 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
 	at jade.core.Agent$ActiveLifeCycle.init(Agent.java:1542)
 	at jade.core.Agent.run(Agent.java:1488)
 	at java.lang.Thread.run(Thread.java:745)
-2016-06-09 23:25:16,636 DEBUG [adam] jade.core.Agent: Login at antworld
-2016-06-09 23:25:16,636 DEBUG [eva] jade.core.Agent: Login at antworld
-2016-06-09 23:25:16,656 INFO  [adam] jade.core.Agent: antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93:
-2016-06-09 23:25:16,656 INFO  [eva] jade.core.Agent: antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93:
-2016-06-09 23:25:16,657 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_LOGIN","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:16,657 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_LOGIN","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:16,657 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:16,657 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:16,668 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:16,668 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:16,668 INFO  [eva] jade.core.Agent: MSG10306
-2016-06-09 23:25:16,681 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:16,681 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:16,681 INFO  [adam] jade.core.Agent: MSG10307
-2016-06-09 23:25:17,168 INFO  [eva] jade.core.Agent: normal message
-2016-06-09 23:25:17,168 INFO  [eva] jade.core.Agent: got informmessage
-2016-06-09 23:25:17,171 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,171 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,171 INFO  [eva] data.MapAsArrayReloaded: -----------
+2016-06-13 18:30:17,413 DEBUG [adam] jade.core.Agent: Login at antworld
+2016-06-13 18:30:17,413 DEBUG [eva] jade.core.Agent: Login at antworld
+2016-06-13 18:30:17,442 INFO  [adam] jade.core.Agent: antWorld845bb185-53db-4e47-80cc-69befce8946d:
+2016-06-13 18:30:17,442 INFO  [eva] jade.core.Agent: antWorld845bb185-53db-4e47-80cc-69befce8946d:
+2016-06-13 18:30:17,442 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_LOGIN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:17,442 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_LOGIN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:17,443 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:17,443 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:17,611 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:17,611 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:17,611 INFO  [eva] jade.core.Agent: MSG10000
+2016-06-13 18:30:17,629 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:17,629 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:17,629 INFO  [adam] jade.core.Agent: MSG10001
+2016-06-13 18:30:18,112 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:18,112 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:18,112 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:18,115 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,115 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,115 INFO  [eva] data.MapAsArrayReloaded: -----------
 -----------
 -----------
 -----------
@@ -48,8 +49,8 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
 -----------
 -----------
 
-2016-06-09 23:25:17,171 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
-2016-06-09 23:25:17,171 INFO  [eva] jade.core.Agent: schicke: {
+2016-06-13 18:30:18,115 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
+2016-06-13 18:30:18,115 INFO  [eva] jade.core.Agent: schicke: {
   "name" : "eva",
   "state" : "ALIVE",
   "color" : "RED",
@@ -57,8 +58,8 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "totalFood" : 0,
   "action" : "ANT_ACTION_LOGIN",
   "cell" : {
-    "row" : 7,
-    "col" : 24,
+    "row" : 6,
+    "col" : 1,
     "type" : "START",
     "food" : 0,
     "smell" : 0,
@@ -67,7 +68,7 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   },
   "replyId" : ""
 }
-2016-06-09 23:25:17,171 INFO  [eva] jade.core.Agent: ausgabe{
+2016-06-13 18:30:18,116 INFO  [eva] jade.core.Agent: ausgabe{
   "name" : "eva",
   "state" : "ALIVE",
   "color" : "RED",
@@ -75,8 +76,8 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "totalFood" : 0,
   "action" : "ANT_ACTION_LOGIN",
   "cell" : {
-    "row" : 7,
-    "col" : 24,
+    "row" : 6,
+    "col" : 1,
     "type" : "START",
     "food" : 0,
     "smell" : 0,
@@ -85,43 +86,41 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   },
   "replyId" : ""
 }
-2016-06-09 23:25:17,172 INFO  [eva] jade.core.Agent: no stench go on
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:5]} to cord {Cord:[X:-1],[Y:0]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:4]} to cord {Cord:[X:0],[Y:-1]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]} listsize: 4
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] jade.core.Agent: neighbours found
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,172 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,173 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,173 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,173 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,173 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:17,173 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,177 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,178 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:17,179 INFO  [eva] jade.core.Agent: MSG10308
-2016-06-09 23:25:17,181 INFO  [adam] jade.core.Agent: normal message
-2016-06-09 23:25:17,181 INFO  [adam] jade.core.Agent: got informmessage
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: -----------
+2016-06-13 18:30:18,116 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:5]} to cord {Cord:[X:-1],[Y:0]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:4]} to cord {Cord:[X:0],[Y:-1]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]} listsize: 4
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,116 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,116 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,117 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:18,117 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,130 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:18,130 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:18,130 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:18,130 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,130 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,130 INFO  [adam] data.MapAsArrayReloaded: -----------
 -----------
 -----------
 -----------
@@ -133,8 +132,8 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
 -----------
 -----------
 
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
-2016-06-09 23:25:17,182 INFO  [adam] jade.core.Agent: schicke: {
+2016-06-13 18:30:18,130 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:5]} to cord {Cord:[X:0],[Y:0]}
+2016-06-13 18:30:18,130 INFO  [adam] jade.core.Agent: schicke: {
   "name" : "adam",
   "state" : "ALIVE",
   "color" : "RED",
@@ -142,8 +141,8 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "totalFood" : 0,
   "action" : "ANT_ACTION_LOGIN",
   "cell" : {
-    "row" : 7,
-    "col" : 24,
+    "row" : 6,
+    "col" : 1,
     "type" : "START",
     "food" : 0,
     "smell" : 0,
@@ -152,7 +151,7 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   },
   "replyId" : ""
 }
-2016-06-09 23:25:17,182 INFO  [adam] jade.core.Agent: ausgabe{
+2016-06-13 18:30:18,130 INFO  [adam] jade.core.Agent: ausgabe{
   "name" : "adam",
   "state" : "ALIVE",
   "color" : "RED",
@@ -160,8 +159,8 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "totalFood" : 0,
   "action" : "ANT_ACTION_LOGIN",
   "cell" : {
-    "row" : 7,
-    "col" : 24,
+    "row" : 6,
+    "col" : 1,
     "type" : "START",
     "food" : 0,
     "smell" : 0,
@@ -170,43 +169,47 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   },
   "replyId" : ""
 }
-2016-06-09 23:25:17,182 INFO  [adam] jade.core.Agent: no stench go on
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:5]} to cord {Cord:[X:-1],[Y:0]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:4]} to cord {Cord:[X:0],[Y:-1]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]} listsize: 4
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] jade.core.Agent: neighbours found
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:5]}
-2016-06-09 23:25:17,182 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:4]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,183 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,183 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,183 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,183 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:17,183 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,189 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,190 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:17,190 INFO  [adam] jade.core.Agent: MSG10309
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: normal message
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: got informmessage
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: -----------
+2016-06-13 18:30:18,130 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:18,130 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:0]} to total {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,130 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:5]}
+2016-06-13 18:30:18,130 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:5]} to cord {Cord:[X:-1],[Y:0]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:4]} to cord {Cord:[X:0],[Y:-1]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:5]} listsize: 4
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:0]} to total {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:6]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,131 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,131 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,150 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:18,151 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,152 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,152 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:18,153 INFO  [eva] jade.core.Agent: MSG10002
+2016-06-13 18:30:18,165 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,165 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:18,166 INFO  [adam] jade.core.Agent: MSG10003
+2016-06-13 18:30:18,653 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:18,653 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:18,653 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: -----------
 -----------
 -----------
 -----------
@@ -218,8 +221,1793 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
 -----------
 -----------
 
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: schicke: {
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,653 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10000"
+}
+2016-06-13 18:30:18,653 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10000"
+}
+2016-06-13 18:30:18,653 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,653 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,653 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,654 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,654 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:18,654 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:18,654 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:18,654 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,657 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,657 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:18,657 INFO  [eva] jade.core.Agent: MSG10004
+2016-06-13 18:30:18,666 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:18,666 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:18,666 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+-----------
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:18,666 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10001"
+}
+2016-06-13 18:30:18,666 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10001"
+}
+2016-06-13 18:30:18,666 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:18,666 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,667 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,667 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:18,667 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:18,667 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:18,678 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:18,679 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,707 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:18,707 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:18,707 INFO  [adam] jade.core.Agent: MSG10005
+2016-06-13 18:30:19,157 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:19,157 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:19,157 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:19,158 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:19,158 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:19,158 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:19,158 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:19,158 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10002"
+}
+2016-06-13 18:30:19,158 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10002"
+}
+2016-06-13 18:30:19,158 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:19,158 INFO  [eva] jade.core.Agent: stench found, will go back to last location: {Cord:[X:1],[Y:0]} from current location: {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:19,159 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:19,160 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,187 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,187 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:19,187 INFO  [eva] jade.core.Agent: MSG10006
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:19,207 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:19,207 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:6]}
+2016-06-13 18:30:19,207 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:19,207 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10003"
+}
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10003"
+}
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: stench found, will go back to last location: {Cord:[X:1],[Y:0]} from current location: {Cord:[X:1],[Y:1]}
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:19,207 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,218 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,218 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:19,218 INFO  [adam] jade.core.Agent: MSG10007
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10004"
+}
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10004"
+}
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:19,688 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:19,689 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,694 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,694 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:19,694 INFO  [eva] jade.core.Agent: MSG10008
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HO----
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10005"
+}
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10005"
+}
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:19,719 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:19,720 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:19,720 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,727 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:19,727 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:19,727 INFO  [adam] jade.core.Agent: MSG10009
+2016-06-13 18:30:20,194 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:20,194 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:20,194 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:20,195 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:20,195 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:20,195 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:20,195 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:20,195 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10006"
+}
+2016-06-13 18:30:20,195 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10006"
+}
+2016-06-13 18:30:20,195 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:20,195 INFO  [eva] jade.core.Agent: stench found, will go back to last location: {Cord:[X:1],[Y:0]} from current location: {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:20,195 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:20,195 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,208 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,208 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:20,209 INFO  [eva] jade.core.Agent: MSG10010
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:20,228 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:20,228 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:7],[Y:5]}
+2016-06-13 18:30:20,228 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:20,228 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10007"
+}
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 1,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10007"
+}
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: stench found, will go back to last location: {Cord:[X:1],[Y:0]} from current location: {Cord:[X:2],[Y:0]}
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:20,228 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,231 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,231 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:20,231 INFO  [adam] jade.core.Agent: MSG10011
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10008"
+}
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10008"
+}
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,709 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:20,709 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:20,710 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:20,710 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,716 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,716 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:20,716 INFO  [eva] jade.core.Agent: MSG10012
+2016-06-13 18:30:20,731 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:20,731 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:20,731 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+-----------
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
+2016-06-13 18:30:20,732 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10009"
+}
+2016-06-13 18:30:20,732 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_LEFT",
+  "cell" : {
+    "row" : 6,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10009"
+}
+2016-06-13 18:30:20,732 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,732 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,732 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:20,732 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:20,732 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:20,733 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_UP","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:20,734 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,740 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:20,741 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:20,741 INFO  [adam] jade.core.Agent: MSG10013
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------O----
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 5,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 9,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10010"
+}
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 5,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 9,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10010"
+}
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:4]} to cord {Cord:[X:0],[Y:-1]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:3]} to cord {Cord:[X:1],[Y:-2]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:4]} to cord {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:4]} listsize: 4
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-2]} to total {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-2]} to total {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,217 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:21,218 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,227 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,227 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:21,227 INFO  [eva] jade.core.Agent: MSG10014
+2016-06-13 18:30:21,241 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:21,241 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:21,241 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:21,241 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------O----
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 5,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 9,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10011"
+}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_UP",
+  "cell" : {
+    "row" : 5,
+    "col" : 2,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 9,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10011"
+}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:4]} to cord {Cord:[X:0],[Y:-1]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:3]} to cord {Cord:[X:1],[Y:-2]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:4]} to cord {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:4]} listsize: 4
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-2]} to total {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-1]} to total {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-2]} to total {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:3]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:21,242 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,250 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,250 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:21,250 INFO  [adam] jade.core.Agent: MSG10015
+2016-06-13 18:30:21,728 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:21,728 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:21,728 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:21,728 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OO---
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:4]} to cord {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10012"
+}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10012"
+}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:3]} to cord {Cord:[X:2],[Y:-2]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:4]} to cord {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:7],[Y:4]} listsize: 4
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-2]} to total {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-2]} to total {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:21,729 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,736 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,736 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:21,736 INFO  [eva] jade.core.Agent: MSG10016
+2016-06-13 18:30:21,751 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:21,751 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:21,751 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OO---
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:4]} to cord {Cord:[X:2],[Y:-1]}
+2016-06-13 18:30:21,751 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10013"
+}
+2016-06-13 18:30:21,751 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 3,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10013"
+}
+2016-06-13 18:30:21,751 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-1]} to total {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:7],[Y:4]}
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:3]} to cord {Cord:[X:2],[Y:-2]}
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:4]} to cord {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:7],[Y:4]} listsize: 4
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-2]} to total {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,751 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,751 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:21,752 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:-2]} to total {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,752 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,752 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:3]}
+2016-06-13 18:30:21,752 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,752 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,752 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:21,752 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:21,752 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:21,752 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:21,752 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,761 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:21,761 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:21,761 INFO  [adam] jade.core.Agent: MSG10017
+2016-06-13 18:30:22,236 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:22,236 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:22,236 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:22,236 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,236 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,236 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OOO--
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:22,236 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:4]} to cord {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:22,236 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10014"
+}
+2016-06-13 18:30:22,237 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10014"
+}
+2016-06-13 18:30:22,237 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:3]} to cord {Cord:[X:3],[Y:-2]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:5]} to cord {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:4]} to cord {Cord:[X:4],[Y:-1]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:8],[Y:4]} listsize: 4
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-2]} to total {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,237 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-2]} to total {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,237 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,237 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,237 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,237 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:22,237 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,244 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,245 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:22,245 INFO  [eva] jade.core.Agent: MSG10018
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OOO--
+-----HOS---
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:4]} to cord {Cord:[X:3],[Y:-1]}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10015"
+}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 5,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10015"
+}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-1]} to total {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:8],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:3]} to cord {Cord:[X:3],[Y:-2]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:5]} to cord {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:4]} to cord {Cord:[X:4],[Y:-1]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:8],[Y:4]} listsize: 4
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-2]} to total {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:-2]} to total {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:3]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:9],[Y:4]}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:22,262 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,267 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,267 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:22,267 INFO  [adam] jade.core.Agent: MSG10019
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OOO--
+-----HOSO--
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:5]} to cord {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 6,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10016"
+}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 6,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10016"
+}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:6]} to cord {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:5]} to cord {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:8],[Y:5]} listsize: 4
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:22,745 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,751 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,751 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:22,751 INFO  [eva] jade.core.Agent: MSG10020
+2016-06-13 18:30:22,767 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:22,767 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:22,767 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:22,767 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,767 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,767 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OOO--
+-----HOSO--
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:22,767 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:5]} to cord {Cord:[X:3],[Y:0]}
+2016-06-13 18:30:22,767 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 6,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10017"
+}
+2016-06-13 18:30:22,767 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 6,
+    "col" : 4,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10017"
+}
+2016-06-13 18:30:22,768 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:0]} to total {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:8],[Y:5]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:8],[Y:6]} to cord {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:5]} to cord {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:8],[Y:5]} listsize: 4
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,768 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:8],[Y:6]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,768 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:22,768 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:22,768 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:22,768 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:22,768 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,776 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:22,777 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:22,777 INFO  [adam] jade.core.Agent: MSG10021
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OOO--
+-----HOSOO-
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:5]} to cord {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10018"
+}
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10018"
+}
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:4]} to cord {Cord:[X:4],[Y:-1]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:6]} to cord {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: resize Map with cord: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: resized cord: {Cord:[X:14],[Y:10]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:10],[Y:5]} to cord {Cord:[X:0],[Y:-5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:14],[Y:10]} listsize: 4
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-5]} to total {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-5]} to total {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,252 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,253 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:23,255 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,266 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,266 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:23,266 INFO  [eva] jade.core.Agent: MSG10022
+2016-06-13 18:30:23,277 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:23,277 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:23,277 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: -----------
+-----------
+-----------
+-----------
+------OOO--
+-----HOSOO-
+------S----
+-----------
+-----------
+-----------
+-----------
+
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:5]} to cord {Cord:[X:4],[Y:0]}
+2016-06-13 18:30:23,277 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10019"
+}
+2016-06-13 18:30:23,277 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_RIGHT",
+  "cell" : {
+    "row" : 6,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10019"
+}
+2016-06-13 18:30:23,277 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:0]} to total {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:4]} to cord {Cord:[X:4],[Y:-1]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:9],[Y:6]} to cord {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: resize Map with cord: {Cord:[X:9],[Y:5]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: resized cord: {Cord:[X:14],[Y:10]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:10],[Y:5]} to cord {Cord:[X:0],[Y:-5]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:14],[Y:10]} listsize: 4
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,277 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-5]} to total {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,278 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:-1]} to total {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:9]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:-5]} to total {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,278 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:10],[Y:5]}
+2016-06-13 18:30:23,278 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,278 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,278 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:23,278 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,289 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,289 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:23,289 INFO  [adam] jade.core.Agent: MSG10023
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S--O------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:14],[Y:11]} to cord {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: schicke: {
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10020"
+}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: ausgabe{
+  "name" : "eva",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva" ]
+  },
+  "replyId" : "MSG10020"
+}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:13],[Y:11]} to cord {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:14],[Y:12]} to cord {Cord:[X:4],[Y:2]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:11]} to cord {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:14],[Y:11]} listsize: 4
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:23,767 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,777 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,777 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:23,777 INFO  [eva] jade.core.Agent: MSG10024
+2016-06-13 18:30:23,789 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:23,789 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:23,789 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:23,789 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,789 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,789 INFO  [adam] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S--O------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+2016-06-13 18:30:23,789 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:14],[Y:11]} to cord {Cord:[X:4],[Y:1]}
+2016-06-13 18:30:23,789 INFO  [adam] jade.core.Agent: schicke: {
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10021"
+}
+2016-06-13 18:30:23,790 INFO  [adam] jade.core.Agent: ausgabe{
+  "name" : "adam",
+  "state" : "ALIVE",
+  "color" : "RED",
+  "currentFood" : 0,
+  "totalFood" : 0,
+  "action" : "ANT_ACTION_DOWN",
+  "cell" : {
+    "row" : 7,
+    "col" : 5,
+    "type" : "FREE",
+    "food" : 0,
+    "smell" : 0,
+    "stench" : 0,
+    "ants" : [ "eva", "adam" ]
+  },
+  "replyId" : "MSG10021"
+}
+2016-06-13 18:30:23,790 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:13],[Y:11]} to cord {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:14],[Y:12]} to cord {Cord:[X:4],[Y:2]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:11]} to cord {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:14],[Y:11]} listsize: 4
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:23,790 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:23,790 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:23,790 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:23,790 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,796 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:23,796 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:23,796 INFO  [adam] jade.core.Agent: MSG10025
+2016-06-13 18:30:24,277 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 14
+2016-06-13 18:30:24,277 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:24,277 INFO  [eva] jade.core.Agent: got refuse message
+2016-06-13 18:30:24,277 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:24,277 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:24,277 INFO  [eva] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S-RO------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+2016-06-13 18:30:24,277 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:13],[Y:11]} to cord {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:24,278 INFO  [eva] jade.core.Agent: schicke: {"cell":{"food":0,"smell":0,"stench":0,"row":0,"col":0,"rock":true,"trap":false,"type":"FREE"}}
+2016-06-13 18:30:24,278 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:14],[Y:12]} to cord {Cord:[X:4],[Y:2]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:11]} to cord {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:14],[Y:11]} listsize: 4
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,278 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,278 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,278 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:24,278 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:24,278 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:24,278 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:24,282 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:24,282 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:24,282 INFO  [eva] jade.core.Agent: MSG10026
+2016-06-13 18:30:24,296 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 14
+2016-06-13 18:30:24,296 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:24,296 INFO  [adam] jade.core.Agent: got refuse message
+2016-06-13 18:30:24,296 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:3],[Y:1]} to total {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:24,296 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:13],[Y:11]}
+2016-06-13 18:30:24,296 INFO  [adam] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S-RO------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+2016-06-13 18:30:24,296 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:13],[Y:11]} to cord {Cord:[X:3],[Y:1]}
+2016-06-13 18:30:24,296 INFO  [adam] jade.core.Agent: schicke: {"cell":{"food":0,"smell":0,"stench":0,"row":0,"col":0,"rock":true,"trap":false,"type":"FREE"}}
+2016-06-13 18:30:24,297 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:1]} to total {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:14],[Y:11]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:14],[Y:12]} to cord {Cord:[X:4],[Y:2]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:11]} to cord {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:14],[Y:11]} listsize: 4
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,297 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:4],[Y:2]} to total {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:14],[Y:12]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,297 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,297 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:24,297 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:24,297 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:24,297 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S-ROO-----
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:11]} to cord {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: schicke: {
   "name" : "eva",
   "state" : "ALIVE",
   "color" : "RED",
@@ -228,16 +2016,16 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "action" : "ANT_ACTION_RIGHT",
   "cell" : {
     "row" : 7,
-    "col" : 25,
+    "col" : 6,
     "type" : "FREE",
     "food" : 0,
-    "smell" : 11,
+    "smell" : 0,
     "stench" : 0,
     "ants" : [ "eva" ]
   },
-  "replyId" : "MSG10306"
+  "replyId" : "MSG10024"
 }
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: ausgabe{
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: ausgabe{
   "name" : "eva",
   "state" : "ALIVE",
   "color" : "RED",
@@ -246,60 +2034,74 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "action" : "ANT_ACTION_RIGHT",
   "cell" : {
     "row" : 7,
-    "col" : 25,
+    "col" : 6,
     "type" : "FREE",
     "food" : 0,
-    "smell" : 11,
+    "smell" : 0,
     "stench" : 0,
     "ants" : [ "eva" ]
   },
-  "replyId" : "MSG10306"
+  "replyId" : "MSG10024"
 }
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: no stench go on
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: neighbours found
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:17,680 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:17,681 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:17,681 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,685 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,685 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:17,685 INFO  [eva] jade.core.Agent: MSG10310
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: normal message
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: got informmessage
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: -----------
------------
------------
------------
------------
------HO----
------------
------------
------------
------------
------------
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:10]} to cord {Cord:[X:5],[Y:0]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:12]} to cord {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:16],[Y:11]} to cord {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:15],[Y:11]} listsize: 4
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:2]} to total {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:2]} to total {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:24,783 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:25,416 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:25,417 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:25,417 INFO  [adam] jade.core.Agent: MSG10027
+2016-06-13 18:30:25,430 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:25,430 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:25,430 INFO  [eva] jade.core.Agent: MSG10028
+2016-06-13 18:30:25,917 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:25,917 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:25,917 INFO  [adam] jade.core.Agent: got informmessage
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S-ROO-----
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
 
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:5]} to cord {Cord:[X:1],[Y:0]}
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: schicke: {
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:11]} to cord {Cord:[X:5],[Y:1]}
+2016-06-13 18:30:25,917 INFO  [adam] jade.core.Agent: schicke: {
   "name" : "adam",
   "state" : "ALIVE",
   "color" : "RED",
@@ -308,16 +2110,16 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "action" : "ANT_ACTION_RIGHT",
   "cell" : {
     "row" : 7,
-    "col" : 25,
+    "col" : 6,
     "type" : "FREE",
     "food" : 0,
-    "smell" : 11,
+    "smell" : 0,
     "stench" : 0,
     "ants" : [ "eva", "adam" ]
   },
-  "replyId" : "MSG10307"
+  "replyId" : "MSG10025"
 }
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: ausgabe{
+2016-06-13 18:30:25,917 INFO  [adam] jade.core.Agent: ausgabe{
   "name" : "adam",
   "state" : "ALIVE",
   "color" : "RED",
@@ -326,413 +2128,232 @@ jade.core.ServiceNotActiveException: The service <jade.core.messaging.TopicManag
   "action" : "ANT_ACTION_RIGHT",
   "cell" : {
     "row" : 7,
-    "col" : 25,
+    "col" : 6,
     "type" : "FREE",
     "food" : 0,
-    "smell" : 11,
+    "smell" : 0,
     "stench" : 0,
     "ants" : [ "eva", "adam" ]
   },
-  "replyId" : "MSG10307"
+  "replyId" : "MSG10025"
 }
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: no stench go on
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:0]} to total {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:4]} to cord {Cord:[X:1],[Y:-1]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:5]} to cord {Cord:[X:2],[Y:0]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:5]} listsize: 4
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: neighbours found
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:-1]} to total {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:4]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:0]} to total {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:5]}
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:17,691 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:17,692 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:17,692 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,697 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:17,697 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:17,697 INFO  [adam] jade.core.Agent: MSG10311
-2016-06-09 23:25:18,185 INFO  [eva] jade.core.Agent: normal message
-2016-06-09 23:25:18,185 INFO  [eva] jade.core.Agent: got informmessage
-2016-06-09 23:25:18,185 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,185 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: -----------
------------
------------
------------
------------
------HO----
-------F----
------------
------------
------------
------------
+2016-06-13 18:30:25,917 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:10]} to cord {Cord:[X:5],[Y:0]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:12]} to cord {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:16],[Y:11]} to cord {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:15],[Y:11]} listsize: 4
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:2]} to total {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:25,917 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,917 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:2]} to total {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,918 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,918 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:25,918 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:25,918 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:25,918 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:25,926 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:25,927 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:25,927 INFO  [adam] jade.core.Agent: MSG10029
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 14
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: got refuse message
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:2]} to total {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S-ROO-----
+---------------R-----
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
 
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: schicke: {
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:12]} to cord {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: schicke: {"cell":{"food":0,"smell":0,"stench":0,"row":0,"col":0,"rock":true,"trap":false,"type":"FREE"}}
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:10]} to cord {Cord:[X:5],[Y:0]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:16],[Y:11]} to cord {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:15],[Y:11]} listsize: 4
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,931 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:25,931 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:25,932 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:25,938 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:25,939 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:25,939 INFO  [eva] jade.core.Agent: MSG10030
+2016-06-13 18:30:26,427 INFO  [adam] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 14
+2016-06-13 18:30:26,427 INFO  [adam] jade.core.Agent: normal message
+2016-06-13 18:30:26,427 INFO  [adam] jade.core.Agent: got refuse message
+2016-06-13 18:30:26,427 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:2]} to total {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:26,427 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:15],[Y:12]}
+2016-06-13 18:30:26,427 INFO  [adam] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S-ROO-----
+---------------R-----
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+2016-06-13 18:30:26,427 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:12]} to cord {Cord:[X:5],[Y:2]}
+2016-06-13 18:30:26,427 INFO  [adam] jade.core.Agent: schicke: {"cell":{"food":0,"smell":0,"stench":0,"row":0,"col":0,"rock":true,"trap":false,"type":"FREE"}}
+2016-06-13 18:30:26,428 INFO  [adam] jade.core.Agent: no stench go on
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:1]} to total {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:15],[Y:11]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:15],[Y:10]} to cord {Cord:[X:5],[Y:0]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:16],[Y:11]} to cord {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:15],[Y:11]} listsize: 4
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,428 INFO  [adam] jade.core.Agent: neighbours found
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:5],[Y:0]} to total {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:15],[Y:10]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,428 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,428 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:26,428 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:26,428 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_RIGHT","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:26,428 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:26,435 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:26,435 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:26,435 INFO  [adam] jade.core.Agent: MSG10031
+2016-06-13 18:30:26,439 INFO  [eva] jade.core.Agent: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc )) 7
+2016-06-13 18:30:26,439 INFO  [eva] jade.core.Agent: normal message
+2016-06-13 18:30:26,439 INFO  [eva] jade.core.Agent: got informmessage
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: ---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+-----------OOO-------
+----------HOSOO------
+-----------S-ROOO----
+---------------R-----
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+---------------------
+
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:16],[Y:11]} to cord {Cord:[X:6],[Y:1]}
+2016-06-13 18:30:26,439 INFO  [eva] jade.core.Agent: schicke: {
   "name" : "eva",
   "state" : "ALIVE",
   "color" : "RED",
   "currentFood" : 0,
   "totalFood" : 0,
-  "action" : "ANT_ACTION_DOWN",
+  "action" : "ANT_ACTION_RIGHT",
   "cell" : {
-    "row" : 8,
-    "col" : 25,
+    "row" : 7,
+    "col" : 7,
     "type" : "FREE",
-    "food" : 11,
-    "smell" : 11,
+    "food" : 0,
+    "smell" : 0,
     "stench" : 0,
     "ants" : [ "eva" ]
   },
-  "replyId" : "MSG10308"
+  "replyId" : "MSG10028"
 }
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: ausgabe{
+2016-06-13 18:30:26,439 INFO  [eva] jade.core.Agent: ausgabe{
   "name" : "eva",
   "state" : "ALIVE",
   "color" : "RED",
   "currentFood" : 0,
   "totalFood" : 0,
-  "action" : "ANT_ACTION_DOWN",
+  "action" : "ANT_ACTION_RIGHT",
   "cell" : {
-    "row" : 8,
-    "col" : 25,
+    "row" : 7,
+    "col" : 7,
     "type" : "FREE",
-    "food" : 11,
-    "smell" : 11,
+    "food" : 0,
+    "smell" : 0,
     "stench" : 0,
     "ants" : [ "eva" ]
   },
-  "replyId" : "MSG10308"
+  "replyId" : "MSG10028"
 }
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: no stench go on
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:7]} to cord {Cord:[X:1],[Y:2]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:6]} to cord {Cord:[X:2],[Y:1]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:6]} listsize: 4
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:2]} to total {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:1]} to total {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: neighbours found
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:2]} to total {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:1]} to total {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:18,186 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:18,197 INFO  [adam] jade.core.Agent: normal message
-2016-06-09 23:25:18,197 INFO  [adam] jade.core.Agent: got informmessage
-2016-06-09 23:25:18,197 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,197 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,197 INFO  [adam] data.MapAsArrayReloaded: -----------
------------
------------
------------
------------
------HO----
-------F----
------------
------------
------------
------------
-
-2016-06-09 23:25:18,197 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:6]} to cord {Cord:[X:1],[Y:1]}
-2016-06-09 23:25:18,197 INFO  [adam] jade.core.Agent: schicke: {
-  "name" : "adam",
-  "state" : "ALIVE",
-  "color" : "RED",
-  "currentFood" : 0,
-  "totalFood" : 0,
-  "action" : "ANT_ACTION_DOWN",
-  "cell" : {
-    "row" : 8,
-    "col" : 25,
-    "type" : "FREE",
-    "food" : 11,
-    "smell" : 11,
-    "stench" : 0,
-    "ants" : [ "eva", "adam" ]
-  },
-  "replyId" : "MSG10309"
-}
-2016-06-09 23:25:18,198 INFO  [adam] jade.core.Agent: ausgabe{
-  "name" : "adam",
-  "state" : "ALIVE",
-  "color" : "RED",
-  "currentFood" : 0,
-  "totalFood" : 0,
-  "action" : "ANT_ACTION_DOWN",
-  "cell" : {
-    "row" : 8,
-    "col" : 25,
-    "type" : "FREE",
-    "food" : 11,
-    "smell" : 11,
-    "stench" : 0,
-    "ants" : [ "eva", "adam" ]
-  },
-  "replyId" : "MSG10309"
-}
-2016-06-09 23:25:18,198 INFO  [adam] jade.core.Agent: no stench go on
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:1]} to total {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:6],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:6],[Y:7]} to cord {Cord:[X:1],[Y:2]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:7],[Y:6]} to cord {Cord:[X:2],[Y:1]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:6],[Y:6]} listsize: 4
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:2]} to total {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:1]} to total {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] jade.core.Agent: neighbours found
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:1],[Y:2]} to total {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:6],[Y:7]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:2],[Y:1]} to total {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:7],[Y:6]}
-2016-06-09 23:25:18,198 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:18,198 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:18,198 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:18,198 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:18,588 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:18,588 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:18,588 INFO  [eva] jade.core.Agent: MSG10312
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: normal message
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: got informmessage
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: -----------
------------
------------
------------
------------
------HO----
------OF----
------------
------------
------------
------------
-
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: schicke: {
-  "name" : "eva",
-  "state" : "ALIVE",
-  "color" : "RED",
-  "currentFood" : 0,
-  "totalFood" : 0,
-  "action" : "ANT_ACTION_LEFT",
-  "cell" : {
-    "row" : 8,
-    "col" : 24,
-    "type" : "FREE",
-    "food" : 0,
-    "smell" : 11,
-    "stench" : 0,
-    "ants" : [ "eva" ]
-  },
-  "replyId" : "MSG10310"
-}
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: ausgabe{
-  "name" : "eva",
-  "state" : "ALIVE",
-  "color" : "RED",
-  "currentFood" : 0,
-  "totalFood" : 0,
-  "action" : "ANT_ACTION_LEFT",
-  "cell" : {
-    "row" : 8,
-    "col" : 24,
-    "type" : "FREE",
-    "food" : 0,
-    "smell" : 11,
-    "stench" : 0,
-    "ants" : [ "eva" ]
-  },
-  "replyId" : "MSG10310"
-}
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: no stench go on
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:6]} to cord {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:7]} to cord {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:6]} listsize: 4
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:2]} to total {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: neighbours found
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:2]} to total {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,089 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:19,089 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:19,090 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:19,090 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:19,272 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:19,272 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:19,272 INFO  [adam] jade.core.Agent: MSG10313
-2016-06-09 23:25:19,283 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:19,283 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:19,283 INFO  [eva] jade.core.Agent: MSG10314
-2016-06-09 23:25:19,772 INFO  [adam] jade.core.Agent: normal message
-2016-06-09 23:25:19,772 INFO  [adam] jade.core.Agent: got informmessage
-2016-06-09 23:25:19,772 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,772 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,772 INFO  [adam] data.MapAsArrayReloaded: -----------
------------
------------
------------
------------
------HO----
------OF----
------------
------------
------------
------------
-
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:6]} to cord {Cord:[X:0],[Y:1]}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: schicke: {
-  "name" : "adam",
-  "state" : "ALIVE",
-  "color" : "RED",
-  "currentFood" : 0,
-  "totalFood" : 0,
-  "action" : "ANT_ACTION_LEFT",
-  "cell" : {
-    "row" : 8,
-    "col" : 24,
-    "type" : "FREE",
-    "food" : 0,
-    "smell" : 11,
-    "stench" : 0,
-    "ants" : [ "eva", "adam" ]
-  },
-  "replyId" : "MSG10311"
-}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: ausgabe{
-  "name" : "adam",
-  "state" : "ALIVE",
-  "color" : "RED",
-  "currentFood" : 0,
-  "totalFood" : 0,
-  "action" : "ANT_ACTION_LEFT",
-  "cell" : {
-    "row" : 8,
-    "col" : 24,
-    "type" : "FREE",
-    "food" : 0,
-    "smell" : 11,
-    "stench" : 0,
-    "ants" : [ "eva", "adam" ]
-  },
-  "replyId" : "MSG10311"
-}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: no stench go on
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:6]} to cord {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:7]} to cord {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:6]} listsize: 4
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:2]} to total {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: neighbours found
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:2]} to total {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,773 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:19,773 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:19,778 INFO  [adam] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:19,778 INFO  [adam] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld38dd65e4-8ab4-4b27-ba56-b6336ae04f93@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
-2016-06-09 23:25:19,778 INFO  [adam] jade.core.Agent: MSG10315
-2016-06-09 23:25:19,783 INFO  [eva] jade.core.Agent: normal message
-2016-06-09 23:25:19,783 INFO  [eva] jade.core.Agent: got refuse message
-2016-06-09 23:25:19,783 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:2]} to total {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,783 INFO  [eva] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:19,783 INFO  [eva] data.MapAsArrayReloaded: -----------
------------
------------
------------
------------
------HO----
------OF----
------R-----
------------
------------
------------
-
-2016-06-09 23:25:19,783 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:7]} to cord {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:19,785 INFO  [eva] jade.core.Agent: schicke: {"cell":{"food":0,"smell":0,"stench":0,"row":0,"col":0,"rock":true,"trap":false,"type":"FREE"}}
-2016-06-09 23:25:19,785 INFO  [eva] jade.core.Agent: no stench go on
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:6]} to cord {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:6]} listsize: 4
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,785 INFO  [eva] jade.core.Agent: neighbours found
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,785 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:19,785 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:19,785 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:19,785 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:19,786 INFO  [eva] jade.core.Agent: Message Behaviour
-2016-06-09 23:25:20,278 INFO  [adam] jade.core.Agent: normal message
-2016-06-09 23:25:20,278 INFO  [adam] jade.core.Agent: got refuse message
-2016-06-09 23:25:20,278 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:2]} to total {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:20,278 INFO  [adam] data.MapAsArrayReloaded: Add new field on: {Cord:[X:5],[Y:7]}
-2016-06-09 23:25:20,278 INFO  [adam] data.MapAsArrayReloaded: -----------
------------
------------
------------
------------
------HO----
------OF----
------R-----
------------
------------
------------
-
-2016-06-09 23:25:20,278 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:5],[Y:7]} to cord {Cord:[X:0],[Y:2]}
-2016-06-09 23:25:20,279 INFO  [adam] jade.core.Agent: schicke: {"cell":{"food":0,"smell":0,"stench":0,"row":0,"col":0,"rock":true,"trap":false,"type":"FREE"}}
-2016-06-09 23:25:20,279 INFO  [adam] jade.core.Agent: no stench go on
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:0],[Y:1]} to total {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:5],[Y:6]}
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: converting total : {Cord:[X:4],[Y:6]} to cord {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:5],[Y:6]} listsize: 4
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:20,279 INFO  [adam] jade.core.Agent: neighbours found
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: converting relativ : {Cord:[X:-1],[Y:1]} to total {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:20,279 INFO  [adam] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:4],[Y:6]}
-2016-06-09 23:25:20,279 INFO  [adam] jade.core.Agent: getNextField: {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:20,279 INFO  [adam] jade.core.Agent: next step to : {Cord:[X:-1],[Y:1]}
-2016-06-09 23:25:20,279 INFO  [adam] jade.core.Agent: schicke: {"type":"ANT_ACTION_LEFT","color":"ANT_COLOR_RED"}
-2016-06-09 23:25:20,279 INFO  [adam] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:26,439 INFO  [eva] jade.core.Agent: no stench go on
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:1]} to total {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: GetNeighbours on: {Cord:[X:16],[Y:11]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:16],[Y:10]} to cord {Cord:[X:6],[Y:0]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:16],[Y:12]} to cord {Cord:[X:6],[Y:2]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting total : {Cord:[X:17],[Y:11]} to cord {Cord:[X:7],[Y:1]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: Current Location after analysis of neighbours: {Cord:[X:16],[Y:11]} listsize: 4
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:0]} to total {Cord:[X:16],[Y:10]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:2]} to total {Cord:[X:16],[Y:12]}
+2016-06-13 18:30:26,439 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:7],[Y:1]} to total {Cord:[X:17],[Y:11]}
+2016-06-13 18:30:26,440 INFO  [eva] jade.core.Agent: neighbours found
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:0]} to total {Cord:[X:16],[Y:10]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:16],[Y:10]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:16],[Y:10]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:6],[Y:2]} to total {Cord:[X:16],[Y:12]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:16],[Y:12]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:16],[Y:12]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: converting relativ : {Cord:[X:7],[Y:1]} to total {Cord:[X:17],[Y:11]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: analsysis the fieldindex: {Cord:[X:17],[Y:11]}
+2016-06-13 18:30:26,440 INFO  [eva] data.MapAsArrayReloaded: currentLocation after analysis of fieldindex: {Cord:[X:17],[Y:11]}
+2016-06-13 18:30:26,440 INFO  [eva] jade.core.Agent: getNextField: {Cord:[X:6],[Y:2]}
+2016-06-13 18:30:26,440 INFO  [eva] jade.core.Agent: next step to : {Cord:[X:6],[Y:2]}
+2016-06-13 18:30:26,440 INFO  [eva] jade.core.Agent: schicke: {"type":"ANT_ACTION_DOWN","color":"ANT_COLOR_RED"}
+2016-06-13 18:30:26,440 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:26,446 INFO  [eva] jade.core.Agent: Message Behaviour
+2016-06-13 18:30:26,446 INFO  [eva] jade.core.Agent: Sender of Message was: ( agent-identifier :name antWorld845bb185-53db-4e47-80cc-69befce8946d@192.168.178.55:1099/JADE  :addresses (sequence http://Master.fritz.box:7778/acc ))
+2016-06-13 18:30:26,446 INFO  [eva] jade.core.Agent: MSG10032
