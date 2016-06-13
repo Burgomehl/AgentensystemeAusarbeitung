@@ -19,6 +19,7 @@ public class MyAgent extends AbstractAgent {
 	private boolean login = false;
 	private Cord noticeCord;
 	private boolean smellFood = false;
+	private int currentFood = 0;
 
 	@Override
 	protected void addBehaviours() {
@@ -95,6 +96,7 @@ public class MyAgent extends AbstractAgent {
 	 * welche Logic angeworfen wird Logic als eigene Klasse und Interface und
 	 * das dann die Methode da eine Logic einsetzt -> Lambda?!?
 	 */
+
 	@Override
 	protected void logic(Message msg) {
 		Gson gson = new Gson();
@@ -110,74 +112,44 @@ public class MyAgent extends AbstractAgent {
 				doSuspend();
 				// FIXME: BBYL
 			}
-			System.out.println(smellFood);
-			if (!smellFood) {
-				if (msg.cell.getSmell() > 0) {
-					log.info("it seems there will be food.");
-					System.out.println("It seems there will be food.");
-					noticeCord = currentLocation;
-					smellFood = true;
-					// goForFood(map.getCurrentField(currentLocation), gson);
-					// Cord toGoCord = getFieldForType();
-					// goForFood(map.getCurrentField(currentLocation), gson);
-					Cord nextCord = getPossibleNextField();
-					String action = nextStep(nextCord);
-					currentLocation = nextCord;
-					messages.add(gson.toJson(new InformMessage(action, agentColor)));
-				} else if (msg.cell.getStench() > 0) {
-					System.out.println("There is somewhere stench.");
-					goLast(gson);
-					// Cord nextCord = getFieldForType();
-					// String action = nextStep(nextCord);
-					// currentLocation = nextCord;
-					// messages.add(gson.toJson(new InformMessage(action,
-					// agentColor)));
-				} else if (msg.cell.getStench() == 0) {
-					log.info("no stench go on");
-					// List<Cord> possibleNeighbours = new ArrayList<>();
-					// List<Cord> neighbours =
-					// map.getNeighbours(currentLocation);
-					//
-					// Cord toGoCord = null;
-					// for (Cord cord : neighbours) {
-					// if (cord != null) {
-					// if (map.getCurrentField(cord) == null) {
-					// possibleNeighbours.add(cord);
-					// }
-					// }
-					// }
-					// if (!possibleNeighbours.isEmpty()) {
-					// log.info("neighbours found");
-					// toGoCord = getNextField(possibleNeighbours, toGoCord);
-					// lastCords.addFirst(currentLocation);
-					// } else {
-					// log.info("no neighbours found");
-					// toGoCord = lastCords.remove();
-					// }
-					Cord toGoCord = getPossibleNextField();
-					String action = nextStep(toGoCord);
-					currentLocation = toGoCord;
-					messages.add(gson.toJson(new InformMessage(action, agentColor)));
+			// if (msg.cell.getFood() > 0 && currentFood == 0) {
+			// System.out.println("Found food");
+			// log.info("[logic] Food found");
+			// messages.add(gson.toJson(new
+			// InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
+			// ++currentFood;
+			// } else
+			if (msg.cell.getStench() == 0) {
+				log.info("no stench go on");
+				List<Cord> possibleNeighbours = new ArrayList<>();
+				List<Cord> neighbours = map.getNeighbours(currentLocation);
+
+				Cord toGoCord = null;
+				for (Cord cord : neighbours) {
+					if (cord != null) {
+						if (map.getCurrentField(cord) == null) {
+							possibleNeighbours.add(cord);
+						}
+					}
+				}
+				if (!possibleNeighbours.isEmpty()) {
+					log.info("neighbours found");
+					toGoCord = getNextField(possibleNeighbours, toGoCord);
+					lastCords.addFirst(currentLocation);
 				} else {
-					Cord toGoCord = lastCords.remove();
-					String action = nextStep(toGoCord);
-					log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
-							+ currentLocation);
-					currentLocation = toGoCord;
-					messages.add(gson.toJson(new InformMessage(action, agentColor)));
+					log.info("no neighbours found");
+					toGoCord = lastCords.remove();
 				}
-			} else if (smellFood) {
-				if (msg.cell.getFood() > 0)
-					System.out.println("found food");
-				if (msg.cell.getSmell() > 0) {
-					Cord nextCord = getPossibleNextField();
-					String action = nextStep(nextCord);
-					currentLocation = nextCord;
-					messages.add(gson.toJson(new InformMessage(action, agentColor)));
-				} else if (msg.cell.getSmell() <= 0) {
-					// String action = nextStep(lastCords.getFirst());
-					goLast(gson);
-				}
+				String action = nextStep(toGoCord);
+				currentLocation = toGoCord;
+				messages.add(gson.toJson(new InformMessage(action, agentColor)));
+			} else {
+				Cord toGoCord = lastCords.remove();
+				String action = nextStep(toGoCord);
+				log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
+						+ currentLocation);
+				currentLocation = toGoCord;
+				messages.add(gson.toJson(new InformMessage(action, agentColor)));
 			}
 		}
 	}
@@ -190,40 +162,11 @@ public class MyAgent extends AbstractAgent {
 	 */
 	private void goLast(Gson gson) {
 		Cord lastCord = lastCords.getFirst();
+		System.out.println(lastCords.getFirst().toString());
 		String action = nextStep(lastCord);
 		currentLocation = lastCord;
 		messages.add(gson.toJson(new InformMessage(action, agentColor)));
 	}
-
-	// private void goForFood(Cell currentCell, Gson gson) {
-	// System.out.println("way for food");
-	// // int noticeIndex = currentCell.getFood();
-	// // String action = nextStep(getFieldForType());
-	// // messages.add(gson.toJson(new InformMessage(action, agentColor)));
-	// if (map.getCurrentField(currentLocation).getSmell() > 0) {
-	// log.info("This is the right way for food");
-	//
-	// while (currentCell.getFood() <= 0 ||
-	// !currentCell.getType().equalsIgnoreCase("food")) {
-	// System.out.println("next step to find food.");
-	// Cord cord = getFieldForType();
-	// String nextAction = nextStep(cord);
-	// currentLocation = cord;
-	// // String nextAction = nextStep(getFieldForType());
-	// messages.add(gson.toJson(new InformMessage(nextAction, agentColor)));
-	// if (map.getCurrentField(currentLocation).getSmell() <= 0) {
-	// nextAction = nextStep(lastCords.getFirst());
-	// messages.add(gson.toJson(new InformMessage(nextAction, agentColor)));
-	// }
-	// }
-	// } else {
-	// System.out.println("food not found");
-	// return;
-	// }
-	//
-	// log.info("Food reached");
-	// System.out.println("food found");
-	// }
 
 	/**
 	 * Method to calculate the best possible next field - can improve further
