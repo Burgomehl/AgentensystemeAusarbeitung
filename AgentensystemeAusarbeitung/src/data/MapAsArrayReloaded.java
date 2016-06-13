@@ -11,7 +11,7 @@ import org.apache.log4j.PropertyConfigurator;
  * ist (0,0) Es wird immer von der Mitte aus begonnen die Karte zu befüllen Wenn
  * da nichts ist steht im Array Null Zu nutzen ist {@IMap} als Speicherort für
  * die Map, falls sich da was ändert. Dich sollte für die GUI nur getMap()
- * interressieren
+ * interessieren
  * 
  * @author Benjamin Byl
  *

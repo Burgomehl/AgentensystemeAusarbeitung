@@ -95,13 +95,7 @@ public abstract class AbstractAgent extends Agent {
 			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(
 					TopicManagementHelper.SERVICE_NAME);
 			AID topicAID = topicManagementHelper.createTopic("AdamsTopic");
-			// =======
-			// TopicManagementHelper topicManagementHelper =
-			// (TopicManagementHelper)
-			// getHelper(TopicManagementHelper.SERVICE_NAME);
-			// topicAID = topicManagementHelper.createTopic("AdamsTopic");
-			// >>>>>>> branch 'master' of
-			// https://github.com/Burgomehl/AgentensystemeAusarbeitung.git
+
 			topicManagementHelper.register(topicAID);
 
 		} catch (ServiceException e) {
@@ -110,5 +104,16 @@ public abstract class AbstractAgent extends Agent {
 	}
 
 	protected abstract void addBehaviours();
+
+	/**
+	 * method to receive messages from topic e.g. to ask and calculate which way
+	 * to go
+	 */
+	protected abstract void receiving();
+
+	/**
+	 * method to ask and answer questions
+	 */
+	protected abstract void sending();
 
 }

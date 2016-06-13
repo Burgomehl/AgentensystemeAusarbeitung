@@ -43,4 +43,16 @@ public class GuiAgent extends AbstractAgent {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	protected void receiving() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void sending() {
+		// TODO Auto-generated method stub
+
+	}
 }
