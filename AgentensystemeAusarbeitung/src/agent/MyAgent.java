@@ -17,6 +17,8 @@ import jade.lang.acl.ACLMessage;
 public class MyAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
+	private Cord noticeCord;
+	private boolean smellFood = false;
 
 	@Override
 	protected void addBehaviours() {
@@ -39,6 +41,9 @@ public class MyAgent extends AbstractAgent {
 			public void action() {
 				MyAgent.log.info("Message Behaviour");
 				ACLMessage msg = myAgent.receive();
+				for (int i = 0; i < 10000000; i++) {
+					// empty block
+				}
 				if (msg != null) {
 					String content = msg.getContent();
 					AID sender = msg.getSender();
@@ -106,40 +111,167 @@ public class MyAgent extends AbstractAgent {
 				doSuspend();
 				// FIXME: BBYL
 			}
-			if (msg.cell.getStench() == 0) {
-				log.info("no stench go on");
-				List<Cord> possibleNeighbours = new ArrayList<>();
-				List<Cord> neighbours = map.getNeighbours(currentLocation);
-				Cord toGoCord = null;
-				for (Cord cord : neighbours) {
-					if (cord != null) {
-						if (map.getCurrentField(cord) == null) {
-							possibleNeighbours.add(cord);
-						}
-					}
-				}
-				if (!possibleNeighbours.isEmpty()) {
-					log.info("neighbours found");
-					toGoCord = getNextField(possibleNeighbours, toGoCord);
-					lastCords.addFirst(currentLocation);
+			System.out.println(smellFood);
+			if (!smellFood) {
+				if (msg.cell.getSmell() > 0) {
+					log.info("it seems there will be food.");
+					System.out.println("It seems there will be food.");
+					noticeCord = currentLocation;
+					smellFood = true;
+					// goForFood(map.getCurrentField(currentLocation), gson);
+					// Cord toGoCord = getFieldForType();
+					// goForFood(map.getCurrentField(currentLocation), gson);
+					Cord nextCord = getPossibleNextField();
+					String action = nextStep(nextCord);
+					currentLocation = nextCord;
+					messages.add(gson.toJson(new InformMessage(action, agentColor)));
+				} else if (msg.cell.getStench() > 0) {
+					System.out.println("There is somewhere stench.");
+					goLast(gson);
+					// Cord nextCord = getFieldForType();
+					// String action = nextStep(nextCord);
+					// currentLocation = nextCord;
+					// messages.add(gson.toJson(new InformMessage(action,
+					// agentColor)));
+				} else if (msg.cell.getStench() == 0) {
+					log.info("no stench go on");
+					// List<Cord> possibleNeighbours = new ArrayList<>();
+					// List<Cord> neighbours =
+					// map.getNeighbours(currentLocation);
+					//
+					// Cord toGoCord = null;
+					// for (Cord cord : neighbours) {
+					// if (cord != null) {
+					// if (map.getCurrentField(cord) == null) {
+					// possibleNeighbours.add(cord);
+					// }
+					// }
+					// }
+					// if (!possibleNeighbours.isEmpty()) {
+					// log.info("neighbours found");
+					// toGoCord = getNextField(possibleNeighbours, toGoCord);
+					// lastCords.addFirst(currentLocation);
+					// } else {
+					// log.info("no neighbours found");
+					// toGoCord = lastCords.remove();
+					// }
+					Cord toGoCord = getPossibleNextField();
+					String action = nextStep(toGoCord);
+					currentLocation = toGoCord;
+					messages.add(gson.toJson(new InformMessage(action, agentColor)));
 				} else {
-					log.info("no neighbours found");
-					toGoCord = lastCords.remove();
+					Cord toGoCord = lastCords.remove();
+					String action = nextStep(toGoCord);
+					log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
+							+ currentLocation);
+					currentLocation = toGoCord;
+					messages.add(gson.toJson(new InformMessage(action, agentColor)));
 				}
-				String action = nextStep(toGoCord);
-				currentLocation = toGoCord;
-				messages.add(gson.toJson(new InformMessage(action, agentColor)));
-			} else {
-				Cord toGoCord = lastCords.remove();
-				String action = nextStep(toGoCord);
-				log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
-						+ currentLocation);
-				currentLocation = toGoCord;
-				messages.add(gson.toJson(new InformMessage(action, agentColor)));
+			} else if (smellFood) {
+				if (msg.cell.getFood() > 0)
+					System.out.println("found food");
+				if (msg.cell.getSmell() > 0) {
+					Cord nextCord = getPossibleNextField();
+					String action = nextStep(nextCord);
+					currentLocation = nextCord;
+					messages.add(gson.toJson(new InformMessage(action, agentColor)));
+				} else if (msg.cell.getSmell() <= 0) {
+					// String action = nextStep(lastCords.getFirst());
+					goLast(gson);
+				}
 			}
 		}
 	}
 
+	/**
+	 * method to go to the last location - can improve further
+	 * 
+	 * @param gson
+	 *            to build Json-message
+	 */
+	private void goLast(Gson gson) {
+		Cord lastCord = lastCords.getFirst();
+		String action = nextStep(lastCord);
+		currentLocation = lastCord;
+		messages.add(gson.toJson(new InformMessage(action, agentColor)));
+	}
+
+	// private void goForFood(Cell currentCell, Gson gson) {
+	// System.out.println("way for food");
+	// // int noticeIndex = currentCell.getFood();
+	// // String action = nextStep(getFieldForType());
+	// // messages.add(gson.toJson(new InformMessage(action, agentColor)));
+	// if (map.getCurrentField(currentLocation).getSmell() > 0) {
+	// log.info("This is the right way for food");
+	//
+	// while (currentCell.getFood() <= 0 ||
+	// !currentCell.getType().equalsIgnoreCase("food")) {
+	// System.out.println("next step to find food.");
+	// Cord cord = getFieldForType();
+	// String nextAction = nextStep(cord);
+	// currentLocation = cord;
+	// // String nextAction = nextStep(getFieldForType());
+	// messages.add(gson.toJson(new InformMessage(nextAction, agentColor)));
+	// if (map.getCurrentField(currentLocation).getSmell() <= 0) {
+	// nextAction = nextStep(lastCords.getFirst());
+	// messages.add(gson.toJson(new InformMessage(nextAction, agentColor)));
+	// }
+	// }
+	// } else {
+	// System.out.println("food not found");
+	// return;
+	// }
+	//
+	// log.info("Food reached");
+	// System.out.println("food found");
+	// }
+
+	/**
+	 * Method to calculate the best possible next field - can improve further
+	 * 
+	 * @return the next coordinate where the agent will be go
+	 */
+	private Cord getPossibleNextField() {
+		List<Cord> possibleUnknownNeighbours = new ArrayList<Cord>();
+		List<Cord> possibleKnownNeighbours = new ArrayList<Cord>();
+		List<Cord> neighbours = map.getNeighbours(currentLocation);
+
+		for (Cord cord : neighbours) {
+			if (cord != null) {
+				if (map.getCurrentField(cord) == null) {
+					possibleUnknownNeighbours.add(cord);
+				} else if (map.getCurrentField(cord) != null) {
+					possibleKnownNeighbours.add(cord);
+				}
+			}
+		}
+		Cord possibleCord = null;
+		if (!possibleKnownNeighbours.isEmpty())
+			for (Cord cord : possibleKnownNeighbours) {
+				if (map.getCurrentField(cord).getSmell() > 0) {
+					possibleCord = cord;
+					lastCords.addFirst(possibleCord);
+				}
+			}
+		else if (!possibleUnknownNeighbours.isEmpty()) {
+			possibleCord = getNextField(possibleUnknownNeighbours, possibleCord);
+			lastCords.addFirst(possibleCord);
+		} else
+			possibleCord = lastCords.remove();
+		return possibleCord;
+	}
+
+	private Cord getRelativePosition(Cord cord) {
+		Cord newCord = new Cord(cord.getX() - map.getMid().getX(), cord.getY() - map.getMid().getY());
+		log.info("converting total : " + cord + " to cord " + newCord);
+		return newCord;
+	}
+
+	private Cord getTotalPosition(Cord cord) {
+		Cord newCord = new Cord(map.getMid().getX() + cord.getX(), map.getMid().getY() + cord.getY());
+		log.info("converting relativ : " + cord + " to total " + newCord);
+		return newCord;
+	}
 	// private Cord getRelativePosition(Cord cord) {
 	// Cord newCord = new Cord(cord.getX() - map.getMid().getX() , cord.getY() -
 	// map.getMid().getY());
@@ -153,6 +285,9 @@ public class MyAgent extends AbstractAgent {
 	// log.info("converting relativ : "+cord+" to total "+newCord);
 	// return newCord;
 	// }
+	// >>>>>>>branch'master'
+	//
+	// of https:// github.com/Burgomehl/AgentensystemeAusarbeitung.git
 
 	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
 		int currentHighestIndex = 0;
@@ -203,6 +338,24 @@ public class MyAgent extends AbstractAgent {
 
 	@Override
 	public void registerOnMap() {
+		super.registerOnMap();
+	}
+
+	@Override
+	protected void loginAtToppic() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected void receiving() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void sending() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

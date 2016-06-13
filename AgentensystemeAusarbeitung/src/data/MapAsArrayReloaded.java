@@ -11,7 +11,7 @@ import org.apache.log4j.PropertyConfigurator;
  * ist (0,0) Es wird immer von der Mitte aus begonnen die Karte zu befüllen Wenn
  * da nichts ist steht im Array Null Zu nutzen ist {@IMap} als Speicherort für
  * die Map, falls sich da was ändert. Dich sollte für die GUI nur getMap()
- * interressieren
+ * interessieren
  * 
  * @author Benjamin Byl
  *
@@ -75,7 +75,7 @@ public class MapAsArrayReloaded {
 		testCord(cordNew, list, 0, -1);
 		testCord(cordNew, list, 0, 1);
 		testCord(cordNew, list, 1, 0);
-		log.info("Current Location after analysis of neighbours: " + cordNew +" listsize: "+list.size());
+		log.info("Current Location after analysis of neighbours: " + cordNew + " listsize: " + list.size());
 		return list;
 	}
 
@@ -123,8 +123,8 @@ public class MapAsArrayReloaded {
 
 	}
 
-	private Cord getMid() {
-		return new Cord((int) (map.length / 2), (int) (map[0].length / 2));
+	public Cord getMid() {
+		return new Cord(map.length / 2, map[0].length / 2);
 	}
 
 	private boolean isInRange(Cord c) {

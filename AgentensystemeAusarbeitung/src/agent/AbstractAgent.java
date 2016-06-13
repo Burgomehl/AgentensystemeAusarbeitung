@@ -3,19 +3,18 @@ package agent;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import behaviour.IBehaviour;
 import data.Cord;
-import data.MapAsArray;
 import data.MapAsArrayReloaded;
 import de.aim.antworld.agent.AntWorldConsts;
 import informationWindow.MapWindow;
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.Location;
 import jade.core.ServiceException;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.core.messaging.TopicManagementHelper;
@@ -31,6 +30,7 @@ public abstract class AbstractAgent extends Agent {
 	protected String inToReplyTo = "";
 	protected int state;
 	protected Cord currentLocation;
+	protected Location loc;
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
 	protected Deque<Cord> lastCords;
@@ -45,11 +45,12 @@ public abstract class AbstractAgent extends Agent {
 		state = 0;
 		lastCords = new LinkedList<>();
 		currentLocation = map.getCurrentLocation();
+		loc = here();
 		loginAtAntWorld();
 		loginAtToppic();
 		logic(null);
 		addBehaviours();
-		// registerOnMap();
+		registerOnMap();
 	}
 
 	protected void loginAtAntWorld() {
@@ -83,19 +84,36 @@ public abstract class AbstractAgent extends Agent {
 		mapWindow.addAgent(this);
 	}
 
+	public Location getLocation() {
+		return loc;
+	}
+
 	protected abstract void logic(Message msg);
 
-	protected void loginAtToppic(){
+	protected void loginAtToppic() {
 		try {
-			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(TopicManagementHelper.SERVICE_NAME);
-			topicAID = topicManagementHelper.createTopic("AdamsTopic");
+			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(
+					TopicManagementHelper.SERVICE_NAME);
+			AID topicAID = topicManagementHelper.createTopic("AdamsTopic");
+
 			topicManagementHelper.register(topicAID);
-			
+
 		} catch (ServiceException e) {
 			log.error("Error at topiccreation: ", e);
 		}
 	}
 
 	protected abstract void addBehaviours();
+
+	/**
+	 * method to receive messages from topic e.g. to ask and calculate which way
+	 * to go
+	 */
+	protected abstract void receiving();
+
+	/**
+	 * method to ask and answer questions
+	 */
+	protected abstract void sending();
 
 }
