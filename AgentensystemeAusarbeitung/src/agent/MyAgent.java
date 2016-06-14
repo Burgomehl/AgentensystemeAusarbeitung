@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 
@@ -20,6 +21,7 @@ public class MyAgent extends AbstractAgent {
 	private Cord noticeCord;
 	private boolean smellFood = false;
 	private int currentFood = 0;
+	private final static Gson gson = new Gson();
 
 	@Override
 	protected void addBehaviours() {
@@ -56,14 +58,14 @@ public class MyAgent extends AbstractAgent {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					log.info(msg.getSender()+" "+msg.getPerformative());
+					log.info(msg.getSender() + " " + msg.getPerformative());
 					if (msg.getSender().equals(topicAID)) {
 						log.info("topic send message to me");
 					} else {
 						log.info("normal message");
 						if (msg.getPerformative() == ACLMessage.INFORM) {
 							log.info("got informmessage");
-							Gson gson = new Gson();
+							// Gson gson = new Gson();
 							Message m = gson.fromJson(content, Message.class);
 							currentLocation = map.addNewField(m.cell, currentLocation);
 							sendMessage(content, ACLMessage.INFORM, topicAID);
@@ -75,7 +77,7 @@ public class MyAgent extends AbstractAgent {
 							map.addNewField(field, currentLocation);
 							Message newMessage = new Message();
 							newMessage.cell = field;
-							Gson gson = new Gson();
+							// Gson gson = new Gson();
 							String con = gson.toJson(newMessage);
 							sendMessage(con, ACLMessage.INFORM, topicAID);
 							currentLocation = lastCords.remove();
@@ -100,7 +102,6 @@ public class MyAgent extends AbstractAgent {
 
 	@Override
 	protected void logic(Message msg) {
-		Gson gson = new Gson();
 		if (msg == null) {
 			if (!login) {
 				log.debug("Login at antworld");
@@ -110,49 +111,44 @@ public class MyAgent extends AbstractAgent {
 		} else {
 			if (msg.state.equals("DEAD")) {
 				log.info("agent is dead");
-				doSuspend();
-				// FIXME: BBYL
-			}
-			// if (msg.cell.getFood() > 0 && currentFood == 0) {
-			// System.out.println("Found food");
-			// log.info("[logic] Food found");
-			// messages.add(gson.toJson(new
-			// InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
-			// ++currentFood;
-			// } else
-			if (msg.cell.getStench() == 0) {
-				log.info("no stench go on");
-				List<Cord> possibleNeighbours = new ArrayList<>();
-				List<Cord> neighbours = map.getNeighbours(currentLocation);
-
+				doSuspend();// FIXME: BBYL
+			} else {
 				Cord toGoCord = null;
-				for (Cord cord : neighbours) {
-					if (cord != null) {
-						if (map.getCurrentField(cord) == null) {
-							possibleNeighbours.add(cord);
-						}
+				if (msg.cell.getStench() == 0) {
+					log.info("no stench go on");
+					/*
+					 * Filtert die benachbarten Felder nach Feldern, wo noch
+					 * null steht. Ansonsten läuft die Ameise wieder zurück.
+					 */
+					List<Cord> possibleNeighbours = new ArrayList<>();
+					List<Cord> neighbours = map.getNeighbours(currentLocation);
+					possibleNeighbours = neighbours.stream().filter(cord -> map.getCurrentField(cord) == null)
+							.collect(Collectors.toList());
+
+					if (!possibleNeighbours.isEmpty()) {
+						log.info("neighbours found");
+						toGoCord = getNextField(possibleNeighbours, toGoCord);
+						lastCords.addFirst(currentLocation);
+					} else {
+						log.info("no neighbours found");
+						toGoCord = lastCords.remove();
 					}
-				}
-				if (!possibleNeighbours.isEmpty()) {
-					log.info("neighbours found");
-					toGoCord = getNextField(possibleNeighbours, toGoCord);
-					lastCords.addFirst(currentLocation);
 				} else {
-					log.info("no neighbours found");
+					/*
+					 * Soll der Agent Fallen erkennen? Stench reicht doch aus. 
+					 * */
 					toGoCord = lastCords.remove();
 				}
-				String action = nextStep(toGoCord);
-				currentLocation = toGoCord;
-				messages.add(gson.toJson(new InformMessage(action, agentColor)));
-			} else {
-				Cord toGoCord = lastCords.remove();
-				String action = nextStep(toGoCord);
-				log.info("stench found, will go back to last location: " + toGoCord + " from current location: "
-						+ currentLocation);
-				currentLocation = toGoCord;
-				messages.add(gson.toJson(new InformMessage(action, agentColor)));
+				moveOn(toGoCord);
 			}
 		}
+	}
+
+	private void moveOn(Cord toGoCord) {
+		String action = nextStep(toGoCord);
+		currentLocation = toGoCord;
+		log.info("Next movement to " + currentLocation);
+		messages.add(gson.toJson(new InformMessage(action, agentColor)));
 	}
 
 	/**
@@ -161,12 +157,10 @@ public class MyAgent extends AbstractAgent {
 	 * @param gson
 	 *            to build Json-message
 	 */
-	private void goLast(Gson gson) {
+	private void goLast() {
 		Cord lastCord = lastCords.getFirst();
 		System.out.println(lastCords.getFirst().toString());
-		String action = nextStep(lastCord);
-		currentLocation = lastCord;
-		messages.add(gson.toJson(new InformMessage(action, agentColor)));
+		moveOn(lastCord);
 	}
 
 	/**
@@ -203,7 +197,7 @@ public class MyAgent extends AbstractAgent {
 			possibleCord = lastCords.remove();
 		return possibleCord;
 	}
-	
+
 	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
 		int currentHighestIndex = 0;
 		for (Cord cord : possibleNeighbours) {
@@ -256,10 +250,10 @@ public class MyAgent extends AbstractAgent {
 		super.registerOnMap();
 	}
 
-	@Override
-	protected void loginAtToppic() {
-		// TODO Auto-generated method stub
-	}
+	// @Override
+	// protected void loginAtToppic() {
+	// // TODO Auto-generated method stub
+	// }
 
 	@Override
 	protected void receiving() {

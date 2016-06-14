@@ -84,8 +84,9 @@ public class MapAsArrayReloaded {
 		if (isInRange(possibleCordinates)) {
 			resizeMap(10, cordNew);
 		}
-		list.add((map[possibleCordinates.getX()][possibleCordinates.getY()] == null)
-				? getRelativePosition(possibleCordinates) : null);
+		if(map[possibleCordinates.getX()][possibleCordinates.getY()] == null){
+			list.add(getRelativePosition(possibleCordinates));
+		}
 	}
 
 	public int getFieldIndex(Cord cord) {
