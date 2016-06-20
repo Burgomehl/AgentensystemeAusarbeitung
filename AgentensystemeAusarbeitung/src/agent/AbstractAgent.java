@@ -94,7 +94,7 @@ public abstract class AbstractAgent extends Agent {
 		try {
 			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(
 					TopicManagementHelper.SERVICE_NAME);
-			AID topicAID = topicManagementHelper.createTopic("AdamsTopic");
+			topicAID = topicManagementHelper.createTopic("AdamsTopic");
 
 			topicManagementHelper.register(topicAID);
 

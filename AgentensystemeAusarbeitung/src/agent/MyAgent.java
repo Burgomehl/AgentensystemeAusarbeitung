@@ -51,24 +51,30 @@ public class MyAgent extends AbstractAgent {
 					String content = msg.getContent();
 					AID sender = msg.getSender();
 					log.info("Sender of Message was: " + sender);
-					inToReplyTo = msg.getReplyWith();
-					log.info(inToReplyTo);
 					try {
 						Thread.sleep(500);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					log.info(msg.getSender() + " " + msg.getPerformative());
-					if (msg.getSender().equals(topicAID)) {
+					if (msg.getPerformative() == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
 						log.info("topic send message to me");
+						Message m = gson.fromJson(content, Message.class);
+						Cord cord = m.cord;
+						Cell field = m.cell;
+						map.addNewField(field, cord);
 					} else {
+						inToReplyTo = msg.getReplyWith();
+						log.info(inToReplyTo);
 						log.info("normal message");
 						if (msg.getPerformative() == ACLMessage.INFORM) {
 							log.info("got informmessage");
 							// Gson gson = new Gson();
 							Message m = gson.fromJson(content, Message.class);
 							currentLocation = map.addNewField(m.cell, currentLocation);
-							sendMessage(content, ACLMessage.INFORM, topicAID);
+							m.cord = currentLocation;
+							String con = gson.toJson(m);
+							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 							log.info("ausgabe" + content);
 							logic(m);
 						} else if (msg.getPerformative() == ACLMessage.REFUSE) {
@@ -77,9 +83,10 @@ public class MyAgent extends AbstractAgent {
 							map.addNewField(field, currentLocation);
 							Message newMessage = new Message();
 							newMessage.cell = field;
+							newMessage.cord = currentLocation;
 							// Gson gson = new Gson();
 							String con = gson.toJson(newMessage);
-							sendMessage(con, ACLMessage.INFORM, topicAID);
+							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 							currentLocation = lastCords.remove();
 							Message m = gson.fromJson(content, Message.class);
 							logic(m);
@@ -238,7 +245,7 @@ public class MyAgent extends AbstractAgent {
 		msg.setInReplyTo(inToReplyTo);
 		msg.setContent(Message);
 		msg.setLanguage("JSON");
-		log.info("schicke: " + Message);
+		log.info("schicke an "+aidToSendTo+" : " + Message);
 		send(msg);
 	}
 

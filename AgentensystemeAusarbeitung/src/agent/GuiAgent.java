@@ -1,5 +1,13 @@
 package agent;
 
+import com.google.gson.Gson;
+
+import data.Cell;
+import data.Cord;
+import jade.core.AID;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
+
 public class GuiAgent extends AbstractAgent {
 
 	// private final MapWindow mapWindow = MapWindow.getInstance();
@@ -40,7 +48,31 @@ public class GuiAgent extends AbstractAgent {
 
 	@Override
 	protected void addBehaviours() {
-		// TODO Auto-generated method stub
+		addBehaviour(new CyclicBehaviour() {
+			@Override
+			public void action() {
+				MyAgent.log.info("Message Behaviour");
+				ACLMessage msg = myAgent.receive();
+				if (msg != null) {
+					String content = msg.getContent();
+					AID sender = msg.getSender();
+					log.info("Sender of Message was: " + sender);
+					if (msg.getPerformative() == ACLMessage.PROPAGATE) {
+						log.info("topic send message to me");
+						Gson gson = new Gson();
+						Message m = gson.fromJson(content, Message.class);
+						Cord cord = m.cord;
+						Cell field = m.cell;
+						map.addNewField(field, cord);
+					} else {
+						log.info("Misterious Message received "+msg.getContent());
+					}
+				} else {
+					block();
+				}
+			}
+
+		});
 
 	}
 
