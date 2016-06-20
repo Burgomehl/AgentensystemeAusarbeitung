@@ -142,8 +142,8 @@ public class MyAgent extends AbstractAgent {
 					}
 				} else {
 					/*
-					 * Soll der Agent Fallen erkennen? Stench reicht doch aus. 
-					 * */
+					 * Soll der Agent Fallen erkennen? Stench reicht doch aus.
+					 */
 					toGoCord = lastCords.remove();
 				}
 				moveOn(toGoCord);
@@ -245,7 +245,7 @@ public class MyAgent extends AbstractAgent {
 		msg.setInReplyTo(inToReplyTo);
 		msg.setContent(Message);
 		msg.setLanguage("JSON");
-		log.info("schicke an "+aidToSendTo+" : " + Message);
+		log.info("schicke an " + aidToSendTo + " : " + Message);
 		send(msg);
 	}
 
@@ -261,17 +261,17 @@ public class MyAgent extends AbstractAgent {
 	// protected void loginAtToppic() {
 	// // TODO Auto-generated method stub
 	// }
-
-	@Override
-	protected void receiving() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void sending() {
-		// TODO Auto-generated method stub
-
-	}
+	//
+	// @Override
+	// protected void receiving() {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// protected void sending() {
+	// // TODO Auto-generated method stub
+	//
+	// }
 
 }

@@ -40,11 +40,11 @@ public class GuiAgent extends AbstractAgent {
 
 	}
 
-	@Override
-	protected void loginAtToppic() {
-		// TODO Auto-generated method stub
-
-	}
+	// @Override
+	// protected void loginAtToppic() {
+	// // TODO Auto-generated method stub
+	//
+	// }
 
 	@Override
 	protected void addBehaviours() {
@@ -64,8 +64,19 @@ public class GuiAgent extends AbstractAgent {
 						Cord cord = m.cord;
 						Cell field = m.cell;
 						map.addNewField(field, cord);
+
+						// Cell[][] c = map.getMap();
+						// for (int i = 0; i < c.length; ++i) {
+						// for (Cell cell : c[i]) {
+						// System.out.println(cell == null ? "cell null" : "cell
+						// not null");
+						// }
+						// }
+						// System.out.println(map.getMap() == null ? "null" :
+						// "not null");
+						mapWindow.receiveMap(map.getMap());
 					} else {
-						log.info("Misterious Message received "+msg.getContent());
+						log.info("Misterious Message received " + msg.getContent());
 					}
 				} else {
 					block();
@@ -75,16 +86,16 @@ public class GuiAgent extends AbstractAgent {
 		});
 
 	}
-
-	@Override
-	protected void receiving() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void sending() {
-		// TODO Auto-generated method stub
-
-	}
+	//
+	// @Override
+	// protected void receiving() {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// protected void sending() {
+	// // TODO Auto-generated method stub
+	//
+	// }
 }

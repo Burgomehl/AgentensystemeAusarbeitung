@@ -15,11 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 
 import agent.AbstractAgent;
 
 import data.Cell;
-import data.MapAsArray;
+import data.MapAsArrayReloaded;
 
 public class MapWindow extends JFrame {
 
@@ -27,13 +28,14 @@ public class MapWindow extends JFrame {
 
 	private static MapWindow mapWindow = null;
 
+	private JScrollPane scrollPane;
 	private Screen screen = new Screen();
 	private Toolbar toolbar = new Toolbar();
 
 	private AgentWindow agentWindow = AgentWindow.getInstance();
 
 	// private IMap map;
-	private MapAsArray map;
+	private MapAsArrayReloaded map;
 	// private Cell[][] field;
 	// private Image[][] mapWithImages;
 
@@ -56,7 +58,8 @@ public class MapWindow extends JFrame {
 
 	protected void initComponent() {
 		setTitle(title);
-		add(screen);
+		scrollPane = new JScrollPane(screen);
+		add(scrollPane);
 		setJMenuBar(toolbar);
 		pack();
 
@@ -70,23 +73,50 @@ public class MapWindow extends JFrame {
 		// start();
 	}
 
+	/**
+	 * let show the window with map and agent information
+	 */
 	public void start() {
 		setVisible(true);
 		agentWindow.start();
 	}
 
-	public void setMap(MapAsArray map) {
+	public void setMap(MapAsArrayReloaded map) {
 		this.map = map;
 		screen.setMapWindow(this);
 		// this.field = map.getMap();
 		// this.mapWithImages = new Image[field.length][field[0].length];
 	}
 
+	/**
+	 * 
+	 * @param field,
+	 *            two-dimensional array to call method "receiveMap" in
+	 *            MapWindow.Screen with the same value
+	 */
+	public void receiveMap(Cell[][] field) {
+		screen.receiveMap(field);
+	}
+
+	/**
+	 * method to register a new agent to get information from it and draw map,
+	 * show information in AgentWindow...
+	 * 
+	 * @param newAgent
+	 *            is the agent which will be added
+	 */
 	public void addAgent(AbstractAgent newAgent) {
 		toolbar.refreshAgentMenu(newAgent);
 		agentWindow.addAgent(newAgent);
 	}
 
+	/**
+	 * counterpart to MapWindow.addAgent(...) to de-register an agent
+	 * 
+	 * @param agent2Delete
+	 *            is the agent which will be removed
+	 * @return
+	 */
 	public boolean removeAgent(AbstractAgent agent2Delete) {
 		return agentWindow.removeAgent(agent2Delete);
 	}
@@ -133,47 +163,95 @@ public class MapWindow extends JFrame {
 			repaint();
 		}
 
-		private void initializeMap() {
-			this.mapAsImage = new Image[3][3];
-			for (int i = 0; i < mapAsImage.length; ++i) {
-				for (int j = 0; j < mapAsImage[i].length; ++j) {
-					mapAsImage[i][j] = fogOfWar;
-					m.addImage(mapAsImage[i][j], i * (j + 1));
+		/**
+		 * first call - when the map was first time created
+		 */
+		private synchronized void initializeMap() {
+			if (field != null) {
+				System.out.println("field: " + field.length + field[0].length);
+				this.mapAsImage = new Image[field.length + 2][field[0].length + 2];
+				for (int i = 0; i < field.length; ++i) {
+					for (int j = 0; j < field[i].length; ++j) {
+						mapAsImage[i][0] = fogOfWar;
+						mapAsImage[0][j] = fogOfWar;
+						mapAsImage[mapAsImage.length][j] = fogOfWar;
+						mapAsImage[i][mapAsImage[i].length] = fogOfWar;
+						if (field[i][j] != null)
+							mapAsImage[i + 1][j + 1] = field[i][j].getFood() > 0 ? best_food
+									: field[i][j].getStench() == 0 ? grass : trap;
+						// m.addImage(mapAsImage[i][j], i * (j + 1));
+					}
+				}
+				// mapAsImage[1][1] = antRed;
+				// try {
+				// m.waitForAll();
+				// } catch (Exception e) {
+				// e.printStackTrace();
+				// }
+				// positionArray = new int[3][3];
+				repaint();
+			} else {
+				return;
+			}
+		}
+
+		/**
+		 * method to re-build and draw the map
+		 * 
+		 * @param field,
+		 *            the two-dimensional array with cells which have
+		 *            information about the cells the agent has explored
+		 */
+		private synchronized void receiveMap(Cell[][] field) {
+			this.field = field;
+			Image[][] temp = new Image[field.length + 2][field[0].length + 2];
+			for (int i = 0; i < field.length; ++i) {
+				for (int j = 0; j < field[i].length; ++j) {
+					temp[i][0] = fogOfWar;
+					temp[0][j] = fogOfWar;
+					temp[temp.length - 1][j] = fogOfWar;
+					temp[i][temp[i].length - 1] = fogOfWar;
+					if (field[i][j] != null)
+						temp[i + 1][j + 1] = field[i][j].getFood() > 0 ? best_food
+								: field[i][j].getStench() == 0 ? grass : trap;
+					// m.addImage(temp[i][j], i * (j + 1));
 				}
 			}
-			mapAsImage[1][1] = antRed;
-			try {
-				m.waitForAll();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			// positionArray = new int[3][3];
+
+			// try {
+			// m.waitForAll();
+			// } catch (Exception e) {
+			// e.printStackTrace();
+			// }
+
+			mapAsImage = temp;
+
 			repaint();
 		}
 
-		private void drawMapTile(String found, int x, int y) {
-			// currentLocation[0][0] = x;
-			// currentLocation[0][1] = y;
-			if (found.equalsIgnoreCase("grass"))
-				mapAsImage[getMid()[0] + x][getMid()[1] + y] = grass;
-			else if (found.equalsIgnoreCase("stone"))
-				mapAsImage[getMid()[0] + x][getMid()[1] + y] = stone;
-			else if (found.equalsIgnoreCase("stench"))
-				mapAsImage[getMid()[0] + x][getMid()[1] + y] = trap;
-			else if (found.equalsIgnoreCase("food"))
-				mapAsImage[getMid()[0] + x][getMid()[1] + y] = best_food;
+		// private void drawMapTile(String found, int x, int y) {
+		// // currentLocation[0][0] = x;
+		// // currentLocation[0][1] = y;
+		// if (found.equalsIgnoreCase("grass"))
+		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = grass;
+		// else if (found.equalsIgnoreCase("stone"))
+		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = stone;
+		// else if (found.equalsIgnoreCase("stench"))
+		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = trap;
+		// else if (found.equalsIgnoreCase("food"))
+		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = best_food;
+		//
+		// repaint();
+		// // for (int i = 0; i < positionArray.length; ++i) {
+		// // for (int j = 0; j < positionArray[i].length; ++i) {
+		// // // if(positionArray[i][j])
+		// // }
+		// // }
+		// }
 
-			repaint();
-			// for (int i = 0; i < positionArray.length; ++i) {
-			// for (int j = 0; j < positionArray[i].length; ++i) {
-			// // if(positionArray[i][j])
-			// }
-			// }
-		}
-
-		private int[] getMid() {
-			return new int[] { (mapAsImage.length / 2), (mapAsImage[0].length) };
-		}
+		// private int[] getMid() {
+		// return new int[] { (mapAsImage.length / 2), (mapAsImage[0].length) };
+		// }
 
 		@Override
 		public Dimension getPreferredSize() {
@@ -194,8 +272,19 @@ public class MapWindow extends JFrame {
 				repaint();
 			}
 		}
+
+		@Override
+		public void repaint() {
+			super.repaint();
+			// System.out.println("repaint()");
+		}
 	}
 
+	/**
+	 * 
+	 * @author Gabriel Meyer
+	 *
+	 */
 	class Toolbar extends JMenuBar {
 
 		JMenu agentMenu = new JMenu("Agents");
@@ -205,6 +294,11 @@ public class MapWindow extends JFrame {
 			add(agentMenu);
 		}
 
+		/**
+		 * 
+		 * @return the menu "File" with the most important entries for agents
+		 *         and map
+		 */
 		private JMenu getFileMenu() {
 			JMenu menu = new JMenu("File");
 			JMenuItem show = new JMenuItem("Show agentwindow");
@@ -222,6 +316,12 @@ public class MapWindow extends JFrame {
 			return menu;
 		}
 
+		/**
+		 * will add a new entry to menubar with the new agent
+		 * 
+		 * @param agent
+		 *            which is added to the antWorld
+		 */
 		public void refreshAgentMenu(AbstractAgent agent) {
 			JMenuItem item = new JMenuItem("Agent " + agent.getLocalName());
 
