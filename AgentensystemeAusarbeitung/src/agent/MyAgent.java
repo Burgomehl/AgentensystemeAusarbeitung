@@ -51,11 +51,11 @@ public class MyAgent extends AbstractAgent {
 					String content = msg.getContent();
 					AID sender = msg.getSender();
 					log.info("Sender of Message was: " + sender);
-					try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					// try {
+					// Thread.sleep(500);
+					// } catch (InterruptedException e) {
+					// e.printStackTrace();
+					// }
 					log.info(msg.getSender() + " " + msg.getPerformative());
 					if (msg.getPerformative() == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
 						log.info("topic send message to me");

@@ -138,6 +138,7 @@ public class MapWindow extends JFrame {
 		private Image antGreen = Toolkit.getDefaultToolkit().createImage(pathToResources + "antgreen.png");
 		private Image antBlue = Toolkit.getDefaultToolkit().createImage(pathToResources + "antblue.png");
 		private Image antYellow = Toolkit.getDefaultToolkit().createImage(pathToResources + "antyellow.png");
+		private Image bestBoy = Toolkit.getDefaultToolkit().createImage(pathToResources + "besterSchütze.png");
 
 		// private int[][] currentLocation = new int[][] { { 0 }, { 0 } };
 
@@ -177,9 +178,13 @@ public class MapWindow extends JFrame {
 						mapAsImage[mapAsImage.length][j] = fogOfWar;
 						mapAsImage[i][mapAsImage[i].length] = fogOfWar;
 						if (field[i][j] != null)
-							mapAsImage[i + 1][j + 1] = field[i][j].getFood() > 0 ? best_food
-									: field[i][j].getStench() == 0 ? grass : trap;
-						// m.addImage(mapAsImage[i][j], i * (j + 1));
+							// mapAsImage[i + 1][j + 1] = field[i][j].getFood()
+							// > 0 ? best_food
+							// : field[i][j].getStench() == 0 ? grass : trap;
+							mapAsImage[i + 1][j + 1] = //
+									field[i][j].getFood() > 0 ? best_food //
+											: field[i][j].isRock() ? stone //
+													: field[i][j].isTrap() ? trap : grass;
 					}
 				}
 				// mapAsImage[1][1] = antRed;
@@ -212,8 +217,13 @@ public class MapWindow extends JFrame {
 					temp[temp.length - 1][j] = fogOfWar;
 					temp[i][temp[i].length - 1] = fogOfWar;
 					if (field[i][j] != null)
-						temp[i + 1][j + 1] = field[i][j].getFood() > 0 ? best_food
-								: field[i][j].getStench() == 0 ? grass : trap;
+						// temp[i + 1][j + 1] = field[i][j].getFood() > 0 ?
+						// best_food
+						// : field[i][j].getStench() == 0 ? grass : trap;
+						temp[i + 1][j + 1] = //
+								field[i][j].getFood() > 0 ? best_food //
+										: field[i][j].isRock() ? stone //
+												: field[i][j].isTrap() ? trap : grass;
 					// m.addImage(temp[i][j], i * (j + 1));
 				}
 			}
