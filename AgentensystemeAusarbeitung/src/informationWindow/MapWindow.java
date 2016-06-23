@@ -22,6 +22,7 @@ import javax.swing.ScrollPaneConstants;
 import agent.AbstractAgent;
 
 import data.Cell;
+import data.Cord;
 import data.MapAsArrayReloaded;
 
 public class MapWindow extends JFrame {
@@ -91,12 +92,12 @@ public class MapWindow extends JFrame {
 	 *            two-dimensional array to call method "receiveMap" in
 	 *            MapWindow.Screen with the same value
 	 */
-	public void receiveMap(Cell[][] field) {
+	public void receiveMap(Cell[][] field, Cord currentLocation) {
 		if ((field.length + 2) * 32 > screen.getHeight() || (field[0].length + 2) * 32 > screen.getWidth()) {
 			System.out.println("größer als Screen");
 			resizeScreen((field[0].length + 2) * 32, (field.length + 2) * 32);
 		}
-		screen.receiveMap(field);
+		screen.receiveMap(field, currentLocation);
 	}
 
 	private void resizeScreen(int width, int height) {
@@ -261,7 +262,7 @@ public class MapWindow extends JFrame {
 		 *            the two-dimensional array with cells which have
 		 *            information about the cells the agent has explored
 		 */
-		private void receiveMap(Cell[][] field) {
+		private void receiveMap(Cell[][] field, Cord currentLocation) {
 			this.field = field;
 			Image[][] temp = new Image[field.length + 2][field[0].length + 2];
 
@@ -279,8 +280,7 @@ public class MapWindow extends JFrame {
 				}
 			}
 
-			// temp[currentLocation.getX()][currentLocation.getY()] =
-			// grassWithBoy;s
+			temp[currentLocation.getX()][currentLocation.getY()] = grassWithBoy;
 
 			mapAsImage = temp;
 
@@ -300,7 +300,7 @@ public class MapWindow extends JFrame {
 
 		@Override
 		public void paintComponent(Graphics g) {
-			System.out.println(getSize());
+			// System.out.println(getSize());
 			if (mapAsImage != null) {
 				for (int i = 0; i < mapAsImage.length; ++i) {
 					for (int j = 0; j < mapAsImage[i].length; ++j) {
@@ -373,7 +373,6 @@ public class MapWindow extends JFrame {
 		 * 
 		 * @return the JMenu for agents
 		 */
-		@SuppressWarnings("unused")
 		@Deprecated
 		private JMenu getAgentMenu() {
 			JMenu menu = new JMenu("Agent");

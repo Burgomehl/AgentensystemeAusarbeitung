@@ -66,7 +66,7 @@ public class GuiAgent extends AbstractAgent {
 						Cell field = m.cell;
 						map.addNewField(field, cord);
 
-						mapWindow.receiveMap(map.getMap());
+						mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord));
 					} else {
 						log.info("Misterious Message received " + msg.getContent());
 					}
