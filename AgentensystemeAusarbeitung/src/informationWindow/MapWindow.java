@@ -3,12 +3,13 @@ package informationWindow;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.MediaTracker;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.MemoryImageSource;
+import java.awt.image.PixelGrabber;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -16,6 +17,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import agent.AbstractAgent;
 
@@ -51,14 +53,10 @@ public class MapWindow extends JFrame {
 		return mapWindow;
 	}
 
-	// public MapWindow(MapAsArray map) {
-	// setMap(map);
-	// initComponent();
-	// }
-
 	protected void initComponent() {
 		setTitle(title);
-		scrollPane = new JScrollPane(screen);
+		scrollPane = new JScrollPane(screen, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		add(scrollPane);
 		setJMenuBar(toolbar);
 		pack();
@@ -77,6 +75,7 @@ public class MapWindow extends JFrame {
 	 * let show the window with map and agent information
 	 */
 	public void start() {
+		setLocationRelativeTo(null);
 		setVisible(true);
 		agentWindow.start();
 	}
@@ -84,8 +83,6 @@ public class MapWindow extends JFrame {
 	public void setMap(MapAsArrayReloaded map) {
 		this.map = map;
 		screen.setMapWindow(this);
-		// this.field = map.getMap();
-		// this.mapWithImages = new Image[field.length][field[0].length];
 	}
 
 	/**
@@ -95,7 +92,15 @@ public class MapWindow extends JFrame {
 	 *            MapWindow.Screen with the same value
 	 */
 	public void receiveMap(Cell[][] field) {
+		if ((field.length + 2) * 32 > screen.getHeight() || (field[0].length + 2) * 32 > screen.getWidth()) {
+			System.out.println("größer als Screen");
+			resizeScreen((field[0].length + 2) * 32, (field.length + 2) * 32);
+		}
 		screen.receiveMap(field);
+	}
+
+	private void resizeScreen(int width, int height) {
+		screen.setSize(new Dimension(width, height));
 	}
 
 	/**
@@ -123,7 +128,7 @@ public class MapWindow extends JFrame {
 
 	class Screen extends JComponent {
 
-		private MediaTracker m = new MediaTracker(this);
+		// private MediaTracker m = new MediaTracker(this);
 
 		private final String pathToResources = "res/";
 		private final int scaledHeight = 32;
@@ -138,7 +143,17 @@ public class MapWindow extends JFrame {
 		private Image antGreen = Toolkit.getDefaultToolkit().createImage(pathToResources + "antgreen.png");
 		private Image antBlue = Toolkit.getDefaultToolkit().createImage(pathToResources + "antblue.png");
 		private Image antYellow = Toolkit.getDefaultToolkit().createImage(pathToResources + "antyellow.png");
-		private Image bestBoy = Toolkit.getDefaultToolkit().createImage(pathToResources + "besterSchütze.png");
+		private Image bestShooter = Toolkit.getDefaultToolkit().createImage(pathToResources + "bestShooter.png");
+		private Image bestBoy = Toolkit.getDefaultToolkit().createImage(pathToResources + "bestBoy.png");
+
+		// Images for draw own ants
+		private Image grassWithBoy;
+		private Image grassWithFoodAndBoy;
+		private Image grassWithBoyOnStart;
+
+		private Image grassWithShooter;
+		private Image grassWithFoodAndShooter;
+		private Image grassWithShooterOnStart;
 
 		// private int[][] currentLocation = new int[][] { { 0 }, { 0 } };
 
@@ -147,13 +162,13 @@ public class MapWindow extends JFrame {
 		private Image[][] mapAsImage;
 		// private int[][] positionArray;
 
+		private Dimension size = new Dimension(800, 600);
+
 		Screen() {
 			//
 		}
 
 		Screen(MapWindow mWindow) {
-			// this.mWindow = mWindow;
-			// this.field = mWindow.map.getMap();
 			setMapWindow(mWindow);
 		}
 
@@ -167,7 +182,8 @@ public class MapWindow extends JFrame {
 		/**
 		 * first call - when the map was first time created
 		 */
-		private synchronized void initializeMap() {
+		private void initializeMap() {
+			initAnts();
 			if (field != null) {
 				System.out.println("field: " + field.length + field[0].length);
 				this.mapAsImage = new Image[field.length + 2][field[0].length + 2];
@@ -178,26 +194,64 @@ public class MapWindow extends JFrame {
 						mapAsImage[mapAsImage.length][j] = fogOfWar;
 						mapAsImage[i][mapAsImage[i].length] = fogOfWar;
 						if (field[i][j] != null)
-							// mapAsImage[i + 1][j + 1] = field[i][j].getFood()
-							// > 0 ? best_food
-							// : field[i][j].getStench() == 0 ? grass : trap;
 							mapAsImage[i + 1][j + 1] = //
 									field[i][j].getFood() > 0 ? best_food //
 											: field[i][j].isRock() ? stone //
 													: field[i][j].isTrap() ? trap : grass;
+						else {
+							mapAsImage[i + 1][j + 1] = fogOfWar;
+						}
 					}
 				}
-				// mapAsImage[1][1] = antRed;
-				// try {
-				// m.waitForAll();
-				// } catch (Exception e) {
-				// e.printStackTrace();
-				// }
-				// positionArray = new int[3][3];
 				repaint();
 			} else {
 				return;
 			}
+		}
+
+		private void initAnts() {
+			int[] pixelsBack = new int[1024];
+			int[] pixelsFood = new int[1024];
+			int[] pixelsShooter = new int[1024];
+			int[] pixelsBoy = new int[1024];
+
+			int[] result = new int[1024];
+			MemoryImageSource source = new MemoryImageSource(scaledWidth, scaledHeight, result, 0, scaledWidth);
+			source.setAnimated(true);
+			PixelGrabber grabber = new PixelGrabber(grass, 0, 0, scaledWidth, scaledHeight, pixelsBack, 0, scaledWidth);
+			PixelGrabber grabberFood = new PixelGrabber(best_food, 0, 0, scaledWidth, scaledHeight, pixelsFood, 0,
+					scaledWidth);
+			PixelGrabber grabberShooter = new PixelGrabber(bestShooter, 0, 0, scaledWidth, scaledHeight, pixelsShooter,
+					0, scaledWidth);
+			PixelGrabber grabberBoy = new PixelGrabber(bestBoy, 0, 0, scaledWidth, scaledHeight, pixelsBoy, 0,
+					scaledWidth);
+			try {
+				grabber.grabPixels();
+				grabberFood.grabPixels();
+				grabberShooter.grabPixels();
+				grabberBoy.grabPixels();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			for (int i = 0; i < pixelsBack.length; ++i) {
+				if (pixelsShooter[i] != 0) {
+					result[i] = pixelsShooter[i];
+				} else {
+					result[i] = pixelsBack[i];
+				}
+			}
+			this.grassWithShooter = Toolkit.getDefaultToolkit().createImage(source);
+			source.newPixels();
+			for (int i = 0; i < pixelsBack.length; ++i) {
+				if (pixelsBoy[i] != 0) {
+					result[i] = pixelsBoy[i];
+				} else {
+					result[i] = pixelsBack[i];
+				}
+			}
+			this.grassWithBoy = Toolkit.getDefaultToolkit().createImage(source);
+			source.newPixels();
 		}
 
 		/**
@@ -207,9 +261,10 @@ public class MapWindow extends JFrame {
 		 *            the two-dimensional array with cells which have
 		 *            information about the cells the agent has explored
 		 */
-		private synchronized void receiveMap(Cell[][] field) {
+		private void receiveMap(Cell[][] field) {
 			this.field = field;
 			Image[][] temp = new Image[field.length + 2][field[0].length + 2];
+
 			for (int i = 0; i < field.length; ++i) {
 				for (int j = 0; j < field[i].length; ++j) {
 					temp[i][0] = fogOfWar;
@@ -217,59 +272,35 @@ public class MapWindow extends JFrame {
 					temp[temp.length - 1][j] = fogOfWar;
 					temp[i][temp[i].length - 1] = fogOfWar;
 					if (field[i][j] != null)
-						// temp[i + 1][j + 1] = field[i][j].getFood() > 0 ?
-						// best_food
-						// : field[i][j].getStench() == 0 ? grass : trap;
 						temp[i + 1][j + 1] = //
 								field[i][j].getFood() > 0 ? best_food //
 										: field[i][j].isRock() ? stone //
 												: field[i][j].isTrap() ? trap : grass;
-					// m.addImage(temp[i][j], i * (j + 1));
 				}
 			}
 
-			// try {
-			// m.waitForAll();
-			// } catch (Exception e) {
-			// e.printStackTrace();
-			// }
+			// temp[currentLocation.getX()][currentLocation.getY()] =
+			// grassWithBoy;s
 
 			mapAsImage = temp;
 
 			repaint();
 		}
 
-		// private void drawMapTile(String found, int x, int y) {
-		// // currentLocation[0][0] = x;
-		// // currentLocation[0][1] = y;
-		// if (found.equalsIgnoreCase("grass"))
-		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = grass;
-		// else if (found.equalsIgnoreCase("stone"))
-		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = stone;
-		// else if (found.equalsIgnoreCase("stench"))
-		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = trap;
-		// else if (found.equalsIgnoreCase("food"))
-		// mapAsImage[getMid()[0] + x][getMid()[1] + y] = best_food;
-		//
-		// repaint();
-		// // for (int i = 0; i < positionArray.length; ++i) {
-		// // for (int j = 0; j < positionArray[i].length; ++i) {
-		// // // if(positionArray[i][j])
-		// // }
-		// // }
-		// }
-
-		// private int[] getMid() {
-		// return new int[] { (mapAsImage.length / 2), (mapAsImage[0].length) };
-		// }
-
 		@Override
 		public Dimension getPreferredSize() {
-			return new Dimension(800, 600);
+			return size;
+		}
+
+		@Override
+		public void setSize(Dimension size) {
+			super.setSize(size);
+			this.size = size;
 		}
 
 		@Override
 		public void paintComponent(Graphics g) {
+			System.out.println(getSize());
 			if (mapAsImage != null) {
 				for (int i = 0; i < mapAsImage.length; ++i) {
 					for (int j = 0; j < mapAsImage[i].length; ++j) {
@@ -286,7 +317,6 @@ public class MapWindow extends JFrame {
 		@Override
 		public void repaint() {
 			super.repaint();
-			// System.out.println("repaint()");
 		}
 	}
 

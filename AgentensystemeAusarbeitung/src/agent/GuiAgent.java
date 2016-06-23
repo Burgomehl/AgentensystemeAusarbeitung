@@ -57,6 +57,7 @@ public class GuiAgent extends AbstractAgent {
 					String content = msg.getContent();
 					AID sender = msg.getSender();
 					log.info("Sender of Message was: " + sender);
+					System.out.println("Sender of Message was: " + sender);
 					if (msg.getPerformative() == ACLMessage.PROPAGATE) {
 						log.info("topic send message to me");
 						Gson gson = new Gson();
@@ -65,15 +66,6 @@ public class GuiAgent extends AbstractAgent {
 						Cell field = m.cell;
 						map.addNewField(field, cord);
 
-						// Cell[][] c = map.getMap();
-						// for (int i = 0; i < c.length; ++i) {
-						// for (Cell cell : c[i]) {
-						// System.out.println(cell == null ? "cell null" : "cell
-						// not null");
-						// }
-						// }
-						// System.out.println(map.getMap() == null ? "null" :
-						// "not null");
 						mapWindow.receiveMap(map.getMap());
 					} else {
 						log.info("Misterious Message received " + msg.getContent());
