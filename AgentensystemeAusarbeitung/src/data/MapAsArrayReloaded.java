@@ -38,7 +38,7 @@ public class MapAsArrayReloaded {
 		return newCord;
 	}
 
-	private Cord getTotalPosition(Cord cord) {
+	public Cord getTotalPosition(Cord cord) {
 		Cord newCord = new Cord(getMid().getX() + cord.getX(), getMid().getY() + cord.getY());
 		log.info("converting relativ : " + cord + " to total " + newCord);
 		return newCord;
@@ -84,7 +84,7 @@ public class MapAsArrayReloaded {
 		if (isInRange(possibleCordinates)) {
 			resizeMap(10, cordNew);
 		}
-		if(map[possibleCordinates.getX()][possibleCordinates.getY()] == null){
+		if (map[possibleCordinates.getX()][possibleCordinates.getY()] == null) {
 			list.add(getRelativePosition(possibleCordinates));
 		}
 	}

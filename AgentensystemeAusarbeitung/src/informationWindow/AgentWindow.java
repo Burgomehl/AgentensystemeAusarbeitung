@@ -90,16 +90,22 @@ public class AgentWindow extends JFrame {
 		return root;
 	}
 
+	/**
+	 * 
+	 * @param newAgent
+	 */
 	public void addAgent(AbstractAgent newAgent) {
 		listAgents.add(newAgent);
 
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(newAgent.getLocalName());
 		DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Name: " + newAgent.getLocalName());
+		@SuppressWarnings("static-access")
 		DefaultMutableTreeNode color = new DefaultMutableTreeNode("Color: " + newAgent.agentColor);
 		DefaultMutableTreeNode aState = new DefaultMutableTreeNode("State: " + newAgent.getAgentState().getName());
 		DefaultMutableTreeNode locName = new DefaultMutableTreeNode(
-				"PositionName: " + newAgent.getLocation().getName());
-		DefaultMutableTreeNode location = new DefaultMutableTreeNode("Postion: " + newAgent.getLocation().getAddress());
+				"ContainerName: " + newAgent.getLocation().getName());
+		DefaultMutableTreeNode location = new DefaultMutableTreeNode(
+				"IP-Address: " + newAgent.getLocation().getAddress());
 
 		node.add(agent);
 		node.add(color);

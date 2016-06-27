@@ -1,6 +1,7 @@
 package agent;
 
 import data.Cell;
+import data.Cord;
 
 public class Message {
 	public String name;
@@ -11,7 +12,7 @@ public class Message {
 	public String action;
 	public Cell cell;
 	
-	
+	public Cord cord;
 	
 	public String replyId;
 }

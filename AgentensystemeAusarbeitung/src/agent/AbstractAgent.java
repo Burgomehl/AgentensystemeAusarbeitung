@@ -94,7 +94,7 @@ public abstract class AbstractAgent extends Agent {
 		try {
 			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(
 					TopicManagementHelper.SERVICE_NAME);
-			AID topicAID = topicManagementHelper.createTopic("AdamsTopic");
+			topicAID = topicManagementHelper.createTopic("AdamsTopic");
 
 			topicManagementHelper.register(topicAID);
 
@@ -105,15 +105,16 @@ public abstract class AbstractAgent extends Agent {
 
 	protected abstract void addBehaviours();
 
-	/**
-	 * method to receive messages from topic e.g. to ask and calculate which way
-	 * to go
-	 */
-	protected abstract void receiving();
-
-	/**
-	 * method to ask and answer questions
-	 */
-	protected abstract void sending();
+	// /**
+	// * method to receive messages from topic e.g. to ask and calculate which
+	// way
+	// * to go
+	// */
+	// protected abstract void receiving();
+	//
+	// /**
+	// * method to ask and answer questions
+	// */
+	// protected abstract void sending();
 
 }

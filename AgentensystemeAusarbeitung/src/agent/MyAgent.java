@@ -22,17 +22,15 @@ public class MyAgent extends AbstractAgent {
 	private boolean smellFood = false;
 	private int currentFood = 0;
 	private final static Gson gson = new Gson();
-	private boolean maySend = false;
 
 	@Override
 	protected void addBehaviours() {
 		addBehaviour(new CyclicBehaviour() {
 			@Override
 			public void action() {
-				if (!messages.isEmpty() && maySend) {
+				while (!messages.isEmpty()) {
 					String message = messages.remove();
 					sendMessage(message, ACLMessage.REQUEST, new AID(worldName, AID.ISLOCALNAME));
-					maySend = false;
 				}
 			}
 		});
@@ -53,44 +51,46 @@ public class MyAgent extends AbstractAgent {
 					String content = msg.getContent();
 					AID sender = msg.getSender();
 					log.info("Sender of Message was: " + sender);
-					inToReplyTo = msg.getReplyWith();
-					log.info(inToReplyTo);
-					try {
-						Thread.sleep(500);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					// try {
+					// Thread.sleep(500);
+					// } catch (InterruptedException e) {
+					// e.printStackTrace();
+					// }
 					log.info(msg.getSender() + " " + msg.getPerformative());
-					if (messages.isEmpty()) {
-						if (msg.getSender().equals(topicAID)) {
-							log.info("topic send message to me");
-						} else {
-							log.info("normal message");
-							if (msg.getPerformative() == ACLMessage.INFORM) {
-								log.info("got informmessage");
-								// Gson gson = new Gson();
-								Message m = gson.fromJson(content, Message.class);
-								currentLocation = map.addNewField(m.cell, currentLocation);
-								sendMessage(content, ACLMessage.INFORM, topicAID);
-								log.info("ausgabe" + content);
-								logic(m);
-							} else if (msg.getPerformative() == ACLMessage.REFUSE) {
-								log.info("got refuse message");
-								Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
-								map.addNewField(field, currentLocation);
-								Message newMessage = new Message();
-								newMessage.cell = field;
-								// Gson gson = new Gson();
-								String con = gson.toJson(newMessage);
-								sendMessage(con, ACLMessage.INFORM, topicAID);
-								currentLocation = lastCords.remove();
-								Message m = gson.fromJson(content, Message.class);
-								logic(m);
-							}
-							maySend = true;
-						}
+					if (msg.getPerformative() == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
+						log.info("topic send message to me");
+						Message m = gson.fromJson(content, Message.class);
+						Cord cord = m.cord;
+						Cell field = m.cell;
+						map.addNewField(field, cord);
 					} else {
-						maySend = true;
+						inToReplyTo = msg.getReplyWith();
+						log.info(inToReplyTo);
+						log.info("normal message");
+						if (msg.getPerformative() == ACLMessage.INFORM) {
+							log.info("got informmessage");
+							// Gson gson = new Gson();
+							Message m = gson.fromJson(content, Message.class);
+							currentLocation = map.addNewField(m.cell, currentLocation);
+							m.cord = currentLocation;
+							String con = gson.toJson(m);
+							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+							log.info("ausgabe" + content);
+							logic(m);
+						} else if (msg.getPerformative() == ACLMessage.REFUSE) {
+							log.info("got refuse message");
+							Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
+							map.addNewField(field, currentLocation);
+							Message newMessage = new Message();
+							newMessage.cell = field;
+							newMessage.cord = currentLocation;
+							// Gson gson = new Gson();
+							String con = gson.toJson(newMessage);
+							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+							currentLocation = lastCords.remove();
+							Message m = gson.fromJson(content, Message.class);
+							logic(m);
+						}
 					}
 				} else {
 					block();
@@ -114,7 +114,6 @@ public class MyAgent extends AbstractAgent {
 				log.debug("Login at antworld");
 				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN, agentColor)));
 				login = true;
-				maySend = true;
 			}
 		} else {
 			if (msg.state.equals("DEAD")) {
@@ -246,7 +245,7 @@ public class MyAgent extends AbstractAgent {
 		msg.setInReplyTo(inToReplyTo);
 		msg.setContent(Message);
 		msg.setLanguage("JSON");
-		log.info("schicke: " + Message);
+		log.info("schicke an " + aidToSendTo + " : " + Message);
 		send(msg);
 	}
 
@@ -262,17 +261,17 @@ public class MyAgent extends AbstractAgent {
 	// protected void loginAtToppic() {
 	// // TODO Auto-generated method stub
 	// }
-
-	@Override
-	protected void receiving() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void sending() {
-		// TODO Auto-generated method stub
-
-	}
+	//
+	// @Override
+	// protected void receiving() {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// protected void sending() {
+	// // TODO Auto-generated method stub
+	//
+	// }
 
 }

@@ -1,27 +1,25 @@
 package agent;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
-import data.Cord;
+import data.LinkedCord;
 import data.MapAsArrayReloaded;
 
 public class Methods {
-	private static HashSet<Cord> vistedFields = new HashSet<>();
+	private static HashSet<LinkedCord> closedList = new HashSet<>();
+	private static PriorityQueue<LinkedCord> openList;
 
-	public static void getRoute(MapAsArrayReloaded map, Cord a, Cord b) {
-		if (!vistedFields.contains(a)) {
-			vistedFields.add(a);
-		}
-		if (!vistedFields.contains(b)) {
-			vistedFields.add(b);
-		}
-		List<Cord> fields = new ArrayList<>();
-		fields.addAll(map.getNeighbours(a));
-		fields.addAll(map.getNeighbours(b));
-		for (Cord cord : fields) {
+	public static void getRoute(MapAsArrayReloaded map, LinkedCord start, LinkedCord target) {
+		openList = new PriorityQueue<LinkedCord>();
+		do{
+			LinkedCord currentCord = openList.poll();
+		}while(openList.isEmpty());
+		
+	}
 
-		}
+	private static int getCordValue(LinkedCord pos, LinkedCord target) {
+		return target.getX() - pos.getX() + target.getY() - pos.getY();
 	}
 }
