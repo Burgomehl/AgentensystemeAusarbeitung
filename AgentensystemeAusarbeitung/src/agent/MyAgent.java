@@ -22,15 +22,17 @@ public class MyAgent extends AbstractAgent {
 	private boolean smellFood = false;
 	private int currentFood = 0;
 	private final static Gson gson = new Gson();
+	private boolean maySend = false;
 
 	@Override
 	protected void addBehaviours() {
 		addBehaviour(new CyclicBehaviour() {
 			@Override
 			public void action() {
-				while (!messages.isEmpty()) {
+				if (!messages.isEmpty() && maySend) {
 					String message = messages.remove();
 					sendMessage(message, ACLMessage.REQUEST, new AID(worldName, AID.ISLOCALNAME));
+					maySend = false;
 				}
 			}
 		});
@@ -59,31 +61,36 @@ public class MyAgent extends AbstractAgent {
 						e.printStackTrace();
 					}
 					log.info(msg.getSender() + " " + msg.getPerformative());
-					if (msg.getSender().equals(topicAID)) {
-						log.info("topic send message to me");
-					} else {
-						log.info("normal message");
-						if (msg.getPerformative() == ACLMessage.INFORM) {
-							log.info("got informmessage");
-							// Gson gson = new Gson();
-							Message m = gson.fromJson(content, Message.class);
-							currentLocation = map.addNewField(m.cell, currentLocation);
-							sendMessage(content, ACLMessage.INFORM, topicAID);
-							log.info("ausgabe" + content);
-							logic(m);
-						} else if (msg.getPerformative() == ACLMessage.REFUSE) {
-							log.info("got refuse message");
-							Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
-							map.addNewField(field, currentLocation);
-							Message newMessage = new Message();
-							newMessage.cell = field;
-							// Gson gson = new Gson();
-							String con = gson.toJson(newMessage);
-							sendMessage(con, ACLMessage.INFORM, topicAID);
-							currentLocation = lastCords.remove();
-							Message m = gson.fromJson(content, Message.class);
-							logic(m);
+					if (messages.isEmpty()) {
+						if (msg.getSender().equals(topicAID)) {
+							log.info("topic send message to me");
+						} else {
+							log.info("normal message");
+							if (msg.getPerformative() == ACLMessage.INFORM) {
+								log.info("got informmessage");
+								// Gson gson = new Gson();
+								Message m = gson.fromJson(content, Message.class);
+								currentLocation = map.addNewField(m.cell, currentLocation);
+								sendMessage(content, ACLMessage.INFORM, topicAID);
+								log.info("ausgabe" + content);
+								logic(m);
+							} else if (msg.getPerformative() == ACLMessage.REFUSE) {
+								log.info("got refuse message");
+								Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
+								map.addNewField(field, currentLocation);
+								Message newMessage = new Message();
+								newMessage.cell = field;
+								// Gson gson = new Gson();
+								String con = gson.toJson(newMessage);
+								sendMessage(con, ACLMessage.INFORM, topicAID);
+								currentLocation = lastCords.remove();
+								Message m = gson.fromJson(content, Message.class);
+								logic(m);
+							}
+							maySend = true;
 						}
+					} else {
+						maySend = true;
 					}
 				} else {
 					block();
@@ -107,6 +114,7 @@ public class MyAgent extends AbstractAgent {
 				log.debug("Login at antworld");
 				messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_LOGIN, agentColor)));
 				login = true;
+				maySend = true;
 			}
 		} else {
 			if (msg.state.equals("DEAD")) {
@@ -135,8 +143,8 @@ public class MyAgent extends AbstractAgent {
 					}
 				} else {
 					/*
-					 * Soll der Agent Fallen erkennen? Stench reicht doch aus. 
-					 * */
+					 * Soll der Agent Fallen erkennen? Stench reicht doch aus.
+					 */
 					toGoCord = lastCords.remove();
 				}
 				moveOn(toGoCord);
