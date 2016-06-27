@@ -1,7 +1,5 @@
 package agent;
 
-import de.aim.antworld.agent.AntWorldConsts;
-
 public class InformMessage {
 	String type;
 	String color;

@@ -2,6 +2,7 @@ package data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -34,26 +35,26 @@ public class MapAsArrayReloaded {
 
 	private Cord getRelativePosition(Cord cord) {
 		Cord newCord = new Cord(cord.getX() - getMid().getX(), cord.getY() - getMid().getY());
-		log.info("converting total : " + cord + " to cord " + newCord);
+		log.debug("converting total : " + cord + " to cord " + newCord);
 		return newCord;
 	}
 
 	public Cord getTotalPosition(Cord cord) {
 		Cord newCord = new Cord(getMid().getX() + cord.getX(), getMid().getY() + cord.getY());
-		log.info("converting relativ : " + cord + " to total " + newCord);
+		log.debug("converting relativ : " + cord + " to total " + newCord);
 		return newCord;
 	}
 
 	public Cord addNewField(Cell field, Cord cord) {
 		Cord cordNew = getTotalPosition(cord);
-		log.info("Add new field on: " + cordNew);
+		log.debug("Add new field on: " + cordNew);
 		if (isInRange(cordNew)) {
 			resizeMap(10, cordNew);
 		}
 		if (map[cordNew.getX()][cordNew.getY()] == null) {
 			map[cordNew.getX()][cordNew.getY()] = field;
 		} else {
-			System.out.println("There is already a Field");
+			log.debug("There is already a Field");
 		}
 		print(map);
 		return getRelativePosition(cordNew);
@@ -67,31 +68,33 @@ public class MapAsArrayReloaded {
 		return map[cordNew.getX()][cordNew.getY()];
 	}
 
-	public List<Cord> getNeighbours(Cord cord) {
+	public List<Cord> getNeighbours(Cord cord, Predicate<Cord> decision) {
 		Cord cordNew = getTotalPosition(cord);
-		log.info("GetNeighbours on: " + cordNew);
+		log.debug("GetNeighbours on: " + cordNew);
 		List<Cord> list = new ArrayList<>();
-		testCord(cordNew, list, -1, 0);
-		testCord(cordNew, list, 0, -1);
-		testCord(cordNew, list, 0, 1);
-		testCord(cordNew, list, 1, 0);
-		log.info("Current Location after analysis of neighbours: " + cordNew + " listsize: " + list.size());
+		getNeighbours(cordNew, list, -1, 0, decision);
+		getNeighbours(cordNew, list, 0, -1, decision);
+		getNeighbours(cordNew, list, 0, 1, decision);
+		getNeighbours(cordNew, list, 1, 0, decision);
+
+		log.debug("Current Location after analysis of neighbours: " + cordNew + " listsize: " + list.size());
 		return list;
 	}
 
-	private void testCord(Cord cordNew, List<Cord> list, int x, int y) {
+	private void getNeighbours(Cord cordNew, List<Cord> list, int x, int y,
+			Predicate<Cord> decision) {
 		Cord possibleCordinates = new Cord(cordNew.getX() + x, cordNew.getY() + y);
 		if (isInRange(possibleCordinates)) {
-			resizeMap(10, cordNew);
+			resizeMap(10, possibleCordinates);
 		}
-		if (map[possibleCordinates.getX()][possibleCordinates.getY()] == null) {
+		if (decision.test(possibleCordinates)) {
 			list.add(getRelativePosition(possibleCordinates));
 		}
 	}
 
 	public int getFieldIndex(Cord cord) {
 		Cord cordNew = getTotalPosition(cord);
-		log.info("analsysis the fieldindex: " + cordNew);
+		log.debug("analsysis the fieldindex: " + cordNew);
 		int index = 0;
 		for (int i = -1; i <= 1; ++i) {
 			for (int j = -1; j < 1; ++j) {
@@ -101,7 +104,7 @@ public class MapAsArrayReloaded {
 				}
 			}
 		}
-		log.info("currentLocation after analysis of fieldindex: " + cordNew);
+		log.debug("currentLocation after analysis of fieldindex: " + cordNew);
 		return index;
 	}
 
@@ -110,7 +113,7 @@ public class MapAsArrayReloaded {
 	}
 
 	private void resizeMap(int resize, Cord cord) {
-		log.info("resize Map with cord: " + cord);
+		log.debug("resize Map with cord: " + cord);
 		Cell[][] newMap = new Cell[map.length + resize][map.length + resize];
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map.length; j++) {
@@ -120,7 +123,7 @@ public class MapAsArrayReloaded {
 		map = newMap;
 		cord.setX(cord.getX() + resize / 2);
 		cord.setY(cord.getY() + resize / 2);
-		log.info("resized cord: " + cord);
+		log.debug("resized cord: " + cord);
 
 	}
 
@@ -156,7 +159,7 @@ public class MapAsArrayReloaded {
 			}
 			b.append("\n\r");
 		}
-		log.info(b);
+		log.debug(b);
 	}
 
 	public Cord getCurrentLocation() {

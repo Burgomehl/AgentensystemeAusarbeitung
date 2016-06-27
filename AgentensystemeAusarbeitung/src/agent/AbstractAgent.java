@@ -2,12 +2,10 @@ package agent;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import behaviour.IBehaviour;
 import data.Cord;
 import data.MapAsArrayReloaded;
 import de.aim.antworld.agent.AntWorldConsts;
@@ -24,7 +22,6 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 
 public abstract class AbstractAgent extends Agent {
-	protected List<IBehaviour> behaviours;
 	protected String worldName = "";
 	protected MapAsArrayReloaded map = new MapAsArrayReloaded();
 	protected String inToReplyTo = "";

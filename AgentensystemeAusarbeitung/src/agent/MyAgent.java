@@ -1,8 +1,10 @@
 package agent;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
@@ -18,9 +20,9 @@ import jade.lang.acl.ACLMessage;
 public class MyAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
-	private Cord noticeCord;
-	private boolean smellFood = false;
-	private int currentFood = 0;
+	private boolean waitForResponse = false;
+	private Deque<Cord> movementOrder;
+	private Deque<Cord> movementOrderBack = new LinkedList<>();
 	private final static Gson gson = new Gson();
 
 	@Override
@@ -44,18 +46,10 @@ public class MyAgent extends AbstractAgent {
 			public void action() {
 				MyAgent.log.info("Message Behaviour");
 				ACLMessage msg = myAgent.receive();
-				for (int i = 0; i < 10000000; i++) {
-					// empty block
-				}
 				if (msg != null) {
 					String content = msg.getContent();
 					AID sender = msg.getSender();
 					log.info("Sender of Message was: " + sender);
-					// try {
-					// Thread.sleep(500);
-					// } catch (InterruptedException e) {
-					// e.printStackTrace();
-					// }
 					log.info(msg.getSender() + " " + msg.getPerformative());
 					if (msg.getPerformative() == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
 						log.info("topic send message to me");
@@ -64,32 +58,62 @@ public class MyAgent extends AbstractAgent {
 						Cell field = m.cell;
 						map.addNewField(field, cord);
 					} else {
-						inToReplyTo = msg.getReplyWith();
+						if (msg.getReplyWith() != null && !msg.getReplyWith().isEmpty()) {
+							inToReplyTo = msg.getReplyWith();
+						} else {
+							log.info("inToReply wurde nicht anständig gesetzt");
+						}
 						log.info(inToReplyTo);
-						log.info("normal message");
-						if (msg.getPerformative() == ACLMessage.INFORM) {
-							log.info("got informmessage");
-							// Gson gson = new Gson();
-							Message m = gson.fromJson(content, Message.class);
-							currentLocation = map.addNewField(m.cell, currentLocation);
-							m.cord = currentLocation;
-							String con = gson.toJson(m);
-							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-							log.info("ausgabe" + content);
-							logic(m);
-						} else if (msg.getPerformative() == ACLMessage.REFUSE) {
-							log.info("got refuse message");
-							Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
-							map.addNewField(field, currentLocation);
-							Message newMessage = new Message();
-							newMessage.cell = field;
-							newMessage.cord = currentLocation;
-							// Gson gson = new Gson();
-							String con = gson.toJson(newMessage);
-							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-							currentLocation = lastCords.remove();
-							Message m = gson.fromJson(content, Message.class);
-							logic(m);
+						if (!waitForResponse) {
+							log.info("normal message");
+							if (msg.getPerformative() == ACLMessage.INFORM) {
+								log.info("got informmessage");
+								// Gson gson = new Gson();
+								Message m = gson.fromJson(content, Message.class);
+								currentLocation = map.addNewField(m.cell, currentLocation);
+								m.cord = currentLocation;
+								String con = gson.toJson(m);
+								sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+								log.info("ausgabe" + content);
+								logic(m);
+							} else if (msg.getPerformative() == ACLMessage.REFUSE) {
+								log.info("got refuse message");
+								Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
+								map.addNewField(field, currentLocation);
+								Message newMessage = new Message();
+								newMessage.cell = field;
+								newMessage.cord = currentLocation;
+								// Gson gson = new Gson();
+								String con = gson.toJson(newMessage);
+								sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+								currentLocation = lastCords.remove();
+								Message m = gson.fromJson(content, Message.class);
+								logic(m);
+								waitForResponse = false;
+							}
+						} else {
+							Message contentOfReply = gson.fromJson(msg.getContent(), Message.class);
+							if (movementOrder.size() >= 0) {
+								log.info("current food info "
+										+ contentOfReply.currentFood);
+								Cord temp = movementOrder.pollFirst();
+								if (temp != null) {
+									moveOn(temp);
+									waitForResponse = true;
+								} else {
+									waitForResponse = false;
+								}
+								if (!waitForResponse && currentLocation.equals(new Cord(0, 0)) && contentOfReply.currentFood>0) {
+									messages.add(
+											gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_DROP, agentColor)));
+									waitForResponse = true;
+								}
+							} else if (currentLocation.equals(new Cord(0, 0))) {
+								movementOrder = movementOrderBack;
+								movementOrderBack = new LinkedList<>();
+							} else {
+								waitForResponse = false;
+							}
 						}
 					}
 				} else {
@@ -118,17 +142,25 @@ public class MyAgent extends AbstractAgent {
 		} else {
 			if (msg.state.equals("DEAD")) {
 				log.info("agent is dead");
-				doSuspend();// FIXME: BBYL
+				MyAgent.this.doDelete();
 			} else {
 				Cord toGoCord = null;
-				if (msg.cell.getStench() == 0) {
+				if (msg.cell.getFood() > 0) {
+					movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, new Cord(0, 0));
+					log.info("Size of list to Base " + movementOrder.size());
+					for (Cord cord : movementOrder) {
+						log.info("found way to base " + cord);
+					}
+					messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
+					waitForResponse = true;
+				} else if (msg.cell.getStench() == 0) {
 					log.info("no stench go on");
 					/*
 					 * Filtert die benachbarten Felder nach Feldern, wo noch
 					 * null steht. Ansonsten läuft die Ameise wieder zurück.
 					 */
 					List<Cord> possibleNeighbours = new ArrayList<>();
-					List<Cord> neighbours = map.getNeighbours(currentLocation);
+					List<Cord> neighbours = map.getNeighbours(currentLocation, a-> (map.getMap())[a.getX()][a.getY()] == null);
 					possibleNeighbours = neighbours.stream().filter(cord -> map.getCurrentField(cord) == null)
 							.collect(Collectors.toList());
 
@@ -146,7 +178,9 @@ public class MyAgent extends AbstractAgent {
 					 */
 					toGoCord = lastCords.remove();
 				}
-				moveOn(toGoCord);
+				if (toGoCord != null) {
+					moveOn(toGoCord);
+				}
 			}
 		}
 	}
@@ -178,7 +212,7 @@ public class MyAgent extends AbstractAgent {
 	private Cord getPossibleNextField() {
 		List<Cord> possibleUnknownNeighbours = new ArrayList<Cord>();
 		List<Cord> possibleKnownNeighbours = new ArrayList<Cord>();
-		List<Cord> neighbours = map.getNeighbours(currentLocation);
+		List<Cord> neighbours = map.getNeighbours(currentLocation, a-> (map.getMap())[a.getX()][a.getY()] != null);
 
 		for (Cord cord : neighbours) {
 			if (cord != null) {

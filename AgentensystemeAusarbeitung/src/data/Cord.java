@@ -1,5 +1,7 @@
 package data;
 
+import java.util.Objects;
+
 public class Cord {
 	int x;
 	int y;
@@ -24,9 +26,23 @@ public class Cord {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "{Cord:[X:"+getX()+"],[Y:"+getY()+"]}";
+		return "{Cord:[X:" + getX() + "],[Y:" + getY() + "]}";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj != null && obj instanceof Cord) {
+			Cord temp = (Cord) obj;
+			return this.getX() == temp.getX() && this.getY() == temp.getY();
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(getX(),getY());
 	}
 }
