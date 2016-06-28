@@ -2,7 +2,7 @@ package tests;
 
 import com.google.gson.Gson;
 
-import agent.Message;
+import data.Message;
 
 public class TestGson {
 

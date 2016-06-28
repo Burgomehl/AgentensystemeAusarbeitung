@@ -7,7 +7,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import data.Cord;
-import data.MapAsArrayReloaded;
+import data.Map;
+import data.Message;
 import de.aim.antworld.agent.AntWorldConsts;
 import informationWindow.MapWindow;
 import jade.core.AID;
@@ -23,7 +24,7 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 
 public abstract class AbstractAgent extends Agent {
 	protected String worldName = "";
-	protected MapAsArrayReloaded map = new MapAsArrayReloaded();
+	protected Map map = new Map();
 	protected String inToReplyTo = "";
 	protected int state;
 	protected Cord currentLocation;

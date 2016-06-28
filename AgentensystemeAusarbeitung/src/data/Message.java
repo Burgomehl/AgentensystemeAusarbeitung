@@ -1,7 +1,4 @@
-package agent;
-
-import data.Cell;
-import data.Cord;
+package data;
 
 public class Message {
 	public String name;

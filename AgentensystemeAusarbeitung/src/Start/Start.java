@@ -22,10 +22,10 @@ public class Start {
 			guiAgent.start();
 			AgentController agent1 = container.createNewAgent("adam", MyAgent.class.getName(), args);
 			agent1.start();
-			for (int i = 0; i < 5; ++i) {
-				AgentController agent2 = container.createNewAgent("eva-0" + i, MyAgent.class.getName(), args);
-				agent2.start();
-			}
+//			for (int i = 0; i < 5; ++i) {
+//				AgentController agent2 = container.createNewAgent("eva-0" + i, MyAgent.class.getName(), args);
+//				agent2.start();
+//			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

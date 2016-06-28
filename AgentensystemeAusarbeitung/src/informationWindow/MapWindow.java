@@ -23,7 +23,7 @@ import agent.AbstractAgent;
 
 import data.Cell;
 import data.Cord;
-import data.MapAsArrayReloaded;
+import data.Map;
 
 public class MapWindow extends JFrame {
 
@@ -38,7 +38,7 @@ public class MapWindow extends JFrame {
 	private AgentWindow agentWindow = AgentWindow.getInstance();
 
 	// private IMap map;
-	private MapAsArrayReloaded map;
+	private Map map;
 	// private Cell[][] field;
 	// private Image[][] mapWithImages;
 
@@ -81,7 +81,7 @@ public class MapWindow extends JFrame {
 		agentWindow.start();
 	}
 
-	public void setMap(MapAsArrayReloaded map) {
+	public void setMap(Map map) {
 		this.map = map;
 		screen.setMapWindow(this);
 	}
