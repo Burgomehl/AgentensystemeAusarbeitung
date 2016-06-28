@@ -56,7 +56,7 @@ public class SearchMethodNode implements Comparable<SearchMethodNode>{
 				return this.getCurrentLocation().equals(temp);
 			} else if (obj instanceof SearchMethodNode) {
 				SearchMethodNode temp = (SearchMethodNode) obj;
-				return temp.getCurrentLocation().equals(((SearchMethodNode) obj).getCurrentLocation());
+				return temp.getCurrentLocation().equals(this.getCurrentLocation());
 			}
 		}
 		return false;

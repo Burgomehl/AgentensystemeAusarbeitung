@@ -13,23 +13,25 @@ import data.MapAsArrayReloaded;
 import jade.util.leap.HashSet;
 
 public class SearchMethod {
-	public static Deque<Cord> searchLikeAStar(MapAsArrayReloaded map, Cord currentLocation, Cord targetLocation) {
+	public static Deque<Cord> searchLikeAStar(MapAsArrayReloaded map, Cord currentLocation, Cord targetLocation,
+			Predicate<Cord> decision) {
 		HashSet closedList = new HashSet();
 		Queue<SearchMethodNode> openList = new PriorityQueue<>();
 		openList.add(new SearchMethodNode(currentLocation, getCordValue(currentLocation, targetLocation)));
 		Deque<Cord> wayToBase = new LinkedList<>();
 		SearchMethodNode currentNode = null;
 		do {
-			AbstractAgent.log.info("openList "+openList);
+			AbstractAgent.log.info("openList " + openList);
 			currentNode = openList.remove();
 			if (currentNode.getCurrentLocation().equals(targetLocation)) {
 				break;
 			}
 			closedList.add(currentNode);
-			List<Cord> neighbours = map.getNeighbours(currentNode.getCurrentLocation(),a-> (map.getMap())[a.getX()][a.getY()] != null);
+			List<Cord> neighbours = map.getNeighbours(currentNode.getCurrentLocation(), decision);
 			for (Cord cord : neighbours) {
 				SearchMethodNode temp = new SearchMethodNode(cord, getCordValue(cord, targetLocation));
-				if (closedList.contains(temp) || map.getCurrentField(cord).isRock()) {
+				Cell currentField = map.getCurrentField(cord);
+				if (closedList.contains(temp) || (currentField != null && currentField.isRock())) {
 					continue;
 				}
 				int wayFromStart = currentNode.getWayToThisNode() + 1;
@@ -44,40 +46,43 @@ public class SearchMethod {
 				openList.add(temp);
 			}
 		} while (!openList.isEmpty());
-		while(currentNode != null){
+		while (currentNode != null) {
 			wayToBase.addFirst(currentNode.getCurrentLocation());
 			currentNode = currentNode.getLinkToBestNode();
 		}
-//		wayToBase.removeFirst();
+		wayToBase.removeFirst();
 		return wayToBase;
 	}
-	
-	public static Cord searchNextFieldWithDecition(MapAsArrayReloaded map, Cord currentLocation,Predicate<Cell> decision){
+
+	public static Cord searchNextFieldWithDecision(MapAsArrayReloaded map, Cord currentLocation,
+			Predicate<Cell> decision, Predicate<Cord> decisionForNeighbours) {
 		HashSet closedList = new HashSet();
 		Queue<Cord> openList = new LinkedList<>();
 		openList.add(currentLocation);
-		do{
+		do {
 			Cord currentNode = openList.poll();
 			Cell currentField = map.getCurrentField(currentNode);
-			if(decision.test(currentField)){
-				return currentNode;
-			}
-			if(currentField.isRock() || currentField.getStench()>0){
-				continue;
+			if (!currentNode.equals(currentLocation)) {
+				if (decision.test(currentField)) {
+					return currentNode;
+				}
+				if (currentField != null && (currentField.isRock() || currentField.getStench() > 0)) {
+					continue;
+				}
 			}
 			closedList.add(currentNode);
-			List<Cord> neighbours = map.getNeighbours(currentNode, a->true);
+			List<Cord> neighbours = map.getNeighbours(currentNode, decisionForNeighbours);
 			for (Cord cord : neighbours) {
-				if(closedList.contains(cord)){
+				if (closedList.contains(cord)) {
 					continue;
 				}
 				openList.add(cord);
 			}
-		}while(!openList.isEmpty());
+		} while (!openList.isEmpty());
 		return null;
 	}
 
 	private static int getCordValue(Cord pos, Cord target) {
-		return Math.abs(target.getX() - pos.getX() + target.getY() - pos.getY());
+		return Math.abs(target.getX() - pos.getX()) + Math.abs(target.getY() - pos.getY());
 	}
 }
