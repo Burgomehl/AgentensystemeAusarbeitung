@@ -52,7 +52,12 @@ public class MyAgent extends AbstractAgent {
 						sendMessageToTopic(m);
 						if (movementOrder == null || movementOrder.isEmpty()) {
 							log.info("need new movement order");
-							logic(m);
+							if (currentLocation.equals(new Cord(0, 0)) && m.currentFood > 0) {
+								messages.add(
+										gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_DROP, agentColor)));
+							} else {
+								evaluateNextStep(m);
+							}
 						} else {
 							log.info("Will use allready found way");
 							moveToNextField(movementOrder.removeFirst());
@@ -68,7 +73,7 @@ public class MyAgent extends AbstractAgent {
 						sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 						currentLocation = lastLocation;
 						Message m = gson.fromJson(content, Message.class);
-						logic(m);
+						evaluateNextStep(m);
 					}
 				} else {
 					block();
@@ -100,7 +105,7 @@ public class MyAgent extends AbstractAgent {
 	 */
 
 	@Override
-	protected void logic(Message msg) {
+	protected void evaluateNextStep(Message msg) {
 		if (msg == null) {
 			if (!login) {
 				log.debug("Login at antworld");
@@ -112,26 +117,36 @@ public class MyAgent extends AbstractAgent {
 				log.info("agent is dead");
 				MyAgent.this.doDelete();
 			} else {
-				if (msg.cell.getFood() > 0) {
-					log.info("Searching for best route back home");
-					movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, new Cord(0, 0),
+				Cord searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
+						a -> a != null && a.getFood() > 0, a -> (map.getMap())[a.getX()][a.getY()] != null);
+				if (searchNextFieldWithDecision != null) {
+					movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 							a -> (map.getMap())[a.getX()][a.getY()] != null);
-					movementOrder.addFirst(currentLocation);
-					messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
-					waitForResponse = true;
-				} else if (msg.cell.getStench() == 0) {
-					log.info("Searching best way to next empty field");
-					movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
-							SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a == null, a -> true),
-							a -> true);
+				}
+				if (movementOrder != null && !movementOrder.isEmpty()) {
 					waitForResponse = true;
 				} else {
-					log.info("Searching for the next allready visited Field");
-					movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
-							SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a != null,
-									a -> (map.getMap())[a.getX()][a.getY()] != null),
-							a -> (map.getMap())[a.getX()][a.getY()] != null);
-					waitForResponse = true;
+					if (msg.cell.getFood() > 0) {
+						log.info("Searching for best route back home");
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, new Cord(0, 0),
+								a -> (map.getMap())[a.getX()][a.getY()] != null);
+						movementOrder.addFirst(currentLocation);
+						messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
+						waitForResponse = true;
+					} else if (msg.cell.getStench() == 0) {
+						log.info("Searching best way to next empty field");
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, SearchMethod
+								.searchNextFieldWithDecision(map, currentLocation, a -> a == null, a -> true),
+								a -> true);
+						waitForResponse = true;
+					} else {
+						log.info("Searching for the next allready visited Field");
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
+								SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a != null,
+										a -> (map.getMap())[a.getX()][a.getY()] != null),
+								a -> (map.getMap())[a.getX()][a.getY()] != null);
+						waitForResponse = true;
+					}
 				}
 				moveToNextField(movementOrder.removeFirst());
 			}

@@ -54,7 +54,8 @@ public class MapAsArrayReloaded {
 		if (map[cordNew.getX()][cordNew.getY()] == null) {
 			map[cordNew.getX()][cordNew.getY()] = field;
 		} else {
-			log.debug("There is already a Field");
+			map[cordNew.getX()][cordNew.getY()] = field;
+			log.debug("There is already a Field updated Field");
 		}
 		print(map);
 		return getRelativePosition(cordNew);

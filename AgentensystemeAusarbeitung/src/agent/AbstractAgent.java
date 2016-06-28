@@ -45,7 +45,7 @@ public abstract class AbstractAgent extends Agent {
 		loc = here();
 		loginAtAntWorld();
 		loginAtToppic();
-		logic(null);
+		evaluateNextStep(null);
 		addBehaviours();
 		registerOnMap();
 	}
@@ -85,7 +85,7 @@ public abstract class AbstractAgent extends Agent {
 		return loc;
 	}
 
-	protected abstract void logic(Message msg);
+	protected abstract void evaluateNextStep(Message msg);
 
 	protected void loginAtToppic() {
 		try {

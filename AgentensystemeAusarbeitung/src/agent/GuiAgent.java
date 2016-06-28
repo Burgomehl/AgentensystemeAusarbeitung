@@ -35,7 +35,7 @@ public class GuiAgent extends AbstractAgent {
 	}
 
 	@Override
-	protected void logic(Message msg) {
+	protected void evaluateNextStep(Message msg) {
 		// TODO Auto-generated method stub
 
 	}

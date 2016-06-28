@@ -31,7 +31,8 @@ public class SearchMethod {
 			for (Cord cord : neighbours) {
 				SearchMethodNode temp = new SearchMethodNode(cord, getCordValue(cord, targetLocation));
 				Cell currentField = map.getCurrentField(cord);
-				if (closedList.contains(temp) || (currentField != null && currentField.isRock())) {
+				if (closedList.contains(temp)
+						|| (currentField != null && (currentField.isRock() || currentField.getStench() > 0))) {
 					continue;
 				}
 				int wayFromStart = currentNode.getWayToThisNode() + 1;
@@ -64,6 +65,7 @@ public class SearchMethod {
 			Cell currentField = map.getCurrentField(currentNode);
 			if (!currentNode.equals(currentLocation)) {
 				if (decision.test(currentField)) {
+					AbstractAgent.log.info("Would like to move to " + currentNode);
 					return currentNode;
 				}
 				if (currentField != null && (currentField.isRock() || currentField.getStench() > 0)) {
@@ -74,6 +76,10 @@ public class SearchMethod {
 			List<Cord> neighbours = map.getNeighbours(currentNode, decisionForNeighbours);
 			for (Cord cord : neighbours) {
 				if (closedList.contains(cord)) {
+					continue;
+				}
+				Cell currentNeighbours = map.getCurrentField(cord);
+				if (currentNeighbours != null && (currentNeighbours.isRock() || currentNeighbours.getStench() > 0)) {
 					continue;
 				}
 				openList.add(cord);
