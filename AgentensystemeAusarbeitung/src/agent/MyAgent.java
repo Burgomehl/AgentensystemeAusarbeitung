@@ -8,12 +8,14 @@ import java.util.Queue;
 
 import com.google.gson.Gson;
 
+import data.AgentInfo;
 import data.Cell;
 import data.Cord;
 import data.InformMessage;
 import data.Message;
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
+import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
@@ -84,6 +86,10 @@ public class MyAgent extends AbstractAgent {
 			private void sendMessageToTopic(Message m) {
 				currentLocation = map.addNewField(m.cell, currentLocation);
 				m.cord = currentLocation;
+				AgentInfo agent = new AgentInfo();
+				agent.agentName = myAgent.getLocalName();
+				agent.currentPosition = currentLocation;
+				m.agent = agent;
 				String con = gson.toJson(m);
 				sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 			}
