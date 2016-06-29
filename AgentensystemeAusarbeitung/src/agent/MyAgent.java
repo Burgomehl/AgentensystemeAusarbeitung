@@ -141,6 +141,40 @@ public class MyAgent extends AbstractAgent {
 								.searchNextFieldWithDecision(map, currentLocation, a -> a == null, a -> true),
 								a -> true);
 					} else {
+						{
+						List<Cord> neighbours = map.getNeighbours(currentLocation, a -> true);
+						for (Cord cord : neighbours) {
+							if(cord.equals(currentLocation)){
+								continue;
+							}
+							Cell posField = map.getCurrentField(cord);
+							if(posField != null && posField.isTrap()){
+								posField.setStench(posField.getStench()-1);
+								map.addNewField(posField, cord);
+							}
+							else {
+								int stenchIntens = 0;
+								List<Cord> neighbours2 = map.getNeighbours(cord, a->map.getMap()[a.getX()][a.getY()] != null);
+								for (Cord cord2 : neighbours2) {
+									Cell currentField = map.getCurrentField(cord2);
+									if(currentField.getStench()>0){
+										stenchIntens++;
+									}
+								}
+								if(stenchIntens >= 3 && map.getCurrentField(cord)==null){
+									Cell newTrap = new Cell(0, 0, 1, 0, 0, false, true, null);
+									newTrap.setTrap(true);
+									map.addNewField(newTrap, cord);
+									System.out.println(cord+" is the position of a trap");
+									for (Cord cord2 : neighbours2) {
+										Cell currentField2 = map.getCurrentField(cord2);
+										currentField2.setStench(currentField2.getStench()-1);
+										map.addNewField(currentField2, cord2);
+									}
+								}
+							}
+						}
+						}
 						log.info("Searching for the next allready visited Field");
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
 								SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a != null,
