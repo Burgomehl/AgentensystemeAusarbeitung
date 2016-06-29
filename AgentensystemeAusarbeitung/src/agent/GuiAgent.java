@@ -64,7 +64,7 @@ public class GuiAgent extends AbstractAgent {
 						Message m = gson.fromJson(content, Message.class);
 						Cord cord = m.cord;
 						Cell field = m.cell;
-						map.addNewField(field, cord);
+						map.updateField(field, cord);
 
 						mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord));
 					} else {

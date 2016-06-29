@@ -46,7 +46,7 @@ public class MyAgent extends AbstractAgent {
 				if (msg != null) {
 					String content = msg.getContent();
 					int performative = msg.getPerformative();
-					if(currentLocation.equals(new Cord(2, -3))){
+					if (currentLocation.equals(new Cord(2, -3))) {
 						System.out.println("Stop");
 					}
 					if (performative == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
@@ -55,7 +55,11 @@ public class MyAgent extends AbstractAgent {
 					} else if (performative == ACLMessage.INFORM) {
 						inToReplyTo = msg.getReplyWith();
 						Message m = gson.fromJson(content, Message.class);
-						currentLocation = map.addNewField(m.cell, currentLocation);
+						if (m.action.equals(AntWorldConsts.ANT_ACTION_COLLECT)) {
+							currentLocation = map.updateField(m.cell, currentLocation);
+						} else {
+							currentLocation = map.addNewField(m.cell, currentLocation);
+						}
 						AgentInfo agent = new AgentInfo();
 						agent.agentName = myAgent.getLocalName();
 						agent.currentPosition = currentLocation;
@@ -83,9 +87,6 @@ public class MyAgent extends AbstractAgent {
 							map.addNewField(field, currentLocation);
 							Message newMessage = new Message();
 							newMessage.cell = field;
-							// newMessage.cord = currentLocation;
-							// String con = gson.toJson(newMessage);
-							// sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 							sendMessageToTopic(newMessage);
 						}
 						currentLocation = lastLocation;
@@ -107,7 +108,7 @@ public class MyAgent extends AbstractAgent {
 				Message m = gson.fromJson(content, Message.class);
 				Cord cord = m.cord;
 				Cell field = m.cell;
-				map.addNewField(field, cord);
+				map.updateField(field, cord);
 			}
 		});
 
@@ -158,49 +159,7 @@ public class MyAgent extends AbstractAgent {
 								a -> true);
 
 					} else {
-						{
-							List<Cord> neighbours = map.getNeighbours(currentLocation, a -> true);
-							for (Cord cord : neighbours) {
-								Cell posField = map.getCurrentField(cord);
-								if (posField != null && posField.isTrap()) {
-									Cell currentField = map.getCurrentField(currentLocation);
-									currentField.setStench(currentField.getStench() - 1);
-									Message newMessage = new Message();
-									newMessage.cell = currentField;
-									newMessage.cord = cord;
-									String con = gson.toJson(newMessage);
-									sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-								} else {
-									int stenchIntens = 0;
-									List<Cord> neighbours2 = map.getNeighbours(cord,
-											a -> map.getMap()[a.getX()][a.getY()] != null);
-									for (Cord cord2 : neighbours2) {
-										Cell currentField = map.getCurrentField(cord2);
-										if (currentField.getStench() > 0) {
-											stenchIntens++;
-										}
-									}
-									if (stenchIntens >= 3 && map.getCurrentField(cord) == null) {
-										Cell newTrap = new Cell(0, 0, 0, 0, 0, false, true, null);
-										newTrap.setTrap(true);
-										map.addNewField(newTrap, cord);
-										Message newMessage = new Message();
-										newMessage.cell = newTrap;
-										newMessage.cord = cord;
-										String con = gson.toJson(newMessage);
-										sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-										for (Cord cord2 : neighbours2) {
-											Cell currentField2 = map.getCurrentField(cord2);
-											currentField2.setStench(currentField2.getStench() - 1);
-											newMessage.cell = currentField2;
-											newMessage.cord = cord2;
-											con = gson.toJson(newMessage);
-											sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-										}
-									}
-								}
-							}
-						}
+						findTraps();
 						log.info("Searching for the next allready visited Field");
 						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
 								a -> a != null, a -> (map.getMap())[a.getX()][a.getY()] != null);
@@ -211,6 +170,59 @@ public class MyAgent extends AbstractAgent {
 				}
 				moveToNextField(movementOrder.removeFirst());
 			}
+		}
+	}
+
+	private void findTraps() {
+		List<Cord> neighbours = map.getNeighbours(currentLocation, a -> map.getMap()[a.getX()][a.getY()] == null);
+		if (neighbours.isEmpty()) {
+			degreaseStench(currentLocation, null);
+		}
+		for (Cord cord : neighbours) {
+			if (neighbours.size() == 1) {
+				List<Cord> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
+				setFieldAsTrap(cord, neighbours2);
+				break;
+			}
+			Cell posField = map.getCurrentField(cord);
+			if (posField != null && posField.isTrap()) {
+				degreaseStench(cord, null);
+			} else {
+				int stenchIntens = 0;
+				List<Cord> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
+				for (Cord cord2 : neighbours2) {
+					Cell currentField = map.getCurrentField(cord2);
+					if (currentField.getStench() > 0) {
+						stenchIntens++;
+					}
+				}
+				if (stenchIntens >= 3 && map.getCurrentField(cord) == null) {
+					setFieldAsTrap(cord, neighbours2);
+				}
+			}
+		}
+	}
+
+	private void degreaseStench(Cord cord, Cell cell) {
+		if (cell == null) {
+			cell = map.getCurrentField(currentLocation);
+		}
+		cell.setStench(cell.getStench() - 1);
+		map.updateField(cell, cord);
+		Message newMessage = new Message();
+		newMessage.cell = cell;
+		newMessage.cord = cord;
+		String con = gson.toJson(newMessage);
+		sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+	}
+
+	private void setFieldAsTrap(Cord cord, List<Cord> neighbours2) {
+		Cell newTrap = new Cell(0, 0, 0, 0, 0, false, true, null);
+		newTrap.setTrap(true);
+		map.updateField(newTrap, cord);
+		degreaseStench(cord, newTrap);
+		for (Cord cord2 : neighbours2) {
+			degreaseStench(cord2, null);
 		}
 	}
 
