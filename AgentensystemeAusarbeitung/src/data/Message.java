@@ -11,5 +11,7 @@ public class Message {
 	
 	public Cord cord;
 	
+	public AgentInfo agent;
+	
 	public String replyId;
 }
