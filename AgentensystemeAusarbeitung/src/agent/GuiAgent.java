@@ -58,7 +58,6 @@ public class GuiAgent extends AbstractAgent {
 					String content = msg.getContent();
 					AID sender = msg.getSender();
 					log.info("Sender of Message was: " + sender);
-					System.out.println("Sender of Message was: " + sender);
 					if (msg.getPerformative() == ACLMessage.PROPAGATE) {
 						log.info("topic send message to me");
 						Gson gson = new Gson();

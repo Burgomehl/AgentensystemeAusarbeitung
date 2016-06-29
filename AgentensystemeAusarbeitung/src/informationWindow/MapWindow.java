@@ -94,7 +94,7 @@ public class MapWindow extends JFrame {
 	 */
 	public void receiveMap(Cell[][] field, Cord currentLocation) {
 		if ((field.length + 2) * 32 > screen.getHeight() || (field[0].length + 2) * 32 > screen.getWidth()) {
-			System.out.println("größer als Screen");
+//			System.out.println("größer als Screen");
 			resizeScreen((field[0].length + 2) * 32, (field.length + 2) * 32);
 		}
 		screen.receiveMap(field, currentLocation);
@@ -186,7 +186,7 @@ public class MapWindow extends JFrame {
 		private void initializeMap() {
 			initAnts();
 			if (field != null) {
-				System.out.println("field: " + field.length + field[0].length);
+//				System.out.println("field: " + field.length + field[0].length);
 				this.mapAsImage = new Image[field.length + 2][field[0].length + 2];
 				for (int i = 0; i < field.length; ++i) {
 					for (int j = 0; j < field[i].length; ++j) {
