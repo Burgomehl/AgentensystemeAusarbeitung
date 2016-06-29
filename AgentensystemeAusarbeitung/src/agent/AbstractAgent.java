@@ -48,7 +48,7 @@ public abstract class AbstractAgent extends Agent {
 		loginAtToppic();
 		evaluateNextStep(null);
 		addBehaviours();
-		registerOnMap();
+		// registerOnMap();
 	}
 
 	protected void loginAtAntWorld() {
@@ -78,9 +78,9 @@ public abstract class AbstractAgent extends Agent {
 		});
 	}
 
-	protected void registerOnMap() {
-		mapWindow.addAgent(this);
-	}
+	// protected void registerOnMap() {
+	// mapWindow.addAgent(this);
+	// }
 
 	public Location getLocation() {
 		return loc;

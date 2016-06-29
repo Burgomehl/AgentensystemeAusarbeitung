@@ -25,10 +25,10 @@ public class GuiAgent extends AbstractAgent {
 		// Shall not login on antWorld
 	}
 
-	@Override
-	public void registerOnMap() {
-		super.registerOnMap();
-	}
+	// @Override
+	// public void registerOnMap() {
+	// super.registerOnMap();
+	// }
 
 	@Override
 	public void doDelete() {
@@ -73,7 +73,7 @@ public class GuiAgent extends AbstractAgent {
 							public void run() {
 								map.addNewField(field, cord);
 
-								mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord));
+								mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord), m.agent.agentName);
 							}
 						};
 						SwingUtilities.invokeLater(next);

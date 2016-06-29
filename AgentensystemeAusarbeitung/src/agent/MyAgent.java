@@ -1,9 +1,8 @@
 package agent;
 
-import java.util.ArrayList;
+import java.awt.Image;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 import com.google.gson.Gson;
@@ -15,7 +14,6 @@ import data.InformMessage;
 import data.Message;
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
-import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
@@ -26,6 +24,9 @@ public class MyAgent extends AbstractAgent {
 	private final static Gson gson = new Gson();
 	private Cord lastLocation;
 	private boolean foundFood = false;
+
+	private Image[] imageOfAgent;
+	private String imageName;
 
 	@Override
 	protected void addBehaviours() {
@@ -202,9 +203,29 @@ public class MyAgent extends AbstractAgent {
 	}
 
 	@Override
-	public void registerOnMap() {
-		super.registerOnMap();
+	public void setup() {
+		super.setup();
+		registerOnMap();
 	}
 
+	public void registerOnMap() {
+		mapWindow.addAgent(this, currentLocation);
+	}
+
+	public void setImageOfAgent(Image[] img) {
+		this.imageOfAgent = img;
+	}
+
+	public Image[] getImageOfAgent() {
+		return this.imageOfAgent;
+	}
+
+	public void setNameOfImage(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public String getNameOfImage() {
+		return imageName;
+	}
 
 }
