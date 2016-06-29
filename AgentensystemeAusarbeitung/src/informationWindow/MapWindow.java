@@ -18,6 +18,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingUtilities;
 
 import agent.AbstractAgent;
 
@@ -55,20 +56,26 @@ public class MapWindow extends JFrame {
 	}
 
 	protected void initComponent() {
-		setTitle(title);
-		scrollPane = new JScrollPane(screen, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		add(scrollPane);
-		setJMenuBar(toolbar);
-		pack();
-
-		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter() {
+		Runnable next = new Runnable() {
 			@Override
-			public void windowClosing(WindowEvent e) {
-				setState(ICONIFIED);
+			public void run() {
+				setTitle(title);
+				scrollPane = new JScrollPane(screen, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+						ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+				add(scrollPane);
+				setJMenuBar(toolbar);
+				pack();
+
+				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+				addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosing(WindowEvent e) {
+						setState(ICONIFIED);
+					}
+				});
 			}
-		});
+		};
+		SwingUtilities.invokeLater(next);
 		// start();
 	}
 
@@ -76,9 +83,17 @@ public class MapWindow extends JFrame {
 	 * let show the window with map and agent information
 	 */
 	public void start() {
-		setLocationRelativeTo(null);
-		setVisible(true);
-		agentWindow.start();
+		Runnable next = new Runnable() {
+			@Override
+			public void run() {
+
+				setLocationRelativeTo(null);
+				setVisible(true);
+				agentWindow.start();
+
+			}
+		};
+		SwingUtilities.invokeLater(next);
 	}
 
 	public void setMap(MapAsArrayReloaded map) {
@@ -101,7 +116,13 @@ public class MapWindow extends JFrame {
 	}
 
 	private void resizeScreen(int width, int height) {
-		screen.setSize(new Dimension(width, height));
+		Runnable next = new Runnable() {
+			@Override
+			public void run() {
+				screen.setSize(new Dimension(width, height));
+			}
+		};
+		SwingUtilities.invokeLater(next);
 	}
 
 	/**
@@ -112,8 +133,14 @@ public class MapWindow extends JFrame {
 	 *            is the agent which will be added
 	 */
 	public void addAgent(AbstractAgent newAgent) {
-		toolbar.refreshAgentMenu(newAgent);
-		agentWindow.addAgent(newAgent);
+		Runnable next = new Runnable() {
+			@Override
+			public void run() {
+				toolbar.refreshAgentMenu(newAgent);
+				agentWindow.addAgent(newAgent);
+			}
+		};
+		SwingUtilities.invokeLater(next);
 	}
 
 	/**
@@ -139,6 +166,7 @@ public class MapWindow extends JFrame {
 		private Image best_food = Toolkit.getDefaultToolkit().createImage(pathToResources + "food.gif");
 		private Image trap = Toolkit.getDefaultToolkit().createImage(pathToResources + "pit.gif");
 		private Image fogOfWar = Toolkit.getDefaultToolkit().createImage("res/NebelTile.png");
+		private Image startField = Toolkit.getDefaultToolkit().createImage(pathToResources + "startField.png");
 
 		private Image antRed = Toolkit.getDefaultToolkit().createImage(pathToResources + "antred.png");
 		private Image antGreen = Toolkit.getDefaultToolkit().createImage(pathToResources + "antgreen.png");
@@ -204,7 +232,13 @@ public class MapWindow extends JFrame {
 						}
 					}
 				}
-				repaint();
+				Runnable next = new Runnable() {
+					@Override
+					public void run() {
+						repaint();
+					}
+				};
+				SwingUtilities.invokeLater(next);
 			} else {
 				return;
 			}
@@ -284,7 +318,13 @@ public class MapWindow extends JFrame {
 
 			mapAsImage = temp;
 
-			repaint();
+			Runnable next = new Runnable() {
+				@Override
+				public void run() {
+					repaint();
+				}
+			};
+			SwingUtilities.invokeLater(next);
 		}
 
 		@Override
@@ -314,10 +354,10 @@ public class MapWindow extends JFrame {
 			}
 		}
 
-		@Override
-		public void repaint() {
-			super.repaint();
-		}
+		// @Override
+		// public void repaint() {
+		// super.repaint();
+		// }
 	}
 
 	/**

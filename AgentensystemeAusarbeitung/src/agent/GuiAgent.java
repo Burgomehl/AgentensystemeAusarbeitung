@@ -1,5 +1,7 @@
 package agent;
 
+import javax.swing.SwingUtilities;
+
 import com.google.gson.Gson;
 
 import data.Cell;
@@ -64,12 +66,20 @@ public class GuiAgent extends AbstractAgent {
 						Message m = gson.fromJson(content, Message.class);
 						Cord cord = m.cord;
 						Cell field = m.cell;
-						map.addNewField(field, cord);
 
-						mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord));
+						Runnable next = new Runnable() {
+							@Override
+							public void run() {
+								map.addNewField(field, cord);
+
+								mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord));
+							}
+						};
+						SwingUtilities.invokeLater(next);
 					} else {
 						log.info("Misterious Message received " + msg.getContent());
 					}
+
 				} else {
 					block();
 				}
