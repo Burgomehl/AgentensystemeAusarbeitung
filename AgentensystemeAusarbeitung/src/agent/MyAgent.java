@@ -67,15 +67,17 @@ public class MyAgent extends AbstractAgent {
 						}
 					} else if (performative == ACLMessage.REFUSE) {
 						log.info("movement was refused");
-						Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
-						map.addNewField(field, currentLocation);
-						Message newMessage = new Message();
-						newMessage.cell = field;
-						newMessage.cord = currentLocation;
-						String con = gson.toJson(newMessage);
-						sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-						currentLocation = lastLocation;
 						Message m = gson.fromJson(content, Message.class);
+						if (!(m.action.equals(AntWorldConsts.ANT_ACTION_DROP) || m.action.equals(AntWorldConsts.ANT_ACTION_COLLECT))) {
+							Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
+							map.addNewField(field, currentLocation);
+							Message newMessage = new Message();
+							newMessage.cell = field;
+							newMessage.cord = currentLocation;
+							String con = gson.toJson(newMessage);
+							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+						}
+						currentLocation = lastLocation;
 						evaluateNextStep(m);
 					}
 				} else {
@@ -138,61 +140,57 @@ public class MyAgent extends AbstractAgent {
 					if (msg.cell.getFood() > 0) {
 						log.info("Searching for best route back home");
 						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
-						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
-								searchNextFieldWithDecision,
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
 						movementOrder.addFirst(currentLocation);
 						messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
 						foundFood = true;
 					} else if (msg.cell.getStench() == 0) {
 						log.info("Searching best way to next empty field");
-						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map,
-								currentLocation, a -> a == null, a -> true);
+						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
+								a -> a == null, a -> true);
 						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
-							movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
-									searchNextFieldWithDecision, a -> true);
-						
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
+								a -> true);
+
 					} else {
 						{
-						List<Cord> neighbours = map.getNeighbours(currentLocation, a -> true);
-						for (Cord cord : neighbours) {
-							if(cord.equals(currentLocation)){
-								continue;
-							}
-							Cell posField = map.getCurrentField(cord);
-							if(posField != null && posField.isTrap()){
-								posField.setStench(posField.getStench()-1);
-								map.addNewField(posField, cord);
-							}
-							else {
-								int stenchIntens = 0;
-								List<Cord> neighbours2 = map.getNeighbours(cord, a->map.getMap()[a.getX()][a.getY()] != null);
-								for (Cord cord2 : neighbours2) {
-									Cell currentField = map.getCurrentField(cord2);
-									if(currentField.getStench()>0){
-										stenchIntens++;
-									}
-								}
-								if(stenchIntens >= 3 && map.getCurrentField(cord)==null){
-									Cell newTrap = new Cell(0, 0, 1, 0, 0, false, true, null);
-									newTrap.setTrap(true);
-									map.addNewField(newTrap, cord);
-									System.out.println(cord+" is the position of a trap");
+							List<Cord> neighbours = map.getNeighbours(currentLocation, a -> true);
+							for (Cord cord : neighbours) {
+								// if(cord.equals(currentLocation)){
+								// continue;
+								// }
+								Cell posField = map.getCurrentField(cord);
+								if (posField != null && posField.isTrap()) {
+									posField.setStench(posField.getStench() - 1);
+								} else {
+									int stenchIntens = 0;
+									List<Cord> neighbours2 = map.getNeighbours(cord,
+											a -> map.getMap()[a.getX()][a.getY()] != null);
 									for (Cord cord2 : neighbours2) {
-										Cell currentField2 = map.getCurrentField(cord2);
-										currentField2.setStench(currentField2.getStench()-1);
-										map.addNewField(currentField2, cord2);
+										Cell currentField = map.getCurrentField(cord2);
+										if (currentField.getStench() > 0) {
+											stenchIntens++;
+										}
+									}
+									if (stenchIntens >= 3 && map.getCurrentField(cord) == null) {
+										Cell newTrap = new Cell(0, 0, 0, 0, 0, false, true, null);
+										newTrap.setTrap(true);
+										map.addNewField(newTrap, cord);
+										System.out.println(cord + " is the position of a trap");
+										for (Cord cord2 : neighbours2) {
+											Cell currentField2 = map.getCurrentField(cord2);
+											currentField2.setStench(currentField2.getStench() - 1);
+										}
 									}
 								}
 							}
-						}
 						}
 						log.info("Searching for the next allready visited Field");
-						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a != null,
-								a -> (map.getMap())[a.getX()][a.getY()] != null);
+						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
+								a -> a != null, a -> (map.getMap())[a.getX()][a.getY()] != null);
 						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
-						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
-								searchNextFieldWithDecision,
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
 					}
 				}
@@ -202,8 +200,8 @@ public class MyAgent extends AbstractAgent {
 	}
 
 	private Cord doIHaveToMoveHome(Cord searchNextFieldWithDecision) {
-		if(searchNextFieldWithDecision == null){
-			searchNextFieldWithDecision = new Cord(0,0);
+		if (searchNextFieldWithDecision == null) {
+			searchNextFieldWithDecision = new Cord(0, 0);
 		}
 		return searchNextFieldWithDecision;
 	}
