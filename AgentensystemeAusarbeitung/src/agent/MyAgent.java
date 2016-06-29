@@ -137,7 +137,7 @@ public class MyAgent extends AbstractAgent {
 					Cord searchNextFieldWithDecision = null;
 					if (msg.cell.getFood() > 0) {
 						log.info("Searching for best route back home");
-						searchNextFieldWithDecision = moveHome(searchNextFieldWithDecision);
+						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
 								searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
@@ -148,7 +148,7 @@ public class MyAgent extends AbstractAgent {
 						log.info("Searching best way to next empty field");
 						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map,
 								currentLocation, a -> a == null, a -> true);
-						searchNextFieldWithDecision = moveHome(searchNextFieldWithDecision);
+						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
 							movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
 									searchNextFieldWithDecision, a -> true);
 						
@@ -156,7 +156,7 @@ public class MyAgent extends AbstractAgent {
 						log.info("Searching for the next allready visited Field");
 						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a != null,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
-						searchNextFieldWithDecision = moveHome(searchNextFieldWithDecision);
+						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
 								searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
@@ -167,7 +167,7 @@ public class MyAgent extends AbstractAgent {
 		}
 	}
 
-	private Cord moveHome(Cord searchNextFieldWithDecision) {
+	private Cord doIHaveToMoveHome(Cord searchNextFieldWithDecision) {
 		if(searchNextFieldWithDecision == null){
 			searchNextFieldWithDecision = new Cord(0,0);
 		}
