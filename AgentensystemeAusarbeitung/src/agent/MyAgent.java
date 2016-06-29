@@ -1,10 +1,11 @@
 package agent;
 
-import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -15,7 +16,6 @@ import data.InformMessage;
 import data.Message;
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
-import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
@@ -26,6 +26,9 @@ public class MyAgent extends AbstractAgent {
 	private final static Gson gson = new Gson();
 	private Cord lastLocation;
 	private boolean foundFood = false;
+	private Set<Cord> foundStenches = new HashSet<>();
+	private List<Cord> stenchCoordinatesToRemove = new LinkedList<>();
+	private int trys = 0;
 
 	@Override
 	protected void addBehaviours() {
@@ -46,7 +49,8 @@ public class MyAgent extends AbstractAgent {
 				if (msg != null) {
 					String content = msg.getContent();
 					int performative = msg.getPerformative();
-					if (currentLocation.equals(new Cord(2, -3))) {
+					if (currentLocation.equals(new Cord(2, -3)) || currentLocation.equals(new Cord(1, -2))
+							|| currentLocation.equals(new Cord(2, -1))) {
 						System.out.println("Stop");
 					}
 					if (performative == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
@@ -114,12 +118,6 @@ public class MyAgent extends AbstractAgent {
 
 	}
 
-	/**
-	 * Beim Setup vllt eine Methode aufrufen, welche über die args entscheidet,
-	 * welche Logic angeworfen wird Logic als eigene Klasse und Interface und
-	 * das dann die Methode da eine Logic einsetzt -> Lambda?!?
-	 */
-
 	@Override
 	protected void evaluateNextStep(Message msg) {
 		if (msg == null) {
@@ -159,7 +157,9 @@ public class MyAgent extends AbstractAgent {
 								a -> true);
 
 					} else {
-						findTraps();
+						foundStenches.add(currentLocation);
+						findTraps(currentLocation);
+						foundStenches.remove(stenchCoordinatesToRemove);
 						log.info("Searching for the next allready visited Field");
 						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
 								a -> a != null, a -> (map.getMap())[a.getX()][a.getY()] != null);
@@ -168,15 +168,26 @@ public class MyAgent extends AbstractAgent {
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
 					}
 				}
-				moveToNextField(movementOrder.removeFirst());
+				if (movementOrder.isEmpty() && trys < 1) {
+					for (Cord cord : foundStenches) {
+						findTraps(cord);
+					}
+					foundStenches.remove(stenchCoordinatesToRemove);
+					++trys;
+					evaluateNextStep(msg);
+					return;
+				} else {
+					moveToNextField(movementOrder.removeFirst());
+					trys = 0;
+				}
 			}
 		}
 	}
 
-	private void findTraps() {
-		List<Cord> neighbours = map.getNeighbours(currentLocation, a -> map.getMap()[a.getX()][a.getY()] == null);
+	private void findTraps(Cord posToSearch) {
+		List<Cord> neighbours = map.getNeighbours(posToSearch, a -> map.getMap()[a.getX()][a.getY()] == null);
 		if (neighbours.isEmpty()) {
-			degreaseStench(currentLocation, null);
+			degreaseStench(posToSearch, null);
 		}
 		for (Cord cord : neighbours) {
 			if (neighbours.size() == 1) {
@@ -184,30 +195,28 @@ public class MyAgent extends AbstractAgent {
 				setFieldAsTrap(cord, neighbours2);
 				break;
 			}
-			Cell posField = map.getCurrentField(cord);
-			if (posField != null && posField.isTrap()) {
-				degreaseStench(cord, null);
-			} else {
-				int stenchIntens = 0;
-				List<Cord> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
-				for (Cord cord2 : neighbours2) {
-					Cell currentField = map.getCurrentField(cord2);
-					if (currentField.getStench() > 0) {
-						stenchIntens++;
-					}
+			int stenchIntens = 0;
+			List<Cord> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
+			for (Cord cord2 : neighbours2) {
+				Cell currentField = map.getCurrentField(cord2);
+				if (currentField.getStench() > 0) {
+					stenchIntens++;
 				}
-				if (stenchIntens >= 3 && map.getCurrentField(cord) == null) {
-					setFieldAsTrap(cord, neighbours2);
-				}
+			}
+			if (stenchIntens >= 3 && map.getCurrentField(cord) == null) {
+				setFieldAsTrap(cord, neighbours2);
 			}
 		}
 	}
 
 	private void degreaseStench(Cord cord, Cell cell) {
 		if (cell == null) {
-			cell = map.getCurrentField(currentLocation);
+			cell = map.getCurrentField(cord);
 		}
 		cell.setStench(cell.getStench() - 1);
+		if (cell.getStench() <= 0) {
+			stenchCoordinatesToRemove.add(cord);
+		}
 		map.updateField(cell, cord);
 		Message newMessage = new Message();
 		newMessage.cell = cell;
@@ -220,7 +229,12 @@ public class MyAgent extends AbstractAgent {
 		Cell newTrap = new Cell(0, 0, 0, 0, 0, false, true, null);
 		newTrap.setTrap(true);
 		map.updateField(newTrap, cord);
-		degreaseStench(cord, newTrap);
+		Message newMessage = new Message();
+		newMessage.cell = newTrap;
+		newMessage.cord = cord;
+		String con = gson.toJson(newMessage);
+		sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+		// degreaseStench(cord, newTrap);
 		for (Cord cord2 : neighbours2) {
 			degreaseStench(cord2, null);
 		}

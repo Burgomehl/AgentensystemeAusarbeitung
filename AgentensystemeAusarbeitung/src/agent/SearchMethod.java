@@ -37,6 +37,9 @@ public class SearchMethod {
 						|| (currentField != null && (currentField.isRock() || currentField.getStench() > 0  || currentField.isTrap()))) {
 					continue;
 				}
+				if(currentField==null && !cord.equals(targetLocation)){
+					continue;
+				}
 				int wayFromStart = currentNode.getWayToThisNode() + 1;
 				if (openList.contains(temp) && wayFromStart >= temp.getWayToThisNode()) {
 					continue;
