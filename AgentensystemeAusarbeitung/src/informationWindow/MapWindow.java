@@ -113,7 +113,6 @@ public class MapWindow extends JFrame {
 	 */
 	public void receiveMap(Cell[][] field, Cord currentLocation, String nameOfAgent) {
 		if ((field.length + 2) * 32 > screen.getHeight() || (field[0].length + 2) * 32 > screen.getWidth()) {
-			// System.out.println("größer als Screen");
 			resizeScreen((field[0].length + 2) * 32, (field.length + 2) * 32);
 		}
 		for (int i = 0; i < agentList.size(); ++i) {

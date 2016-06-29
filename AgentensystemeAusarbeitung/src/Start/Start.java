@@ -13,16 +13,26 @@ public class Start {
 
 	public static void main(String[] args) {
 		try {
+			int ants = 1;
+			String server = "localhost";
+			System.out.println(args.length);
+			if(args.length == 1){
+				ants = Integer.parseInt(args[0]);
+				System.out.println(ants);
+			}else if(args.length == 2){
+				ants = Integer.parseInt(args[0]);
+				server = args[1];
+			}
 			MyAgent.log.info("Starte Clienten nun");
 			Runtime runtime = Runtime.instance();
-			Profile profile = new ProfileImpl("localhost", -1, null, false);
+			Profile profile = new ProfileImpl(server, -1, null, false);
 			profile.setParameter(Profile.SERVICES, "jade.core.messaging.TopicManagementService");
 			AgentContainer container = runtime.createAgentContainer(profile);
 			AgentController guiAgent = container.createNewAgent("UI", GuiAgent.class.getName(), args);
 			guiAgent.start();
-			AgentController agent1 = container.createNewAgent("adam", MyAgent.class.getName(), args);
-			agent1.start();
-			for (int i = 0; i < 5; ++i) {
+//			AgentController agent1 = container.createNewAgent("adam", MyAgent.class.getName(), args);
+//			agent1.start();
+			for (int i = 0; i < ants; ++i) {
 				AgentController agent2 = container.createNewAgent("eva-0" + i, MyAgent.class.getName(), args);
 				agent2.start();
 			}

@@ -3,6 +3,7 @@ package agent;
 import java.awt.Image;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import com.google.gson.Gson;
@@ -53,6 +54,11 @@ public class MyAgent extends AbstractAgent {
 						addMapByTopicMsg(content);
 					} else if (performative == ACLMessage.INFORM) {
 						Message m = gson.fromJson(content, Message.class);
+						currentLocation = map.addNewField(m.cell, currentLocation);
+						AgentInfo agent = new AgentInfo();
+						agent.agentName = myAgent.getLocalName();
+						agent.currentPosition = currentLocation;
+						m.agent = agent;
 						sendMessageToTopic(m);
 						if (movementOrder == null || movementOrder.isEmpty()) {
 							log.info("need new movement order");
@@ -68,15 +74,19 @@ public class MyAgent extends AbstractAgent {
 						}
 					} else if (performative == ACLMessage.REFUSE) {
 						log.info("movement was refused");
-						Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
-						map.addNewField(field, currentLocation);
-						Message newMessage = new Message();
-						newMessage.cell = field;
-						newMessage.cord = currentLocation;
-						String con = gson.toJson(newMessage);
-						sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-						currentLocation = lastLocation;
 						Message m = gson.fromJson(content, Message.class);
+						if (!(m.action.equals(AntWorldConsts.ANT_ACTION_DROP)
+								|| m.action.equals(AntWorldConsts.ANT_ACTION_COLLECT))) {
+							Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
+							map.addNewField(field, currentLocation);
+							Message newMessage = new Message();
+							newMessage.cell = field;
+							// newMessage.cord = currentLocation;
+							// String con = gson.toJson(newMessage);
+							// sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+							sendMessageToTopic(newMessage);
+						}
+						currentLocation = lastLocation;
 						evaluateNextStep(m);
 					}
 				} else {
@@ -85,12 +95,7 @@ public class MyAgent extends AbstractAgent {
 			}
 
 			private void sendMessageToTopic(Message m) {
-				currentLocation = map.addNewField(m.cell, currentLocation);
 				m.cord = currentLocation;
-				AgentInfo agent = new AgentInfo();
-				agent.agentName = myAgent.getLocalName();
-				agent.currentPosition = currentLocation;
-				m.agent = agent;
 				String con = gson.toJson(m);
 				sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 			}
@@ -135,29 +140,86 @@ public class MyAgent extends AbstractAgent {
 					foundFood = false;
 				}
 				if (movementOrder == null || movementOrder.isEmpty()) {
+					Cord searchNextFieldWithDecision = null;
 					if (msg.cell.getFood() > 0) {
 						log.info("Searching for best route back home");
-						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, new Cord(0, 0),
+						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
 						movementOrder.addFirst(currentLocation);
 						messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
 						foundFood = true;
 					} else if (msg.cell.getStench() == 0) {
 						log.info("Searching best way to next empty field");
-						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, SearchMethod
-								.searchNextFieldWithDecision(map, currentLocation, a -> a == null, a -> true),
+						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
+								a -> a == null, a -> true);
+						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 								a -> true);
+
 					} else {
+						{
+							List<Cord> neighbours = map.getNeighbours(currentLocation, a -> true);
+							for (Cord cord : neighbours) {
+								Cell posField = map.getCurrentField(cord);
+								if (posField != null && posField.isTrap()) {
+									posField.setStench(posField.getStench() - 1);
+									Message newMessage = new Message();
+									newMessage.cell = posField;
+									newMessage.cord = cord;
+									String con = gson.toJson(newMessage);
+									sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+								} else {
+									int stenchIntens = 0;
+									List<Cord> neighbours2 = map.getNeighbours(cord,
+											a -> map.getMap()[a.getX()][a.getY()] != null);
+									for (Cord cord2 : neighbours2) {
+										Cell currentField = map.getCurrentField(cord2);
+										if (currentField.getStench() > 0) {
+											stenchIntens++;
+										}
+									}
+									if (stenchIntens >= 3 && map.getCurrentField(cord) == null) {
+										Cell newTrap = new Cell(0, 0, 0, 0, 0, false, true, null);
+										newTrap.setTrap(true);
+										map.addNewField(newTrap, cord);
+										Message newMessage = new Message();
+										newMessage.cell = newTrap;
+										newMessage.cord = cord;
+										String con = gson.toJson(newMessage);
+										sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+										// System.out.println(cord + " is the
+										// position of a trap");
+										for (Cord cord2 : neighbours2) {
+											Cell currentField2 = map.getCurrentField(cord2);
+											currentField2.setStench(currentField2.getStench() - 1);
+											newMessage.cell = currentField2;
+											newMessage.cord = cord2;
+											con = gson.toJson(newMessage);
+											sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+										}
+									}
+								}
+							}
+						}
 						log.info("Searching for the next allready visited Field");
-						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
-								SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a != null,
-										a -> (map.getMap())[a.getX()][a.getY()] != null),
+						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
+								a -> a != null, a -> (map.getMap())[a.getX()][a.getY()] != null);
+						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
 					}
 				}
 				moveToNextField(movementOrder.removeFirst());
 			}
 		}
+	}
+
+	private Cord doIHaveToMoveHome(Cord searchNextFieldWithDecision) {
+		if (searchNextFieldWithDecision == null) {
+			searchNextFieldWithDecision = new Cord(0, 0);
+		}
+		return searchNextFieldWithDecision;
 	}
 
 	private void moveToNextField(Cord toGoCord) {
@@ -211,14 +273,14 @@ public class MyAgent extends AbstractAgent {
 	public void registerOnMap() {
 		mapWindow.addAgent(this, currentLocation);
 	}
-
-	public void setImageOfAgent(Image[] img) {
-		this.imageOfAgent = img;
-	}
-
-	public Image[] getImageOfAgent() {
-		return this.imageOfAgent;
-	}
+	//
+	// public void setImageOfAgent(Image[] img) {
+	// this.imageOfAgent = img;
+	// }
+	//
+	// public Image[] getImageOfAgent() {
+	// return this.imageOfAgent;
+	// }
 
 	public void setNameOfImage(String imageName) {
 		this.imageName = imageName;
