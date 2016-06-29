@@ -9,11 +9,12 @@ import java.util.function.Predicate;
 
 import data.Cell;
 import data.Cord;
-import data.MapAsArrayReloaded;
+import data.Map;
+import data.SearchMethodNode;
 import jade.util.leap.HashSet;
 
 public class SearchMethod {
-	public static Deque<Cord> searchLikeAStar(MapAsArrayReloaded map, Cord currentLocation, Cord targetLocation,
+	public static Deque<Cord> searchLikeAStar(Map map, Cord currentLocation, Cord targetLocation,
 			Predicate<Cord> decision) {
 		HashSet closedList = new HashSet();
 		Queue<SearchMethodNode> openList = new PriorityQueue<>();
@@ -55,7 +56,7 @@ public class SearchMethod {
 		return wayToBase;
 	}
 
-	public static Cord searchNextFieldWithDecision(MapAsArrayReloaded map, Cord currentLocation,
+	public static Cord searchNextFieldWithDecision(Map map, Cord currentLocation,
 			Predicate<Cell> decision, Predicate<Cord> decisionForNeighbours) {
 		HashSet closedList = new HashSet();
 		Queue<Cord> openList = new LinkedList<>();

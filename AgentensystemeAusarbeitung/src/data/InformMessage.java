@@ -1,4 +1,4 @@
-package agent;
+package data;
 
 public class InformMessage {
 	String type;

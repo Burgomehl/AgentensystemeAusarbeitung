@@ -17,19 +17,19 @@ import org.apache.log4j.PropertyConfigurator;
  * @author Benjamin Byl
  *
  */
-public class MapAsArrayReloaded {
-	private static final Logger log = Logger.getLogger(MapAsArrayReloaded.class);
+public class Map {
+	private static final Logger log = Logger.getLogger(Map.class);
 
 	private Cell[][] map;
 
-	public MapAsArrayReloaded(Cell f) {
+	public Map(Cell f) {
 		PropertyConfigurator.configure("log4j.properties");
 		map = new Cell[11][11];
 		Cord mid = getMid();
 		map[mid.getX()][mid.getY()] = f;
 	}
 
-	public MapAsArrayReloaded() {
+	public Map() {
 		map = new Cell[11][11];
 	}
 

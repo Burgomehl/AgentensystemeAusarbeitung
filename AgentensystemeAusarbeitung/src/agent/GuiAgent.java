@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 
 import data.Cell;
 import data.Cord;
+import data.Message;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;

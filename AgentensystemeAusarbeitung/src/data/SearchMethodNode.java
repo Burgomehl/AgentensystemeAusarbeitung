@@ -1,6 +1,4 @@
-package agent;
-
-import data.Cord;
+package data;
 
 public class SearchMethodNode implements Comparable<SearchMethodNode>{
 	private Cord currentLocation;

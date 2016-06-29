@@ -8,21 +8,24 @@ import java.util.Queue;
 
 import com.google.gson.Gson;
 
+import data.AgentInfo;
 import data.Cell;
 import data.Cord;
+import data.InformMessage;
+import data.Message;
 import de.aim.antworld.agent.AntWorldConsts;
 import jade.core.AID;
+import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
 public class MyAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
-	private boolean waitForResponse = false;
 	private Deque<Cord> movementOrder;
-	private Deque<Cord> movementOrderBack = new LinkedList<>();
 	private final static Gson gson = new Gson();
 	private Cord lastLocation;
+	private boolean foundFood = false;
 
 	@Override
 	protected void addBehaviours() {
@@ -83,6 +86,10 @@ public class MyAgent extends AbstractAgent {
 			private void sendMessageToTopic(Message m) {
 				currentLocation = map.addNewField(m.cell, currentLocation);
 				m.cord = currentLocation;
+				AgentInfo agent = new AgentInfo();
+				agent.agentName = myAgent.getLocalName();
+				agent.currentPosition = currentLocation;
+				m.agent = agent;
 				String con = gson.toJson(m);
 				sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 			}
@@ -117,35 +124,34 @@ public class MyAgent extends AbstractAgent {
 				log.info("agent is dead");
 				MyAgent.this.doDelete();
 			} else {
-				Cord searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
-						a -> a != null && a.getFood() > 0, a -> (map.getMap())[a.getX()][a.getY()] != null);
-				if (searchNextFieldWithDecision != null) {
-					movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
-							a -> (map.getMap())[a.getX()][a.getY()] != null);
+				if (foundFood) {
+					Cord searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
+							a -> a != null && a.getFood() > 0, a -> (map.getMap())[a.getX()][a.getY()] != null);
+					if (searchNextFieldWithDecision != null) {
+						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
+								a -> (map.getMap())[a.getX()][a.getY()] != null);
+					}
+					foundFood = false;
 				}
-				if (movementOrder != null && !movementOrder.isEmpty()) {
-					waitForResponse = true;
-				} else {
+				if (movementOrder == null || movementOrder.isEmpty()) {
 					if (msg.cell.getFood() > 0) {
 						log.info("Searching for best route back home");
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, new Cord(0, 0),
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
 						movementOrder.addFirst(currentLocation);
 						messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
-						waitForResponse = true;
+						foundFood = true;
 					} else if (msg.cell.getStench() == 0) {
 						log.info("Searching best way to next empty field");
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, SearchMethod
 								.searchNextFieldWithDecision(map, currentLocation, a -> a == null, a -> true),
 								a -> true);
-						waitForResponse = true;
 					} else {
 						log.info("Searching for the next allready visited Field");
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation,
 								SearchMethod.searchNextFieldWithDecision(map, currentLocation, a -> a != null,
 										a -> (map.getMap())[a.getX()][a.getY()] != null),
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
-						waitForResponse = true;
 					}
 				}
 				moveToNextField(movementOrder.removeFirst());
@@ -159,66 +165,6 @@ public class MyAgent extends AbstractAgent {
 		currentLocation = toGoCord;
 		log.info("Next movement to " + currentLocation);
 		messages.add(gson.toJson(new InformMessage(action, agentColor)));
-	}
-
-	/**
-	 * method to go to the last location - can improve further
-	 * 
-	 * @param gson
-	 *            to build Json-message
-	 */
-	private void goLast() {
-		Cord lastCord = lastCords.getFirst();
-		System.out.println(lastCords.getFirst().toString());
-		moveToNextField(lastCord);
-	}
-
-	/**
-	 * Method to calculate the best possible next field - can improve further
-	 * 
-	 * @return the next coordinate where the agent will be go
-	 */
-	private Cord getPossibleNextField() {
-		List<Cord> possibleUnknownNeighbours = new ArrayList<Cord>();
-		List<Cord> possibleKnownNeighbours = new ArrayList<Cord>();
-		List<Cord> neighbours = map.getNeighbours(currentLocation, a -> (map.getMap())[a.getX()][a.getY()] != null);
-
-		for (Cord cord : neighbours) {
-			if (cord != null) {
-				if (map.getCurrentField(cord) == null) {
-					possibleUnknownNeighbours.add(cord);
-				} else if (map.getCurrentField(cord) != null) {
-					possibleKnownNeighbours.add(cord);
-				}
-			}
-		}
-		Cord possibleCord = null;
-		if (!possibleKnownNeighbours.isEmpty())
-			for (Cord cord : possibleKnownNeighbours) {
-				if (map.getCurrentField(cord).getSmell() > 0) {
-					possibleCord = cord;
-					lastCords.addFirst(possibleCord);
-				}
-			}
-		else if (!possibleUnknownNeighbours.isEmpty()) {
-			possibleCord = getNextField(possibleUnknownNeighbours, possibleCord);
-			lastCords.addFirst(possibleCord);
-		} else
-			possibleCord = lastCords.remove();
-		return possibleCord;
-	}
-
-	private Cord getNextField(List<Cord> possibleNeighbours, Cord toGoCord) {
-		int currentHighestIndex = 0;
-		for (Cord cord : possibleNeighbours) {
-			int fieldIndex = map.getFieldIndex(cord);
-			if (fieldIndex >= currentHighestIndex) {
-				currentHighestIndex = fieldIndex;
-				toGoCord = cord;
-			}
-		}
-		log.info("getNextField: " + toGoCord);
-		return toGoCord;
 	}
 
 	private String nextStep(Cord toGoCord) {
@@ -260,21 +206,5 @@ public class MyAgent extends AbstractAgent {
 		super.registerOnMap();
 	}
 
-	// @Override
-	// protected void loginAtToppic() {
-	// // TODO Auto-generated method stub
-	// }
-	//
-	// @Override
-	// protected void receiving() {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// protected void sending() {
-	// // TODO Auto-generated method stub
-	//
-	// }
 
 }
