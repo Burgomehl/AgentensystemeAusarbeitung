@@ -46,11 +46,14 @@ public class MyAgent extends AbstractAgent {
 				if (msg != null) {
 					String content = msg.getContent();
 					int performative = msg.getPerformative();
-					inToReplyTo = msg.getReplyWith();
+					if(currentLocation.equals(new Cord(2, -3))){
+						System.out.println("Stop");
+					}
 					if (performative == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
 						log.info("Got Propagate");
 						addMapByTopicMsg(content);
 					} else if (performative == ACLMessage.INFORM) {
+						inToReplyTo = msg.getReplyWith();
 						Message m = gson.fromJson(content, Message.class);
 						currentLocation = map.addNewField(m.cell, currentLocation);
 						AgentInfo agent = new AgentInfo();
@@ -71,16 +74,18 @@ public class MyAgent extends AbstractAgent {
 							moveToNextField(movementOrder.removeFirst());
 						}
 					} else if (performative == ACLMessage.REFUSE) {
+						inToReplyTo = msg.getReplyWith();
 						log.info("movement was refused");
 						Message m = gson.fromJson(content, Message.class);
-						if (!(m.action.equals(AntWorldConsts.ANT_ACTION_DROP) || m.action.equals(AntWorldConsts.ANT_ACTION_COLLECT))) {
+						if (!(m.action.equals(AntWorldConsts.ANT_ACTION_DROP)
+								|| m.action.equals(AntWorldConsts.ANT_ACTION_COLLECT))) {
 							Cell field = new Cell(0, 0, 0, 0, 0, true, false, "FREE");
 							map.addNewField(field, currentLocation);
 							Message newMessage = new Message();
 							newMessage.cell = field;
-//							newMessage.cord = currentLocation;
-//							String con = gson.toJson(newMessage);
-//							sendMessage(con, ACLMessage.PROPAGATE, topicAID);
+							// newMessage.cord = currentLocation;
+							// String con = gson.toJson(newMessage);
+							// sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 							sendMessageToTopic(newMessage);
 						}
 						currentLocation = lastLocation;
@@ -138,13 +143,11 @@ public class MyAgent extends AbstractAgent {
 				}
 				if (movementOrder == null || movementOrder.isEmpty()) {
 					Cord searchNextFieldWithDecision = null;
-					if (msg.cell.getFood() > 0) {
+					if (msg.currentFood > 0) {
+						foundFoodGoHome(searchNextFieldWithDecision);
+					} else if (msg.cell.getFood() > 0) {
 						log.info("Searching for best route back home");
-						searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
-						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
-								a -> (map.getMap())[a.getX()][a.getY()] != null);
-						movementOrder.addFirst(currentLocation);
-						messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
+						foundFoodGoHome(searchNextFieldWithDecision);
 						foundFood = true;
 					} else if (msg.cell.getStench() == 0) {
 						log.info("Searching best way to next empty field");
@@ -160,9 +163,10 @@ public class MyAgent extends AbstractAgent {
 							for (Cord cord : neighbours) {
 								Cell posField = map.getCurrentField(cord);
 								if (posField != null && posField.isTrap()) {
-									posField.setStench(posField.getStench() - 1);
+									Cell currentField = map.getCurrentField(currentLocation);
+									currentField.setStench(currentField.getStench() - 1);
 									Message newMessage = new Message();
-									newMessage.cell = posField;
+									newMessage.cell = currentField;
 									newMessage.cord = cord;
 									String con = gson.toJson(newMessage);
 									sendMessage(con, ACLMessage.PROPAGATE, topicAID);
@@ -185,7 +189,6 @@ public class MyAgent extends AbstractAgent {
 										newMessage.cord = cord;
 										String con = gson.toJson(newMessage);
 										sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-//										System.out.println(cord + " is the position of a trap");
 										for (Cord cord2 : neighbours2) {
 											Cell currentField2 = map.getCurrentField(cord2);
 											currentField2.setStench(currentField2.getStench() - 1);
@@ -211,9 +214,17 @@ public class MyAgent extends AbstractAgent {
 		}
 	}
 
+	private void foundFoodGoHome(Cord searchNextFieldWithDecision) {
+		searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
+		movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
+				a -> (map.getMap())[a.getX()][a.getY()] != null);
+		movementOrder.addFirst(currentLocation);
+		messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
+	}
+
 	private Cord doIHaveToMoveHome(Cord searchNextFieldWithDecision) {
 		if (searchNextFieldWithDecision == null) {
-			searchNextFieldWithDecision = new Cord(0, 0);
+			return new Cord(0, 0);
 		}
 		return searchNextFieldWithDecision;
 	}

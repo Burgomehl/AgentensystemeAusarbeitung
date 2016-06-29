@@ -51,12 +51,10 @@ public class Map {
 		if (isInRange(cordNew)) {
 			resizeMap(10, cordNew);
 		}
-		if (map[cordNew.getX()][cordNew.getY()] == null) {
-			map[cordNew.getX()][cordNew.getY()] = field;
-		} else {
-			map[cordNew.getX()][cordNew.getY()] = field;
+		if (map[cordNew.getX()][cordNew.getY()] != null) {
 			log.debug("There is already a Field updated Field");
 		}
+		map[cordNew.getX()][cordNew.getY()] = field;
 		print(map);
 		return getRelativePosition(cordNew);
 	}
