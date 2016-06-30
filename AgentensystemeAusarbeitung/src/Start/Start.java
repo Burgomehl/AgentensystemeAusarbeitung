@@ -22,6 +22,7 @@ public class Start {
 			}else if(args.length == 2){
 				ants = Integer.parseInt(args[0]);
 				server = args[1];
+				System.out.println(server);
 			}
 			MyAgent.log.info("Starte Clienten nun");
 			Runtime runtime = Runtime.instance();

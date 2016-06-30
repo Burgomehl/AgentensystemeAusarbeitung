@@ -48,7 +48,6 @@ public abstract class AbstractAgent extends Agent {
 		loginAtToppic();
 		evaluateNextStep(null);
 		addBehaviours();
-		// registerOnMap();
 	}
 
 	protected void loginAtAntWorld() {
@@ -78,10 +77,6 @@ public abstract class AbstractAgent extends Agent {
 		});
 	}
 
-	// protected void registerOnMap() {
-	// mapWindow.addAgent(this);
-	// }
-
 	public Location getLocation() {
 		return loc;
 	}
@@ -92,7 +87,7 @@ public abstract class AbstractAgent extends Agent {
 		try {
 			TopicManagementHelper topicManagementHelper = (TopicManagementHelper) getHelper(
 					TopicManagementHelper.SERVICE_NAME);
-			topicAID = topicManagementHelper.createTopic("AdamsTopic");
+			topicAID = topicManagementHelper.createTopic("TopicDesTeamsGabrielBenjamin");
 
 			topicManagementHelper.register(topicAID);
 
@@ -102,17 +97,4 @@ public abstract class AbstractAgent extends Agent {
 	}
 
 	protected abstract void addBehaviours();
-
-	// /**
-	// * method to receive messages from topic e.g. to ask and calculate which
-	// way
-	// * to go
-	// */
-	// protected abstract void receiving();
-	//
-	// /**
-	// * method to ask and answer questions
-	// */
-	// protected abstract void sending();
-
 }

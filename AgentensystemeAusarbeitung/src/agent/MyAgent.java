@@ -51,7 +51,7 @@ public class MyAgent extends AbstractAgent {
 				if (msg != null) {
 					String content = msg.getContent();
 					int performative = msg.getPerformative();
-					if (currentLocation.equals(new Cord(-13, -10))) {
+					if (currentLocation.equals(new Cord(-4, -1))) {
 						System.out.println("Stop");
 					}
 					if (performative == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
