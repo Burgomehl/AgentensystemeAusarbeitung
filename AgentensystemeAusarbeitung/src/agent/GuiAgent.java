@@ -75,7 +75,7 @@ public class GuiAgent extends AbstractAgent {
 						Runnable next = new Runnable() {
 							@Override
 							public void run() {
-								map.addNewField(field, cord);
+								map.updateField(field, cord);
 
 								if (m.agent != null)
 									mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord), m.agent.agentName);
