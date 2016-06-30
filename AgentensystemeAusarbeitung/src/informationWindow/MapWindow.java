@@ -230,7 +230,9 @@ public class MapWindow extends JFrame {
 			System.out.println("receive: " + height + "\t" + width);
 			Image[][] temp = new Image[width][height];
 			for (int i = 0; i < agentList.size(); ++i) {
-				temp[locations.get(i).getX()][locations.get(i).getY()] = agentList.get(i).hasFood() ? lkw : runner;
+
+				temp[locations.get(i).getX() + 1][locations.get(i).getY() + 1] = agentList.get(i).hasFood() ? lkw
+						: runner;
 			}
 
 			ants = temp;

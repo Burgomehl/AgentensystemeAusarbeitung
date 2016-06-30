@@ -300,8 +300,14 @@ public class MyAgent extends AbstractAgent {
 	public MyAgent() {
 	}
 
-	public void registerOnMap() {
+	@Override
+	public void setup() {
+		super.setup();
+		registerOnMap();
+	}
 
+	public void registerOnMap() {
+		mapWindow.addAgent(this, currentLocation);
 	}
 
 	public boolean hasFood() {
