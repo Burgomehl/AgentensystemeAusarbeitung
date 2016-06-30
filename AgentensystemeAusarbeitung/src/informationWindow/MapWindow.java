@@ -126,7 +126,8 @@ public class MapWindow extends JFrame {
 				locations.add(i, currentLocation);
 			}
 		}
-		System.out.println("field: " + field.length + "\t" + field[0].length);
+		// System.out.println("field: " + field.length + "\t" +
+		// field[0].length);
 		bGround.receiveMap(field);
 		fGround.receiveMap(field.length + 2, field[0].length + 2, agentList, locations);
 	}
@@ -225,7 +226,7 @@ public class MapWindow extends JFrame {
 		}
 
 		public void receiveMap(int height, int width, List<MyAgent> agentList, List<Cord> locations) {
-			// System.out.println("receive: " + height + "\t" + width);
+
 			Image[][] temp = new Image[width][height];
 			for (int i = 0; i < agentList.size(); ++i) {
 
@@ -253,8 +254,6 @@ public class MapWindow extends JFrame {
 		public void paintComponent(Graphics g) {
 
 			if (ants != null) {
-				// System.out.println("ants2: " + ants.length + "\t" +
-				// ants[0].length);
 				for (int i = 0; i < ants.length; ++i) {
 					for (int j = 0; j < ants[i].length; ++j) {
 						g.drawImage(ants[i][j], i * scaledWidth, j * scaledHeight, this);
@@ -305,8 +304,6 @@ public class MapWindow extends JFrame {
 		 */
 		private void initializeMap() {
 			if (field != null) {
-				// System.out.println("field: " + field.length + field[0].length
-				// + "\t" + field[0][0].getType());
 				this.mapAsImage = new Image[field.length + 2][field[0].length + 2];
 
 				for (int i = 0; i < field.length; ++i) {

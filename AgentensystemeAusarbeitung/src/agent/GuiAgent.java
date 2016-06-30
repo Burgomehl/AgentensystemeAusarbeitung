@@ -66,12 +66,6 @@ public class GuiAgent extends AbstractAgent {
 						Message m = gson.fromJson(content, Message.class);
 						Cord cord = m.cord;
 						Cell field = m.cell;
-						// <<<<<<< HEAD
-						// =======
-						// map.updateField(field, cord);
-						// >>>>>>> branch 'master' of
-						// https://github.com/Burgomehl/AgentensystemeAusarbeitung.git
-
 						Runnable next = new Runnable() {
 							@Override
 							public void run() {
@@ -80,7 +74,7 @@ public class GuiAgent extends AbstractAgent {
 								if (m.agent != null)
 									mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord), m.agent.agentName);
 								else {
-									System.out.println("No agent has sent a message: " + m.toString());
+//									System.out.println("No agent has sent a message: " + m.toString());
 									log.debug("No agent has sent a message: " + m.toString());
 								}
 							}
@@ -98,16 +92,4 @@ public class GuiAgent extends AbstractAgent {
 		});
 
 	}
-	//
-	// @Override
-	// protected void receiving() {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// protected void sending() {
-	// // TODO Auto-generated method stub
-	//
-	// }
 }
