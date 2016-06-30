@@ -46,7 +46,7 @@ public class AgentWindow extends JFrame {
 	}
 
 	private void initComponents() {
-		root = getTree();
+		root = new DefaultMutableTreeNode("Agents");
 		treeModel = new DefaultTreeModel(root);
 		tree = new JTree(treeModel);
 
@@ -60,37 +60,37 @@ public class AgentWindow extends JFrame {
 		setVisible(true);
 	}
 
-	/**
-	 * Deprecated because it's only one line
-	 * 
-	 * @return the DefaultMutableTreeNode root
-	 */
-	@Deprecated
-	private DefaultMutableTreeNode getTree() {
-		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Agents");
-
-		// for (int i = 0; i < 10; ++i) {
-		// DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Agent0" +
-		// i);
-		// root.add(agent);
-		// }
-		// for (int i = 0; i < listAgents.size(); ++i) {
-		// DefaultMutableTreeNode agent = new
-		// DefaultMutableTreeNode(listAgents.get(i).getLocalName());
-		//
-		// DefaultMutableTreeNode state = new
-		// DefaultMutableTreeNode(listAgents.get(i).getState());
-		// // DefaultMutableTreeNode color
-		// // DefaultMutableTreeNode currentFood
-		// // DefaultMutableTreeNode totalFood?
-		// // DefaultMutableTreeNode nextAction
-		// // DefaultMutableTreeNode cell
-		// agent.add(state);
-		// root.add(agent);
-		// }
-
-		return root;
-	}
+	// /**
+	// * Deprecated because it's only one line
+	// *
+	// * @return the DefaultMutableTreeNode root
+	// */
+	// @Deprecated
+	// private DefaultMutableTreeNode getTree() {
+	// DefaultMutableTreeNode root = new DefaultMutableTreeNode("Agents");
+	//
+	// // for (int i = 0; i < 10; ++i) {
+	// // DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Agent0" +
+	// // i);
+	// // root.add(agent);
+	// // }
+	// // for (int i = 0; i < listAgents.size(); ++i) {
+	// // DefaultMutableTreeNode agent = new
+	// // DefaultMutableTreeNode(listAgents.get(i).getLocalName());
+	// //
+	// // DefaultMutableTreeNode state = new
+	// // DefaultMutableTreeNode(listAgents.get(i).getState());
+	// // // DefaultMutableTreeNode color
+	// // // DefaultMutableTreeNode currentFood
+	// // // DefaultMutableTreeNode totalFood?
+	// // // DefaultMutableTreeNode nextAction
+	// // // DefaultMutableTreeNode cell
+	// // agent.add(state);
+	// // root.add(agent);
+	// // }
+	//
+	// return root;
+	// }
 
 	/**
 	 * 
@@ -118,6 +118,13 @@ public class AgentWindow extends JFrame {
 
 			treeModel.insertNodeInto(node, root, root.getChildCount());
 			tree.treeDidChange();
+		}
+	}
+
+	public void refreshLocationOfAgent(MyAgent agent, Cord newLocation) {
+		for (int i = 0; i < root.getChildCount(); ++i) {
+			// if(root.getChildAt(i).))){
+			// }
 		}
 	}
 

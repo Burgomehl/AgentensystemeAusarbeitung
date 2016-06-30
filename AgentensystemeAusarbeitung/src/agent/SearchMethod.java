@@ -16,7 +16,7 @@ import jade.util.leap.HashSet;
 public class SearchMethod {
 	public static Deque<Cord> searchLikeAStar(Map map, Cord currentLocation, Cord targetLocation,
 			Predicate<Cord> decision) {
-		
+
 		HashSet closedList = new HashSet();
 		Queue<SearchMethodNode> openList = new PriorityQueue<>();
 		openList.add(new SearchMethodNode(currentLocation, getCordValue(currentLocation, targetLocation)));
@@ -33,8 +33,11 @@ public class SearchMethod {
 			for (Cord cord : neighbours) {
 				SearchMethodNode temp = new SearchMethodNode(cord, getCordValue(cord, targetLocation));
 				Cell currentField = map.getCurrentField(cord);
-				if (closedList.contains(temp)
-						|| (currentField != null && (currentField.isRock() || currentField.getStench() > 0  || currentField.isTrap()))) {
+				if (closedList.contains(temp) || (currentField != null
+						&& (currentField.isRock() || currentField.getStench() > 0 || currentField.isTrap()))) {
+					continue;
+				}
+				if (currentField == null && !cord.equals(targetLocation)) {
 					continue;
 				}
 				int wayFromStart = currentNode.getWayToThisNode() + 1;
@@ -57,8 +60,8 @@ public class SearchMethod {
 		return wayToBase;
 	}
 
-	public static Cord searchNextFieldWithDecision(Map map, Cord currentLocation,
-			Predicate<Cell> decision, Predicate<Cord> decisionForNeighbours) {
+	public static Cord searchNextFieldWithDecision(Map map, Cord currentLocation, Predicate<Cell> decision,
+			Predicate<Cord> decisionForNeighbours) {
 		HashSet closedList = new HashSet();
 		Queue<Cord> openList = new LinkedList<>();
 		openList.add(currentLocation);
@@ -81,7 +84,8 @@ public class SearchMethod {
 					continue;
 				}
 				Cell currentNeighbours = map.getCurrentField(cord);
-				if (currentNeighbours != null && (currentNeighbours.isRock() || currentNeighbours.getStench() > 0 || currentNeighbours.isTrap())) {
+				if (currentNeighbours != null && (currentNeighbours.isRock() || currentNeighbours.getStench() > 0
+						|| currentNeighbours.isTrap())) {
 					continue;
 				}
 				openList.add(cord);
