@@ -9,15 +9,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import agent.MyAgent;
+import agent.ThiefAgent;
 
-import data.Cord;
+import data.Coordinate;
 
 public class AgentWindow extends JFrame {
 
 	private final String title = "AgentWindow to see information";
 
-	private List<MyAgent> listAgents = new ArrayList<MyAgent>();
+	private List<ThiefAgent> listAgents = new ArrayList<ThiefAgent>();
 	private Vector<Vector<String>> rowData = new Vector<Vector<String>>();
 	private Vector<String> columns = new Vector<String>();
 	private DefaultTableModel model;
@@ -75,7 +75,7 @@ public class AgentWindow extends JFrame {
 	 * @param currentLocation
 	 *            its current location
 	 */
-	public void addAgent(MyAgent agent, Cord currentLocation) {
+	public void addAgent(ThiefAgent agent, Coordinate currentLocation) {
 		this.listAgents.add(agent);
 		Vector<String> row = new Vector<String>();
 		row.add(agent.getLocalName());
@@ -83,8 +83,6 @@ public class AgentWindow extends JFrame {
 		row.add(agent.hasFood() ? "1" : "0");
 		row.add("-");
 		row.add(currentLocation.toString());
-		// rowData.add(row);
-
 		model.addRow(row);
 	}
 
@@ -96,7 +94,7 @@ public class AgentWindow extends JFrame {
 	 * @param newLocation
 	 *            the new location of the agent
 	 */
-	public void refreshLocationOfAgent(MyAgent agent, Cord newLocation) {
+	public void refreshLocationOfAgent(ThiefAgent agent, Coordinate newLocation) {
 		for (int i = 0; i < listAgents.size(); ++i) {
 			if (listAgents.get(i).equals(agent)) {
 				model.setValueAt(newLocation.toString(), i, 4);
@@ -111,7 +109,7 @@ public class AgentWindow extends JFrame {
 	 *            the agent which will be deleted
 	 * @return true if removing was success
 	 */
-	public boolean removeAgent(MyAgent agent2Delete) {
+	public boolean removeAgent(ThiefAgent agent2Delete) {
 		return listAgents.remove(agent2Delete);
 	}
 

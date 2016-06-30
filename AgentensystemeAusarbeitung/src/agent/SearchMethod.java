@@ -8,19 +8,19 @@ import java.util.Queue;
 import java.util.function.Predicate;
 
 import data.Cell;
-import data.Cord;
+import data.Coordinate;
 import data.Map;
 import data.SearchMethodNode;
 import jade.util.leap.HashSet;
 
 public class SearchMethod {
-	public static Deque<Cord> searchLikeAStar(Map map, Cord currentLocation, Cord targetLocation,
-			Predicate<Cord> decision) {
+	public static Deque<Coordinate> searchLikeAStar(Map map, Coordinate currentLocation, Coordinate targetLocation,
+			Predicate<Coordinate> decision) {
 
 		HashSet closedList = new HashSet();
 		Queue<SearchMethodNode> openList = new PriorityQueue<>();
 		openList.add(new SearchMethodNode(currentLocation, getCordValue(currentLocation, targetLocation)));
-		Deque<Cord> wayToBase = new LinkedList<>();
+		Deque<Coordinate> wayToBase = new LinkedList<>();
 		SearchMethodNode currentNode = null;
 		do {
 			AbstractAgent.log.info("openList " + openList);
@@ -29,8 +29,8 @@ public class SearchMethod {
 				break;
 			}
 			closedList.add(currentNode);
-			List<Cord> neighbours = map.getNeighbours(currentNode.getCurrentLocation(), decision);
-			for (Cord cord : neighbours) {
+			List<Coordinate> neighbours = map.getNeighbours(currentNode.getCurrentLocation(), decision);
+			for (Coordinate cord : neighbours) {
 				SearchMethodNode temp = new SearchMethodNode(cord, getCordValue(cord, targetLocation));
 				Cell currentField = map.getCurrentField(cord);
 				if (closedList.contains(temp) || (currentField != null
@@ -60,13 +60,23 @@ public class SearchMethod {
 		return wayToBase;
 	}
 
-	public static Cord searchNextFieldWithDecision(Map map, Cord currentLocation, Predicate<Cell> decision,
-			Predicate<Cord> decisionForNeighbours) {
+	/**
+	 * 
+	 * @param map
+	 * @param currentLocation
+	 * @param decision
+	 *            return condition
+	 * @param decisionForNeighbours
+	 *            chooses the found neighbors from the beginning
+	 * @return
+	 */
+	public static Coordinate searchNextFieldWithDecision(Map map, Coordinate currentLocation, Predicate<Cell> decision,
+			Predicate<Coordinate> decisionForNeighbours) {
 		HashSet closedList = new HashSet();
-		Queue<Cord> openList = new LinkedList<>();
+		Queue<Coordinate> openList = new LinkedList<>();
 		openList.add(currentLocation);
 		do {
-			Cord currentNode = openList.poll();
+			Coordinate currentNode = openList.poll();
 			Cell currentField = map.getCurrentField(currentNode);
 			if (!currentNode.equals(currentLocation)) {
 				if (decision.test(currentField)) {
@@ -78,8 +88,8 @@ public class SearchMethod {
 				}
 			}
 			closedList.add(currentNode);
-			List<Cord> neighbours = map.getNeighbours(currentNode, decisionForNeighbours);
-			for (Cord cord : neighbours) {
+			List<Coordinate> neighbours = map.getNeighbours(currentNode, decisionForNeighbours);
+			for (Coordinate cord : neighbours) {
 				if (closedList.contains(cord)) {
 					continue;
 				}
@@ -94,7 +104,7 @@ public class SearchMethod {
 		return null;
 	}
 
-	private static int getCordValue(Cord pos, Cord target) {
+	private static int getCordValue(Coordinate pos, Coordinate target) {
 		return Math.abs(target.getX() - pos.getX()) + Math.abs(target.getY() - pos.getY());
 	}
 }

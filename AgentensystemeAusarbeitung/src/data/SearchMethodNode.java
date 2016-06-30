@@ -1,22 +1,22 @@
 package data;
 
 public class SearchMethodNode implements Comparable<SearchMethodNode>{
-	private Cord currentLocation;
+	private Coordinate currentLocation;
 	private SearchMethodNode linkToBestNode;
 	private int wayToThisNode;
 	private int value;
 
-	public SearchMethodNode(Cord currentLocation, int value) {
+	public SearchMethodNode(Coordinate currentLocation, int value) {
 		super();
 		this.currentLocation = currentLocation;
 		this.value = value;
 	}
 
-	public Cord getCurrentLocation() {
+	public Coordinate getCurrentLocation() {
 		return currentLocation;
 	}
 
-	public void setCurrentLocation(Cord currentLocation) {
+	public void setCurrentLocation(Coordinate currentLocation) {
 		this.currentLocation = currentLocation;
 	}
 
@@ -49,8 +49,8 @@ public class SearchMethodNode implements Comparable<SearchMethodNode>{
 	@Override
 	public boolean equals(Object obj) {
 		if (obj != null) {
-			if (obj instanceof Cord) {
-				Cord temp = (Cord) obj;
+			if (obj instanceof Coordinate) {
+				Coordinate temp = (Coordinate) obj;
 				return this.getCurrentLocation().equals(temp);
 			} else if (obj instanceof SearchMethodNode) {
 				SearchMethodNode temp = (SearchMethodNode) obj;

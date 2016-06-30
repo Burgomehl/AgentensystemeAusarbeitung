@@ -20,7 +20,7 @@ public class Map {
 	public Map(Cell f) {
 		PropertyConfigurator.configure("log4j.properties");
 		map = new Cell[11][11];
-		Cord mid = getMid();
+		Coordinate mid = getMid();
 		map[mid.getX()][mid.getY()] = f;
 	}
 
@@ -28,27 +28,27 @@ public class Map {
 		map = new Cell[11][11];
 	}
 
-	private Cord getRelativePosition(Cord cord) {
-		Cord newCord = new Cord(cord.getX() - getMid().getX(), cord.getY() - getMid().getY());
+	private Coordinate getRelativePosition(Coordinate cord) {
+		Coordinate newCord = new Coordinate(cord.getX() - getMid().getX(), cord.getY() - getMid().getY());
 		log.debug("converting total : " + cord + " to cord " + newCord);
 		return newCord;
 	}
 
-	public Cord getTotalPosition(Cord cord) {
-		Cord newCord = new Cord(getMid().getX() + cord.getX(), getMid().getY() + cord.getY());
+	public Coordinate getTotalPosition(Coordinate cord) {
+		Coordinate newCord = new Coordinate(getMid().getX() + cord.getX(), getMid().getY() + cord.getY());
 		log.debug("converting relativ : " + cord + " to total " + newCord);
 		return newCord;
 	}
 
-	public Cord addNewField(Cell field, Cord cord) {
+	public Coordinate addNewField(Cell field, Coordinate cord) {
 		log.info("Add Field "+cord);
-		Cord cordNew = modifyField(field, cord, a -> map[a.getX()][a.getY()] == null);
+		Coordinate cordNew = modifyField(field, cord, a -> map[a.getX()][a.getY()] == null);
 		return getRelativePosition(cordNew);
 	}
 
-	public Cord updateField(Cell field, Cord cord) {
+	public Coordinate updateField(Cell field, Coordinate cord) {
 		log.info("Update Field "+cord);
-		Cord cordNew = modifyField(field, cord, a -> true);
+		Coordinate cordNew = modifyField(field, cord, a -> true);
 		return getRelativePosition(cordNew);
 	}
 
@@ -60,8 +60,8 @@ public class Map {
 	 * @param decision
 	 * @return
 	 */
-	private Cord modifyField(Cell field, Cord cord, Predicate<Cord> decision) {
-		Cord cordNew = getTotalPosition(cord);
+	private Coordinate modifyField(Cell field, Coordinate cord, Predicate<Coordinate> decision) {
+		Coordinate cordNew = getTotalPosition(cord);
 		log.debug("Modify field on: " + cordNew);
 		if (isInRange(cordNew)) {
 			resizeMap(10, cordNew);
@@ -78,8 +78,8 @@ public class Map {
 	 * @param cord
 	 * @return
 	 */
-	public Cell getCurrentField(Cord cord) {
-		Cord cordNew = getTotalPosition(cord);
+	public Cell getCurrentField(Coordinate cord) {
+		Coordinate cordNew = getTotalPosition(cord);
 		if (isInRange(cordNew)) {
 			resizeMap(10, cordNew);
 		}
@@ -90,10 +90,10 @@ public class Map {
 	 * @param decision
 	 * @return neighbours depending on the given decision 
 	 */
-	public List<Cord> getNeighbours(Cord cord, Predicate<Cord> decision) {
-		Cord cordNew = getTotalPosition(cord);
+	public List<Coordinate> getNeighbours(Coordinate cord, Predicate<Coordinate> decision) {
+		Coordinate cordNew = getTotalPosition(cord);
 		log.debug("GetNeighbours on: " + cordNew);
-		List<Cord> list = new ArrayList<>();
+		List<Coordinate> list = new ArrayList<>();
 		getNeighbours(cordNew, list, -1, 0, decision);
 		getNeighbours(cordNew, list, 0, -1, decision);
 		getNeighbours(cordNew, list, 0, 1, decision);
@@ -103,8 +103,8 @@ public class Map {
 		return list;
 	}
 
-	private void getNeighbours(Cord cordNew, List<Cord> list, int x, int y, Predicate<Cord> decision) {
-		Cord possibleCordinates = new Cord(cordNew.getX() + x, cordNew.getY() + y);
+	private void getNeighbours(Coordinate cordNew, List<Coordinate> list, int x, int y, Predicate<Coordinate> decision) {
+		Coordinate possibleCordinates = new Coordinate(cordNew.getX() + x, cordNew.getY() + y);
 		if (isInRange(possibleCordinates)) {
 			resizeMap(10, possibleCordinates);
 		}
@@ -117,7 +117,7 @@ public class Map {
 		return map;
 	}
 
-	private void resizeMap(int resize, Cord cord) {
+	private void resizeMap(int resize, Coordinate cord) {
 		log.debug("resize Map with cord: " + cord);
 		Cell[][] newMap = new Cell[map.length + resize][map.length + resize];
 		for (int i = 0; i < map.length; i++) {
@@ -132,11 +132,11 @@ public class Map {
 
 	}
 
-	public Cord getMid() {
-		return new Cord(map.length / 2, map[0].length / 2);
+	public Coordinate getMid() {
+		return new Coordinate(map.length / 2, map[0].length / 2);
 	}
 
-	private boolean isInRange(Cord c) {
+	private boolean isInRange(Coordinate c) {
 		return !(c.getX() < map.length - 1 && c.getY() < map[0].length - 1 && c.getX() >= 0 && c.getY() >= 0);
 	}
 
@@ -171,7 +171,7 @@ public class Map {
 		log.info(b);
 	}
 
-	public Cord getCurrentLocation() {
+	public Coordinate getCurrentLocation() {
 		return getRelativePosition(getMid());
 	}
 

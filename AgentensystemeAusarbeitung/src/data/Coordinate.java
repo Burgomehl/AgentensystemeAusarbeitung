@@ -2,11 +2,11 @@ package data;
 
 import java.util.Objects;
 
-public class Cord {
+public class Coordinate {
 	int x;
 	int y;
 
-	public Cord(int x, int y) {
+	public Coordinate(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -34,8 +34,8 @@ public class Cord {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj != null && obj instanceof Cord) {
-			Cord temp = (Cord) obj;
+		if (obj != null && obj instanceof Coordinate) {
+			Coordinate temp = (Coordinate) obj;
 			return this.getX() == temp.getX() && this.getY() == temp.getY();
 		}
 		return false;

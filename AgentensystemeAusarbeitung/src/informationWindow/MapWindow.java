@@ -23,10 +23,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
-import agent.MyAgent;
+import agent.ThiefAgent;
 
 import data.Cell;
-import data.Cord;
+import data.Coordinate;
 import data.Map;
 
 public class MapWindow extends JFrame {
@@ -41,8 +41,8 @@ public class MapWindow extends JFrame {
 	private Toolbar toolbar = new Toolbar();
 
 	private AgentWindow agentWindow = AgentWindow.getInstance();
-	private List<MyAgent> agentList = new ArrayList<MyAgent>();
-	private List<Cord> locations = new ArrayList<Cord>();
+	private List<ThiefAgent> agentList = new ArrayList<ThiefAgent>();
+	private List<Coordinate> locations = new ArrayList<Coordinate>();
 
 	private Map map;
 
@@ -120,7 +120,7 @@ public class MapWindow extends JFrame {
 	 * @param nameOfAgent
 	 *            is the localName of the agent
 	 */
-	public void receiveMap(Cell[][] field, Cord currentLocation, String nameOfAgent) {
+	public void receiveMap(Cell[][] field, Coordinate currentLocation, String nameOfAgent) {
 		if ((field.length + 2) * bGround.scaledHeight > bGround.getHeight()
 				|| (field[0].length + 2) * bGround.scaledWidth > bGround.getWidth()) {
 			resizeScreen((field[0].length + 2) * bGround.scaledWidth, (field.length + 2) * bGround.scaledHeight);
@@ -163,7 +163,7 @@ public class MapWindow extends JFrame {
 	 * @param location
 	 *            is the location where the agent currently is
 	 */
-	public void addAgent(MyAgent newAgent, Cord location) {
+	public void addAgent(ThiefAgent newAgent, Coordinate location) {
 		agentList.add(newAgent);
 		locations.add(location);
 		Runnable next = new Runnable() {
@@ -185,7 +185,7 @@ public class MapWindow extends JFrame {
 	 *            is the agent which will be removed
 	 * @return if the removing of agent was successful
 	 */
-	public boolean removeAgent(MyAgent agent2Delete) {
+	public boolean removeAgent(ThiefAgent agent2Delete) {
 		// return agentWindow.removeAgent(agent2Delete);
 		for (int i = 0; i < agentList.size(); ++i) {
 			if (agentList.get(i).equals(agent2Delete)) {
@@ -221,7 +221,7 @@ public class MapWindow extends JFrame {
 							ants[i + 1][j + 1] = runner;
 					}
 				}
-				MyAgent.log.info("ants: " + ants.length + "\t" + ants[0].length);
+				ThiefAgent.log.info("ants: " + ants.length + "\t" + ants[0].length);
 				Runnable next = new Runnable() {
 					@Override
 					public void run() {
@@ -249,7 +249,8 @@ public class MapWindow extends JFrame {
 		 * @param locations
 		 *            lists all current locations of the called agents
 		 */
-		public void receiveMap(int height, int width, List<MyAgent> agentList, List<Cord> locations) {
+
+		public void receiveMap(int height, int width, List<ThiefAgent> agentList, List<Coordinate> locations) {
 
 			Image[][] temp = new Image[width][height];
 			for (int i = 0; i < agentList.size(); ++i) {
