@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 import com.google.gson.Gson;
 
 import data.Cell;
-import data.Cord;
+import data.Coordinate;
 import data.Message;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
@@ -54,7 +54,7 @@ public class GuiAgent extends AbstractAgent {
 		addBehaviour(new CyclicBehaviour() {
 			@Override
 			public void action() {
-				MyAgent.log.info("Message Behaviour");
+				ThiefAgent.log.info("Message Behaviour");
 				ACLMessage msg = myAgent.receive();
 				if (msg != null) {
 					String content = msg.getContent();
@@ -64,7 +64,7 @@ public class GuiAgent extends AbstractAgent {
 						log.info("topic send message to me");
 						Gson gson = new Gson();
 						Message m = gson.fromJson(content, Message.class);
-						Cord cord = m.cord;
+						Coordinate cord = m.cord;
 						Cell field = m.cell;
 						Runnable next = new Runnable() {
 							@Override

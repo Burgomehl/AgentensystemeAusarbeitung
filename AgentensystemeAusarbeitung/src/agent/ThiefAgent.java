@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 import data.AgentInfo;
 import data.Cell;
-import data.Cord;
+import data.Coordinate;
 import data.InformMessage;
 import data.Message;
 import de.aim.antworld.agent.AntWorldConsts;
@@ -19,16 +19,16 @@ import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
-public class MyAgent extends AbstractAgent {
+public class ThiefAgent extends AbstractAgent {
 	private Queue<String> messages = new LinkedList<>();
 	private boolean login = false;
-	private Deque<Cord> movementOrder;
+	private Deque<Coordinate> movementOrder;
 	private final static Gson gson = new Gson();
-	private Cord lastLocation;
+	private Coordinate lastLocation;
 	private boolean foundFood = false;
-	private Set<Cord> foundStenches = new HashSet<>();
-	private List<Cord> stenchCoordinatesToRemove = new LinkedList<>();
-	private Queue<Cord> foodCoordinates = new LinkedList<>();
+	private Set<Coordinate> foundStenches = new HashSet<>();
+	private List<Coordinate> stenchCoordinatesToRemove = new LinkedList<>();
+	private Queue<Coordinate> foodCoordinates = new LinkedList<>();
 	private boolean food = false;
 	private int trys = 0;
 
@@ -44,6 +44,12 @@ public class MyAgent extends AbstractAgent {
 			}
 		});
 
+		/**
+		 * receives messages and decide on msg.performative which steps ahave to be done.
+		 * PROPAGATE -> handle messages from the other agents in the topic
+		 * INFORM -> mainlogic search for already set movement orders, if the movement orders are empty let the logic find new movement orders
+		 * REFUSE -> test if the Refuse could be cause of a rock
+		 */
 		addBehaviour(new CyclicBehaviour() {
 			@Override
 			public void action() {
@@ -51,7 +57,7 @@ public class MyAgent extends AbstractAgent {
 				if (msg != null) {
 					String content = msg.getContent();
 					int performative = msg.getPerformative();
-					if (currentLocation.equals(new Cord(-4, -1))) {
+					if (currentLocation.equals(new Coordinate(-4, -1))) {
 						System.out.println("Stop");
 					}
 					if (performative == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
@@ -76,7 +82,7 @@ public class MyAgent extends AbstractAgent {
 						sendMessageToTopic(m);
 						if (movementOrder == null || movementOrder.isEmpty()) {
 							log.info("need new movement order");
-							if (currentLocation.equals(new Cord(0, 0)) && m.currentFood > 0) {
+							if (currentLocation.equals(new Coordinate(0, 0)) && m.currentFood > 0) {
 								messages.add(
 										gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_DROP, agentColor)));
 								food = false;
@@ -116,7 +122,7 @@ public class MyAgent extends AbstractAgent {
 			private void addMapByTopicMsg(String content) {
 				log.info("topic send message to me");
 				Message m = gson.fromJson(content, Message.class);
-				Cord cord = m.cord;
+				Coordinate cord = m.cord;
 				Cell field = m.cell;
 				map.updateField(field, cord);
 			}
@@ -124,6 +130,12 @@ public class MyAgent extends AbstractAgent {
 
 	}
 
+	/**
+	 * the logic of the agent. Starts with a login case. Test if the agent is dead and when these condition are not fullified the agent trys to go after already found food, if this is not possible, 
+	 * new movement orders will be created (if the agent is caring food he have to go back to base, if food has been found the agent will collect it and go back home, 
+	 * if there is no stench the agent will search for an unknown field, if there is stench it will be analyzed and possible Traps will be set)
+	 * at the end if there is no movement order the agent will try to find any food he didn't found until jet and reanalyze all stenches he found 
+	 */
 	@Override
 	protected void evaluateNextStep(Message msg) {
 		if (msg == null) {
@@ -135,10 +147,10 @@ public class MyAgent extends AbstractAgent {
 		} else {
 			if (msg.state.equals("DEAD")) {
 				log.info("agent is dead");
-				MyAgent.this.doDelete();
+				ThiefAgent.this.doDelete();
 			} else {
 				if (foundFood) {
-					Cord searchNextFieldWithDecision = foodCoordinates.poll();
+					Coordinate searchNextFieldWithDecision = foodCoordinates.poll();
 					if (searchNextFieldWithDecision != null) {
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
@@ -146,7 +158,7 @@ public class MyAgent extends AbstractAgent {
 					foundFood = false;
 				}
 				if (movementOrder == null || movementOrder.isEmpty()) {
-					Cord searchNextFieldWithDecision = null;
+					Coordinate searchNextFieldWithDecision = null;
 					if (msg.currentFood > 0) {
 						foundFoodGoHome(searchNextFieldWithDecision);
 					} else if (msg.cell.getFood() > 0) {
@@ -175,7 +187,7 @@ public class MyAgent extends AbstractAgent {
 				}
 				if (movementOrder.isEmpty() && trys < 1) {
 					foundFood = true;
-					for (Cord cord : foundStenches) {
+					for (Coordinate cord : foundStenches) {
 						findTraps(cord);
 					}
 					foundStenches.remove(stenchCoordinatesToRemove);
@@ -186,7 +198,7 @@ public class MyAgent extends AbstractAgent {
 					try {
 						moveToNextField(movementOrder.removeFirst());
 					} catch (Exception e) {
-						MyAgent.this.doDelete();
+						ThiefAgent.this.doDelete();
 						log.info("Stopped Agent");
 					}
 					trys = 0;
@@ -196,20 +208,20 @@ public class MyAgent extends AbstractAgent {
 
 	}
 
-	private void findTraps(Cord posToSearch) {
-		List<Cord> neighbours = map.getNeighbours(posToSearch, a -> map.getMap()[a.getX()][a.getY()] == null);
+	private void findTraps(Coordinate posToSearch) {
+		List<Coordinate> neighbours = map.getNeighbours(posToSearch, a -> map.getMap()[a.getX()][a.getY()] == null);
 		if (neighbours.isEmpty()) {
-			degreaseStench(posToSearch, null);
+			decreaseStench(posToSearch, null);
 		}
-		for (Cord cord : neighbours) {
+		for (Coordinate cord : neighbours) {
 			if (neighbours.size() == 1) {
-				List<Cord> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
+				List<Coordinate> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
 				setFieldAsTrap(cord, neighbours2);
 				break;
 			}
 			int stenchIntens = 0;
-			List<Cord> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
-			for (Cord cord2 : neighbours2) {
+			List<Coordinate> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
+			for (Coordinate cord2 : neighbours2) {
 				Cell currentField = map.getCurrentField(cord2);
 				if (currentField.getStench() > 0) {
 					stenchIntens++;
@@ -221,7 +233,7 @@ public class MyAgent extends AbstractAgent {
 		}
 	}
 
-	private void degreaseStench(Cord cord, Cell cell) {
+	private void decreaseStench(Coordinate cord, Cell cell) {
 		if (cell == null) {
 			cell = map.getCurrentField(cord);
 		}
@@ -237,7 +249,7 @@ public class MyAgent extends AbstractAgent {
 		sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 	}
 
-	private void setFieldAsTrap(Cord cord, List<Cord> neighbours2) {
+	private void setFieldAsTrap(Coordinate cord, List<Coordinate> neighbours2) {
 		Cell newTrap = new Cell(0, 0, 0, 0, 0, false, true, null);
 		newTrap.setTrap(true);
 		map.updateField(newTrap, cord);
@@ -246,12 +258,12 @@ public class MyAgent extends AbstractAgent {
 		newMessage.cord = cord;
 		String con = gson.toJson(newMessage);
 		sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-		for (Cord cord2 : neighbours2) {
-			degreaseStench(cord2, null);
+		for (Coordinate cord2 : neighbours2) {
+			decreaseStench(cord2, null);
 		}
 	}
 
-	private void foundFoodGoHome(Cord searchNextFieldWithDecision) {
+	private void foundFoodGoHome(Coordinate searchNextFieldWithDecision) {
 		searchNextFieldWithDecision = doIHaveToMoveHome(searchNextFieldWithDecision);
 		movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 				a -> (map.getMap())[a.getX()][a.getY()] != null);
@@ -261,14 +273,14 @@ public class MyAgent extends AbstractAgent {
 		food = true;
 	}
 
-	private Cord doIHaveToMoveHome(Cord searchNextFieldWithDecision) {
+	private Coordinate doIHaveToMoveHome(Coordinate searchNextFieldWithDecision) {
 		if (searchNextFieldWithDecision == null) {
-			return new Cord(0, 0);
+			return new Coordinate(0, 0);
 		}
 		return searchNextFieldWithDecision;
 	}
 
-	private void moveToNextField(Cord toGoCord) {
+	private void moveToNextField(Coordinate toGoCord) {
 		String action = nextStep(toGoCord);
 		lastLocation = currentLocation;
 		currentLocation = toGoCord;
@@ -276,7 +288,7 @@ public class MyAgent extends AbstractAgent {
 		messages.add(gson.toJson(new InformMessage(action, agentColor)));
 	}
 
-	private String nextStep(Cord toGoCord) {
+	private String nextStep(Coordinate toGoCord) {
 		log.info("next step to : " + toGoCord);
 		String action = AntWorldConsts.ANT_ACTION_UP;
 		if (currentLocation.getX() < toGoCord.getX()) {
@@ -307,7 +319,7 @@ public class MyAgent extends AbstractAgent {
 		send(msg);
 	}
 
-	public MyAgent() {
+	public ThiefAgent() {
 	}
 
 	@Override

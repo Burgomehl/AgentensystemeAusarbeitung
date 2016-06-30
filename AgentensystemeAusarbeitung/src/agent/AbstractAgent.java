@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import data.Cord;
+import data.Coordinate;
 import data.Map;
 import data.Message;
 import de.aim.antworld.agent.AntWorldConsts;
@@ -27,11 +27,11 @@ public abstract class AbstractAgent extends Agent {
 	protected Map map = new Map();
 	protected String inToReplyTo = "";
 	protected int state;
-	protected Cord currentLocation;
+	protected Coordinate currentLocation;
 	protected Location loc;
 	protected boolean releaseLock = true;
 	protected final MapWindow mapWindow = MapWindow.getInstance();
-	protected Deque<Cord> lastCords;
+	protected Deque<Coordinate> lastCords;
 	AID topicAID = null;
 	public final static String agentColor = AntWorldConsts.ANT_COLOR_RED;
 

@@ -9,9 +9,9 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
-import agent.MyAgent;
+import agent.ThiefAgent;
 
-import data.Cord;
+import data.Coordinate;
 
 public class AgentWindow extends JFrame {
 
@@ -20,7 +20,7 @@ public class AgentWindow extends JFrame {
 	/**
 	 * maybe we don't need this list
 	 */
-	private List<MyAgent> listAgents = new ArrayList<MyAgent>();
+	private List<ThiefAgent> listAgents = new ArrayList<ThiefAgent>();
 
 	/**
 	 * tree, model and root-node to display the agents
@@ -96,7 +96,7 @@ public class AgentWindow extends JFrame {
 	 * 
 	 * @param newAgent
 	 */
-	public void setAgentList(List<MyAgent> newAgent, List<Cord> locations) {
+	public void setAgentList(List<ThiefAgent> newAgent, List<Coordinate> locations) {
 		this.listAgents = newAgent;
 
 		for (int i = 0; i < newAgent.size(); ++i) {
@@ -121,7 +121,7 @@ public class AgentWindow extends JFrame {
 		}
 	}
 
-	public void refreshLocationOfAgent(MyAgent agent, Cord newLocation) {
+	public void refreshLocationOfAgent(ThiefAgent agent, Coordinate newLocation) {
 		for (int i = 0; i < root.getChildCount(); ++i) {
 			// if(root.getChildAt(i).))){
 			// }
@@ -135,7 +135,7 @@ public class AgentWindow extends JFrame {
 	 *            the node which will be deleted
 	 * @return if removing was success
 	 */
-	public boolean removeAgent(MyAgent agent2Delete) {
+	public boolean removeAgent(ThiefAgent agent2Delete) {
 		return listAgents.remove(agent2Delete);
 	}
 

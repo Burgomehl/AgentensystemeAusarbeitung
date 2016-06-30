@@ -1,5 +1,9 @@
 package data;
 
+/**
+ * class for json and for the map to save the location  
+ *
+ */
 public class Cell {
 	private int food;
 	/**
