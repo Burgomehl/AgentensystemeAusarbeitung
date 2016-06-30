@@ -1,6 +1,5 @@
 package agent;
 
-import java.awt.Image;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,8 +24,9 @@ public class MyAgent extends AbstractAgent {
 	private final static Gson gson = new Gson();
 	private Cord lastLocation;
 	private boolean foundFood = false;
+	private boolean food = false;
 
-	private Image[] imageOfAgent;
+	// private Image[] imageOfAgent;
 	private String imageName;
 
 	@Override
@@ -65,6 +65,7 @@ public class MyAgent extends AbstractAgent {
 							if (currentLocation.equals(new Cord(0, 0)) && m.currentFood > 0) {
 								messages.add(
 										gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_DROP, agentColor)));
+								food = false;
 							} else {
 								evaluateNextStep(m);
 							}
@@ -149,6 +150,7 @@ public class MyAgent extends AbstractAgent {
 						movementOrder.addFirst(currentLocation);
 						messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
 						foundFood = true;
+						food = true;
 					} else if (msg.cell.getStench() == 0) {
 						log.info("Searching best way to next empty field");
 						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
@@ -288,6 +290,10 @@ public class MyAgent extends AbstractAgent {
 
 	public String getNameOfImage() {
 		return imageName;
+	}
+
+	public boolean hasFood() {
+		return food;
 	}
 
 }
