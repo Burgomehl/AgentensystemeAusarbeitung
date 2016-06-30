@@ -46,9 +46,10 @@ public class ThiefAgent extends AbstractAgent {
 		});
 
 		/**
-		 * receives messages and decide on msg.performative which steps ahave to be done.
-		 * PROPAGATE -> handle messages from the other agents in the topic
-		 * INFORM -> mainlogic search for already set movement orders, if the movement orders are empty let the logic find new movement orders
+		 * receives messages and decide on msg.performative which steps ahave to
+		 * be done. PROPAGATE -> handle messages from the other agents in the
+		 * topic INFORM -> mainlogic search for already set movement orders, if
+		 * the movement orders are empty let the logic find new movement orders
 		 * REFUSE -> test if the Refuse could be cause of a rock
 		 */
 		addBehaviour(new CyclicBehaviour() {
@@ -129,10 +130,15 @@ public class ThiefAgent extends AbstractAgent {
 	}
 
 	/**
-	 * the logic of the agent. Starts with a login case. Test if the agent is dead and when these condition are not fullified the agent trys to go after already found food, if this is not possible, 
-	 * new movement orders will be created (if the agent is caring food he have to go back to base, if food has been found the agent will collect it and go back home, 
-	 * if there is no stench the agent will search for an unknown field, if there is stench it will be analyzed and possible Traps will be set)
-	 * at the end if there is no movement order the agent will try to find any food he didn't found until jet and reanalyze all stenches he found 
+	 * the logic of the agent. Starts with a login case. Test if the agent is
+	 * dead and when these condition are not fullified the agent trys to go
+	 * after already found food, if this is not possible, new movement orders
+	 * will be created (if the agent is caring food he have to go back to base,
+	 * if food has been found the agent will collect it and go back home, if
+	 * there is no stench the agent will search for an unknown field, if there
+	 * is stench it will be analyzed and possible Traps will be set) at the end
+	 * if there is no movement order the agent will try to find any food he
+	 * didn't found until jet and reanalyze all stenches he found
 	 */
 	@Override
 	protected void evaluateNextStep(Message msg) {
@@ -173,7 +179,7 @@ public class ThiefAgent extends AbstractAgent {
 
 					} else {
 						foundStenches.add(currentLocation);
-						findTraps(currentLocation);
+						findTraps(currentLocation, msg.cell);
 						foundStenches.remove(stenchCoordinatesToRemove);
 						log.info("Searching for the next allready visited Field");
 						searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
@@ -183,11 +189,11 @@ public class ThiefAgent extends AbstractAgent {
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
 					}
 				}
-				if (movementOrder.isEmpty() && trys < 1) {
+				if (movementOrder.isEmpty() && trys < 3) {
 					foundFood = true;
-					--trapTestSize; 
+					--trapTestSize;
 					for (Coordinate cord : foundStenches) {
-						findTraps(cord);
+						findTraps(cord, msg.cell);
 					}
 					foundStenches.remove(stenchCoordinatesToRemove);
 					++trys;
@@ -201,14 +207,14 @@ public class ThiefAgent extends AbstractAgent {
 						log.info("Stopped Agent");
 					}
 					trys = 0;
-					trapTestSize = 3;
+					trapTestSize = 4;
 				}
 			}
 		}
 
 	}
 
-	private void findTraps(Coordinate posToSearch) {
+	private void findTraps(Coordinate posToSearch, Cell newAddedCell) {
 		List<Coordinate> neighbours = map.getNeighbours(posToSearch, a -> map.getMap()[a.getX()][a.getY()] == null);
 		Queue<Coordinate> possibleTraps = new LinkedList<>();
 		if (neighbours.isEmpty()) {
@@ -218,6 +224,10 @@ public class ThiefAgent extends AbstractAgent {
 			if (neighbours.size() == 1) {
 				setFieldAsTrap(cord);
 				break;
+			}
+			Cell neighbourCell = map.getCurrentField(cord);
+			if (neighbourCell != null && neighbourCell.isTrap() && neighbourCell.equals(newAddedCell)) {
+				decreaseStench(cord, newAddedCell);
 			}
 			int stenchIntens = 0;
 			List<Coordinate> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
@@ -231,7 +241,7 @@ public class ThiefAgent extends AbstractAgent {
 				possibleTraps.add(cord);
 			}
 		}
-		if(possibleTraps.size()==1){
+		if (possibleTraps.size() == 1) {
 			setFieldAsTrap(possibleTraps.remove());
 		}
 	}
@@ -243,8 +253,8 @@ public class ThiefAgent extends AbstractAgent {
 		cell.setStench(cell.getStench() - 1);
 		if (cell.getStench() <= 0) {
 			stenchCoordinatesToRemove.add(cord);
-			if(cell.getFood()>0){
-				if(!foodCoordinates.contains(cord)){
+			if (cell.getFood() > 0) {
+				if (!foodCoordinates.contains(cord)) {
 					foodCoordinates.add(cord);
 					foundFood = true;
 				}
