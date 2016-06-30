@@ -66,6 +66,11 @@ public class GuiAgent extends AbstractAgent {
 						Message m = gson.fromJson(content, Message.class);
 						Cord cord = m.cord;
 						Cell field = m.cell;
+						// <<<<<<< HEAD
+						// =======
+						// map.updateField(field, cord);
+						// >>>>>>> branch 'master' of
+						// https://github.com/Burgomehl/AgentensystemeAusarbeitung.git
 
 						Runnable next = new Runnable() {
 							@Override
