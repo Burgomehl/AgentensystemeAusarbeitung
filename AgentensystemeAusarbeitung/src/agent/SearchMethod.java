@@ -64,8 +64,10 @@ public class SearchMethod {
 	 * 
 	 * @param map
 	 * @param currentLocation
-	 * @param decision return condition
-	 * @param decisionForNeighbours chooses the found neighbors from the beginning
+	 * @param decision
+	 *            return condition
+	 * @param decisionForNeighbours
+	 *            chooses the found neighbors from the beginning
 	 * @return
 	 */
 	public static Coordinate searchNextFieldWithDecision(Map map, Coordinate currentLocation, Predicate<Cell> decision,

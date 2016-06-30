@@ -13,22 +13,14 @@ import jade.lang.acl.ACLMessage;
 
 public class GuiAgent extends AbstractAgent {
 
-	// private final MapWindow mapWindow = MapWindow.getInstance();
-
 	public GuiAgent() {
 		mapWindow.start();
-		// registerOnMap();
 	}
 
 	@Override
 	protected void loginAtAntWorld() {
 		// Shall not login on antWorld
 	}
-
-	// @Override
-	// public void registerOnMap() {
-	// super.registerOnMap();
-	// }
 
 	@Override
 	public void doDelete() {
@@ -42,12 +34,6 @@ public class GuiAgent extends AbstractAgent {
 		// TODO Auto-generated method stub
 
 	}
-
-	// @Override
-	// protected void loginAtToppic() {
-	// // TODO Auto-generated method stub
-	//
-	// }
 
 	@Override
 	protected void addBehaviours() {
@@ -74,8 +60,7 @@ public class GuiAgent extends AbstractAgent {
 								if (m.agent != null)
 									mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord), m.agent.agentName);
 								else {
-//									System.out.println("No agent has sent a message: " + m.toString());
-									log.debug("No agent has sent a message: " + m.toString());
+									log.debug("No agent has sent a message: " + m);
 								}
 							}
 						};

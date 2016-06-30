@@ -16,10 +16,10 @@ public class Start {
 			int ants = 1;
 			String server = "localhost";
 			System.out.println(args.length);
-			if(args.length == 1){
+			if (args.length == 1) {
 				ants = Integer.parseInt(args[0]);
 				System.out.println(ants);
-			}else if(args.length == 2){
+			} else if (args.length == 2) {
 				ants = Integer.parseInt(args[0]);
 				server = args[1];
 				System.out.println(server);
