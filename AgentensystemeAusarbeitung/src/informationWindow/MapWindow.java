@@ -169,9 +169,6 @@ public class MapWindow extends JFrame {
 		Runnable next = new Runnable() {
 			@Override
 			public void run() {
-				System.out.println("addAgent");
-				// toolbar.refreshAgentMenu(newAgent);
-				// agentWindow.setAgentList(agentList, locations);
 				agentWindow.addAgent(newAgent, location);
 			}
 		};
@@ -186,15 +183,12 @@ public class MapWindow extends JFrame {
 	 * @return if the removing of agent was successful
 	 */
 	public boolean removeAgent(ThiefAgent agent2Delete) {
-		// return agentWindow.removeAgent(agent2Delete);
 		for (int i = 0; i < agentList.size(); ++i) {
 			if (agentList.get(i).equals(agent2Delete)) {
 				agentList.remove(agent2Delete);
 				locations.remove(i);
 			}
 		}
-		// agentList.remove(agent2Delete);
-		// agentWindow.setAgentList(agentList, locations);
 		return true;
 	}
 
@@ -290,8 +284,6 @@ public class MapWindow extends JFrame {
 	}
 
 	class Background extends JComponent {
-
-		// private MediaTracker m = new MediaTracker(this);
 
 		private final String pathToResources = "res/best/";
 		private final int scaledHeight = 75;

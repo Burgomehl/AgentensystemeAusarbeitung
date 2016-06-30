@@ -97,6 +97,8 @@ public class AgentWindow extends JFrame {
 	public void refreshLocationOfAgent(ThiefAgent agent, Coordinate newLocation) {
 		for (int i = 0; i < listAgents.size(); ++i) {
 			if (listAgents.get(i).equals(agent)) {
+				model.setValueAt(agent.getAgentState().toString(), i, 1);
+				model.setValueAt(agent.hasFood() ? "1" : "0", i, 2);
 				model.setValueAt(newLocation.toString(), i, 4);
 			}
 		}
