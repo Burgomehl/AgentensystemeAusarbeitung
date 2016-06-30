@@ -29,6 +29,7 @@ public class MyAgent extends AbstractAgent {
 	private Set<Cord> foundStenches = new HashSet<>();
 	private List<Cord> stenchCoordinatesToRemove = new LinkedList<>();
 	private Queue<Cord> foodCoordinates = new LinkedList<>();
+	private boolean food = false;
 	private int trys = 0;
 
 	@Override
@@ -78,6 +79,7 @@ public class MyAgent extends AbstractAgent {
 							if (currentLocation.equals(new Cord(0, 0)) && m.currentFood > 0) {
 								messages.add(
 										gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_DROP, agentColor)));
+								food = false;
 							} else {
 								evaluateNextStep(m);
 							}
@@ -256,6 +258,7 @@ public class MyAgent extends AbstractAgent {
 		movementOrder.addFirst(currentLocation);
 		messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
 		foodCoordinates.add(currentLocation);
+		food = true;
 	}
 
 	private Cord doIHaveToMoveHome(Cord searchNextFieldWithDecision) {
@@ -308,8 +311,17 @@ public class MyAgent extends AbstractAgent {
 	}
 
 	@Override
+	public void setup() {
+		super.setup();
+		registerOnMap();
+	}
+
 	public void registerOnMap() {
-		super.registerOnMap();
+		mapWindow.addAgent(this, currentLocation);
+	}
+
+	public boolean hasFood() {
+		return food;
 	}
 
 }
