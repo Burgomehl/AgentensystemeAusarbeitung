@@ -28,6 +28,7 @@ public class MyAgent extends AbstractAgent {
 	private boolean foundFood = false;
 	private Set<Cord> foundStenches = new HashSet<>();
 	private List<Cord> stenchCoordinatesToRemove = new LinkedList<>();
+	private Queue<Cord> foodCoordinates = new LinkedList<>();
 	private int trys = 0;
 
 	@Override
@@ -49,8 +50,7 @@ public class MyAgent extends AbstractAgent {
 				if (msg != null) {
 					String content = msg.getContent();
 					int performative = msg.getPerformative();
-					if (currentLocation.equals(new Cord(2, -3)) || currentLocation.equals(new Cord(1, -2))
-							|| currentLocation.equals(new Cord(2, -1))) {
+					if (currentLocation.equals(new Cord(-13, -10))) {
 						System.out.println("Stop");
 					}
 					if (performative == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
@@ -60,6 +60,10 @@ public class MyAgent extends AbstractAgent {
 						inToReplyTo = msg.getReplyWith();
 						Message m = gson.fromJson(content, Message.class);
 						if (m.action.equals(AntWorldConsts.ANT_ACTION_COLLECT)) {
+							Cell currentField = map.getCurrentField(currentLocation);
+							if (currentField != null) {
+								m.cell.setStench(currentField.getStench());
+							}
 							currentLocation = map.updateField(m.cell, currentLocation);
 						} else {
 							currentLocation = map.addNewField(m.cell, currentLocation);
@@ -132,8 +136,7 @@ public class MyAgent extends AbstractAgent {
 				MyAgent.this.doDelete();
 			} else {
 				if (foundFood) {
-					Cord searchNextFieldWithDecision = SearchMethod.searchNextFieldWithDecision(map, currentLocation,
-							a -> a != null && a.getFood() > 0, a -> (map.getMap())[a.getX()][a.getY()] != null);
+					Cord searchNextFieldWithDecision = foodCoordinates.poll();
 					if (searchNextFieldWithDecision != null) {
 						movementOrder = SearchMethod.searchLikeAStar(map, currentLocation, searchNextFieldWithDecision,
 								a -> (map.getMap())[a.getX()][a.getY()] != null);
@@ -169,6 +172,7 @@ public class MyAgent extends AbstractAgent {
 					}
 				}
 				if (movementOrder.isEmpty() && trys < 1) {
+					foundFood = true;
 					for (Cord cord : foundStenches) {
 						findTraps(cord);
 					}
@@ -177,11 +181,17 @@ public class MyAgent extends AbstractAgent {
 					evaluateNextStep(msg);
 					return;
 				} else {
-					moveToNextField(movementOrder.removeFirst());
+					try {
+						moveToNextField(movementOrder.removeFirst());
+					} catch (Exception e) {
+						MyAgent.this.doDelete();
+						log.info("Stopped Agent");
+					}
 					trys = 0;
 				}
 			}
 		}
+
 	}
 
 	private void findTraps(Cord posToSearch) {
@@ -234,7 +244,6 @@ public class MyAgent extends AbstractAgent {
 		newMessage.cord = cord;
 		String con = gson.toJson(newMessage);
 		sendMessage(con, ACLMessage.PROPAGATE, topicAID);
-		// degreaseStench(cord, newTrap);
 		for (Cord cord2 : neighbours2) {
 			degreaseStench(cord2, null);
 		}
@@ -246,6 +255,7 @@ public class MyAgent extends AbstractAgent {
 				a -> (map.getMap())[a.getX()][a.getY()] != null);
 		movementOrder.addFirst(currentLocation);
 		messages.add(gson.toJson(new InformMessage(AntWorldConsts.ANT_ACTION_COLLECT, agentColor)));
+		foodCoordinates.add(currentLocation);
 	}
 
 	private Cord doIHaveToMoveHome(Cord searchNextFieldWithDecision) {

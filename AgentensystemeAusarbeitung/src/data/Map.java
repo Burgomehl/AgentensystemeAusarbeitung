@@ -168,7 +168,7 @@ public class Map {
 			}
 			b.append("\n\r");
 		}
-		log.debug(b);
+		log.info(b);
 	}
 
 	public Cord getCurrentLocation() {
