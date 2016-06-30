@@ -111,10 +111,14 @@ public class MapWindow extends JFrame {
 	}
 
 	/**
+	 * method to work with the dedicated message from topic
 	 * 
-	 * @param field,
-	 *            two-dimensional array to call method "receiveMap" in
-	 *            MapWindow.Screen with the same value
+	 * @param field
+	 *            of cells that has information about the cells in antWorld
+	 * @param currentLocation
+	 *            is the current location of the agent which sent the message
+	 * @param nameOfAgent
+	 *            is the localName of the agent
 	 */
 	public void receiveMap(Cell[][] field, Cord currentLocation, String nameOfAgent) {
 		if ((field.length + 2) * bGround.scaledHeight > bGround.getHeight()
@@ -124,14 +128,21 @@ public class MapWindow extends JFrame {
 		for (int i = 0; i < agentList.size(); ++i) {
 			if (agentList.get(i).getLocalName().equalsIgnoreCase(nameOfAgent)) {
 				locations.add(i, currentLocation);
+				agentWindow.refreshLocationOfAgent(agentList.get(i), currentLocation);
 			}
 		}
-		// System.out.println("field: " + field.length + "\t" +
-		// field[0].length);
 		bGround.receiveMap(field);
 		fGround.receiveMap(field.length + 2, field[0].length + 2, agentList, locations);
 	}
 
+	/**
+	 * method to resize the background and foreground
+	 * 
+	 * @param width
+	 *            the new width the window should be got
+	 * @param height
+	 *            the new height the window should be got
+	 */
 	private void resizeScreen(int width, int height) {
 		Runnable next = new Runnable() {
 			@Override
@@ -149,6 +160,8 @@ public class MapWindow extends JFrame {
 	 * 
 	 * @param newAgent
 	 *            is the agent which will be added
+	 * @param location
+	 *            is the location where the agent currently is
 	 */
 	public void addAgent(MyAgent newAgent, Cord location) {
 		agentList.add(newAgent);
@@ -156,15 +169,13 @@ public class MapWindow extends JFrame {
 		Runnable next = new Runnable() {
 			@Override
 			public void run() {
+				System.out.println("addAgent");
 				// toolbar.refreshAgentMenu(newAgent);
-				agentWindow.setAgentList(agentList, locations);
+				// agentWindow.setAgentList(agentList, locations);
+				agentWindow.addAgent(newAgent, location);
 			}
 		};
 		SwingUtilities.invokeLater(next);
-	}
-
-	private void refreshLocationOfAgent(Cord newLocation) {
-
 	}
 
 	/**
@@ -183,7 +194,7 @@ public class MapWindow extends JFrame {
 			}
 		}
 		// agentList.remove(agent2Delete);
-		agentWindow.setAgentList(agentList, locations);
+		// agentWindow.setAgentList(agentList, locations);
 		return true;
 	}
 
@@ -225,6 +236,19 @@ public class MapWindow extends JFrame {
 			mWindow = mapWindow;
 		}
 
+		/**
+		 * method to get the current known map of antWorld - in the foreground
+		 * only agents will be shown
+		 * 
+		 * @param height
+		 *            of the image-array
+		 * @param width
+		 *            of the image-array
+		 * @param agentList
+		 *            lists all agents from us in antWorld
+		 * @param locations
+		 *            lists all current locations of the called agents
+		 */
 		public void receiveMap(int height, int width, List<MyAgent> agentList, List<Cord> locations) {
 
 			Image[][] temp = new Image[width][height];
@@ -377,20 +401,23 @@ public class MapWindow extends JFrame {
 			repaint();
 		}
 
+		/**
+		 * method to dynamically create an image and show the money on ground
+		 * 
+		 * @param amountOfFood
+		 *            amount of the explored food
+		 * @return the created image
+		 */
 		private Image getCoinsOnGrass(int amountOfFood) {
 			int size = scaledWidth * scaledHeight;
 			int[] pixelsCoin = new int[75 * 75];
 			int[] pixelsGrass = new int[size];
 			int[] result = new int[size];
-			// PixelGrabber grabber = new PixelGrabber(best_food, 0, 0,
-			// scaledWidth, scaledHeight, pixelsCoin, 0,
-			// scaledWidth);
 			PixelGrabber grabGrass = new PixelGrabber(grass, 0, 0, scaledWidth, scaledHeight, pixelsGrass, 0,
 					scaledWidth);
 			MemoryImageSource source = new MemoryImageSource(scaledWidth, scaledHeight, result, 0, scaledWidth);
 			source.setAnimated(true);
 			try {
-				// grabber.grabPixels();
 				grabGrass.grabPixels();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -398,85 +425,23 @@ public class MapWindow extends JFrame {
 
 			BufferedImage out = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
 			out.createGraphics().drawImage(grass, 0, 0, scaledWidth, scaledHeight, null);
-			// out.createGraphics().setColor(Color.WHITE);
-			// out.createGraphics().setBackground(Color.WHITE);
-			// out.createGraphics().drawRect(0, 0, scaledWidth, scaledHeight);
 			if (amountOfFood < 6) {
 				for (int i = 0; i < amountOfFood; ++i) {
 					out.createGraphics().drawImage(best_food, 75 / 2 - 10, 75 - i * 10 - 10, 20, 10, null);
 				}
-				// int cell = 0;
-				// for (int i = 0; i < amountOfFood; ++i) {
-				// for (int j = 0; j < scaledHeight; ++j) {
-				// for (int k = 0; k < scaledWidth; ++k) {
-				// if (j * scaledHeight + k >= scaledHeight * (scaledHeight - 1)
-				// - 10
-				// - best_food.getHeight(this) * i - (scaledWidth / 2 -
-				// best_food.getWidth(this) / 2)
-				// || j * scaledHeight + k < scaledHeight * (scaledHeight - 1) -
-				// 10
-				// - (scaledWidth + best_food.getWidth(this) / 2)) {
-				// if (!(cell < 200))
-				// cell = 0;
-				// result[j * scaledHeight + k] = pixelsCoin[cell];
-				// // else{
-				// // cell = 0;
-				// // }
-				// }
-				// }
-				// }
-				// }
 
 			} else if (amountOfFood < 11) {
-				// int cell = 0;
-				// for (int i = 0; i < amountOfFood; ++i) {
-				// for (int j = 0; j < scaledHeight; ++j) {
-				// for (int k = 0; k < scaledWidth; ++k) {
-				// if (j * scaledHeight + k >= scaledHeight * (scaledHeight - 1)
-				// - 10
-				// - best_food.getHeight(this) * i - (scaledWidth / 2 -
-				// best_food.getWidth(this))
-				// || j * scaledHeight + k < scaledHeight * (scaledHeight - 1) -
-				// 10
-				// - (scaledWidth + best_food.getWidth(this))) {
-				// if (!(cell < 200))
-				// cell = 0;
-				// result[j * scaledHeight + k] = pixelsCoin[cell];
-				// }
-				// }
-				// }
-				// }
 				for (int i = 0; i < amountOfFood; ++i) {
 					for (int j = 0; j < 5; ++j, --amountOfFood) {
 						out.createGraphics().drawImage(best_food, 75 / 2 - 10 * j, 75 - i * 10 - 10, 20, 10, null);
 					}
 				}
 			} else {
-				// int cell = 0;
-				// for (int i = 0; i < amountOfFood; ++i) {
-				// for (int j = 0; j < scaledHeight; ++j) {
-				// for (int k = 0; k < scaledWidth; ++k) {
-				// if (j * scaledHeight + k >= scaledHeight * (scaledHeight - 1)
-				// - 10
-				// - best_food.getHeight(this) * i - (scaledWidth / 2 -
-				// best_food.getWidth(this) * 1.5)
-				// || j * scaledHeight + k < scaledHeight * (scaledHeight - 1) -
-				// 10
-				// - (scaledWidth + best_food.getWidth(this) * 1.5)) {
-				// if (!(cell < 200))
-				// cell = 0;
-				// result[j * scaledHeight + k] = pixelsCoin[cell];
-				// }
-				// }
-				// }
-				// }
-				// for (int i = 0; i < amountOfFood; ++i) {
 				for (int j = 0; j < amountOfFood; ++j) {
 					for (int k = 0; k < 5; ++k, --amountOfFood) {
 						out.createGraphics().drawImage(best_food, 30 + j * 10, 75 - k * 10 - 10, 20, 10, null);
 					}
 				}
-				// }
 			}
 
 			PixelGrabber grabber = new PixelGrabber(out, 0, 0, scaledWidth, scaledHeight, pixelsCoin, 0, scaledWidth);
@@ -500,10 +465,6 @@ public class MapWindow extends JFrame {
 			return Toolkit.getDefaultToolkit().createImage(source);
 		}
 
-		public Image getBestFood() {
-			return best_food;
-		}
-
 		@Override
 		public Dimension getPreferredSize() {
 			return size;
@@ -519,7 +480,6 @@ public class MapWindow extends JFrame {
 
 		@Override
 		public void paintComponent(Graphics g) {
-			// System.out.println(getSize());
 			if (mapAsImage != null) {
 				for (int i = 0; i < mapAsImage.length; ++i) {
 					for (int j = 0; j < mapAsImage[i].length; ++j) {
@@ -569,18 +529,6 @@ public class MapWindow extends JFrame {
 
 			return menu;
 		}
-
-		// /**
-		// * will add a new entry to menubar with the new agent
-		// *
-		// * @param agent
-		// * which is added to the antWorld
-		// */
-		// public void refreshAgentMenu(MyAgent agent) {
-		// JMenuItem item = new JMenuItem("Agent " + agent.getLocalName());
-		//
-		// agentMenu.add(item);
-		// }
 
 	}
 }

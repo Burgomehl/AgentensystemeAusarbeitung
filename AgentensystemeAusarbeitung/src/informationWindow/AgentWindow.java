@@ -2,12 +2,12 @@ package informationWindow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import agent.MyAgent;
 
@@ -17,17 +17,10 @@ public class AgentWindow extends JFrame {
 
 	private final String title = "AgentWindow to see information";
 
-	/**
-	 * maybe we don't need this list
-	 */
 	private List<MyAgent> listAgents = new ArrayList<MyAgent>();
-
-	/**
-	 * tree, model and root-node to display the agents
-	 */
-	private JTree tree;
-	private DefaultTreeModel treeModel;
-	private DefaultMutableTreeNode root;
+	private Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+	private Vector<String> columns = new Vector<String>();
+	private DefaultTableModel model;
 
 	private static AgentWindow window = null;
 
@@ -45,101 +38,81 @@ public class AgentWindow extends JFrame {
 		return window;
 	}
 
-	private void initComponents() {
-		root = new DefaultMutableTreeNode("Agents");
-		treeModel = new DefaultTreeModel(root);
-		tree = new JTree(treeModel);
-
-		this.add(new JScrollPane(tree));
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
-		// start();
+	/**
+	 * simple method to initialize the names of columns
+	 */
+	private void initColumns() {
+		columns.add("Name");
+		columns.add("State");
+		columns.add("currentFood");
+		columns.add("total collected");
+		columns.add("Position");
 	}
 
+	/**
+	 * simple method to initialize the most important components for this window
+	 */
+	private void initComponents() {
+		initColumns();
+		model = new DefaultTableModel(rowData, columns);
+		JTable table = new JTable(model);
+		this.add(new JScrollPane(table));
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	}
+
+	/**
+	 * simple method to show the window not automatically
+	 */
 	public void start() {
 		setVisible(true);
 	}
 
-	// /**
-	// * Deprecated because it's only one line
-	// *
-	// * @return the DefaultMutableTreeNode root
-	// */
-	// @Deprecated
-	// private DefaultMutableTreeNode getTree() {
-	// DefaultMutableTreeNode root = new DefaultMutableTreeNode("Agents");
-	//
-	// // for (int i = 0; i < 10; ++i) {
-	// // DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Agent0" +
-	// // i);
-	// // root.add(agent);
-	// // }
-	// // for (int i = 0; i < listAgents.size(); ++i) {
-	// // DefaultMutableTreeNode agent = new
-	// // DefaultMutableTreeNode(listAgents.get(i).getLocalName());
-	// //
-	// // DefaultMutableTreeNode state = new
-	// // DefaultMutableTreeNode(listAgents.get(i).getState());
-	// // // DefaultMutableTreeNode color
-	// // // DefaultMutableTreeNode currentFood
-	// // // DefaultMutableTreeNode totalFood?
-	// // // DefaultMutableTreeNode nextAction
-	// // // DefaultMutableTreeNode cell
-	// // agent.add(state);
-	// // root.add(agent);
-	// // }
-	//
-	// return root;
-	// }
-
 	/**
+	 * method to add an agent and show it in the agentWindow
 	 * 
-	 * @param newAgent
+	 * @param agent
+	 *            the new agent
+	 * @param currentLocation
+	 *            its current location
 	 */
-	public void setAgentList(List<MyAgent> newAgent, List<Cord> locations) {
-		this.listAgents = newAgent;
+	public void addAgent(MyAgent agent, Cord currentLocation) {
+		this.listAgents.add(agent);
+		Vector<String> row = new Vector<String>();
+		row.add(agent.getLocalName());
+		row.add(agent.getAgentState().toString());
+		row.add(agent.hasFood() ? "1" : "0");
+		row.add("-");
+		row.add(currentLocation.toString());
+		// rowData.add(row);
 
-		for (int i = 0; i < newAgent.size(); ++i) {
-			DefaultMutableTreeNode node = new DefaultMutableTreeNode(newAgent.get(i).getLocalName());
-			DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Name: " + newAgent.get(i).getLocalName());
-			@SuppressWarnings("static-access")
-			DefaultMutableTreeNode color = new DefaultMutableTreeNode("Color: " + newAgent.get(i).agentColor);
-			DefaultMutableTreeNode aState = new DefaultMutableTreeNode(
-					"State: " + newAgent.get(i).getAgentState().getName());
-			// DefaultMutableTreeNode image = new DefaultMutableTreeNode("Icon:
-			// " + newAgent.get(i).getNameOfImage());
-			DefaultMutableTreeNode location = new DefaultMutableTreeNode("Position: " + locations.get(i).toString());
-
-			node.add(agent);
-			node.add(color);
-			node.add(aState);
-			// node.add(image);
-			node.add(location);
-
-			treeModel.insertNodeInto(node, root, root.getChildCount());
-			tree.treeDidChange();
-		}
+		model.addRow(row);
 	}
 
+	/**
+	 * method to update the current location of each agent
+	 * 
+	 * @param agent
+	 *            the agent which location will be updated
+	 * @param newLocation
+	 *            the new location of the agent
+	 */
 	public void refreshLocationOfAgent(MyAgent agent, Cord newLocation) {
-		for (int i = 0; i < root.getChildCount(); ++i) {
-			// if(root.getChildAt(i).))){
-			// }
+		for (int i = 0; i < listAgents.size(); ++i) {
+			if (listAgents.get(i).equals(agent)) {
+				model.setValueAt(newLocation.toString(), i, 4);
+			}
 		}
 	}
 
 	/**
-	 * logic has to be updated
+	 * method to remove one known agent from the map
 	 * 
 	 * @param agent2Delete
-	 *            the node which will be deleted
+	 *            the agent which will be deleted
 	 * @return true if removing was success
 	 */
 	public boolean removeAgent(MyAgent agent2Delete) {
 		return listAgents.remove(agent2Delete);
 	}
 
-	// public List<MyAgent> getAgentList() {
-	// return this.listAgents;
-	// }
 }
