@@ -1,5 +1,7 @@
 package agent;
 
+import javax.swing.SwingUtilities;
+
 import com.google.gson.Gson;
 
 import data.Cell;
@@ -23,10 +25,10 @@ public class GuiAgent extends AbstractAgent {
 		// Shall not login on antWorld
 	}
 
-	@Override
-	public void registerOnMap() {
-		super.registerOnMap();
-	}
+	// @Override
+	// public void registerOnMap() {
+	// super.registerOnMap();
+	// }
 
 	@Override
 	public void doDelete() {
@@ -64,12 +66,25 @@ public class GuiAgent extends AbstractAgent {
 						Message m = gson.fromJson(content, Message.class);
 						Cord cord = m.cord;
 						Cell field = m.cell;
-						map.updateField(field, cord);
+						// <<<<<<< HEAD
+						// =======
+						// map.updateField(field, cord);
+						// >>>>>>> branch 'master' of
+						// https://github.com/Burgomehl/AgentensystemeAusarbeitung.git
 
-						mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord));
+						Runnable next = new Runnable() {
+							@Override
+							public void run() {
+								map.addNewField(field, cord);
+
+								mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord), m.agent.agentName);
+							}
+						};
+						SwingUtilities.invokeLater(next);
 					} else {
 						log.info("Misterious Message received " + msg.getContent());
 					}
+
 				} else {
 					block();
 				}

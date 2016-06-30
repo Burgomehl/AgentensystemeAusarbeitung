@@ -9,7 +9,9 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
-import agent.AbstractAgent;
+import agent.MyAgent;
+
+import data.Cord;
 
 public class AgentWindow extends JFrame {
 
@@ -18,7 +20,7 @@ public class AgentWindow extends JFrame {
 	/**
 	 * maybe we don't need this list
 	 */
-	private final List<AbstractAgent> listAgents = new ArrayList<AbstractAgent>();
+	private List<MyAgent> listAgents = new ArrayList<MyAgent>();
 
 	/**
 	 * tree, model and root-node to display the agents
@@ -94,27 +96,29 @@ public class AgentWindow extends JFrame {
 	 * 
 	 * @param newAgent
 	 */
-	public void addAgent(AbstractAgent newAgent) {
-		listAgents.add(newAgent);
+	public void setAgentList(List<MyAgent> newAgent, List<Cord> locations) {
+		this.listAgents = newAgent;
 
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode(newAgent.getLocalName());
-		DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Name: " + newAgent.getLocalName());
-		@SuppressWarnings("static-access")
-		DefaultMutableTreeNode color = new DefaultMutableTreeNode("Color: " + newAgent.agentColor);
-		DefaultMutableTreeNode aState = new DefaultMutableTreeNode("State: " + newAgent.getAgentState().getName());
-		DefaultMutableTreeNode locName = new DefaultMutableTreeNode(
-				"ContainerName: " + newAgent.getLocation().getName());
-		DefaultMutableTreeNode location = new DefaultMutableTreeNode(
-				"IP-Address: " + newAgent.getLocation().getAddress());
+		for (int i = 0; i < newAgent.size(); ++i) {
+			DefaultMutableTreeNode node = new DefaultMutableTreeNode(newAgent.get(i).getLocalName());
+			DefaultMutableTreeNode agent = new DefaultMutableTreeNode("Name: " + newAgent.get(i).getLocalName());
+			@SuppressWarnings("static-access")
+			DefaultMutableTreeNode color = new DefaultMutableTreeNode("Color: " + newAgent.get(i).agentColor);
+			DefaultMutableTreeNode aState = new DefaultMutableTreeNode(
+					"State: " + newAgent.get(i).getAgentState().getName());
+			// DefaultMutableTreeNode image = new DefaultMutableTreeNode("Icon:
+			// " + newAgent.get(i).getNameOfImage());
+			DefaultMutableTreeNode location = new DefaultMutableTreeNode("Position: " + locations.get(i).toString());
 
-		node.add(agent);
-		node.add(color);
-		node.add(aState);
-		node.add(locName);
-		node.add(location);
+			node.add(agent);
+			node.add(color);
+			node.add(aState);
+			// node.add(image);
+			node.add(location);
 
-		treeModel.insertNodeInto(node, root, root.getChildCount());
-		tree.treeDidChange();
+			treeModel.insertNodeInto(node, root, root.getChildCount());
+			tree.treeDidChange();
+		}
 	}
 
 	/**
@@ -124,11 +128,11 @@ public class AgentWindow extends JFrame {
 	 *            the node which will be deleted
 	 * @return if removing was success
 	 */
-	public boolean removeAgent(AbstractAgent agent2Delete) {
+	public boolean removeAgent(MyAgent agent2Delete) {
 		return listAgents.remove(agent2Delete);
 	}
 
-	public List<AbstractAgent> getAgentList() {
-		return this.listAgents;
-	}
+	// public List<MyAgent> getAgentList() {
+	// return this.listAgents;
+	// }
 }

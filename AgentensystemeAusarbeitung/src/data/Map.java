@@ -8,7 +8,12 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 /**
- * Datastructur to save the found locations
+ * Ich denke das wird die Bevorzugte variante die Karte dazustellen Unten Links
+ * ist (0,0) Es wird immer von der Mitte aus begonnen die Karte zu befüllen Wenn
+ * da nichts ist steht im Array Null Zu nutzen ist {@IMap} als Speicherort für
+ * die Map, falls sich da was ändert. Dich sollte für die GUI nur getMap()
+ * interessieren
+ * 
  * @author Benjamin Byl
  *
  */
@@ -41,43 +46,21 @@ public class Map {
 	}
 
 	public Cord addNewField(Cell field, Cord cord) {
-		log.info("Add Field "+cord);
-		Cord cordNew = modifyField(field, cord, a -> map[a.getX()][a.getY()] == null);
-		return getRelativePosition(cordNew);
-	}
-
-	public Cord updateField(Cell field, Cord cord) {
-		log.info("Update Field "+cord);
-		Cord cordNew = modifyField(field, cord, a -> true);
-		return getRelativePosition(cordNew);
-	}
-
-	/**
-	 * In case of update the field will be set even if there is already an other field
-	 * In case of "addnewfield" there will be just a update if the desired location is not set 
-	 * @param field
-	 * @param cord
-	 * @param decision
-	 * @return
-	 */
-	private Cord modifyField(Cell field, Cord cord, Predicate<Cord> decision) {
 		Cord cordNew = getTotalPosition(cord);
-		log.debug("Modify field on: " + cordNew);
+		log.debug("Add new field on: " + cordNew);
 		if (isInRange(cordNew)) {
 			resizeMap(10, cordNew);
 		}
-		if (decision.test(cordNew)) {
+		if (map[cordNew.getX()][cordNew.getY()] == null) {
 			map[cordNew.getX()][cordNew.getY()] = field;
+		} else {
+			map[cordNew.getX()][cordNew.getY()] = field;
+			log.debug("There is already a Field updated Field");
 		}
 		print(map);
-		return cordNew;
+		return getRelativePosition(cordNew);
 	}
 
-	/**
-	 * gives a relativ location to the home field
-	 * @param cord
-	 * @return
-	 */
 	public Cell getCurrentField(Cord cord) {
 		Cord cordNew = getTotalPosition(cord);
 		if (isInRange(cordNew)) {
@@ -85,11 +68,7 @@ public class Map {
 		}
 		return map[cordNew.getX()][cordNew.getY()];
 	}
-	/**
-	 * @param cord
-	 * @param decision
-	 * @return neighbours depending on the given decision 
-	 */
+
 	public List<Cord> getNeighbours(Cord cord, Predicate<Cord> decision) {
 		Cord cordNew = getTotalPosition(cord);
 		log.debug("GetNeighbours on: " + cordNew);
@@ -103,7 +82,8 @@ public class Map {
 		return list;
 	}
 
-	private void getNeighbours(Cord cordNew, List<Cord> list, int x, int y, Predicate<Cord> decision) {
+	private void getNeighbours(Cord cordNew, List<Cord> list, int x, int y,
+			Predicate<Cord> decision) {
 		Cord possibleCordinates = new Cord(cordNew.getX() + x, cordNew.getY() + y);
 		if (isInRange(possibleCordinates)) {
 			resizeMap(10, possibleCordinates);
@@ -111,6 +91,22 @@ public class Map {
 		if (decision.test(possibleCordinates)) {
 			list.add(getRelativePosition(possibleCordinates));
 		}
+	}
+
+	public int getFieldIndex(Cord cord) {
+		Cord cordNew = getTotalPosition(cord);
+		log.debug("analsysis the fieldindex: " + cordNew);
+		int index = 0;
+		for (int i = -1; i <= 1; ++i) {
+			for (int j = -1; j < 1; ++j) {
+				Cord cordT = new Cord(cordNew.getX() + i, cordNew.getY() + j);
+				if (!isInRange(cordT)) {
+					index += (map[cordT.getX()][cordT.getY()] != null) ? 1 : 0;
+				}
+			}
+		}
+		log.debug("currentLocation after analysis of fieldindex: " + cordNew);
+		return index;
 	}
 
 	public Cell[][] getMap() {
@@ -140,10 +136,6 @@ public class Map {
 		return !(c.getX() < map.length - 1 && c.getY() < map[0].length - 1 && c.getX() >= 0 && c.getY() >= 0);
 	}
 
-	/**
-	 * prints the map in the log, pre gui option for debug
-	 * @param map
-	 */
 	public void print(Cell[][] map) {
 		StringBuilder b = new StringBuilder();
 		for (int i = 0; i < map.length; i++) {
