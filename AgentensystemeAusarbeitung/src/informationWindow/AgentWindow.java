@@ -133,7 +133,7 @@ public class AgentWindow extends JFrame {
 	 * 
 	 * @param agent2Delete
 	 *            the node which will be deleted
-	 * @return if removing was success
+	 * @return true if removing was success
 	 */
 	public boolean removeAgent(ThiefAgent agent2Delete) {
 		return listAgents.remove(agent2Delete);
