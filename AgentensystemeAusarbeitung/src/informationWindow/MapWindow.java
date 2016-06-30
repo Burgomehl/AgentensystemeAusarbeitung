@@ -503,11 +503,8 @@ public class MapWindow extends JFrame {
 	 */
 	class Toolbar extends JMenuBar {
 
-		JMenu agentMenu = new JMenu("Agents");
-
 		Toolbar() {
 			add(getFileMenu());
-			add(agentMenu);
 		}
 
 		/**
@@ -527,7 +524,15 @@ public class MapWindow extends JFrame {
 
 			menu.add(show);
 			menu.addSeparator();
+			JMenuItem closer = new JMenuItem("Close Program");
+			closer.addActionListener(new ActionListener() {
 
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
+			menu.add(closer);
 			return menu;
 		}
 
