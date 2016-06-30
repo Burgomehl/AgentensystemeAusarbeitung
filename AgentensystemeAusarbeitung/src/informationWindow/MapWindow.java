@@ -43,10 +43,7 @@ public class MapWindow extends JFrame {
 	private List<MyAgent> agentList = new ArrayList<MyAgent>();
 	private List<Cord> locations = new ArrayList<Cord>();
 
-	// private IMap map;
 	private Map map;
-	// private Cell[][] field;
-	// private Image[][] mapWithImages;
 
 	private MapWindow() {
 		initComponent();
@@ -65,21 +62,16 @@ public class MapWindow extends JFrame {
 			@Override
 			public void run() {
 				setTitle(title);
-				// setLayout(null);
-				// setContentPane(new JLayeredPane());
 				JLayeredPane layer = new JLayeredPane();
 				layer.setLayout(null);
 				scrollPane = new JScrollPane(layer);
 				scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 				scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
-				// add(scrollPane, new Integer(0));
 				layer.add(bGround, new Integer(0));
 				layer.add(fGround, new Integer(1));
-				// layer.setSize(800, 600);
 				setSize(800, 600);
 				setJMenuBar(toolbar);
 				add(scrollPane);
-				// pack();
 
 				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 				addWindowListener(new WindowAdapter() {
@@ -129,8 +121,9 @@ public class MapWindow extends JFrame {
 			resizeScreen((field[0].length + 2) * bGround.scaledWidth, (field.length + 2) * bGround.scaledHeight);
 		}
 		for (int i = 0; i < agentList.size(); ++i) {
-			if (agentList.get(i).getLocalName().equalsIgnoreCase(nameOfAgent))
+			if (agentList.get(i).getLocalName().equalsIgnoreCase(nameOfAgent)) {
 				locations.add(i, currentLocation);
+			}
 		}
 		System.out.println("field: " + field.length + "\t" + field[0].length);
 		bGround.receiveMap(field);
@@ -156,23 +149,20 @@ public class MapWindow extends JFrame {
 	 *            is the agent which will be added
 	 */
 	public void addAgent(MyAgent newAgent, Cord location) {
-		// int random = (int) (Math.random() * 2);
-		// newAgent.setImageOfAgent(random == 0
-		// ? new Image[] { (screen.grassWithBoy), (screen.grassWithBoyOnStart),
-		// screen.grassWithFoodAndBoy }
-		// : new Image[] { screen.grassWithShooter,
-		// screen.grassWithShooterOnStart,
-		// screen.grassWithFoodAndShooter });
 		agentList.add(newAgent);
 		locations.add(location);
 		Runnable next = new Runnable() {
 			@Override
 			public void run() {
-				toolbar.refreshAgentMenu(newAgent);
+				// toolbar.refreshAgentMenu(newAgent);
 				agentWindow.setAgentList(agentList, locations);
 			}
 		};
 		SwingUtilities.invokeLater(next);
+	}
+
+	private void refreshLocationOfAgent(Cord newLocation) {
+
 	}
 
 	/**
@@ -180,10 +170,19 @@ public class MapWindow extends JFrame {
 	 * 
 	 * @param agent2Delete
 	 *            is the agent which will be removed
-	 * @return
+	 * @return if the removing of agent was successful
 	 */
 	public boolean removeAgent(MyAgent agent2Delete) {
-		return agentWindow.removeAgent(agent2Delete);
+		// return agentWindow.removeAgent(agent2Delete);
+		for (int i = 0; i < agentList.size(); ++i) {
+			if (agentList.get(i).equals(agent2Delete)) {
+				agentList.remove(agent2Delete);
+				locations.remove(i);
+			}
+		}
+		// agentList.remove(agent2Delete);
+		agentWindow.setAgentList(agentList, locations);
+		return true;
 	}
 
 	class Foreground extends JComponent {
@@ -218,8 +217,6 @@ public class MapWindow extends JFrame {
 				};
 				SwingUtilities.invokeLater(next);
 			}
-			// setLocation(0, 0);
-			// setBounds(0, 0, size.width, size.height);
 		}
 
 		public void setMapWindow(MapWindow mapWindow) {
@@ -238,23 +235,6 @@ public class MapWindow extends JFrame {
 			ants = temp;
 		}
 
-		// private Image getCoinsOnGrass(int amountOfFood) {
-		// int size = scaledWidth * scaledHeight;
-		// int[] pixelsCoin = new int[size];
-		// int[] result = new int[size];
-		// PixelGrabber grabber = new PixelGrabber(bGround.best_food, 0, 0,
-		// scaledWidth, scaledHeight, pixelsCoin, 0,
-		// scaledWidth);
-		// MemoryImageSource source = new MemoryImageSource(scaledWidth,
-		// scaledHeight, result, 0, scaledWidth);
-		// try {
-		// grabber.grabPixels();
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// }
-		// return Toolkit.getDefaultToolkit().createImage(source);
-		// }
-
 		@Override
 		public Dimension getPreferredSize() {
 			return size;
@@ -267,10 +247,6 @@ public class MapWindow extends JFrame {
 			getParent().setPreferredSize(size);
 			this.size = size;
 		}
-
-		// public void setLocation() {
-		// super.setLocation(0, 0);
-		// }
 
 		@Override
 		public void paintComponent(Graphics g) {
@@ -301,55 +277,9 @@ public class MapWindow extends JFrame {
 		private Image fogOfWar = Toolkit.getDefaultToolkit().createImage("res/NebelTile.png");
 		private Image startField = Toolkit.getDefaultToolkit().createImage(pathToResources + "hideout.png");
 
-		// private Image runner =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources +
-		// "runner.png");
-		// private Image lkw =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources + "lkw.png");
-
-		// private Image antRed =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources +
-		// "antred.png");
-		// private Image antGreen =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources +
-		// "antgreen.png");
-		// private Image antBlue =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources +
-		// "antblue.png");
-		// private Image antYellow =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources +
-		// "antyellow.png");
-		// private Image bestShooter =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources +
-		// "bestShooter.png");
-		// private Image bestBoy =
-		// Toolkit.getDefaultToolkit().createImage(pathToResources +
-		// "bestBoy.png");
-
-		// Images for draw own ants
-		// private Image grassWithBoy;
-		// private Image grassWithFoodAndBoy;
-		// private Image grassWithBoyOnStart;
-		//
-		// private Image grassWithShooter;
-		// private Image grassWithFoodAndShooter;
-		// private Image grassWithShooterOnStart;
-
-		// // private Image lkw;
-		// private Image runnerOnGrass;
-		// private Image runnerInHide;
-		// private Image runnerOnFood;
-		//
-		// private Image truckOnGrass;
-		// private Image truckInHide;
-		// private Image truckOnFood;
-
-		// private int[][] currentLocation = new int[][] { { 0 }, { 0 } };
-
 		private MapWindow mWindow;
 		private Cell[][] field;
 		private Image[][] mapAsImage;
-		// private int[][] positionArray;
 
 		private Dimension size = new Dimension(800, 600);
 
@@ -372,7 +302,6 @@ public class MapWindow extends JFrame {
 		 * first call - when the map was first time created
 		 */
 		private void initializeMap() {
-			// initAnts();
 			if (field != null) {
 				System.out.println("field: " + field.length + field[0].length + "\t" + field[0][0].getType());
 				this.mapAsImage = new Image[field.length + 2][field[0].length + 2];
@@ -409,112 +338,7 @@ public class MapWindow extends JFrame {
 			} else {
 				return;
 			}
-			// setLocation(0, 0);
-			// setBounds(0, 0, size.width, size.height);
 		}
-
-		// private void initAnts() {
-		// int size = 75 * 75;
-		// int[] pixelsBack = new int[size];
-		// int[] pixelsFood = new int[size];
-		// // int[] pixelsShooter = new int[1024];
-		// int[] pixelsRunner = new int[size];
-		// int[] pixelsTruck = new int[size];
-		// int[] pixelsStartField = new int[size];
-		//
-		// int[] result = new int[size];
-		// MemoryImageSource source = new MemoryImageSource(scaledWidth,
-		// scaledHeight, result, 0, scaledWidth);
-		// source.setAnimated(true);
-		// PixelGrabber grabber = new PixelGrabber(grass, 0, 0, scaledWidth,
-		// scaledHeight, pixelsBack, 0, scaledWidth);
-		// PixelGrabber grabberFood = new PixelGrabber(best_food, 0, 0,
-		// scaledWidth, scaledHeight, pixelsFood, 0,
-		// scaledWidth);
-		// PixelGrabber grabberRunner = new PixelGrabber(runner, 0, 0,
-		// scaledWidth, scaledHeight, pixelsRunner, 0,
-		// scaledWidth);
-		// PixelGrabber grabberTruck = new PixelGrabber(lkw, 0, 0,
-		// scaledWidth,
-		// scaledHeight, pixelsTruck, 0,
-		// scaledWidth);
-		// PixelGrabber grabberStart = new PixelGrabber(startField, 0, 0,
-		// scaledWidth, scaledHeight, pixelsStartField,
-		// 0, scaledWidth);
-		// try {
-		// grabber.grabPixels();
-		// grabberFood.grabPixels();
-		// grabberRunner.grabPixels();
-		// grabberTruck.grabPixels();
-		// grabberStart.grabPixels();
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// }
-		//
-		// for (int i = 0; i < pixelsBack.length; ++i) {
-		// if (pixelsRunner[i] != 0) {
-		// result[i] = pixelsRunner[i];
-		// } else {
-		// result[i] = pixelsBack[i];
-		// }
-		// }
-		// source.newPixels();
-		// this.runnerOnGrass =
-		// Toolkit.getDefaultToolkit().createImage(source);
-		// // source.newPixels();
-		// for (int i = 0; i < pixelsBack.length; ++i) {
-		// if (pixelsTruck[i] != 0) {
-		// result[i] = pixelsTruck[i];
-		// } else {
-		// result[i] = pixelsBack[i];
-		// }
-		// }
-		// source.newPixels();
-		// this.truckOnGrass =
-		// Toolkit.getDefaultToolkit().createImage(source);
-		// // source.newPixels();
-		// for (int i = 0; i < pixelsStartField.length; ++i) {
-		// if (pixelsRunner[i] != 0) {
-		// result[i] = pixelsRunner[i];
-		// } else
-		// result[i] = pixelsStartField[i];
-		// }
-		// source.newPixels();
-		// this.runnerInHide =
-		// Toolkit.getDefaultToolkit().createImage(source);
-		// // source.newPixels();
-		// for (int i = 0; i < pixelsFood.length; ++i) {
-		// if (pixelsRunner[i] != 0)
-		// result[i] = pixelsRunner[i];
-		// else
-		// result[i] = pixelsFood[i];
-		// }
-		// source.newPixels();
-		// this.runnerOnFood =
-		// Toolkit.getDefaultToolkit().createImage(source);
-		// // source.newPixels();
-		// for (int i = 0; i < pixelsStartField.length; ++i) {
-		// if (pixelsTruck[i] != 0) {
-		// result[i] = pixelsTruck[i];
-		// } else {
-		// result[i] = pixelsStartField[i];
-		// }
-		// }
-		// source.newPixels();
-		// this.truckInHide =
-		// Toolkit.getDefaultToolkit().createImage(source);
-		// // source.newPixels();
-		// for (int i = 0; i < pixelsFood.length; ++i) {
-		// if (pixelsTruck[i] != 0)
-		// result[i] = pixelsTruck[i];
-		// else
-		// result[i] = pixelsFood[i];
-		// }
-		// source.newPixels();
-		// this.truckOnFood =
-		// Toolkit.getDefaultToolkit().createImage(source);
-		// // source.newPixels();
-		// }
 
 		/**
 		 * method to re-build and draw the map
@@ -526,11 +350,6 @@ public class MapWindow extends JFrame {
 		private void receiveMap(Cell[][] field) {
 			this.field = field;
 			Image[][] temp = new Image[field.length + 2][field[0].length + 2];
-			// for (int i = 0; i < field.length; ++i) {
-			// for (int j = 0; j < field[i].length; ++j) {
-			// temp[i][j] = startField;
-			// }
-			// }
 
 			for (int i = 0; i < field.length; ++i) {
 				for (int j = 0; j < field[i].length; ++j) {
@@ -553,38 +372,9 @@ public class MapWindow extends JFrame {
 				}
 			}
 
-			// for (int i = 0; i < agentList.size(); ++i) {
-			// // Image[] images = agentList.get(i).getImageOfAgent();
-			// Cord loc = locations.get(i);
-			// System.out.println(agentList.get(i).hasFood());
-			// // if (!agentList.get(i).hasFood()) {
-			// temp[loc.getX() + 1][loc.getY() + 1] =
-			// field[loc.getX()][loc.getY()].getFood() > 0 ? runnerOnFood
-			// :
-			// field[loc.getX()][loc.getY()].getType().equalsIgnoreCase("start")
-			// ? runnerInHide
-			// : runnerOnGrass;
-			// } else {
-			// temp[loc.getX() + 1][loc.getY() + 1] =
-			// field[loc.getX()][loc.getY()].getFood() > 0 ? truckOnFood
-			// :
-			// field[loc.getX()][loc.getY()].getType().equalsIgnoreCase("start")
-			// ? truckInHide
-			// : truckOnGrass;
-			// }
-			// }
-			// temp[currentLocation.getX() + 1][currentLocation.getY() + 1] =
-			// grassWithBoy;
-
 			mapAsImage = temp;
 
-			// Runnable next = new Runnable() {
-			// @Override
-			// public void run() {
 			repaint();
-			// }
-			// };
-			// SwingUtilities.invokeLater(next);
 		}
 
 		private Image getCoinsOnGrass(int amountOfFood) {
@@ -635,10 +425,6 @@ public class MapWindow extends JFrame {
 			}
 		}
 
-		// @Override
-		// public void repaint() {
-		// super.repaint();
-		// }
 	}
 
 	/**
@@ -666,7 +452,6 @@ public class MapWindow extends JFrame {
 			show.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// agentWindow = AgentWindow.getInstance();
 					agentWindow.setVisible(true);
 				}
 			});
@@ -677,36 +462,17 @@ public class MapWindow extends JFrame {
 			return menu;
 		}
 
-		/**
-		 * will add a new entry to menubar with the new agent
-		 * 
-		 * @param agent
-		 *            which is added to the antWorld
-		 */
-		public void refreshAgentMenu(MyAgent agent) {
-			JMenuItem item = new JMenuItem("Agent " + agent.getLocalName());
+		// /**
+		// * will add a new entry to menubar with the new agent
+		// *
+		// * @param agent
+		// * which is added to the antWorld
+		// */
+		// public void refreshAgentMenu(MyAgent agent) {
+		// JMenuItem item = new JMenuItem("Agent " + agent.getLocalName());
+		//
+		// agentMenu.add(item);
+		// }
 
-			agentMenu.add(item);
-		}
-
-		/**
-		 * Deprecated because it's only one line
-		 * 
-		 * @return the JMenu for agents
-		 */
-		@Deprecated
-		private JMenu getAgentMenu() {
-			JMenu menu = new JMenu("Agent");
-
-			// for (int i = 0; i < agentWindow.getAgentList().size(); ++i) {
-			// JMenuItem item = new JMenuItem("Show only agent " + i);
-			// menu.add(item);
-			// }
-
-			// JMenuItem itemOne = new JMenuItem("Show only agent one");
-			//
-			// menu.add(itemOne);
-			return menu;
-		}
 	}
 }

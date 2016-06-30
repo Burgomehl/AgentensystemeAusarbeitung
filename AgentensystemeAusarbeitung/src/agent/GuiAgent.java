@@ -77,7 +77,12 @@ public class GuiAgent extends AbstractAgent {
 							public void run() {
 								map.addNewField(field, cord);
 
-								mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord), m.agent.agentName);
+								if (m.agent != null)
+									mapWindow.receiveMap(map.getMap(), map.getTotalPosition(cord), m.agent.agentName);
+								else {
+									System.out.println("No agent has sent a message: " + m.toString());
+									log.debug("No agent has sent a message: " + m.toString());
+								}
 							}
 						};
 						SwingUtilities.invokeLater(next);
