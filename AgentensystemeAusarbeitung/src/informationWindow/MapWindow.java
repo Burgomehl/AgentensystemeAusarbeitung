@@ -201,8 +201,8 @@ public class MapWindow extends JFrame {
 		private int scaledHeight = bGround.scaledHeight;
 
 		private String pathToResources = bGround.pathToResources;
-		private Image runner = Toolkit.getDefaultToolkit().createImage(pathToResources + "runner.png");
-		private Image lkw = Toolkit.getDefaultToolkit().createImage(pathToResources + "lkw.png");
+		private Image runner = Toolkit.getDefaultToolkit().createImage(getClass().getResource(pathToResources + "runner.png"));
+		private Image lkw = Toolkit.getDefaultToolkit().createImage(getClass().getResource(pathToResources + "lkw.png"));
 
 		private Image[][] ants;
 
@@ -284,16 +284,15 @@ public class MapWindow extends JFrame {
 	}
 
 	class Background extends JComponent {
-
-		private final String pathToResources = "res/best/";
+		private final String pathToResources = "/best/";
 		private final int scaledHeight = 75;
 		private final int scaledWidth = 75;
-		private Image stone = Toolkit.getDefaultToolkit().createImage(pathToResources + "bestStone.png");
-		private Image grass = Toolkit.getDefaultToolkit().createImage(pathToResources + "grass.png");
-		private Image best_food = Toolkit.getDefaultToolkit().createImage(pathToResources + "coin.png");
-		private Image trap = Toolkit.getDefaultToolkit().createImage(pathToResources + "police.png");
-		private Image fogOfWar = Toolkit.getDefaultToolkit().createImage("res/NebelTile.png");
-		private Image startField = Toolkit.getDefaultToolkit().createImage(pathToResources + "hideout.png");
+		private Image stone = Toolkit.getDefaultToolkit().createImage(getClass().getResource(pathToResources + "bestStone.png"));
+		private Image grass = Toolkit.getDefaultToolkit().createImage(getClass().getResource(pathToResources + "grass.png"));
+		private Image best_food = Toolkit.getDefaultToolkit().createImage(getClass().getResource(pathToResources + "coin.png"));
+		private Image trap = Toolkit.getDefaultToolkit().createImage(getClass().getResource(pathToResources + "police.png"));
+		private Image fogOfWar = Toolkit.getDefaultToolkit().createImage(getClass().getResource("/NebelTile.png"));
+		private Image startField = Toolkit.getDefaultToolkit().createImage(getClass().getResource(pathToResources + "hideout.png"));
 
 		private MapWindow mWindow;
 		private Cell[][] field;

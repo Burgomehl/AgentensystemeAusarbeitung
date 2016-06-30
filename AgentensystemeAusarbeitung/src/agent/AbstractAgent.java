@@ -39,7 +39,7 @@ public abstract class AbstractAgent extends Agent {
 
 	@Override
 	protected void setup() {
-		PropertyConfigurator.configure("log4j.properties");
+		PropertyConfigurator.configure(getClass().getResourceAsStream("/log4j.properties"));
 		state = 0;
 		lastCords = new LinkedList<>();
 		currentLocation = map.getCurrentLocation();
