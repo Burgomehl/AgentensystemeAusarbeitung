@@ -31,6 +31,7 @@ public class ThiefAgent extends AbstractAgent {
 	private Queue<Coordinate> foodCoordinates = new LinkedList<>();
 	private boolean food = false;
 	private int trys = 0;
+	private int trapTestSize = 3;
 
 	@Override
 	protected void addBehaviours() {
@@ -57,9 +58,6 @@ public class ThiefAgent extends AbstractAgent {
 				if (msg != null) {
 					String content = msg.getContent();
 					int performative = msg.getPerformative();
-					if (currentLocation.equals(new Coordinate(-4, -1))) {
-						System.out.println("Stop");
-					}
 					if (performative == ACLMessage.PROPAGATE && !msg.getSender().equals(getAID())) {
 						log.info("Got Propagate");
 						addMapByTopicMsg(content);
@@ -187,6 +185,7 @@ public class ThiefAgent extends AbstractAgent {
 				}
 				if (movementOrder.isEmpty() && trys < 1) {
 					foundFood = true;
+					--trapTestSize; 
 					for (Coordinate cord : foundStenches) {
 						findTraps(cord);
 					}
@@ -202,6 +201,7 @@ public class ThiefAgent extends AbstractAgent {
 						log.info("Stopped Agent");
 					}
 					trys = 0;
+					trapTestSize = 3;
 				}
 			}
 		}
@@ -210,13 +210,13 @@ public class ThiefAgent extends AbstractAgent {
 
 	private void findTraps(Coordinate posToSearch) {
 		List<Coordinate> neighbours = map.getNeighbours(posToSearch, a -> map.getMap()[a.getX()][a.getY()] == null);
+		Queue<Coordinate> possibleTraps = new LinkedList<>();
 		if (neighbours.isEmpty()) {
 			decreaseStench(posToSearch, null);
 		}
 		for (Coordinate cord : neighbours) {
 			if (neighbours.size() == 1) {
-				List<Coordinate> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
-				setFieldAsTrap(cord, neighbours2);
+				setFieldAsTrap(cord);
 				break;
 			}
 			int stenchIntens = 0;
@@ -227,9 +227,12 @@ public class ThiefAgent extends AbstractAgent {
 					stenchIntens++;
 				}
 			}
-			if (stenchIntens >= 3 && map.getCurrentField(cord) == null) {
-				setFieldAsTrap(cord, neighbours2);
+			if (stenchIntens >= trapTestSize && map.getCurrentField(cord) == null) {
+				possibleTraps.add(cord);
 			}
+		}
+		if(possibleTraps.size()==1){
+			setFieldAsTrap(possibleTraps.remove());
 		}
 	}
 
@@ -240,6 +243,12 @@ public class ThiefAgent extends AbstractAgent {
 		cell.setStench(cell.getStench() - 1);
 		if (cell.getStench() <= 0) {
 			stenchCoordinatesToRemove.add(cord);
+			if(cell.getFood()>0){
+				if(!foodCoordinates.contains(cord)){
+					foodCoordinates.add(cord);
+					foundFood = true;
+				}
+			}
 		}
 		map.updateField(cell, cord);
 		Message newMessage = new Message();
@@ -249,7 +258,8 @@ public class ThiefAgent extends AbstractAgent {
 		sendMessage(con, ACLMessage.PROPAGATE, topicAID);
 	}
 
-	private void setFieldAsTrap(Coordinate cord, List<Coordinate> neighbours2) {
+	private void setFieldAsTrap(Coordinate cord) {
+		List<Coordinate> neighbours2 = map.getNeighbours(cord, a -> map.getMap()[a.getX()][a.getY()] != null);
 		Cell newTrap = new Cell(0, 0, 0, 0, 0, false, true, null);
 		newTrap.setTrap(true);
 		map.updateField(newTrap, cord);
